@@ -39,6 +39,8 @@ Conformal Field Theory
 \Large
 Lecture notes}
 
+%\title{Conformal Field Theory for Particle/High-Energy Physicists}
+
 \author{Marc Gillioz}
 
 \date{Spring semester 2022}
@@ -48,22 +50,254 @@ Lecture notes}
 
 \maketitle
 
-%\vfill
-%
-%\tableofcontents
-%
-%\vfill
+\begin{center}
+	\parbox{11.5cm}{\emph{%
+[Lectures] are fantastically good for learning physics. The lecturer learns a lot of physics. After my first few studies, just about everything I learned about physics came from teaching it. I don’t know if the students learned a lot, but I certainly did. So I consider teaching physics very important.} --- Leonard Susskind}
+\end{center}
+%https://www.delta.tudelft.nl/article/leonard-susskind-sleeping-during-lecture-good-thing#
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newpage
 
-%\section
+\tableofcontents
 
-\paragraph{Week 1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\section{Introduction}
+
+\subsection{What is conformal field theory?}
+
+Introduction: What is CFT? Why is it useful. Examples of CFT. Where does it fit into modern theoretical physics.
 
 
-\bibliography{Bibliography}
-\bibliographystyle{utphys}
+in the last few years, CFT has been dominated by 
+
+string theory: 2d CFT
+
+holography: geometric approach
+
+condensed matter physics: Euclidean
+
+
+here focus on the ``old'' quantum field theory approach
+
+links with: lattice, perturbation theory, etc.
+
+fun fact: the conformal bootstrap was invented by particle physicists
+
+
+\textbf{strongly-coupled QFT}
+
+no need for action principle
+
+
+\subsection{Examples of conformal field theories}
+
+perturbative examples: $\phi^n$ theory in non-integer $d$
+
+Caswell-Banks-Zaks
+
+superconformal: $\mathcal{N} = 4$
+
+
+any IR fixed point (maybe trivial)
+
+
+use beyond CFT:
+correlators that have the isometries of the conformal group
+gravity in AdS
+but also late-time correlators in de Sitter
+
+\subsection{Outline}
+
+originally covered in 14 periods of 45 minutes each
+
+split into 7 chapters?
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Classical conformal symmetry}
+
+
+Poincar\'e symmetry: physics is the same in every coordinate frame
+
+linear transformation of the coordinates
+\begin{equation}
+	x'^\mu = x^\mu + \omega^\mu_{~\nu} x^\nu + a^\mu
+\end{equation}
+
+
+infinitesimal line element $dx^2 = \eta_{\mu\nu} dx^\mu dx^\nu$ is invariant:
+\begin{equation}
+	dx'^2 = dx^2
+\end{equation}
+
+
+scale symmetry:
+\begin{equation}
+	x'^\mu = \lambda x^\mu
+\end{equation}
+
+
+
+
+special conformal symmetry:
+
+
+conformal Killing vectors:
+(see Osborn's notes)
+infinitesimal transformation
+\begin{equation}
+	x'^\mu = x^\mu + v^\mu(x)
+\end{equation}
+
+\begin{equation}
+	\partial^\mu v^\nu + \partial^\nu v^\mu = 2 \sigma \eta^{\mu\nu}
+\end{equation}
+
+solution in $d = 1$, $d = 2$ and $d > 2$
+
+
+
+finite transformations
+
+
+inversions: discrete transformations not connected to identity
+
+but inversion followed by translation followed by inversion
+
+\subsection{The conformal algebra}
+
+
+embedding space?
+
+\subsection{Examples}
+
+Escher?
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Non-perturbative quantum field theory}
+
+Wightman axioms
+
+operators are not necessarily invariant under conformal symmetry, but they transform unitarily
+
+unitary representations on Hilbert space
+
+(e.g.~pair of point-like particle
+
+no action principle
+(i.e.~no need for ``quantization'')
+
+
+only deal with \textbf{local} operators
+
+
+\subsection{Spectral representation}
+
+operator vs.~field
+
+\subsection{Scale symmetry}
+
+
+comment on scale vs.~conformal invariance
+
+correlation functions:
+
+no need for action principle
+
+
+\subsection{Special conformal symmetry}
+
+Mack's classification in 4d
+
+
+representation: long and short multiplets!
+
+
+\subsection{Exercises}
+
+
+\subsection{Bibliography}
+
+itzikson zuber
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Conformal correlation functions}
+
+T-products vs. Wightman functions
+
+use retarded products and micro-causality
+
+
+Ward identities
+
+
+\subsection{Spectral representation for spinning operators}
+
+unitary bounds
+
+\subsection{From momentum to position}
+
+taking fourier transforms
+
+\subsection{From Minkowski to Eulidean space}
+
+Osterwalder-Schrader
+
+analytic continuation of Wightman functions vs. Wick rotation of T-products
+
+reflection positivity
+
+note that this is usually done in the other direction!
+
+\subsection{Embedding-space formalism}
+
+in position space
+
+2- and 3-point functions
+
+invariant cross-ratios for 4-point functions
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{State-operator correspondence and OPE}
+
+important remark on OPE convergence in Euclidean space!
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{The conformal bootstrap}
+
+\subsection{Conformal blocks}
+
+\subsection{The numerical boostrap}
+
+generalized free fields/Gaussian
+
+\subsection{Results}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Selected advanced topics}
+
+light-cone limit and ?
+
+Virasoro symmetry in 2d:
+
+
+conformal anomalies: anomalies are contact term in the action for the source
+
+
+%\bibliography{Bibliography}
+%\bibliographystyle{utphys}
 
 \end{document}
