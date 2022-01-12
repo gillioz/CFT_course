@@ -16,7 +16,7 @@
 %\renewcommand{\O}{\mathcal{O}}
 %\newcommand{\ket}[1]{\left| #1 \right\rangle}
 %\newcommand{\bra}[1]{\left\langle #1 \right|}
-%\newcommand{\SO}{\text{SO}}
+\newcommand{\SO}{\text{SO}}
 
 
 % double angle-bracket notation:
@@ -125,7 +125,7 @@ Poincar\'e symmetry: physics is the same in every coordinate frame
 
 linear transformation of the coordinates
 \begin{equation}
-	x'^\mu = x^\mu + \omega^\mu_{~\nu} x^\nu + a^\mu
+	x'^\mu = x^\mu + \omega^{[\mu\nu]} x_\nu + a^\mu
 \end{equation}
 
 
@@ -140,40 +140,94 @@ scale symmetry:
 	x'^\mu = \lambda x^\mu
 \end{equation}
 
+note that this can be seen as a rescaling of the metric, of the form
+$\eta'^{\mu\nu} = \# \eta^{\mu\nu}$
 
 
+can we generalize this? general transformations of the metric $\eta'^{\mu\nu} = \Omega(x) \eta^{\mu\nu}$
+called a \emph{Weyl transformation}
 
-special conformal symmetry:
+in general changes geometry of space-time; unless this transformation is equivalent to a coordinate transformation (diffeomorphism)
 
-
-conformal Killing vectors:
-(see Osborn's notes)
-infinitesimal transformation
+in infinitesimal form
 \begin{equation}
 	x'^\mu = x^\mu + v^\mu(x)
 \end{equation}
-
+requiring that this is equal to the Weyl transformation gives the conformal Killing equation:
 \begin{equation}
-	\partial^\mu v^\nu + \partial^\nu v^\mu = 2 \sigma \eta^{\mu\nu}
+	\partial^\mu v^\nu(x) + \partial^\nu v^\mu(x)
+	= 2 \sigma(x) \eta^{\mu\nu}
 \end{equation}
 
-solution in $d = 1$, $d = 2$ and $d > 2$
+work out solution in $d = 1$, $d = 2$ and $d > 2$;
+
+
+conformal Killing vectors (see Osborn's notes):
+translation
+Lorentz transformations
+dilatation
+special conformal symmetry
+
+
+
+in $d = 2$, use $z$, $\bar{z}$ notation and Laurent series
+
+
+
 
 
 
 finite transformations
 
 
-inversions: discrete transformations not connected to identity
+use inversions: discrete transformations not connected to identity
 
-but inversion followed by translation followed by inversion
+but inversion followed by translation followed by inversion gives special conformal transformations
+
+
+group of conformal transformation is a subgroup of diffeomorphisms; in fact the largest \emph{finite-dimensional} subgroup
+% Rychkov (1.53)
+
+
+
+defining property
+\begin{equation}
+	g'_{\mu\nu}(x') = \Omega(x)^2 \eta_{\mu\nu}
+\end{equation}
+gives Jacobian of conformal transformation
+\begin{equation}
+	\frac{\partial x^\mu}{\partial x^\nu}
+	= \Omega(x) M^\mu_{~\nu}(x)
+\end{equation}
+$M$: $\SO(d-1, 1)$ matrix
+
+conformal transformations look locally like Lorentz and scale transformations
+
 
 \subsection{The conformal algebra}
 
+generators corresponding to Killing vectors
 
-embedding space?
+compute commutators, find Lorentz and Poincaré subalgebras, and new commutations involving $D$ and $K$
+
+isomorphic to $\SO(d, 2)$
+
+(exercise)
+
+
+note: everything we said is also valid in Euclidean space: replace $\eta^{\mu\nu} \to \delta^{\mu\nu}$
+
+get the Euclidean conformal group
+
+
 
 \subsection{Examples}
+
+conformal transformations map circles to circles (including circles with infinite radius, aka straight lines): explanation
+
+picture
+
+think of it as renormalization group transformation that depends on space-time
 
 Escher?
 
@@ -198,12 +252,83 @@ no action principle
 
 only deal with \textbf{local} operators
 
+warning about meaning of locality: related to causality?
+
+
+
+generator of translations plays a special role: energy and momentum vector
+
+positivity of energy 
+
+
+
+Wigner construction: use reference momentum
+
+
+generator of Lorentz transformation can be diagonalize at a point: the origin of space-time
+
+get the action of $M^{\mu\nu}$ at arbitrary point
+
 
 \subsection{Spectral representation}
 
 operator vs.~field
 
 \subsection{Scale symmetry}
+
+action of generator of translations
+
+no mass (often said)
+
+or better said: all masses!
+
+reference vector, then construct spectral density
+
+
+\subsection{Special conformal symmetry}
+
+special conformal generator implies two things:
+
+primary and descendant operators
+
+special condition on 2-point function of primary operators: that they have identical scaling dimensions
+
+
+%%%%%%%
+
+note that scale invariance and unitarity generally imply that the trace of the energy-momentum tensor is zero: then Hamiltonian is invariant under change of the metric $\delta g_{\mu\nu} = \sigma(x) \eta_{\mu\nu}$,
+\begin{equation}
+	\delta H = \int d^dx \, T_{\mu\nu} \delta g^{\mu\nu}
+	= \int d^x \, \sigma(x) T^\mu_\mu = 0
+\end{equation}
+invariance under infinitesimal Weyl transformations 
+
+note that $T_{\mu\nu}$ is only defined in flat space, or rather that it acquires a vacuum expectation value in curved space: the Weyl anomaly
+so let us only consider Weyl transformations that do not change the geometry of space-time: those that are equivalent to a coordinate transformation (a diffeomorphism)
+
+
+exercise: compute conformal generators in momentum-space representation
+
+
+Mack's classification in 4d
+
+
+representation: long and short multiplets!
+
+
+
+%%%%
+
+compare this with Slava's approach:
+
+organize operators into representation of conformal group:
+
+call some operators \emph{primary}
+
+operators are local, which mean that they do not feel the effect of the transformation of the metric, or only through coordinate dependence:
+$\phi(x) \to \phi(x') = \Omega(x)^{-\Delta} \phi(x)$
+
+note: if $\phi$ transforms like this, then $\partial_\mu \phi(x)$ does not! call it a \emph{descendant}
 
 
 comment on scale vs.~conformal invariance
@@ -213,15 +338,12 @@ correlation functions:
 no need for action principle
 
 
-\subsection{Special conformal symmetry}
-
-Mack's classification in 4d
-
-
-representation: long and short multiplets!
-
 
 \subsection{Exercises}
+
+show that the spectral density in the case $\Delta = \frac{d}{2} - 1$ is that of a free scalar field;
+
+show also that in the case $\Delta = \frac{d}{2}$ it is given by the phase space of two massless particle states (see Rychkov eq. 1.13)
 
 
 \subsection{Bibliography}
@@ -232,12 +354,24 @@ itzikson zuber
 
 \section{Conformal correlation functions}
 
+
+2-pt function: go from Wightman 2-pt function in momentum space to Euclidean 2-pt function in position space in two ways:
+
+- Fourier transform first, then analytic continuation of Wightman function
+- first construct T product (Källen-Lehmann representation), then Wick rotation to Euclidean momentum space, then Fourier transform
+
+%%%%%
+
+
 T-products vs. Wightman functions
 
 use retarded products and micro-causality
 
 
 Ward identities
+
+more identities for conserved currents and the energy-momentum tensor
+(there cannot be higher-spin conserved currents otherwise the theory must be free; reference?)
 
 
 \subsection{Spectral representation for spinning operators}
@@ -260,9 +394,43 @@ note that this is usually done in the other direction!
 
 \subsection{Embedding-space formalism}
 
-in position space
+conformal group acts linearly in embedding space with $d+2$ dimensions, among which two times
 
-2- and 3-point functions
+$X'^M = \Lambda^M_{~N} X^N$
+
+get rid of two dimensions by restricting to light-cone $X^2 = 0$, and identifying $X^+ \sim \lambda X^+$
+
+
+can take $X^+ = 1$, so that
+\begin{equation}
+	(X^+, X^-, X^\mu) = (1, x^2, x^\mu)
+\end{equation}
+
+
+fields defined on the cone, depending homogeneously on $X$
+
+rewrite 2-point function
+
+
+see section 2.1 of Rychkov
+
+\subsection{3-point functions}
+
+scalar 3-point function
+
+remarkable fact! fixed up to a single coefficient
+
+if only scale invariance, this could be arbitrarily complicated
+
+historical note (cite Rychkov, around eq. 2.43): birth of conformal field theory
+
+
+check: 2-point functions involving conserved currents and energy-momentum tensors are automatically conserved; for 3-point functions this gives additional constraint: scaling dimensions of operators must be equal
+
+
+
+\subsection{4-point functions}
+% and higher?
 
 invariant cross-ratios for 4-point functions
 
@@ -285,6 +453,8 @@ generalized free fields/Gaussian
 \subsection{Results}
 
 
+discussion about universality: see Poland, Rychkov, Vichi
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Selected advanced topics}
@@ -295,6 +465,31 @@ Virasoro symmetry in 2d:
 
 
 conformal anomalies: anomalies are contact term in the action for the source
+
+
+superconformal bootstrap? note classification of all superconformal algebras
+
+
+\subsection{How to continue from here}
+
+
+\begin{itemize}
+
+\item
+holography: see Joao's TASI lectures
+
+\item
+superconformal: Tajikawa pedestrian lectures
+
+\item
+bootstrap: Shai Chester's lectures
+
+\item
+condensed matter:
+note that unitarity is unnecessary: many non-unitary fixed points, yet they have conformal invariance (why?)
+
+\end{itemize}
+
 
 
 %\bibliography{Bibliography}
