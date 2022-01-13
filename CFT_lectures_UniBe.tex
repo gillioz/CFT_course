@@ -14,8 +14,8 @@
 %\renewcommand{\arraystretch}{1.5}
 
 %\renewcommand{\O}{\mathcal{O}}
-%\newcommand{\ket}[1]{\left| #1 \right\rangle}
-%\newcommand{\bra}[1]{\left\langle #1 \right|}
+\newcommand{\ket}[1]{\left| #1 \right\rangle}
+\newcommand{\bra}[1]{\left\langle #1 \right|}
 \newcommand{\SO}{\text{SO}}
 
 
@@ -51,8 +51,8 @@ Lecture notes}
 \maketitle
 
 \begin{center}
-	\parbox{11.5cm}{\emph{%
-[Lectures] are fantastically good for learning physics. The lecturer learns a lot of physics. After my first few studies, just about everything I learned about physics came from teaching it. I don’t know if the students learned a lot, but I certainly did. So I consider teaching physics very important.} --- Leonard Susskind}
+	\parbox{11.8cm}{\emph{%
+[Courses] are fantastically good for learning physics. The lecturer learns a lot of physics. After my first few studies, just about everything I learned about physics came from teaching it. I don’t know if the students learned a lot, but I certainly did. So I consider teaching physics very important.} --- Leonard Susskind}
 \end{center}
 %https://www.delta.tudelft.nl/article/leonard-susskind-sleeping-during-lecture-good-thing#
 
@@ -66,6 +66,47 @@ Lecture notes}
 
 \newpage
 \section{Introduction}
+
+\begin{equation}
+	\text{conformal field theory}
+	= \text{quantum field theory} + \text{conformal symmetry}
+\end{equation}
+
+
+%\begin{equation}
+%	\text{CFT}
+%	= \text{QFT} 
+%	+ \text{Poincaré}
+%	+ \text{Lorentz}
+%	+ \text{scale}
+%	+ \text{special conformal symmetry}
+%\end{equation}
+where Poincaré symmetry means translations and Lorentz transformations (rotations and boosts)
+
+\begin{equation}
+	\text{conformal field theory}
+	= \text{relativistic quantum field theory} 
+	+ \text{scale}
+	+ \text{special conformal symmetry}
+\end{equation}
+
+most reviews focus first on conformal symmetry as a whole 
+``geometric'' approach to CFT
+
+for good reasons!
+but often makes it difficult to connect with standard understanding of relativistic quantum field theory that we have from particle physics
+
+things that are hard to connect to:
+- spectral representation, particles (is CFT a theory of massless particles? no!)
+- UV/IR divergences and anomalies
+these are precisely subjects that will be covered in these lectures
+
+peculiarity of these lecture notes:
+``algebraic'' approach to CFT
+review non-perturbative approach of QFT, then add scale and special conformal symmetry;
+``anatomical'' approach allows to understand what are the consequences of each of them
+
+
 
 \subsection{What is conformal field theory?}
 
@@ -208,6 +249,10 @@ conformal transformations look locally like Lorentz and scale transformations
 
 generators corresponding to Killing vectors
 
+when applied to function of $x$, gives derivative action
+
+
+
 compute commutators, find Lorentz and Poincaré subalgebras, and new commutations involving $D$ and $K$
 
 isomorphic to $\SO(d, 2)$
@@ -260,6 +305,31 @@ generator of translations plays a special role: energy and momentum vector
 
 positivity of energy 
 
+\subsection{Hilbert space(s)}
+
+take $P^0$ as the Hamiltonian
+
+space-time is foliated by surfaces of equal time
+
+each equal-time surface has a Hilbert space; evolution between different surfaces at times $t_1$ and $t_2$ is given by the unitary evolution operator $U = e^{\pm i (t_1 - t_2) P^0}$
+
+because of time-translation symmetry, the Hilbert space is the same on each surface!
+
+states characterized by energy and momentum: $P^\mu \ket{p} = p^\mu \ket{p}$
+
+there is a unique vacuum state: $\ket{0}$
+
+there are local operators: an infinity of them
+example: free scalar theory
+
+\subsection{Wightman functions}
+
+good observable: Wightman correlation function
+(note: operator need not be time-ordered; time evolution is unitary, so it can go both ways!)
+
+but then lose connection with path integral formulation: this gives time-ordered correlation functions!
+
+
 
 
 Wigner construction: use reference momentum
@@ -268,6 +338,11 @@ Wigner construction: use reference momentum
 generator of Lorentz transformation can be diagonalize at a point: the origin of space-time
 
 get the action of $M^{\mu\nu}$ at arbitrary point
+
+
+
+conformal Ward identities
+
 
 
 \subsection{Spectral representation}
@@ -437,6 +512,31 @@ invariant cross-ratios for 4-point functions
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{State-operator correspondence and OPE}
+
+
+\subsection{Radial quantization}
+
+different foliation of space-time than the one discussed above
+
+in Euclidean, take the generator of dilatations as Hamiltonian
+
+
+(note: this is equivalent to taking $N-S$ quantization with Hamiltonian $H = P^0 + K^0$)
+
+same Hilbert space on a slice at $t = 0$; use different evolution operator
+
+
+equivalence between state living on a sphere (arbitary radius) and operators inserted at the origin
+
+organize states as eigenstates of scale and Lorentz (commuting): matches the construction we did above!
+
+this shows that every state can be created by local primary operator (and possibly action of translation generators); conversely, every operator defines a state (this part was already clear)
+
+not necessarily so in QFT! (e.g.~gauge theories? do we also need non-local operators? Wilson lines?)
+
+
+
+
 
 important remark on OPE convergence in Euclidean space!
 

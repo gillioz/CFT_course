@@ -52,6 +52,10 @@ Other courses:
 - Hugh Osborn's [Lectures on Conformal Field Theories in more than two dimensions](https://www.damtp.cam.ac.uk/user/ho/CFTNotes.pdf)
 - Sylvain Ribault's [Conformal field theory on the plane](https://arxiv.org/abs/1406.4290v5), also available as a [GitHub repository](https://github.com/ribault/CFT-Review)
 
+In some sense, close in spirit to the "unparticle physics" series of papers by Howard Georgi:
+- 
+
+
 
 Format
 ------
