@@ -7,22 +7,25 @@
 \contentsline {subsection}{\numberline {2.1}The conformal algebra}{5}{subsection.2.1}%
 \contentsline {subsection}{\numberline {2.2}Examples}{5}{subsection.2.2}%
 \contentsline {section}{\numberline {3}Non-perturbative quantum field theory}{5}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Spectral representation}{6}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Scale symmetry}{6}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Special conformal symmetry}{6}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}Exercises}{7}{subsection.3.4}%
-\contentsline {subsection}{\numberline {3.5}Bibliography}{7}{subsection.3.5}%
-\contentsline {section}{\numberline {4}Conformal correlation functions}{7}{section.4}%
+\contentsline {subsection}{\numberline {3.1}Hilbert space(s)}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Wightman functions}{6}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Spectral representation}{6}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Scale symmetry}{6}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Special conformal symmetry}{7}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Exercises}{7}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.7}Bibliography}{8}{subsection.3.7}%
+\contentsline {section}{\numberline {4}Conformal correlators}{8}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Spectral representation for spinning operators}{8}{subsection.4.1}%
 \contentsline {subsection}{\numberline {4.2}From momentum to position}{8}{subsection.4.2}%
 \contentsline {subsection}{\numberline {4.3}From Minkowski to Eulidean space}{8}{subsection.4.3}%
-\contentsline {subsection}{\numberline {4.4}Embedding-space formalism}{8}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.4}Embedding-space formalism}{9}{subsection.4.4}%
 \contentsline {subsection}{\numberline {4.5}3-point functions}{9}{subsection.4.5}%
 \contentsline {subsection}{\numberline {4.6}4-point functions}{9}{subsection.4.6}%
 \contentsline {section}{\numberline {5}State-operator correspondence and OPE}{9}{section.5}%
-\contentsline {section}{\numberline {6}The conformal bootstrap}{9}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Conformal blocks}{9}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}The numerical boostrap}{9}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}Results}{9}{subsection.6.3}%
-\contentsline {section}{\numberline {7}Selected advanced topics}{9}{section.7}%
+\contentsline {subsection}{\numberline {5.1}Radial quantization}{9}{subsection.5.1}%
+\contentsline {section}{\numberline {6}The conformal bootstrap}{10}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Conformal blocks}{10}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}The numerical boostrap}{10}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Results}{10}{subsection.6.3}%
+\contentsline {section}{\numberline {7}Selected advanced topics}{10}{section.7}%
 \contentsline {subsection}{\numberline {7.1}How to continue from here}{10}{subsection.7.1}%
