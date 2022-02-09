@@ -39,8 +39,6 @@ Conformal Field Theory
 \Large
 Lecture notes}
 
-%\title{Conformal Field Theory for Particle/High-Energy Physicists}
-
 \author{Marc Gillioz}
 
 \date{Spring semester 2022}
@@ -50,11 +48,23 @@ Lecture notes}
 
 \maketitle
 
+\vspace{10mm}	
+	
 \begin{center}
-	\parbox{11.8cm}{\emph{%
-[Courses] are fantastically good for learning physics. The lecturer learns a lot of physics. After my first few studies, just about everything I learned about physics came from teaching it. I don’t know if the students learned a lot, but I certainly did. So I consider teaching physics very important.} --- Leonard Susskind}
+	
+\parbox{\textwidth}{%
+%Conformal field theory (CFT) is an ubiquitous subject in modern theoretical physics. Every local quantum field theory approaches a CFT in the large- and small-distance limits, and even the study of quantum gravity is related to it through the AdS/CFT correspondence. CFT is also one of the rare frameworks in which quantum field theory can be studied outside the realm of perturbation theory.
+
+This is an introductory course in which the students will learn what is conformal field theory, why it is special, and get a glimpse of modern developments. The course will begin with a non-perturbative formulation of quantum field theory (Wightman functions, spectral representation), and then gradually focus on understanding the implications of scale and special conformal symmetry. The study of practical tools (embedding space formalism, radial quantization, state-operator correspondence, conformal blocks) will finally lead to the formulation of the modern conformal bootstrap and a review of its most recent results. Some advanced topics will be discussed depending on the students' interests (Virasoro symmetry in 2 dimensions, UV and IR divergences, Mellin representation, superconformal symmetry).}
+	
+\vspace{20mm}
+	
+\parbox{11.8cm}{
+\emph{%
+[Courses] are fantastically good for learning physics. The lecturer learns a lot of physics. After my first few studies, just about everything I learned about physics came from teaching it. I don’t know if the students learned a lot, but I certainly did. So I consider teaching physics very important.}
+--- Leonard Susskind \cite{Susskind}}
+
 \end{center}
-%https://www.delta.tudelft.nl/article/leonard-susskind-sleeping-during-lecture-good-thing#
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -108,6 +118,19 @@ review non-perturbative approach of QFT, then add scale and special conformal sy
 
 
 
+
+%%%%
+
+possible motivation: study scale transformation to get Wilsonian RG
+
+why not local scale transformations that respect Poincare symmetry?
+
+Jacobian of conformal symmetry is composition of dilatation and rotation (see Rychkov's Lorentzian)
+
+%%%%
+
+
+
 \subsection{What is conformal field theory?}
 
 Introduction: What is CFT? Why is it useful. Examples of CFT. Where does it fit into modern theoretical physics.
@@ -156,6 +179,110 @@ but also late-time correlators in de Sitter
 originally covered in 14 periods of 45 minutes each
 
 split into 7 chapters?
+
+
+\subsection{Literature}
+
+
+excellent reviews, in order of relevance for the present course:
+
+
+modern reviews, by conformal bootstrap experts
+\begin{itemize}
+
+\item
+Slava Rychkov's EPFL lectures
+\cite{Rychkov:2016iqz}
+also historical references
+
+\item
+David Simmons-Duffin's TASI lectures
+\cite{Simmons-Duffin:2016gjk}
+
+\item
+Shai Chester's Weizmann Lectures
+\cite{Chester:2019wfx}
+
+
+\end{itemize}
+
+%%%%%%%%
+
+other reviews:
+
+\begin{itemize}
+
+\item
+state-of-the art
+\cite{Poland:2018epd}
+
+\item
+Hugh Osborn's course 
+\url{https://www.damtp.cam.ac.uk/user/ho/CFTNotes.pdf}
+
+\item
+Joshua Qualls \cite{Qualls:2015qjb}
+
+\end{itemize}
+
+%%%%%%%%
+
+most Euclidean CFT, for Lorentzian perspective:
+\begin{itemize}
+
+\item
+Slava Rychkov's \emph{Lorentzian methods in conformal field theory}
+\url{https://courses.ipht.fr/node/226}
+
+%\item
+%Peskin Schroeder for spectral rep?
+
+\end{itemize}
+
+%%%%%%%%
+
+focus on CFT in $d = 2$:
+\begin{itemize}
+
+\item
+Sylvain Ribault \cite{Ribault:2014hia} \\
+also available on GitHub~\url{https://github.com/ribault/CFT-Review}
+
+\item
+Schellekens ``Conformal Field Theory'' lecture notes~\cite{Schellekens:1996tg} \\
+recent version available at
+\url{https://www.nikhef.nl/\textasciitilde t58/CFT.pdf}
+
+\end{itemize}
+
+also older literature on the subject  in $d = 2$:
+\begin{itemize}
+
+\item
+Yellow book
+\cite{DiFrancesco:1997nk}
+
+\item
+Polchinski String theory vol. 1
+\cite{Polchinski:1998rq}
+
+\item
+older lectures by Paul Ginsparg
+\cite{Ginsparg:1988ui}
+emphasis on statistical physics and string theory applications
+
+\end{itemize}
+
+
+going further:
+\begin{itemize}
+
+\item
+superconformal symmetry: Lorenz Eberhardt 
+\cite{Eberhardt:2020cxo}
+
+\end{itemize}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -222,6 +349,7 @@ finite transformations
 
 
 use inversions: discrete transformations not connected to identity
+(no infinitesimal form!)
 
 but inversion followed by translation followed by inversion gives special conformal transformations
 
@@ -245,7 +373,26 @@ $M$: $\SO(d-1, 1)$ matrix
 conformal transformations look locally like Lorentz and scale transformations
 
 
+
+translation move 0, leave $\infty$ fixed
+
+special conformal transformation move $\infty$, leave 0 fixed
+
+
+finite transformation derived from infinitesimal: for rotations, translations and scale exactly the same;
+for sct
+\begin{equation}
+	x'^\mu = \frac{x^\mu - x^2 b^\mu}
+	{1 - 2 b \cdot x + b^2 x^2} 
+\end{equation}
+or 
+\begin{equation}
+	\frac{x'^\mu}{x'^2} = \frac{x^\mu}{x^2} - b^\mu
+\end{equation}
+
 \subsection{The conformal algebra}
+
+follow Shester
 
 generators corresponding to Killing vectors
 
@@ -259,11 +406,21 @@ isomorphic to $\SO(d, 2)$
 
 (exercise)
 
+compact vs.~non-compact
+
 
 note: everything we said is also valid in Euclidean space: replace $\eta^{\mu\nu} \to \delta^{\mu\nu}$
 
 get the Euclidean conformal group
 
+
+\subsection{Energy-momentum tensor}
+
+conserved current associated with symmetry
+
+use the metric as source
+
+condition for Weyl invariance is tracelessness of energy-momentum tensor
 
 
 \subsection{Examples}
@@ -281,7 +438,7 @@ Escher?
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Non-perturbative quantum field theory}
+\section{Conformal symmetry in quantum field theory}
 
 Wightman axioms
 
@@ -305,7 +462,9 @@ generator of translations plays a special role: energy and momentum vector
 
 positivity of energy 
 
-\subsection{Hilbert space(s)}
+\subsection{Non-perturbative QFT}
+
+%\subsection{Hilbert space(s)}
 
 take $P^0$ as the Hamiltonian
 
@@ -322,12 +481,38 @@ there is a unique vacuum state: $\ket{0}$
 there are local operators: an infinity of them
 example: free scalar theory
 
-\subsection{Wightman functions}
+%\subsection{Wightman functions}
+
+
+$\phi(x)$ are not operators, but operator-valued distributions
+
+smeared operator $\phi[f]$ have finite norm; $\phi(x)$ don't
+
+but don't worry for the rest of these lectures
+
+
+positivity of norm of smeared operators implies positivity of thing multiplying delta function!
+
+
+
 
 good observable: Wightman correlation function
 (note: operator need not be time-ordered; time evolution is unitary, so it can go both ways!)
 
+operators define correlation functions, but the opposite is also true (Wightman reconstruction theorem); so use the latter and forget about Hilbert space
+
+
+
 but then lose connection with path integral formulation: this gives time-ordered correlation functions!
+
+
+
+representation theory: follow Shester's notes
+commutation relations for infinitesimal transformations
+exponentiated form is an abstract unitary operator
+
+forget about unitary rep of SCT: only act on Lorentz cylinder, infinite cover of Minkowski space-time; we know this rep exists
+but keep infinitesimal form
 
 
 
@@ -345,7 +530,7 @@ conformal Ward identities
 
 
 
-\subsection{Spectral representation}
+%\subsection{Spectral representation}
 
 operator vs.~field
 
@@ -417,6 +602,13 @@ correlation functions:
 no need for action principle
 
 
+\subsection{The energy-momentum tensor}
+
+
+locality
+
+allows to construct conformal charges
+
 
 \subsection{Exercises}
 
@@ -425,13 +617,15 @@ show that the spectral density in the case $\Delta = \frac{d}{2} - 1$ is that of
 show also that in the case $\Delta = \frac{d}{2}$ it is given by the phase space of two massless particle states (see Rychkov eq. 1.13)
 
 
-\subsection{Literature}
-
-itzikson zuber
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Conformal correlators}
+
+correlation functions aka Green's functions
+
+remark about ``physicality''
+in ordinary QFT, correlation functions are not physical observables: they depend on renormalization scale; only scattering amplitudes are!
+here no scale: they are physical
 
 
 2-pt function: go from Wightman 2-pt function in momentum space to Euclidean 2-pt function in position space in two ways:
@@ -453,6 +647,10 @@ more identities for conserved currents and the energy-momentum tensor
 (there cannot be higher-spin conserved currents otherwise the theory must be free; reference?)
 
 
+generalities:
+
+one-point functions vanish (in flat space; not so on conformally flat manifolds such as $S^d$, where 1-point function might depend on radius)
+
 \subsection{Spectral representation for spinning operators}
 
 unitary bounds
@@ -463,13 +661,18 @@ taking fourier transforms
 
 \subsection{From Minkowski to Eulidean space}
 
-Osterwalder-Schrader
-
 analytic continuation of Wightman functions vs. Wick rotation of T-products
 
 reflection positivity
 
-note that this is usually done in the other direction!
+
+going in the other direction: Osterwalder-Schrader
+
+
+do we need to use the cylinder interpretation?
+I prefer not: only CFT in flat space here
+
+
 
 \subsection{Embedding-space formalism}
 
@@ -518,16 +721,48 @@ invariant cross-ratios for 4-point functions
 \section{State-operator correspondence and OPE}
 
 
-\subsection{Radial quantization}
+goal of this section: prove state/operator correspondence heuristically, justifying a posteriori some facts assumed before
+
+not only a curiosity: also useful computationally
+
+
+\subsection{N-S quantization}
 
 different foliation of space-time than the one discussed above
 
-in Euclidean, take the generator of dilatations as Hamiltonian
 
-
-(note: this is equivalent to taking $N-S$ quantization with Hamiltonian $H = P^0 + K^0$)
 
 same Hilbert space on a slice at $t = 0$; use different evolution operator
+
+
+conjugation in Euclidean space?
+
+takes $x_d \to - x_d$
+
+use Hamiltonian
+\begin{equation}
+	H = P_d + K_d
+\end{equation}
+instead of $P_d$
+
+fixed points
+
+operators can be evolved to fixed points by Hamiltonian
+
+
+\subsection{Radial quantization}
+
+in Euclidean, take the generator of dilatations as Hamiltonian
+
+simple rotation in $\SO(d+1,1)$
+
+apply conformal transformation mapping the two fixed points to 0 and $\infty$
+
+conjugation is inversion $r \to 1/r$
+
+generators $P_\mu$ and $K_\mu$ are conjugate under inversion!
+
+raising and lowering operators
 
 
 equivalence between state living on a sphere (arbitary radius) and operators inserted at the origin
@@ -540,24 +775,131 @@ not necessarily so in QFT! (e.g.~gauge theories? do we also need non-local opera
 
 
 
+how to define an operator from a state? see Rychkov (3.26)
+operator is defined by all of its correlation functions
 
 
-important remark on OPE convergence in Euclidean space!
+
+note: state/operator correspondence validates our interpretation of Wightman 2-point function
+
+note 2: operator inside the unit sphere need not be smeared anymore; they have a well-defined norm!
+
+
+
+exercise: unitarity bound in radial quantization (Rychkov section 3.2)
+
+
+
+path integral interpretation: state is created by performing path integral inside unit sphere
+
+
+
+\subsection{Conformal OPE}
+
+derive OPE from radial quantization
+
+relate this to Lorentzian OPE on vacuum
+
+
+use in 3-point function: relates OPE coefficient with 3-pt fct coefficient
+(structure constants of the operator algebra)
+
+exercise: compute function entering the OPE
+
+
+\subsection{OPE convergence}
+
+Hilbert-space argument
+
+
+radius? 
+
+absolute convergence as long as one can find a sphere separating the points:
+
+note that a plane is also a sphere with radius infinity
+
+
+%%%
+
+
+concluding remarks:
+
+
+CFT data: spectrum of operators and OPE coefficients
+completely determines the theory!
+
+OPE reduces any higher-point function to 2-point
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{The conformal bootstrap}
 
+any CFT data defines a good theory? no!
+
+different quantization surfaces gives different OPEs in the same theory
+
+OPE associativity
+
+often called ``crossing symmetry'' (note: quite different from crossing symmetry of scattering amplitudes)
+
+(in fact this argument shows that Schwinger functions are symmetric!)
+
+focus on 4-point functions:
+all 4-point functions of all operators contain all the associativity constraints
+
+
+simplifications:
+only 4 identical operators, all scalars
+
+
 \subsection{Conformal blocks}
+
+rather conformal partial waves
+
+diagrammatics (not to be confused with Feynman diags)
+
+
+
+square configuration and expansion in rho coordinates
+
+
 
 \subsection{The numerical boostrap}
 
-generalized free fields/Gaussian
-
-\subsection{Results}
-
-
 discussion about universality: see Poland, Rychkov, Vichi
+also Shai Chester's notes
+
+
+
+bound on scaling dimensions
+
+also spectrum at the boundary
+
+
+\subsection{Generalized free field theory}
+
+aka mean free theory, Gaussian theory
+
+double-twist operator
+
+corresponds to large-N limit of gauge theory
+
+
+\subsection{Analytic bootstrap}
+
+Euclidean $z^* = \bar{z}$
+$z = \bar{z} = \frac{1}{2}$ gives bootstrap equations that constrain operators of low scaling dimension $\Delta$
+
+Minkowski: $z \neq \bar{z}$, both real 
+light-cone limit $z \to 0$, $\bar{z}$ fixed is dominated by operators of low twist 
+
+rigorous bound in the limit $\ell \to \infty$
+
+Regge trajectories
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -572,6 +914,30 @@ conformal anomalies: anomalies are contact term in the action for the source
 
 
 superconformal bootstrap? note classification of all superconformal algebras
+
+
+\subsection{The 2d conformal bootstrap}
+
+historical presentation
+
+see Rychkov section 4.3.1
+
+advantage 1:
+full Virasoro symmetry
+
+advantage 2:
+easier to deal with spin: left- and right-moving, i.e.~holomorphic and anti-holomorphic
+
+by looking at just the energy-momentum tensor, already get strong constraints on its 2-point function (the central charge)
+
+for $c < 1$, only minimal models possible:
+match Ising, \ldots
+
+finitely many primaries in 2d (still infinitely many quasi-primaries)
+
+note: infinitely many primaries for theories with $c > 1$
+
+also can put the theory on torus and study modular properties of partition function
 
 
 \subsection{How to continue from here}
@@ -596,7 +962,7 @@ note that unitarity is unnecessary: many non-unitary fixed points, yet they have
 
 
 
-%\bibliography{Bibliography}
-%\bibliographystyle{utphys}
+\bibliography{Bibliography}
+\bibliographystyle{utphys}
 
 \end{document}

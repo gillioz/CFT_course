@@ -1,0 +1,77 @@
+\providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{10}
+
+\bibitem{Susskind}
+L.~Susskind, ``{Sleeping during a lecture is a good thing}.'' {TU Delft
+  interview}, 2019.
+\newblock
+  \url{https://www.delta.tudelft.nl/article/leonard-susskind-sleeping-during-lecture-good-thing}.
+
+\bibitem{Rychkov:2016iqz}
+S.~Rychkov, \href{http://dx.doi.org/10.1007/978-3-319-43626-5}{{\em {EPFL
+  Lectures on Conformal Field Theory in D\ensuremath{>}= 3 Dimensions}}}.
+\newblock SpringerBriefs in Physics. 1, 2016.
+\newblock \href{http://arxiv.org/abs/1601.05000}{{\ttfamily arXiv:1601.05000
+  [hep-th]}}.
+
+\bibitem{Simmons-Duffin:2016gjk}
+D.~Simmons-Duffin, \href{http://dx.doi.org/10.1142/9789813149441_0001}{``{The
+  Conformal Bootstrap},''} in {\em {Theoretical Advanced Study Institute in
+  Elementary Particle Physics}: {New Frontiers in Fields and Strings}},
+  pp.~1--74.
+\newblock 2017.
+\newblock \href{http://arxiv.org/abs/1602.07982}{{\ttfamily arXiv:1602.07982
+  [hep-th]}}.
+
+\bibitem{Chester:2019wfx}
+S.~M. Chester, ``{Weizmann Lectures on the Numerical Conformal Bootstrap},''
+  \href{http://arxiv.org/abs/1907.05147}{{\ttfamily arXiv:1907.05147
+  [hep-th]}}.
+
+\bibitem{Poland:2018epd}
+D.~Poland, S.~Rychkov, and A.~Vichi, ``{The Conformal Bootstrap: Theory,
+  Numerical Techniques, and Applications},''
+  \href{http://dx.doi.org/10.1103/RevModPhys.91.015002}{{\em Rev. Mod. Phys.}
+  {\bfseries 91} (2019) 015002},
+  \href{http://arxiv.org/abs/1805.04405}{{\ttfamily arXiv:1805.04405
+  [hep-th]}}.
+
+\bibitem{Qualls:2015qjb}
+J.~D. Qualls, ``{Lectures on Conformal Field Theory},''
+  \href{http://arxiv.org/abs/1511.04074}{{\ttfamily arXiv:1511.04074
+  [hep-th]}}.
+
+\bibitem{Ribault:2014hia}
+S.~Ribault, ``{Conformal field theory on the plane},''
+  \href{http://arxiv.org/abs/1406.4290}{{\ttfamily arXiv:1406.4290 [hep-th]}}.
+
+\bibitem{Schellekens:1996tg}
+A.~N. Schellekens, ``{Introduction to conformal field theory},'' {\em Fortsch.
+  Phys.} {\bfseries 44} (1996) 605--705.
+
+\bibitem{DiFrancesco:1997nk}
+P.~Di~Francesco, P.~Mathieu, and D.~Senechal,
+  \href{http://dx.doi.org/10.1007/978-1-4612-2256-9}{{\em {Conformal Field
+  Theory}}}.
+\newblock Graduate Texts in Contemporary Physics. Springer-Verlag, New York,
+  1997.
+
+\bibitem{Polchinski:1998rq}
+J.~Polchinski, \href{http://dx.doi.org/10.1017/CBO9780511816079}{{\em {String
+  theory. Vol. 1: An introduction to the bosonic string}}}.
+\newblock Cambridge Monographs on Mathematical Physics. Cambridge University
+  Press, 12, 2007.
+
+\bibitem{Ginsparg:1988ui}
+P.~H. Ginsparg, ``{APPLIED CONFORMAL FIELD THEORY},'' in {\em {Les Houches
+  Summer School in Theoretical Physics: Fields, Strings, Critical Phenomena}}.
+\newblock 9, 1988.
+\newblock \href{http://arxiv.org/abs/hep-th/9108028}{{\ttfamily
+  arXiv:hep-th/9108028}}.
+
+\bibitem{Eberhardt:2020cxo}
+L.~Eberhardt, ``{Superconformal symmetry and representations},''
+  \href{http://dx.doi.org/10.1088/1751-8121/abd7b3}{{\em J. Phys. A} {\bfseries
+  54} no.~6, (2021) 063002}, \href{http://arxiv.org/abs/2006.13280}{{\ttfamily
+  arXiv:2006.13280 [hep-th]}}.
+
+\end{thebibliography}\endgroup
