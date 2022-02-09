@@ -4,9 +4,12 @@ Course description
 Details
 -------
 
-University of Bern
+Location: University of Bern
+
 14 periods x 45 minutes
+
 Tuesdays 14:00 - 16:00
+
 22.02 - 05.04.2022
 
 
