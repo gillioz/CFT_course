@@ -9,6 +9,8 @@
 \usepackage{dsfont}
 \usepackage{graphicx}
 \usepackage{cite}
+\usepackage{xcolor}
+\usepackage{mdframed}
 \usepackage[colorlinks, allcolors=blue, linktocpage=true]{hyperref}
 
 %\renewcommand{\arraystretch}{1.5}
@@ -16,7 +18,6 @@
 %\renewcommand{\O}{\mathcal{O}}
 \newcommand{\ket}[1]{\left| #1 \right\rangle}
 \newcommand{\bra}[1]{\left\langle #1 \right|}
-\newcommand{\SO}{\text{SO}}
 
 
 % double angle-bracket notation:
@@ -29,6 +30,14 @@
 %\makeatother
 
 \numberwithin{equation}{section}
+
+\newcounter{exercise}[section]
+\newenvironment{exercise}[1][]%
+	{\refstepcounter{exercise}\bigskip
+	\begin{mdframed}[backgroundcolor=gray!20, linewidth=0]
+	\noindent\textbf{Exercise~\thesection.\theexercise #1} \rmfamily}
+  	{\end{mdframed}\bigskip}
+\newcommand\hint[1]{\emph{Hint: #1}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -52,10 +61,10 @@ Lecture notes}
 	
 \begin{center}
 	
-\parbox{\textwidth}{%
+%\parbox{\textwidth}{%
 %Conformal field theory (CFT) is an ubiquitous subject in modern theoretical physics. Every local quantum field theory approaches a CFT in the large- and small-distance limits, and even the study of quantum gravity is related to it through the AdS/CFT correspondence. CFT is also one of the rare frameworks in which quantum field theory can be studied outside the realm of perturbation theory.
 
-This is an introductory course in which the students will learn what is conformal field theory, why it is special, and get a glimpse of modern developments. The course will begin with a non-perturbative formulation of quantum field theory (Wightman functions, spectral representation), and then gradually focus on understanding the implications of scale and special conformal symmetry. The study of practical tools (embedding space formalism, radial quantization, state-operator correspondence, conformal blocks) will finally lead to the formulation of the modern conformal bootstrap and a review of its most recent results. Some advanced topics will be discussed depending on the students' interests (Virasoro symmetry in 2 dimensions, UV and IR divergences, Mellin representation, superconformal symmetry).}
+%This is an introductory course in which the students will learn what is conformal field theory, why it is special, and get a glimpse of modern developments. The course will begin with a non-perturbative formulation of quantum field theory (Wightman functions, spectral representation), and then gradually focus on understanding the implications of scale and special conformal symmetry. The study of practical tools (embedding space formalism, radial quantization, state-operator correspondence, conformal blocks) will finally lead to the formulation of the modern conformal bootstrap and a review of its most recent results. Some advanced topics will be discussed depending on the students' interests (Virasoro symmetry in 2 dimensions, UV and IR divergences, Mellin representation, superconformal symmetry).}
 	
 \vspace{20mm}
 	
@@ -312,157 +321,467 @@ superconformal symmetry: Lorenz Eberhardt
 
 \section{Classical conformal transformations}
 
+One of the most fundamental principles of physics is independence of the reference frame: observers living at different points might have different perspectives, but the underlying physical laws are the same.
+This is true in space (invariance under translations and rotations), but also in space-time (e.g.~invariance under Lorentz boosts).
 
-Poincar\'e symmetry: physics is the same in every coordinate frame
+\subsection{Infinitesimal transformations}
 
-linear transformation of the coordinates
+In mathematical language, this means that if we have a coordinate system $x^\mu$, the laws of physics do not change under a transformations 
 \begin{equation}
-	x'^\mu = x^\mu + \omega^{[\mu\nu]} x_\nu + a^\mu
+	x^\mu \to x'^\mu.
+	\label{eq:diffeo}
+\end{equation}
+This principle applies to all maps that are invertible (isomorphisms) and differentiable (smooth transformations), hence it is usually called \emph{diffeomorphism} invariance.
+Being differentiable, the transformation \eqref{eq:diffeo} can be Taylor-expanded to write
+\begin{equation}
+	x^\mu \to x'^\mu = x^\mu + \varepsilon^\mu(x),
+	\label{eq:diffeo:infinitesimal}
+\end{equation}
+in terms of an infinitesimal vector $\varepsilon^\mu$ (meaning that we will always ignore terms of order $\varepsilon^2$).
+
+In addition to the coordinate system, the description of a physical system requires a way of measuring distances that is provided by a metric $g_{\mu\nu}(x)$. Distances are measured integrating the line element
+\begin{equation}
+	ds^2 = g_{\mu\nu}(x) dx^\mu dx^\nu.
+\end{equation}
+Since all observers should agree on the measure of distances, we must have
+\begin{equation}
+	g'_{\mu\nu}(x') dx'^\mu dx'^\nu = g_{\mu\nu}(x) dx^\mu dx^\nu,
+\end{equation}
+Here $g_{\mu\nu}$ could be the Euclidean metric $\delta_{\mu\nu}$ or the Minkowski metric $\eta_{\mu\nu}$; for simplicity we only consider the case in which $g_{\mu\nu}$ is flat, i.e.~$\partial_\alpha g_{\mu\nu} = 0$.
+In this case, we can write
+\begin{equation}
+\begin{aligned}
+	g'_{\mu\nu} &= g_{\alpha\beta}
+	\frac{\partial x^\alpha}{\partial x'^\mu}
+	\frac{\partial x^\beta}{\partial x'^\nu}
+	\\
+	&= g_{\alpha\beta}
+	\left( \delta^\alpha_\mu - \partial_\mu \varepsilon^\alpha \right)
+	\left( \delta^\beta_\nu - \partial_\nu \varepsilon^\beta \right)
+	\\
+	&= g_{\mu\nu}
+	- \left( \partial_\mu \varepsilon_\nu
+	+ \partial_\nu \varepsilon_\mu \right).
+\end{aligned}
+\end{equation}
+If we require the different observers to also agree on the metric, then  we must have $g'_{\mu\nu} = g_{\mu\nu}$, which gives a constraint on what kind of coordinate transformations are possible: we must have
+\begin{equation}
+	\partial_\mu \varepsilon_\nu
+	+ \partial_\nu \varepsilon_\mu = 0.
+\end{equation}
+This condition admits as a most general solution
+\begin{equation}
+	\varepsilon^\mu = a^\mu + \omega^\mu_{~\nu} x^\nu,
+\end{equation}
+where $a^\mu$ is a constant vector and $g_{\mu\rho} \omega^\rho_{~\nu} = \omega_{\mu\nu}$ an antisymmetric tensor.
+The transformation
+\begin{equation}
+	x^\mu \xrightarrow{P} x^\mu + a^\mu
+\end{equation}
+is obviously a translation and
+\begin{equation}
+	x^\mu \xrightarrow{M} \omega^\mu_{~\nu} x^\nu
+\end{equation}
+a rotation/Lorentz transformation around the origin $x = 0$. The composition of these two operations generates the Poincaré group.
+This is the fundamental symmetry of space-time underlying all relativistic quantum field theory. It is a symmetry of nature to a very good approximation, at least up to energy scales in which quantum gravity becomes important.
+
+However, one can also consider the situation in which the two observers use different systems of units, i.e.~they disagree on the overall definition of scale, but agree otherwise on the metric being flat.
+In this case we must have $g'_{\mu\nu} \propto g_{\mu\nu}$, and therefore the constraint becomes
+\begin{equation}
+	\partial_\mu \varepsilon_\nu
+	+ \partial_\nu \varepsilon_\mu = 2 \lambda g_{\mu\nu},
+\end{equation}
+for some real number $\lambda$,
+with the most general solution
+\begin{equation}
+	\varepsilon^\mu = a^\mu + \omega^\mu_{~\nu} x^\nu
+	+ \lambda x^\mu.
+\end{equation}
+The new infinitesimal transformation is
+\begin{equation}
+	x^\mu \xrightarrow{D} (1 + \lambda) x^\nu.
+\end{equation}
+It is a scale transformation. Note that scale symmetry is not a good symmetry of nature: there is in fact a fundamental energy scale on which all observer must agree (this can be for instance chosen to be the mass of the electron).
+Nevertheless, there are some systems in which this is a very good approximate symmetry. One can also make very interesting \emph{Gedankenexperimente} that have scale symmetry built in. These are reasons that make it worth studying.
+
+If one pushes this logic further, in a scale-invariant world in which observers have no physical mean of agreeing on a fundamental scale, they might even decide to change their definition of scale as they walk around. This would correspond to the case in which the metric $g'_{\mu\nu}$ of one observer can differ from the original metric $g_{\mu\nu}$ by a function of space(-time):
+\begin{equation}
+	g'_{\mu\nu}(x) = \Omega(x) g_{\mu\nu}.
+\end{equation}
+Note that we are not saying that $g'_{\mu\nu}$ is completely arbitrary: at every point in space time it is related to the flat metric by a scale transformation. But the scale factor is different at every point.
+The condition on $\varepsilon^\mu$ becomes in this case
+\begin{equation}
+	\partial_\mu \varepsilon_\nu
+	+ \partial_\nu \varepsilon_\mu = 2 \sigma g_{\mu\nu},
+	\label{eq:conformalkillingeq}
+\end{equation}
+where $\Omega(x) = 1 + 2\sigma(x)$. To find the most general solution to this equation, note that contracting the indices with $g^{\mu\nu}$ gives
+\begin{equation}
+	\partial_\mu \varepsilon^\mu  = d \sigma,
+\end{equation}
+where $d$ is the space(-time) dimension,
+while acting with $\partial^\nu$ gives
+\begin{equation}
+	\partial_\mu \partial_\nu \varepsilon^\nu
+	+ \partial^2 \varepsilon_\mu
+	= 2 \partial_\mu\sigma,
+\end{equation}
+so that we get
+\begin{equation}
+	\partial^2 \varepsilon_\mu
+	= (2 - d) \partial_\mu\sigma.
+\end{equation}
+Acting once again with $\partial^\mu$, we arrive at 
+\begin{equation}
+	(d - 1) \partial^2 \sigma = 0,
+\end{equation}
+while acting with $\partial^\nu$ and symmetrizing the indices, we find
+\begin{equation}
+	(2 - d) \partial_\mu\partial_\nu \sigma
+	= g_{\mu\nu} \partial^2 \sigma
+	= 0.
+\end{equation}
+In $d > 2$, we obtain therefore the condition $\partial_\mu \partial_\nu \sigma = 0$, which is solved by 
+\begin{equation}
+	\sigma(x) = \lambda + 2 b \cdot x.
+\end{equation}
+We have therefore
+\begin{equation}
+	\varepsilon^\mu = a^\mu + \omega^\mu_{~\nu} x^\nu
+	+ \lambda x^\mu
+	+ 2 (b \cdot x) x^\mu - x^2 b^\mu.
+	\label{eq:conformalkillingvec}
+\end{equation}
+In addition to the transformations found before, we also find
+\begin{equation}
+	x^\mu \xrightarrow{K} 2 (b \cdot x) x^\mu - x^2 b^\mu,
+\end{equation}
+which is a \emph{special conformal transformation}.
+If we examine the Jacobian for this transformation, we find
+\begin{equation}
+	\frac{\partial x'^\mu}{\partial x^\nu}
+	= \left(1 + 2 b \cdot x \right) \delta^\mu_\nu
+	+ 2 \left( b_\nu x^\mu - x_\nu b^\mu \right)
+	\approx \left(1 + 2 b \cdot x \right)
+	R^\mu_{~\nu}(x).
+\end{equation}
+We have written this as a position-dependent scale factor $(1 + 2 b \cdot x)$, multiplying an orthogonal matrix
+\begin{equation}
+	R^\mu_{~\nu}(x) = \delta^\mu_\nu
+	+ 2 \left( b_\nu x^\mu - x_\nu b^\mu \right).
+\end{equation}
+This shows that special conformal transformation act locally as the composition of a scale transformation and a rotation (or Lorentz transformation).
+Eq.~\eqref{eq:conformalkillingeq} is sometimes called the (conformal) Killing equation and its solutions \eqref{eq:conformalkillingvec} the Killing vectors.
+
+
+
+Note that in our derivation the original metric $g_{\mu\nu}$ was flat, but the new metric $g'_{\mu\nu}$ is not. It is however conformally flat: it is always possible to make a change of coordinate after which it is flat. In general, transformations
+\begin{equation}
+	g_{\mu\nu}(x) \to \Omega(x)^2 g_{\mu\nu}(x)
+\end{equation}
+are called \emph{Weyl transformations}. They change the geometry of space-time. We found that any Weyl transformation which is at most quadratic in $x$ can be compensated by a change of coordinates to go back to flat space. The corresponding flat-space symmetry is called conformal symmetry.%
+%
+\footnote{This implies that the group of conformal transformation is a subgroup of diffeomorphisms. It is in fact the largest \emph{finite-dimensional} subgroup.}% Rychkov (1.53)
+
+
+
+Note that in $d = 2$ the situation is a bit different: the conditions $\partial^2 \sigma = 0$ is sufficient to ensure that the Killing equation has a solution. This is most easily seen in light-cone coordinates,
+\begin{equation}
+	x^+ = \frac{x^0 + x^1}{2},
+	\qquad
+	x^- = \frac{x^0 - x^1}{2},
+\end{equation}
+in terms of which
+\begin{equation}
+	\partial^2 \sigma = \partial_+ \partial_- \sigma.
+\end{equation}
+This is satisfied by taking for $\sigma$ the sum of an arbitrary function of the left-moving variable $x^+$ and of another function of the right-moving variable $x^-$. In fact, if we write $\varepsilon^\pm = \varepsilon^0 \pm \varepsilon^1$, we can 	take arbitrary functions $\varepsilon^+(x^+)$ and $\varepsilon^-(x^-)$, and verify that eq.~\eqref{eq:conformalkillingeq} is satisfied with $\sigma = \frac{1}{2} \left( \partial_+ \varepsilon_+ + \partial_- \varepsilon_- \right)$.
+In the Euclidean case we take
+\begin{equation}
+	z = \frac{x^1 + i x^2}{2},
+	\qquad
+	\bar{z} = \frac{x^1 - i x^2}{2},
+\end{equation}
+complex-conjugate to each other, and the same logic follows: we can apply arbitrary holomorphic and anti-holomorphic transformations on $z$ and $\bar{z}$, and the conformal Killing equation is always satisfied. This shows that there are infinitely more conformal transformations in $d = 2$ than in $d > 2$, and also that there is no significant difference between two-dimensional Euclidean and Minkowski conformal symmetry, as the symmetry acts essentially on the two light-cone/holomorphic coordinates independently.
+
+
+\subsection{The conformal algebra}
+
+The conformal Killing equation \eqref{eq:conformalkillingvec} determines the most general form of \emph{infinitesimal} conformal transformations. \emph{Finite} conformal transformations follow from a sequence of infinitesimal transformations.
+However, one has to bear in mind that the infinitesimal conformal transformations do not all commute: for instance, a translation followed by a rotation is not the same as the opposite.
+In fact, the conformal transformations form a \emph{group}: the composition of conformal transformations is again a conformal transformations.
+
+As we all know from quantum field theory, a group is characterized by its \emph{generators} and their commutation relations (the \emph{algebra}). A generator $G$ describes an infinitesimal transformation in some direction, and finite transformation are obtained using exponentiation, $e^{i \theta G}$, with parameter $\theta$ (the factor of $i$ is the physicist's convention that make the generators Hermitian).
+A representation of the conformal group is given on the functions of the coordinates, $f(x)$. For instance, under an infinitesimal translation, we have
+\begin{equation}
+	f(x) \xrightarrow{P} f(x') = f(x + a) \approx f(x)
+	+ a^\mu \partial_\mu f(x)
+\end{equation}
+and we require this to be equal to $e^{-i a_\mu P^\mu} f(x)$, which means
+\begin{equation}
+	P_\mu = i \partial_\mu.
+	\label{eq:P:fcts}
+\end{equation}
+Performing the same analysis for the other infinitesimal transformations given in eq.~\eqref{eq:conformalkillingvec}, we obtain for the other generators%
+%
+\footnote{The sign of these generators is an arbitrary convention. It defines once and for all the commutations relations that we will derive next. After that, we will always refer to the commutation relations as the definition of the generators.}
+\begin{align}
+	& \text{rotations/Lorentz transformations:} \quad &
+	M^{\mu\nu} &= i \left( x^\mu \partial^\nu
+	- x^\nu \partial^\mu \right)
+	\label{eq:M:fcts}
+	\\
+	& \text{dilatations:} & 
+	D &= i x^\mu \partial_\mu,
+	\label{eq:D:fcts}
+	\\
+	& \text{special conformal transformations:} &
+	K^\mu &= i \left( 2 x^\mu x^\nu \partial_\nu 
+	- x^2 \partial^\mu \right).
+	\label{eq:K:fcts}
+\end{align}
+The number of generators matches that of the Killing vectors: there are $d$ translations, $d$ special conformal transformations, $d (d-1)/2$ rotations/Lorentz transformations ($M^{\mu\nu}$ is a $d \times d$ antisymmetric matrix), and one scale transformation.
+Therefore the total number of generators, i.e.~the dimension of this group, is $(d + 1)(d + 2)/2$. In $d = 4$ space-time dimension, the conformal group has 15 generators.
+
+Using the above definition, one can verify that the following commutation relations are satisfied,
+\begin{equation}
+\begin{aligned}
+	\left[ M^{\mu\nu}, M^{\rho\sigma} \right]
+	&= -i \left( g^{\mu\rho} M^{\nu\sigma} - g^{\mu\sigma} M^{\nu\rho}
+	- g^{\nu\rho} M^{\mu\sigma} + g^{\nu\sigma} M^{\mu\rho} \right]
+	\\
+	\left[ M^{\mu\nu}, P^\rho \right]
+	&= -i \left( g^{\mu\rho} P^\nu - g^{\nu\rho} P^\mu \right)
+	\\
+	\left[ M^{\mu\nu}, K^\rho \right]
+	&= -i \left( g^{\mu\rho} K^\nu - g^{\nu\rho} K^\mu \right)
+	\\
+	\left[ D, P^\mu \right] &= -i P^\mu 
+	\\
+	\left[ D, K^\mu \right] &= i K^\mu 
+	\\
+	\left[ P^\mu, K^\nu \right]
+	&= 2i \left( g^{\mu\nu} D - M^{\mu\nu} \right)
+\end{aligned}
+\label{eq:conformalalgebra}
+\end{equation}
+while all other commutators vanish:
+\begin{equation}
+	\left[ M^{\mu\nu}, D \right]
+	= \left[ P^\mu, P^\nu \right] 
+	= \left[ K^\mu, K^\nu \right] 	
+	= 0.
+\end{equation}
+The first two relations in eq.~\eqref{eq:conformalalgebra} are the familiar Poincaré algebra. 
+The next one states that $K^\mu$ transforms like a vector (as $P^\mu$ does), whereas $D$ is obviously a scalar. The next two relations remind us that $K^\mu$ and $P^\mu$ have respectively the dimension of length and inverse length. 
+
+\begin{exercise}
+	Derive the commutation relations from the action \eqref{eq:P:fcts}--\eqref{eq:K:fcts} of the generators on functions of $x$.
+\end{exercise}
+
+Even though this is not immediately obvious, this algebra is isomorphic to that of the group $\text{SO}(d+1, 1)$ (if $g^{\mu\nu}$ is the Euclidean metric) or $\text{SO}(d, 2)$ (if it is the Minkowski metric).
+To see that it is the case, let us introduce a $(d + 2)$-dimensional space with coordinates
+\begin{equation}
+	X^\mu, \quad X^{d+1}, \quad X^{d+2},
+\end{equation}
+and a metric defined by the line element
+\begin{equation}
+	ds^2 = g_{\mu\nu} dX^\mu dX^\nu + dX^{d+1} dX^{d+1}
+	- dX^{d+2} dX^{d+2}
+	\equiv \eta_{MN} dX^M dX^N.
+\end{equation}
+Then we write all conformal commutation relations as being defined by the Lorentzian algebra
+\begin{equation}
+	\left[ J^{MN}, J^{RS} \right]
+	= -i \left( \eta^{MR} J^{NS} - \eta^{MS} J^{NR}
+	- \eta^{NR} J^{MS} + \eta^{NS} J^{MR} \right],
+\end{equation}
+provided that we identify the antisymmetric generators $J^{MN}$ with the conformal generators as follows:
+\begin{equation}
+\begin{aligned}
+	M^{\mu\nu} &= J^{\mu\nu},
+	\\
+	P^\mu &= J^{\mu, d+1} + J^{\mu, d+2},
+	\\
+	K^\mu &= J^{\mu, d+1} - J^{\mu, d+2},
+	\\
+	D &= J^{d+1, d+2}.
+\end{aligned}
 \end{equation}
 
 
-infinitesimal line element $dx^2 = \eta_{\mu\nu} dx^\mu dx^\nu$ is invariant:
+\subsection{Finite transformations}
+
+most general conformal transformation can be written as combination of exponentiated form of infinitesimal special conformal transformation
+
+translation: easy to exponentiate
 \begin{equation}
-	dx'^2 = dx^2
+	x^\mu \xrightarrow{P} x^\mu + a^\mu
+\end{equation}
+$a$ not necessarily infinitesimal
+
+same is true of special conformal transformations:
+\begin{equation}
+	x^\mu \to \lambda x^\mu
+\end{equation}
+with finite $\lambda$
+
+rotations:
+\begin{equation}
+	x^\mu \xrightarrow{M} \Lambda^\mu_{~\nu} x^\nu
+\end{equation}
+where $\Lambda^\mu_{~\nu}$ is a $\text{SO}(d)$ or $\text{SO}(1, d-1)$ matrix
+
+
+special conformal transformation:
+in infinitesimal form:
+\begin{equation}
+	x'^\mu = x^\mu + 2 (b \cdot x) x^\mu - x^2 b^\mu
 \end{equation}
 
-
-scale symmetry:
+this implies
 \begin{equation}
-	x'^\mu = \lambda x^\mu
+	x'^2 = x^2 + 2 (b \cdot x) x^2
 \end{equation}
+neglecting terms of order $b^2$
 
-note that this can be seen as a rescaling of the metric, of the form
-$\eta'^{\mu\nu} = \# \eta^{\mu\nu}$
-
-
-can we generalize this? general transformations of the metric $\eta'^{\mu\nu} = \Omega(x) \eta^{\mu\nu}$
-called a \emph{Weyl transformation}
-
-in general changes geometry of space-time; unless this transformation is equivalent to a coordinate transformation (diffeomorphism)
-
-in infinitesimal form
+hence
 \begin{equation}
-	x'^\mu = x^\mu + v^\mu(x)
+	\frac{x'^\mu}{x'^2}
+	= \frac{x^\mu}{x^2} - b^\mu
+	\label{eq:K:inversion}
 \end{equation}
-requiring that this is equal to the Weyl transformation gives the conformal Killing equation:
-\begin{equation}
-	\partial^\mu v^\nu(x) + \partial^\nu v^\mu(x)
-	= 2 \sigma(x) \eta^{\mu\nu}
-\end{equation}
-
-work out solution in $d = 1$, $d = 2$ and $d > 2$;
-
-
-conformal Killing vectors (see Osborn's notes):
-translation
-Lorentz transformations
-dilatation
-special conformal symmetry
-
-
-
-in $d = 2$, use $z$, $\bar{z}$ notation and Laurent series
-
-
-
-
-
-
-finite transformations
 
 
 use inversions: discrete transformations not connected to identity
 (no infinitesimal form!)
-
-but inversion followed by translation followed by inversion gives special conformal transformations
-
-
-group of conformal transformation is a subgroup of diffeomorphisms; in fact the largest \emph{finite-dimensional} subgroup
-% Rychkov (1.53)
-
-
-
-defining property
 \begin{equation}
-	g'_{\mu\nu}(x') = \Omega(x)^2 \eta_{\mu\nu}
+	x^\mu \xrightarrow{I} \frac{x^\mu}{x^2}
 \end{equation}
-gives Jacobian of conformal transformation
+
+Jacobian of inversion is given by
 \begin{equation}
-	\frac{\partial x^\mu}{\partial x^\nu}
-	= \Omega(x) M^\mu_{~\nu}(x)
+	\frac{\partial x'^\mu}{\partial x^\nu}
+	= \frac{1}{x^2}
+	\left[ \delta^\mu_\nu - 2 \frac{x^\mu x_\nu}{x^2} \right]
 \end{equation}
-$M$: $\SO(d-1, 1)$ matrix
-
-conformal transformations look locally like Lorentz and scale transformations
+in Euclidean space, choose a frame in which $\vec{x} = (x, 0, \ldots 0)$, then the object in square bracket is the diagonal matrix $\text{diag}(-1, 1, \ldots, 1)$, which is part of $\text{O}(d)$ but not $\text{SO}(d)$
 
 
-
-translation move 0, leave $\infty$ fixed
-
-special conformal transformation move $\infty$, leave 0 fixed
+inversion followed by a translation, followed by an inversion again gives SCT
 
 
-finite transformation derived from infinitesimal: for rotations, translations and scale exactly the same;
-for sct
 \begin{equation}
+	x^\mu \xrightarrow{K}
 	x'^\mu = \frac{x^\mu - x^2 b^\mu}
-	{1 - 2 b \cdot x + b^2 x^2} 
-\end{equation}
-or 
-\begin{equation}
-	\frac{x'^\mu}{x'^2} = \frac{x^\mu}{x^2} - b^\mu
+	{1 - 2 b \cdot x + b^2 x^2}
+	\label{eq:K:finite}
 \end{equation}
 
-\subsection{The conformal algebra}
-
-follow Shester
-
-generators corresponding to Killing vectors
-
-when applied to function of $x$, gives derivative action
+\begin{exercise}
+	Use eq.~\eqref{eq:K:inversion} to show \eqref{eq:K:finite}.
+		\hint{Contract both sides of eq.~\eqref{eq:K:inversion} with $x_\mu$, $x'_\mu$ and $b_\mu$, and use these 3 equations to solve for $x'^2$.}
+\end{exercise}
 
 
 
-compute commutators, find Lorentz and Poincaré subalgebras, and new commutations involving $D$ and $K$
 
-isomorphic to $\SO(d, 2)$
-
-(exercise)
-
-compact vs.~non-compact
+What do special transformation do globally?
+Let us look specifically in Euclidean space. There are some special points:
+\begin{itemize}
 
 
-note: everything we said is also valid in Euclidean space: replace $\eta^{\mu\nu} \to \delta^{\mu\nu}$
+\item
+leaves the origin invariant: the point $x = 0$ is mapped onto itself
 
-get the Euclidean conformal group
+\item
+but singular: in Euclidean space, the point $b^\mu / b^2$ is mapped to $\infty$
+
+\item
+and conversely: $\infty$ to point $-b^\mu$
+
+\end{itemize}
+
+\begin{exercise}
+	Show that under the special conformal transformation \eqref{eq:K:finite}, a sphere centered at the point $a^\mu$ and with radius $R$ gets mapped to a sphere centered at the point 
+	$$
+	a'^\mu = \frac{a^\mu - (a^2 - R^2) b^\mu}
+	{1 - 2 a \cdot b + (a^2 - R^2) b^2}
+	$$
+	and with radius
+	$$
+	R' = \frac{R}{\left| 1 - 2 a \cdot b + (a^2 - R^2) b^2 \right|}.
+	$$
+	In the special case in which $b^\mu / b^2$ is on the original sphere, show that the sphere gets mapped to a plane orthogonal to the vector $a^\mu + (R^2 - a^2) b^\mu$.
+	
+\end{exercise}
+
+translations keep $\infty$ fixed, and sct keep origin fixed; because related by inversion!
 
 
-\subsection{Classical field theory}
+given a set of 3 points $\{ x_1, x_2, x_3 \}$ that are not on a line, and another set  $\{ x'_1, x'_2, x'_3 \}$ with the same property, there exists a unique conformal transformation that maps the first set onto the second (and conversely)
+
+If the 3 points are on a line it is obvious that a rotation in the space orthogonal to the line won't change the position of the points, so the 
+
+
+physical consequence: in correlation functions of 2 or 3-points (see next sections for a definition), all kinematics is fixed by conformal symmetry; the only freedom encodes information about the operators themselves, not about their position in space
 
 
 
-\subsection{Energy-momentum tensor}
+\footnote{In $d = 2$, the infinite conformal group means that (nearly) any shape can be mapped onto an other. This is known as the Riemann mapping theorem. For an example of how a circle can be mapped to a polygon, see \url{https://herbert-mueller.info/uploads/3/5/2/3/35235984/circletopolygon.pdf}.}
 
-conserved current associated with symmetry
 
-use the metric as source
+\subsection{Compactifications}
+
+conformal symmetry is a symmetry of flat space(-time)
+
+but sometimes it is also convenient to make a change of variables that maps the flat Euclidean space $\mathds{R}^d$ or the Minkowski space-time $\mathds{R}^{1,d-1}$ to a compact manifold
+
+
+ have a gives a more geometric picture of what conformal transformation do
+
+cylinder
+
+\subsection{Minkowski space-time}
+
+
+place an observer at the origin: this breaks translations, so I'm not going to use translations anymore, but the rest of the conformal group
+
+Lorentz and scale transformations preserve causality:
+if a point $x$ is space-like separated from the origin, it will remain space-like separated no matter the choice of scale and Lorentz frame
+
+without loss of generality, can choose it to be at $x^0 = 0$, $x^1 = 1$ (I choose my units in this way), and all other $x^i = 0$
+
+however, I can use a SCT to bring it to the past light cone!
+
+take $b^\mu = $
+
+in fact, we can even follow the path that the point takes when we vary $b$ from $0$ to its final value: does it cross light-cone? or does it goes to infinity?
+
+
+
+
+weak vs. strong conformal invariance 
+Martin Lüscher and Gerhard Mack, 1974 \cite{Luscher:1974ez} (also earlier paper \cite{Go:1974mod}
+
+
+
+Lorentzian cylinder
+
+\subsection{The energy-momentum tensor}
+
+
+classical field theory picture
+
+
+Noether current associated with conformal symmetry
+
+use the metric as source?
 
 condition for Weyl invariance is tracelessness of energy-momentum tensor
 
 
-\subsection{Examples}
-
-conformal transformations map circles to circles (including circles with infinite radius, aka straight lines): explanation
-
-picture
-
-think of it as renormalization group transformation that depends on space-time
-
-Escher?
-
-
-
+\end{document}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -804,7 +1123,7 @@ operators can be evolved to fixed points by Hamiltonian
 
 in Euclidean, take the generator of dilatations as Hamiltonian
 
-simple rotation in $\SO(d+1,1)$
+simple rotation in $\text{SO}(d+1,1)$
 
 apply conformal transformation mapping the two fixed points to 0 and $\infty$
 
