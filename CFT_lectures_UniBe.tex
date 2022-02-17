@@ -192,15 +192,29 @@ no need for action principle
 
 \subsection{Examples of conformal field theories}
 
-perturbative examples: $\phi^n$ theory in non-integer $d$
+\begin{itemize}
 
-Caswell-Banks-Zaks
+\item
+massless free theories
 
-superconformal: $\mathcal{N} = 4$
+\item
+perturbative fixed points: example $\phi^n$ theory in non-integer $d$
 
+\item
+some theories with extended supersymmetry, e.g.~$\mathcal{N} = 4$ Yang-Mills;
+generally engineer matter content to make beta function zero at leading order is sufficient thanks to non-renormalization theorems
 
-any IR fixed point (maybe trivial)
+\item
+Caswell-Banks-Zaks fixed points
+perturbative in some domains, not in other
 
+\item
+truly non-perturbative fixed points: example of Ising model universality class, leading to bootstrap
+
+\item
+AdS/CFT: any theory in space with one more dimension and anti de-Sitter space geometry
+
+\end{itemize}
 
 use beyond CFT:
 correlators that have the isometries of the conformal group
@@ -241,7 +255,7 @@ Shai Chester's Weizmann Lectures
 
 %%%%%%%%
 
-other reviews:
+other modern CFT reviews:
 
 \begin{itemize}
 
@@ -470,7 +484,7 @@ We have written this as a position-dependent scale factor $(1 + 2 b \cdot x)$, m
 	R^\mu_{~\nu}(x) = \delta^\mu_\nu
 	+ 2 \left( b_\nu x^\mu - x_\nu b^\mu \right).
 \end{equation}
-This shows that special conformal transformation act locally as the composition of a scale transformation and a rotation (or Lorentz transformation).
+This shows that special conformal transformation act locally as the composition of a scale transformation and a rotation (or Lorentz transformation). This also shows that conformal transformations preserve angles, which is the origin of their name.
 Eq.~\eqref{eq:conformalkillingeq} is sometimes called the (conformal) Killing equation and its solutions \eqref{eq:conformalkillingvec} the Killing vectors.
 
 
@@ -612,95 +626,86 @@ provided that we identify the antisymmetric generators $J^{MN}$ with the conform
 
 \subsection{Finite transformations}
 
-most general conformal transformation can be written as combination of exponentiated form of infinitesimal special conformal transformation
+We just saw that the infinitesimal conformal transformations generate a group. But how can we describe finite conformal transformations? Let us see how each generator exponentiates into an element of the group; the most general conformal transformation can then be obtained as a composition of such finite transformations.
 
-translation: easy to exponentiate
+In some cases the exponentiation is trivial. For instance, with translations we obtain immediately
 \begin{equation}
-	x^\mu \xrightarrow{P} x^\mu + a^\mu
+	x^\mu \xrightarrow{P} x^\mu + a^\mu,
 \end{equation}
-$a$ not necessarily infinitesimal
-
-same is true of special conformal transformations:
+where $a$ is now any $d$-dimensional vector, not necessarily small.
+The same is true of scale transformations,
 \begin{equation}
-	x^\mu \to \lambda x^\mu
+	x^\mu \xrightarrow{D} \lambda x^\mu
 \end{equation}
-with finite $\lambda$
-
-rotations:
+with finite $\lambda$.
+Rotations or Lorentz transformations exponentiate as
 \begin{equation}
 	x^\mu \xrightarrow{M} \Lambda^\mu_{~\nu} x^\nu
 \end{equation}
-where $\Lambda^\mu_{~\nu}$ is a $\text{SO}(d)$ or $\text{SO}(1, d-1)$ matrix
+where $\Lambda^\mu_{~\nu}$ is a $\text{SO}(d)$ or $\text{SO}(1, d-1)$ matrix, depending whether the metric is Euclidean or Minkowski.
+All of this is well-known and not surprising.
 
-
-special conformal transformation:
-in infinitesimal form:
+On the contrary, special conformal transformations do not exponentiate trivially. The easiest way to derive their finite form is to make the following observation: recall that in infinitesimal form we have
 \begin{equation}
-	x'^\mu = x^\mu + 2 (b \cdot x) x^\mu - x^2 b^\mu
+	x'^\mu = x^\mu + 2 (b \cdot x) x^\mu - x^2 b^\mu,
 \end{equation}
-
-this implies
-\begin{equation}
-	x'^2 = x^2 + 2 (b \cdot x) x^2
-\end{equation}
-neglecting terms of order $b^2$
-
-hence
+which implies $x'^2 = \left( 1 + 2 b \cdot x \right) x^2$, and therefore (as always neglecting terms of order $b^2$)
 \begin{equation}
 	\frac{x'^\mu}{x'^2}
-	= \frac{x^\mu}{x^2} - b^\mu
+	= \frac{x^\mu}{x^2} - b^\mu.
 	\label{eq:K:inversion}
 \end{equation}
-
-
-use inversions: discrete transformations not connected to identity
-(no infinitesimal form!)
+The ratio $x^\mu/x^2$ appearing on both side of the equation is the \emph{inverse} of the coordinate $x^\mu$, respectively $x'^\mu$: let us define the inversion as
 \begin{equation}
-	x^\mu \xrightarrow{I} \frac{x^\mu}{x^2}
+	x^\mu \xrightarrow{I} \frac{x^\mu}{x^2}.
 \end{equation}
-
-Jacobian of inversion is given by
+This transformation does not have an infinitesimal form, but otherwise it shares the essential properties of a conformal transformation: its Jacobian is
 \begin{equation}
 	\frac{\partial x'^\mu}{\partial x^\nu}
 	= \frac{1}{x^2}
-	\left[ \delta^\mu_\nu - 2 \frac{x^\mu x_\nu}{x^2} \right]
+	\left[ \delta^\mu_\nu - 2 \frac{x^\mu x_\nu}{x^2} \right],
 \end{equation}
-in Euclidean space, choose a frame in which $\vec{x} = (x, 0, \ldots 0)$, then the object in square bracket is the diagonal matrix $\text{diag}(-1, 1, \ldots, 1)$, which is part of $\text{O}(d)$ but not $\text{SO}(d)$
+which is the product of a position-dependent scale factor $x^{-2}$ with an orthogonal matrix. To understand what this transformation does globally, let us consider a point $\vec{x} = (x, 0, \ldots 0) \in \mathds{R}^d$. Then the matrix is square bracket is diagonal, and equates $\text{diag}(-1, 1, \ldots, 1)$. This is an orthogonal matrix with determinant $-1$, which is part of $\text{O}(d)$ but not $\text{SO}(d)$. This shows that the inversion is a discrete transformations not connected to identity.
+A conformally invariant theory might be invariant under inversions, but it needs not be.
 
-
-inversion followed by a translation, followed by an inversion again gives SCT
-
-
+Eq.~\eqref{eq:K:inversion} shows that infinitesimal special conformal transformations are obtained taking an inversion followed by a translation, followed by an inversion again. Since this process involves the inversion twice, and since inversion is its own inverse, it does not matter whether inversion is a true symmetry of the system or not.
+The advantage of this representation is that it can easily be exponentiated: the composition of (infinitely) many infinitesimal special conformal transformation can be written as an inversion followed by a finite translation, followed by an inversion again. In other words, eq.~\eqref{eq:K:inversion} holds for finite $b^\mu$.
+This can be used to show that
 \begin{equation}
 	x^\mu \xrightarrow{K}
 	x'^\mu = \frac{x^\mu - x^2 b^\mu}
-	{1 - 2 b \cdot x + b^2 x^2}
+	{1 - 2 b \cdot x + b^2 x^2}.
 	\label{eq:K:finite}
 \end{equation}
 
 \begin{exercise}
-	Use eq.~\eqref{eq:K:inversion} to show \eqref{eq:K:finite}.
-		\hint{Contract both sides of eq.~\eqref{eq:K:inversion} with $x_\mu$, $x'_\mu$ and $b_\mu$, and use these 3 equations to solve for $x'^2$.}
+	Use eq.~\eqref{eq:K:inversion} to show \eqref{eq:K:finite}.\\
+	\hint{Contract both sides of eq.~\eqref{eq:K:inversion} with $x_\mu$, $x'_\mu$ and $b_\mu$, and use the three equations that you get to solve for $x'^2$.}
 \end{exercise}
-
-
-
 
 What do special transformation do globally?
 Let us look specifically in Euclidean space. There are some special points:
 \begin{itemize}
 
+\item
+The origin of the coordinate system $x = 0$ is mapped onto itself.
 
 \item
-leaves the origin invariant: the point $x = 0$ is mapped onto itself
+The point $b^\mu / b^2$ is mapped to $\infty$. 
 
 \item
-but singular: in Euclidean space, the point $b^\mu / b^2$ is mapped to $\infty$
-
-\item
-and conversely: $\infty$ to point $-b^\mu$
+Conversely, the ``point'' $x \to \infty$ is mapped to the finite vector $-b^\mu/b^2$.
 
 \end{itemize}
+%
+These properties can be understood from the fact that special conformal transformations and translations are related by inversion:
+special conformal transformations keep the origin fixed but move every other points, including $\infty$; translations move every point \emph{except} $\infty$. The other two transformations, rotations and scale transformations, keep both $0$ and $\infty$ fixed.
+
+
+An essential property of conformal transformations is that they allow to map any 3 points $(x_1, x_2, x_3)$ onto another set $( x'_1, x'_2, x'_3)$. This can be seen as follows: first, apply a translation to place $x_1$ at the origin, followed by a special conformal transformation that takes $x_3$ to $\infty$, after which the image of the original triplet is $(0, x_2'', \infty)$; then use rotations and scale transformations to move $x''_2$ to another point $x'''_2$, while keeping $0$ and $\infty$ fixed; finally apply again a special conformal transformation that takes $\infty$ to $x'_3 - x'_1$, and a translation by $x'^1$ to reach the configuration $( x'_1, x'_2, x'_3)$.
+This property has an immediate physical consequence: in correlation functions of 2 or 3-points (see next sections for a definition), all kinematics is fixed by conformal symmetry. The only freedom encodes information about the operators themselves, not about their position in space.
+
+Another interesting property of conformal transformations is that they map spheres to spheres: this is is an obvious property of translations, rotations and scale transformations, but it is also true of special conformal transformations. 
 
 \begin{exercise}
 	Show that under the special conformal transformation \eqref{eq:K:finite}, a sphere centered at the point $a^\mu$ and with radius $R$ gets mapped to a sphere centered at the point 
@@ -716,71 +721,133 @@ and conversely: $\infty$ to point $-b^\mu$
 	
 \end{exercise}
 
-translations keep $\infty$ fixed, and sct keep origin fixed; because related by inversion!
-
-
-given a set of 3 points $\{ x_1, x_2, x_3 \}$ that are not on a line, and another set  $\{ x'_1, x'_2, x'_3 \}$ with the same property, there exists a unique conformal transformation that maps the first set onto the second (and conversely)
-
-If the 3 points are on a line it is obvious that a rotation in the space orthogonal to the line won't change the position of the points, so the 
-
-
-physical consequence: in correlation functions of 2 or 3-points (see next sections for a definition), all kinematics is fixed by conformal symmetry; the only freedom encodes information about the operators themselves, not about their position in space
-
-
-
-\footnote{In $d = 2$, the infinite conformal group means that (nearly) any shape can be mapped onto an other. This is known as the Riemann mapping theorem. For an example of how a circle can be mapped to a polygon, see \url{https://herbert-mueller.info/uploads/3/5/2/3/35235984/circletopolygon.pdf}.}
+Note that in $d = 2$, the additional conformal transformations (infinitely many of them!) mean that (nearly) any shape can be mapped onto another. This is known as the Riemann mapping theorem.%
+%
+\footnote{A neat example of how a disk is be mapped onto a polygon is available at \\
+\url{https://herbert-mueller.info/uploads/3/5/2/3/35235984/circletopolygon.pdf}.}
 
 
 \subsection{Compactifications}
 
-conformal symmetry is a symmetry of flat space(-time)
+It is often said that conformal symmetry is a symmetry of flat space(-time).
+This is true, as we have just seen, provided that we treat the point $\infty$ as being part of the space.
+This is quite straightforward in Euclidean space, but much more subtle in Minkowski space-time, as there are different ways of reaching $\infty$ there.
 
-but sometimes it is also convenient to make a change of variables that maps the flat Euclidean space $\mathds{R}^d$ or the Minkowski space-time $\mathds{R}^{1,d-1}$ to a compact manifold
+To gain a better understanding of this, it can be useful to map the flat Euclidean space $\mathds{R}^d$ or the Minkowski space-time $\mathds{R}^{1,d-1}$ onto a curved (but hopefully compact) manifold.
+In Euclidean space this is for instance achieved by the (inverse) stereographic projection that maps $\mathds{R}^d \cup \{ \infty \}$ to the unit sphere $S^d$.
+Geometrically, the stereographic projection is constructed as follows: embed $\mathds{R}^d$ as a (hyper-)plane in $\mathds{R}^{d+1}$, together with a sphere of unit radius centered at the origin. Every point on the plane has an image on the sphere obtained drawing a segment between the original point and the north pole of the sphere, and noting where it intersects the sphere. The origin is mapped to the south pole, $\infty$ to the north pole, and the sphere $S^{d-1}$ of unit radius to the equator.
+Algebraically, this is achieved as follows: first write the Euclidean metric in spherical coordinates,
+\begin{equation}
+	ds^2 = dr^2 + r^2 d\Omega_{d-1}^2,
+\end{equation}
+where the solid angle is given in $d = 2$ by $d\Omega_1^2 = d\phi^2$, in $d = 3$ by $d\Omega_2^2 = d\theta^2 + \sin\theta^2 d\phi^2$, and more generically by the recursion relation $d\Omega_n^2 = d\theta^2 + \sin\theta^2 d\Omega_{n-1}^2$.
+Let us perform the change of variable
+\begin{equation}
+	r = \frac{\sin\varphi}{1 - \cos\varphi},
+\end{equation}
+and interpret $\varphi \in [0, \pi]$ as the zenith angle on the sphere:
+$\varphi = 0$ is the north pole, corresponding to $r \to \infty$, and $\varphi = \pi$ the south pole, corresponding to $r = 0$. In these coordinates we have
+\begin{equation}
+	ds^2 = \frac{1}{(1 - \cos\varphi)^2}
+	\left( d\varphi^2 + \sin\varphi^2 d\Omega_{d-1}^2 \right)
+	= \frac{1}{(1 - \cos\varphi)^2} d\Omega_d^2.
+\end{equation}
+This shows that the metric is flat up to an overall Weyl factor that depends on $\varphi$.
+In these new coordinates, conformal transformations are always non-singular. 
+For this reason, it is often very convenient to study \emph{classical} conformal symmetry on the sphere $S^d$ instead of Euclidean space.
 
+However, this compactification is not as nice in a \emph{quantum} theory in which one wants to foliate the space along some direction: if one chooses $\varphi$ as the ``Euclidean time'', then the ``space'' direction is a sphere $S^{d-1}$ whose volume depends on $\varphi$. In other words, the generator of ``time'' translations is not a symmetry of the system. Being on a perfectly symmetric sphere, this is also true of any other choice of time direction.
+This is not forbidden, but it complicates vastly the analysis.
 
- have a gives a more geometric picture of what conformal transformation do
+Instead, another compactification is often preferred to the sphere: from the Euclidean metric in spherical coordinates, one can make the change of variable
+\begin{equation}
+	\tau = \log(r)
+	\qquad\Rightarrow\qquad
+	r = e^\tau,
+\end{equation}
+after which
+\begin{equation}
+	ds^2 = r^2 \left( d\tau^2 + d\Omega_{d-1}^2 \right).
+\end{equation}
+This is again a flat metric, up to a Weyl factor $r^2 = e^{2\tau}$. In this case however the metric is completely independent of $\tau$.
+This space has the geometry of the \emph{cylinder}, $\mathds{R} \times S^{d-1}$. It is not fully compact: $\tau$ goes from $-\infty$ to $+\infty$. But it has a important advantage: translations in $\tau$ are generated by dilatations $D$, which will be taken to be a symmetry of quantum field theory. Foliating the space into surfaces of constant $\tau$ will later lead us to the famous radial quantization in conformal field theory.
 
-cylinder
+Note that in $\text{SO}(d + 1, 1)$ language, the generator $D = J^{d+1, d+2}$ is completely equivalent to any other generator $J^{\mu, d+2} = \frac{1}{2} \left( P^\mu - K^\mu \right)$. So for instance we might as well look for a cylinder compactification in which the non-compact direction corresponds to translations in the direction of
+$\frac{1}{2} \left( P^0 - K^0 \right)$. This generator obeys
+\begin{equation}
+	\frac{1}{2} \left( P^0 - K^0 \right)
+	= i \left( \frac{1 - (x^0)^2 + \vec{x}^2}{2} \partial_0
+	- x^0 \, \vec{x} \cdot \vec{\partial} \right),
+\end{equation}
+with two fixed points at $x^0 = \pm 1$ with $\vec{x} = 0$.
+
+\begin{exercise}
+	Find the change of coordinate that make the Euclidean metric Weyl-equivalent to a cylinder in which translations in the non-compact direction are generated by $\frac{1}{2} \left( P^0 - K^0 \right)$. \\
+	\hint{Find a special conformal transformation followed by a translation that take $(0, \infty)$ to $(-1, 1)$, and apply it to the cylinder coordinates.}
+\end{exercise}
+
+The cylinder compactifications of Euclidean space are interesting by themselves, but they are also extremely convenient to understand the connection between Euclidean and Minkowski space-times: in this last form, performing a Wick rotation $\tau \to \pm i t$ defines a Lorentzian cylinder on which the conformal group with a simple action of the Lorentzian conformal group $\text{SO}(d, 2)$. 
+But before going there, let us go back to flat Minkowski space-time and make some general remarks.
+
 
 \subsection{Minkowski space-time}
 
+Everybody is familiar with translations and Lorentz transformations in Minkowski space-time, and even with dilatations as this is a standard tool in the renormalization group analysis. But what do conformal transformations do?
 
-place an observer at the origin: this breaks translations, so I'm not going to use translations anymore, but the rest of the conformal group
+To understand this, let us place an observer at the origin of Minkowski space-time. The presence of this observer breaks translations, but not Lorentz transformations (the observer is point-like), nor dilatations and special conformal transformations. For the observer, space-time is split into three regions: a future light cone, a past light cone, and a   space-like region from which they know nothing.
+Lorentz and scale transformation preserve this causal structure: the future and past light-cones are mapped onto themselves. In other words, if a point $x$ is space-like separated from the observed, it will remain space-like separated no matter the choice of scale and Lorentz frame. Without loss of generality, let us choose this point to be at position $x = (0, \vec{n})$, where $\vec{n}$ is a unit vector (units can be chosen so that this is the case).
+Now apply a special conformal transformation with parameter $b^\mu = (-\alpha, \alpha \vec{n})$, with $\alpha$ varying between 0 and 1.
+This draws a curve $y^\mu $ in space-time, parameterized by $\alpha$,
+with
+\begin{equation}
+	y^0(\alpha) = \frac{\alpha}{1 - 2 \alpha},
+	\qquad\qquad
+	\vec{y}(\alpha) = \frac{1 - \alpha}{1 - 2 \alpha} \vec{n}.
+\end{equation}
+This curves begins at the space-like point $y = (0, \vec{n})$, and ends in the past light cone at $y = (-1, \vec{0})$!
+Note that $y$ never crosses a light cone: the image of $x$ is never null if $x$ is not itself null, since $x'^2 = x^2 / (1 - 2 x \cdot b + x^2 b^2)$.
+Instead, we have
+\begin{equation}
+	y^2(\alpha) = \frac{1}{1 - 2\alpha} \neq 0.
+\end{equation}
+The point goes all the way to space-like infinity when $\alpha = \frac{1}{2}$, and comes back from past infinity.
+Clearly, special conformal transformation break causality.
 
-Lorentz and scale transformations preserve causality:
-if a point $x$ is space-like separated from the origin, it will remain space-like separated no matter the choice of scale and Lorentz frame
+The resolution of this paradox is that conformal transformation do not act directly on Minkowski space, but rather on its universal cover that is isomorphic to the Lorentzian cylinder described in the previous section.
+Time evolution on that cylinder is given by the Hamiltonian $H = \frac{1}{2} (P^0 - K^0)$. At any given time $t_0$, space is compactified in such a way that the notion of infinite distance is unequivocal: space-like infinity corresponds to a point on the sphere. If one takes any other point of that sphere and apply finite translations using the generator $P^\mu$, then this defines a compact \emph{Poincaré patch}. The full cylinder is a patchwork of Minkowski space-times, but every observer only has access to one.
 
-without loss of generality, can choose it to be at $x^0 = 0$, $x^1 = 1$ (I choose my units in this way), and all other $x^i = 0$
+The lesson that we need to learn from this is that only the infinitesimal form of special conformal transformation can be used in Minkowski space-time: \emph{any} finite special conformal transformation would bring part of space-time into another patch on the cylinder.
+This is sometimes called \emph{weak conformal invariance}.
 
-however, I can use a SCT to bring it to the past light cone!
+The fact that a quantum field theory defined on Minkowski space-time with \emph{weak conformal invariance} uniquely defines a quantum field theory on the Lorentzian cylinder with global conformal invariance is quite non-trivial. The proof was given by Martin Lüscher and Gerhard Mack in 1974 \cite{Luscher:1974ez}, both employed at the University of Bern at the time. In their own words:
 
-take $b^\mu = $
+\begin{center}
 
-in fact, we can even follow the path that the point takes when we vary $b$ from $0$ to its final value: does it cross light-cone? or does it goes to infinity?
+\parbox{11cm}{%
+\emph{In picturesque language, [the superworld] consists of Minkowski space, infinitely many ``spheres of heaven'' stacked above it and infinitely many ``circles of hell'' below it.}}
 
+\end{center}
 
-
-
-weak vs. strong conformal invariance 
-Martin Lüscher and Gerhard Mack, 1974 \cite{Luscher:1974ez} (also earlier paper \cite{Go:1974mod}
-
-
-
-Lorentzian cylinder
 
 \subsection{The energy-momentum tensor}
 
+\ldots
 
-classical field theory picture
+%classical field theory and action principle
+%
+%postulate that conformal transformation are a symmetry of the theory
+%
+%by Noether's theorem, this implies the existence of a conserved current
+%
+% energy-momentum tensor
+%
+%use the metric as source?
+%
+%condition for Weyl invariance is tracelessness of energy-momentum tensor
 
 
-Noether current associated with conformal symmetry
-
-use the metric as source?
-
-condition for Weyl invariance is tracelessness of energy-momentum tensor
-
-
+\bibliography{Bibliography}
+\bibliographystyle{utphys}
 \end{document}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
