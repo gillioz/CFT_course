@@ -5,6 +5,7 @@
 \usepackage[english]{babel}
 \usepackage{amsmath}
 \usepackage{amsfonts}
+\usepackage{amssymb}
 \usepackage{mathrsfs}
 \usepackage{dsfont}
 \usepackage{graphicx}
@@ -13,9 +14,6 @@
 \usepackage{mdframed}
 \usepackage[colorlinks, allcolors=blue, linktocpage=true]{hyperref}
 
-%\renewcommand{\arraystretch}{1.5}
-
-%\renewcommand{\O}{\mathcal{O}}
 \newcommand{\ket}[1]{\left| #1 \right\rangle}
 \newcommand{\bra}[1]{\left\langle #1 \right|}
 
@@ -59,21 +57,20 @@ Lecture notes}
 
 \vspace{10mm}	
 	
+This is the transcript of my notes for the class 
+``\href{https://www.itp.unibe.ch/studies/graduate_program/f22_conformal_field_theory/index_eng.html}{Conformal Field Theory}'' at the Institute for Theoretical Physics of the University of Bern.
+These notes will be updated as the class advances, with the latest version always available at:
 \begin{center}
+	\url{https://github.com/gillioz/CFT_course}
+\end{center}
+Suggestions for improvements are welcome and can be directly submitted on the GitHub page, or sent to me by email at \href{mailto:marc.gillioz@sissa.it}{marc.gillioz@sissa.it}.
 	
 %\parbox{\textwidth}{%
 %Conformal field theory (CFT) is an ubiquitous subject in modern theoretical physics. Every local quantum field theory approaches a CFT in the large- and small-distance limits, and even the study of quantum gravity is related to it through the AdS/CFT correspondence. CFT is also one of the rare frameworks in which quantum field theory can be studied outside the realm of perturbation theory.
 
 %This is an introductory course in which the students will learn what is conformal field theory, why it is special, and get a glimpse of modern developments. The course will begin with a non-perturbative formulation of quantum field theory (Wightman functions, spectral representation), and then gradually focus on understanding the implications of scale and special conformal symmetry. The study of practical tools (embedding space formalism, radial quantization, state-operator correspondence, conformal blocks) will finally lead to the formulation of the modern conformal bootstrap and a review of its most recent results. Some advanced topics will be discussed depending on the students' interests (Virasoro symmetry in 2 dimensions, UV and IR divergences, Mellin representation, superconformal symmetry).}
-	
-\vspace{20mm}
-	
-\parbox{11.8cm}{
-\emph{%
-[Courses] are fantastically good for learning physics. The lecturer learns a lot of physics. After my first few studies, just about everything I learned about physics came from teaching it. I don’t know if the students learned a lot, but I certainly did. So I consider teaching physics very important.}
---- Leonard Susskind \cite{Susskind}}
 
-\end{center}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -86,254 +83,309 @@ Lecture notes}
 \newpage
 \section{Introduction}
 
-\begin{equation}
-	\text{conformal field theory}
-	= \text{quantum field theory} + \text{conformal symmetry}
-\end{equation}
-
-
-%\begin{equation}
-%	\text{CFT}
-%	= \text{QFT} 
-%	+ \text{Poincaré}
-%	+ \text{Lorentz}
-%	+ \text{scale}
-%	+ \text{special conformal symmetry}
-%\end{equation}
-where Poincaré symmetry means translations and Lorentz transformations (rotations and boosts)
-
-\begin{equation}
-	\text{conformal field theory}
-	= \text{relativistic quantum field theory} 
-	+ \text{scale}
-	+ \text{special conformal symmetry}
-\end{equation}
-
-most reviews focus first on conformal symmetry as a whole 
-``geometric'' approach to CFT
-
-for good reasons!
-but often makes it difficult to connect with standard understanding of relativistic quantum field theory that we have from particle physics
-
-things that are hard to connect to:
-- spectral representation, particles (is CFT a theory of massless particles? no!)
-- UV/IR divergences and anomalies
-these are precisely subjects that will be covered in these lectures
-
-peculiarity of these lecture notes:
-``algebraic'' approach to CFT
-review non-perturbative approach of QFT, then add scale and special conformal symmetry;
-``anatomical'' approach allows to understand what are the consequences of each of them
-
-
-
-
-%%%%
-
-possible motivation: study scale transformation to get Wilsonian RG
-
-why not local scale transformations that respect Poincare symmetry?
-
-Jacobian of conformal symmetry is composition of dilatation and rotation (see Rychkov's Lorentzian)
-
-%%%%
-
-massive $\phi^4$ theory in $d = 3$;
-statistical Ising model;
-critical point of boiling water (and other liquids);
-
-same critical exponents!
-
-universality of IR behavior is a hint that the space of CFTs is sparse
-
-unlike QFT, where you can always add/remove some operator in your favorite Lagrangian
-
-both Euclidean and Lorentzian!!!
-
-
-bootstrap philosophy: focus on CFT, not on microscopic details
-
-in the framework of quantum field theory, push mathematical understanding of conformal symmetry to the limit, with amazing results
-
-
-non-perturbative;
-in fact, another strong motivation to study CFT is that it gives a mathematically rigorous definition of a QFT (a special one, but anyway);
-no need for ``quantization'' of classical Lagrangian theory (in fact no classical limit!)
-
-%also sometimes the only approach: theory with $(2,0)$ extend supersymmetry in $d = 6$ dimensions
-
-
 
 \subsection{What is conformal field theory?}
 
-Introduction: What is CFT? Why is it useful. Examples of CFT. Where does it fit into modern theoretical physics.
+Conformal field theory is a quantum field theory with conformal symmetry:
+\begin{equation}
+	\text{conformal field theory}
+	= \text{quantum field theory} + \text{conformal symmetry},
+\end{equation}
+where under conformal symmetry we understand
+\begin{itemize}
+
+\item
+translations in time and space,
+
+\item
+rotations and Lorentz boosts,
+
+\item
+scale transformations, also known as dilatations,
+
+\item
+special conformal transformations.
+
+\end{itemize}
+The course will begin in section~\ref{sec:classical} with a precise definition of all these symmetries, even though the first two (the Poincaré symmetry) should be familiar from an elementary quantum field theory class, and you should even have heard of the importance of dilatations in the context of the \emph{renormalization group}.
+
+Most courses on CFT put the emphasis on conformal symmetry as a whole, which makes a lot of sense because it forms a group (more on this latter). However, this approach often requires to work in Euclidean space (we will see why), and the connection with quantum field theory as we know it appears very late in the course, if at all.
+
+Instead, in this lecture we would like to stay as close as possible to quantum field theory; in some sense, we will defined conformal field theory as
+\begin{equation}
+\begin{aligned}
+	\text{conformal field theory}
+	&= \text{relativistic quantum field theory} 
+	\\
+	& \quad
+	+ \text{scale symmetry}
+	\\
+	& \quad
+	+ \text{special conformal symmetry},
+\end{aligned}
+\end{equation}
+and go through this definition carefully.
+The first element is quantum field theory in flat Minkowski space-time. We have a good intuition of this part from particle physics. However, we do not want to restrict our attention to theories that have a nice classical limit and an understanding in terms of perturbation theory!
+Therefore, we will discuss in section~\ref{sec:quantum} the basics of a non-perturbative quantum field theory.
+Even though we care about unitary quantum field theory in Minkowski space-time, it will be useful to establish a connection with the same theory defined in flat Euclidean space. For this reason, we will work with the Minkowski metric convention
+\begin{equation}
+	\eta_{\mu\nu} = \left( \begin{array}{cccc}
+		-1 &&& \\ & 1 && \\ && \ddots & \\ &&& 1
+	\end{array} \right)_{\mu\nu},
+	\qquad\quad
+	\mu, \nu = 0, 1, \ldots, d-1,
+\end{equation}
+so that going from Minkowski space-time to Euclidean space will be achieved through a rotation of the time coordinate in the complex plane, $x^0 = t \to i \tau$.
+Since for us the space-time will always be flat (no matter whether Minkowski or Euclidean), we will raise and lower the indices at will.
+
+After giving a non-perturbative definition of relativistic quantum field theory, we will examine the role of scale symmetry. The main novelty here is that scale invariance forbids the presence of particles with a definite mass; instead, in a scale-invariant theory there are excitations of \emph{any} energy (unless we are in the very special case of a free theory).
+
+Finally, special conformal symmetry will be discussed last. The point is that it (nearly always) come along with scale symmetry. Nevertheless, it provides extremely powerful tools to understand the theory from a non-perturbative point of view. This will lead us to a comprehensive study of conformally-invariant correlation functions in section~\ref{sec:correlators}, and to the formulation of an \emph{operator product expansion} (OPE) that has very nice features in section~\ref{sec:OPE}.
+
+%- UV/IR divergences and anomalies 
+%these are precisely subjects that will be covered in these lectures
 
 
-in the last few years, CFT has been dominated by 
+\subsection{Why is conformal field theory interesting?}
 
-string theory: 2d CFT
+Nature is certainly not scale invariant, so why do we care so much about conformal field theory?
 
-holography: geometric approach
+First of all, scale transformations play an essential role in quantum field theory, even when this is not a symmetry of the theory. The Callan-Symanzik equation in renormalization is essentially a Ward identity associated with the (broken) scale symmetry. 
+We will see that conformal transformations can be viewed as a \emph{local} generalization of scale transformations, in which the rescaling factor is different at every point in space-time, while still being consistent with Poincaré symmetry.
 
-condensed matter physics: Euclidean
+We also know that all end points of renormalization group trajectories are described by scale-invariant fixed points, and it turns out that \emph{all} known fixed points are in fact conformally invariant. Therefore, conformal field theory is automatically relevant for the description of the low- and high-energy limits of any quantum field theory.
 
+But one of the main reasons why it is important to study conformal field theory now (or at least have a basic understanding of it) is that it has been yielding exciting results in the last 10-15 years. In section~\ref{sec:bootstrap}, we will give a short review of the  \emph{conformal bootstrap}, a technique that allows to completely solve conformal field theory in certain cases.
+Even though the modern conformal bootstrap was invented to solve a particle physics problem, its results so far have had more impact in condensed matter physics. There, the concept of \emph{universality} is playing a central role: it turns out that the critical exponents of very different systems coincide. This has a simple explanation from the fact that there are only ``few'' conformal field theories that can exist at all (at least once global symmetries are specified together with some information about what are the relevant operators). In other words, the space of all conformal field theories is sparse, unlike in QFT where it is always possible to add some new operator in a Lagrangian to slightly deform the theory.
+This concept is extremely successful in $d = 2$ and 3 dimensions, but there is also a big hope to classify all possible conformal field theories in $d = 4$ (or higher) dimensions. 
+This goal would have a huge impact also for QFT with scale dependence, because it would strongly constrain the possible renormalization group flow.
+But this is still a young field, and much more work needs to be done before anything like this can be claimed.
 
-here focus on the ``old'' quantum field theory approach
+Besides its importance in quantum field theory and condensed matter physics, conformal field theory has also given very nice insights into:
+\begin{itemize}
 
-links with: lattice, perturbation theory, etc.
+\item
+Quantum gravity, through the AdS/CFT correspondence.
 
-fun fact: the conformal bootstrap was invented by particle physicists
+\item
+String theory, as the worldsheet action is a CFT in $d = 2$.
 
+\item
+Foundations of quantum field theory beyond the perturbative approach.
+CFT admits a mathematically rigorous definition, which does not require to ``quantize'' a classical Lagrangian theory.%
+%
+\footnote{In fact there needs not be a classical limit; for instance, in $d = 6$ dimensions there exists a theory with $(2,0)$ extended supersymmetry for which no Lagrangian can be written down. The theory is known to exists from string theory arguments, and it has also been ``observed'' in a conformal bootstrap setup.}
+%
 
-\textbf{strongly-coupled QFT}
-
-no need for action principle
+\end{itemize}
 
 
 \subsection{Examples of conformal field theories}
 
+Conformal field theories are everywhere in physics, and not necessarily limited to very special situations. Here are some examples, some of which you may already have encountered:%
+%
 \begin{itemize}
 
 \item
-massless free theories
+Free massless theories are conformal. This is the case of the free boson and free fermion in any number of dimensions, but also of the $n$-form gauge theory in $d = 2n + 2$ dimensions (e.g.~the free vector theory in $d = 4$). The same is true of theories with any number of free fields.
 
 \item
-perturbative fixed points: example $\phi^n$ theory in non-integer $d$
+Theories in which the $\beta$-function admits a perturbative fixed points. Typical examples are deformations of the free scalar theory with a potential of the type $\phi^n$. For instance, consider
+\begin{equation}
+	S = \int d^dx \left[
+	- \frac{1}{2} \partial_\mu \phi \partial^\mu \phi
+	- \frac{g}{4!} \phi^4 \right].
+\end{equation}
+$g$ is dimensionless in $d = 4$ dimensions. If one considers the theory defined in $d = 4 - \varepsilon$ dimensions, then the beta function for $g$ is
+\begin{equation}
+	\beta_g = \mu \frac{dg}{d\mu}
+	= - \varepsilon + \frac{3g}{(4\pi)^2}
+	+ \mathcal{O}(g^2).
+\end{equation}
+It vanishes when
+\begin{equation}
+	\frac{g_*}{(4\pi)^2} = \frac{\varepsilon}{3}.
+\end{equation}
+Corrections of higher order in $g$ can be neglected in the limit $\varepsilon \ll 1$.
+There are similar fixed points for a $\phi^3$ interaction in $d = 6 + \varepsilon$ dimensions, of for a $\phi^6$ interaction around $d = 3$.
+
 
 \item
-some theories with extended supersymmetry, e.g.~$\mathcal{N} = 4$ Yang-Mills;
-generally engineer matter content to make beta function zero at leading order is sufficient thanks to non-renormalization theorems
+A similar type of fixed point can be found in the beta function of a $SU(N_c)$ gauge theory with $N_f$ fermions (in the fundamental representation), which is given at leading order in the gauge coupling $\alpha = g^2/(4\pi)^2$ by
+\begin{equation}
+	\beta_\alpha = \mu \frac{d\alpha}{d\mu}
+	= -\frac{2}{3} \alpha^2 \left(11 N_c - 2 N_f \right)
+	+ \mathcal{O}(\alpha^3).
+\end{equation}
+When $N_f = \frac{11}{2} N_c$, the leading order term in this beta function vanishes, so the next-to-leading term becomes important. Around that value, the first two terms are of similar importance, and one finds a perturbative fixed point of when $N_f \lesssim \frac{11}{2} N_c$. This is called the (Caswell-)Banks-Zaks fixed point. A theory in this situation is asymptotically free like QCD, but in the low-energy limit it approaches an interacting conformal field theory.
+For an $SU(3)$ gauge theory like QCD this critical value is at $N_f = 16.5$. There is strong evidence from lattice simulation that a theory with $N_f = 16$ is conformal. On the other hand a theory with low $N_f$ (QCD has only 3 light quarks) is clearly confining, meaning that its low-energy limit is a theory massless Goldstone bosons (if the quarks are massless), or of massive pions. There is a critical value $N_f^* \approx 12$ above which we expect an interacting conformal field theory in the low-energy limit. The domain $N_f^* \leq N_f \leq \frac{11}{2} N_c$ is called the \emph{conformal window}. Note that gauge theories with different gauge groups and/or fermions coupling differently to the gauge fields (i.e.~in different representations) can also have a conformal window. It is even possible to engineer gauge theories with perturbative UV fixed points using not only fermions but also scalars.
 
 \item
-Caswell-Banks-Zaks fixed points
-perturbative in some domains, not in other
+There are theories with extended supersymmetry in which the beta function is exactly zero at all orders in perturbation theory, for instance $\mathcal{N} = 4$ supersymmetric Yang-Mills. More generically, in theories with sufficiently many supersymmetries, it is often sufficient to engineer the matter content to make the beta function zero at leading order, and then non-renormalization theorems ensure their vanishing at all orders. Theories with conformal symmetry and supersymmetry are called \emph{superconformal}.
 
 \item
-truly non-perturbative fixed points: example of Ising model universality class, leading to bootstrap
+An example of truly non-perturbative fixed point in $d = 3$ dimensions is given by the following action:
+\begin{equation}
+	S = \int d^3x \left[
+	-\frac{1}{2} \partial_\mu \phi \partial^\mu \phi
+	- \frac{1}{2} m^2 \phi^2 - \frac{g}{4!} \phi^4 \right],
+\end{equation}
+in which $g > 0$ for the potential to be bounded below.
+Note that the free scalar field has mass dimension $\left[ \phi \right] = \frac{1}{2}$ in $d = 3$, and therefore
+\begin{equation}
+	\left[ m^2 \right] = 2,
+	\qquad\qquad
+	\left[ g \right] = 1.
+\end{equation}
+Since both $m^2$ and $g$ have positive mass dimensions, they are \emph{relevant} operators: they determine the dynamics in the low-energy limit (IR), but their importance decreases at higher and higher energies (UV): at energies $E \gg g, |m|$, this is approaches the theory of a massless free scalar.
+On the other hand, at low energies the physics depends obvioulsy on $g$ and $m$: when $m^2 \gg g^2$, it is a theory of a massive scalar of mass $m$, whereas when $m^2 \ll -g^2$, then the potential has two minima at
+\begin{equation}
+	\langle \phi \rangle = \pm \sqrt{- \frac{6m^2}{g}},
+\end{equation}
+with excitations fo mass $\sqrt{2} |m|$ around it. Clearly this theory has two phases, and there must therefore be an intermediate value of $m^2$ where the phase transition happens (or working in units set by $g$, a specific value of the dimensionless ratio $m^2/g^2$). Note that this theory has a $\mathds{Z}_2$ symmetry in the UV corresponding to $\phi \to -\phi$, which is spontaneously broken in one phase and not in the other.
+
+It turns out that the theory describing the IR physics exactly at the phase transition is a conformal field theory. Unlike the two phases surrounding it, it admits excitations of arbitrarily small energies (but they are not particles). How do we know that? Feynman diagram computations cannot be trusted in the IR: the approximation given by the (asymptotic) perturbative series is valid in the UV, but it breaks down in the IR, as in QCD. One way of understanding the phase transition is examining the theory in $d \neq 3$ dimensions: the same theory in $d = 4 - \varepsilon$ expansion has a perturbative fixed point, and computations at the fixed point can be performed in an expansion in $\varepsilon$. The value of the fixed point depends on the renormalization scheme, but there are other quantities that are scheme-independent. This is for instance the case of the anomalous dimension of the operator $\phi$.
+Using a 6-loop beta-function computation, one finds
+\begin{equation}
+	\gamma_\phi \approx 0.0182.
+\end{equation}
+This is more conveniently expressed as a \emph{scaling dimension} of $\phi$,
+\begin{equation}
+	\Delta_\phi = \frac{d-2}{2} + \gamma_\phi \approx 0.5182,
+\end{equation}
+which in position space describes how the correlation between two points decays with the distance
+\begin{equation}
+	\langle \phi(x) \phi(0) \rangle \propto |x|^{-2\Delta_\phi}.
+\end{equation}
+
+A surprising thing about this scaling dimension is that it coincides preciesely with that of a statistical physics model. The \emph{Ising model} is a theory of classical spins $s_i = \pm 1$ on a lattice with nearest-neighbor interactions, characterized by the Hamiltonian
+\begin{equation}
+	H = - J \sum_{\langle ij \rangle} s_i s_j.
+\end{equation}
+This model has a critical value of $J$ whose continuum limit is described by a CFT. At this value, Monte-Carlo simulations show that the correlation between two spins decay with the distance with power given by
+\begin{equation}
+	\Delta_s \approx 0.5181.
+\end{equation}
+The two theories have completely different microscopic descriptions: one is a quantum field theory describing particles in Minkowski space-time, the other a simple theory on a Euclidean lattice. 
+Even more surprisingly, the same critical exponent is found in other systems, such as the critical point of water and other liquids. This is an example of \emph{universality}.
+
+The explanation for this coincidence is that there are not many candidate conformal field theories to describe the phase transition of the $\phi^4$ theory and the Ising model. In fact, these two theories have in common:
+\begin{itemize}
 
 \item
-AdS/CFT: any theory in space with one more dimension and anti de-Sitter space geometry
+A global $\mathbb{Z}_2$ symmetry ($s_i \to - s_i$) that is broken in one phase and unbroken in the other;
+
+\item
+Exactly 2 relevant operators 
+(in addition to $J$ the Ising model can be parametrized in terms of a coupling to an external magnetic field $\delta H = - \mu \sum s_i$).
 
 \end{itemize}
+%
+The conformal bootstrap philosophy is quite different from the two examples above, in the sense that it does not care about the microscopic details of the theory: instead, it attempts to solve the conformal field theory that is expected to be there at the fixed point, based on symmetry arguments only. 
+We shall see that the conformal bootstrap can be used to show that there exists a unique conformal field theory with 2 relevant operators and a $\mathds{Z}_2$ symmetry, and that the scaling dimension of its leading operator is equal to
+\begin{equation}
+	\Delta_s \approx 0.5181489.
+\end{equation}
+In fact, the conformal bootstrap does not only establish that, but it gives access to the whole spectrum of operators in that conformal field theory.
+This is truly a success story of the bootstrap.
 
-use beyond CFT:
-correlators that have the isometries of the conformal group
-gravity in AdS
-but also late-time correlators in de Sitter
+\item
+Finally, another example of CFT is the family of theories obtained by considering a quantum field theory in $d+1$-dimensional anti de Sitter (AdS) space-time. AdS admits a compactification to a sphere with a boundary, and correlation functions on that boundary are isomorphic with that of a $d$-dimensional conformal field theory.
+A generic (e.g.~perturbative) theory in AdS gives rise to a CFT on the boundary that does not satisfy all the ordinary assumptions of a quantum field theory (for instance it does not have an energy-momentum tensor), but there is evidence that a theory that includes gravity does.
+Note that the same type of correspondence applies to late-time correlators in de Sitter space-time.
 
-\subsection{Outline}
-
-originally covered in 14 periods of 45 minutes each
-
-split into 7 chapters?
+\end{itemize}
 
 
 \subsection{Literature}
 
-
-excellent reviews, in order of relevance for the present course:
-
-
-modern reviews, by conformal bootstrap experts
+There a several excellent modern reviews on conformal field theory, and large parts of these lecture notes are directly inspired by them.
+The essentials are covered in the works of conformal bootstrap experts:
 \begin{itemize}
 
 \item
 Slava Rychkov's EPFL lectures
-\cite{Rychkov:2016iqz}
-also historical references
+\cite{Rychkov:2016iqz};
+this review also contains interesting historical comments.
 
 \item
 David Simmons-Duffin's TASI lectures
-\cite{Simmons-Duffin:2016gjk}
+\cite{Simmons-Duffin:2016gjk}.
 
 \item
 Shai Chester's Weizmann Lectures
-\cite{Chester:2019wfx}
-
+\cite{Chester:2019wfx}.
 
 \end{itemize}
-
-%%%%%%%%
-
-other modern CFT reviews:
-
+%
+Some other useful material can be found in:
+%
 \begin{itemize}
 
 \item
-state-of-the art
-\cite{Poland:2018epd}
+A review article on the state-of-the-art bootstrap methods~\cite{Poland:2018epd}.
 
 \item
-Hugh Osborn's course 
+Hugh Osborn's lecture notes at Cambridge, available at: \\ 
 \url{https://www.damtp.cam.ac.uk/user/ho/CFTNotes.pdf}
 
 \item
-Joshua Qualls \cite{Qualls:2015qjb}
+Joshua Qualls' lectures \cite{Qualls:2015qjb}.
 
 \end{itemize}
-
-%%%%%%%%
-
-most Euclidean CFT, for Lorentzian perspective:
+%
+The reviews mentioned above are all mostly focused on the Euclidean approach to CFT. For a Lorentzian perspective, see:
 \begin{itemize}
 
 \item
-Slava Rychkov's \emph{Lorentzian methods in conformal field theory}
-\url{https://courses.ipht.fr/node/226}
-
-%\item
-%Peskin Schroeder for spectral rep?
+Slava Rychkov's \emph{Lorentzian methods in conformal field theory}, available at \url{https://courses.ipht.fr/node/226}
+(\href{https://www.ipht.fr/Docspht/articles/t19/229/public/Lecture-notes-Rychkov-IPHT.pdf}{link} to the lecture notes)
 
 \end{itemize}
-
-%%%%%%%%
-
-focus on CFT in $d = 2$:
+%
+There are also modern reviews specifically on the topic of CFT in $d = 2$ dimensions:
 \begin{itemize}
 
 \item
-Sylvain Ribault \cite{Ribault:2014hia} \\
-also available on GitHub~\url{https://github.com/ribault/CFT-Review}
+Sylvain Ribault's notes~\cite{Ribault:2014hia}, 
+also accepting suggestions on GitHub: \\ 
+\url{https://github.com/ribault/CFT-Review}
 
 \item
-Schellekens ``Conformal Field Theory'' lecture notes~\cite{Schellekens:1996tg} \\
-recent version available at
-\url{https://www.nikhef.nl/\textasciitilde t58/CFT.pdf}
+Schellekens ``Conformal Field Theory'' lecture notes~\cite{Schellekens:1996tg}, and a recent version available at:
+\url{https://www.nikhef.nl/\textasciitilde t58/CFT.pdf}.
 
 \end{itemize}
-
-also older literature on the subject  in $d = 2$:
+More classical literature on the subject can be found in:
 \begin{itemize}
 
 \item
-Yellow book
-\cite{DiFrancesco:1997nk}
+The ``yellow book'' by Di Francesco, Mathieu, and Sénéchal
+\cite{DiFrancesco:1997nk}.
 
 \item
-Polchinski String theory vol. 1
-\cite{Polchinski:1998rq}
+Polchinski's \emph{String theory} vol.~1
+\cite{Polchinski:1998rq}.
 
 \item
-older lectures by Paul Ginsparg
-\cite{Ginsparg:1988ui}
-emphasis on statistical physics and string theory applications
+Lectures by Paul Ginsparg~\cite{Ginsparg:1988ui}.
+%emphasis on statistical physics and string theory applications
 
 \end{itemize}
-
-
-going further:
+%
+For theories combining supersymmetry and conformal symmetry:
 \begin{itemize}
 
 \item
-superconformal symmetry: Lorenz Eberhardt 
-\cite{Eberhardt:2020cxo}
+Lorenz Eberhardt's lecture notes 
+\cite{Eberhardt:2020cxo}.
 
 \end{itemize}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Classical conformal transformations}
+\label{sec:classical}
 
 One of the most fundamental principles of physics is independence of the reference frame: observers living at different points might have different perspectives, but the underlying physical laws are the same.
 This is true in space (invariance under translations and rotations), but also in space-time (e.g.~invariance under Lorentz boosts).
@@ -845,15 +897,15 @@ The fact that a quantum field theory defined on Minkowski space-time with \emph{
 %
 %condition for Weyl invariance is tracelessness of energy-momentum tensor
 
-
+\newpage
 \bibliography{Bibliography}
 \bibliographystyle{utphys}
 \end{document}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Quantum conformal symmetry}
-
+\section{Quantum field theory with conformal symmetry}
+\label{sec:quantum}
 
 Wightman axioms
 
@@ -1056,6 +1108,7 @@ show also that in the case $\Delta = \frac{d}{2}$ it is given by the phase space
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Conformal correlators}
+\label{sec:correlators}
 
 correlation functions aka Green's functions
 
@@ -1155,6 +1208,7 @@ invariant cross-ratios for 4-point functions
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{State-operator correspondence and OPE}
+\label{sec:OPE}
 
 
 goal of this section: prove state/operator correspondence heuristically, justifying a posteriori some facts assumed before
@@ -1270,6 +1324,7 @@ OPE reduces any higher-point function to 2-point
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{The conformal bootstrap}
+\label{sec:bootstrap}
 
 any CFT data defines a good theory? no!
 
@@ -1396,6 +1451,17 @@ note that unitarity is unnecessary: many non-unitary fixed points, yet they have
 
 \end{itemize}
 
+
+
+
+\begin{center}	
+	
+\parbox{11.8cm}{
+\emph{%
+[Courses] are fantastically good for learning physics. The lecturer learns a lot of physics. After my first few studies, just about everything I learned about physics came from teaching it. I don’t know if the students learned a lot, but I certainly did. So I consider teaching physics very important.}
+--- Leonard Susskind \cite{Susskind}}
+
+\end{center}
 
 
 \bibliography{Bibliography}
