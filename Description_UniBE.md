@@ -4,11 +4,11 @@ Course description
 Details
 -------
 
-Location: University of Bern
+Location: University of Bern, room ExWi 119
 
 14 periods x 45 minutes
 
-Tuesdays 14:00 - 16:00
+Tuesdays 14:15 - 16:00
 
 22.02 - 05.04.2022
 
