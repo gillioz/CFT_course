@@ -16,7 +16,7 @@
 
 \newcommand{\ket}[1]{\left| #1 \right\rangle}
 \newcommand{\bra}[1]{\left\langle #1 \right|}
-
+\newcommand{\Lagr}{\mathscr{L}}
 
 % double angle-bracket notation:
 %\makeatletter
@@ -446,9 +446,10 @@ The transformation
 \end{equation}
 is obviously a translation and
 \begin{equation}
-	x^\mu \xrightarrow{M} \omega^\mu_{~\nu} x^\nu
+	x^\mu \xrightarrow{M}
+	\left( \delta^\mu_\nu + \omega^\mu_{~\nu} \right) x^\nu
 \end{equation}
-a rotation/Lorentz transformation around the origin $x = 0$. The composition of these two operations generates the Poincaré group.
+a rotation/Lorentz transformation around the origin $x = 0$: the matrix $R^\mu_{~\nu} = \delta^\mu_\nu + \omega^\mu_{~\nu}$ satisfies $R^\mu_{~\alpha} g^{\alpha\beta} R^{T\nu}_\beta = g^{\mu\nu}$. The composition of these two operations generates the Poincaré group.
 This is the fundamental symmetry of space-time underlying all relativistic quantum field theory. It is a symmetry of nature to a very good approximation, at least up to energy scales in which quantum gravity becomes important.
 
 However, one can also consider the situation in which the two observers use different systems of units, i.e.~they disagree on the overall definition of scale, but agree otherwise on the metric being flat.
@@ -470,7 +471,7 @@ The new infinitesimal transformation is
 It is a scale transformation. Note that scale symmetry is not a good symmetry of nature: there is in fact a fundamental energy scale on which all observer must agree (this can be for instance chosen to be the mass of the electron).
 Nevertheless, there are some systems in which this is a very good approximate symmetry. One can also make very interesting \emph{Gedankenexperimente} that have scale symmetry built in. These are reasons that make it worth studying.
 
-If one pushes this logic further, in a scale-invariant world in which observers have no physical mean of agreeing on a fundamental scale, they might even decide to change their definition of scale as they walk around. This would correspond to the case in which the metric $g'_{\mu\nu}$ of one observer can differ from the original metric $g_{\mu\nu}$ by a function of space(-time):
+If one pushes this logic further, in a scale-invariant world in which observers have no physical mean of agreeing on a fundamental scale, they might even decide to change their definition of scale as they walk around, or as time passes. This would correspond to the case in which the metric $g'_{\mu\nu}$ of one observer can differ from the original metric $g_{\mu\nu}$ by a function of space(-time):
 \begin{equation}
 	g'_{\mu\nu}(x) = \Omega(x) g_{\mu\nu}.
 \end{equation}
@@ -481,7 +482,7 @@ The condition on $\varepsilon^\mu$ becomes in this case
 	+ \partial_\nu \varepsilon_\mu = 2 \sigma g_{\mu\nu},
 	\label{eq:conformalkillingeq}
 \end{equation}
-where $\Omega(x) = 1 + 2\sigma(x)$. To find the most general solution to this equation, note that contracting the indices with $g^{\mu\nu}$ gives
+where $\Omega(x) = e^{-2 \sigma(x)} \cong 1 - 2\sigma(x)$. To find the most general solution to this equation, note that contracting the indices with $g^{\mu\nu}$ gives
 \begin{equation}
 	\partial_\mu \varepsilon^\mu  = d \sigma,
 \end{equation}
@@ -520,7 +521,7 @@ We have therefore
 \end{equation}
 In addition to the transformations found before, we also find
 \begin{equation}
-	x^\mu \xrightarrow{K} 2 (b \cdot x) x^\mu - x^2 b^\mu,
+	x^\mu \xrightarrow{K} x^\mu +  2 (b \cdot x) x^\mu - x^2 b^\mu,
 \end{equation}
 which is a \emph{special conformal transformation}.
 If we examine the Jacobian for this transformation, we find
@@ -543,9 +544,9 @@ Eq.~\eqref{eq:conformalkillingeq} is sometimes called the (conformal) Killing eq
 
 Note that in our derivation the original metric $g_{\mu\nu}$ was flat, but the new metric $g'_{\mu\nu}$ is not. It is however conformally flat: it is always possible to make a change of coordinate after which it is flat. In general, transformations
 \begin{equation}
-	g_{\mu\nu}(x) \to \Omega(x)^2 g_{\mu\nu}(x)
+	g_{\mu\nu}(x) \to \Omega(x) g_{\mu\nu}(x)
 \end{equation}
-are called \emph{Weyl transformations}. They change the geometry of space-time. We found that any Weyl transformation which is at most quadratic in $x$ can be compensated by a change of coordinates to go back to flat space. The corresponding flat-space symmetry is called conformal symmetry.%
+are called \emph{Weyl transformations}. They change the geometry of space-time. We found that any Weyl transformation which is at most quadratic in $x$ can be compensated by a change of coordinates to go back to flat space. The corresponding flat-space transformation is called conformal transformation.%
 %
 \footnote{This implies that the group of conformal transformation is a subgroup of diffeomorphisms. It is in fact the largest \emph{finite-dimensional} subgroup.}% Rychkov (1.53)
 
@@ -568,7 +569,7 @@ In the Euclidean case we take
 	\qquad
 	\bar{z} = \frac{x^1 - i x^2}{2},
 \end{equation}
-complex-conjugate to each other, and the same logic follows: we can apply arbitrary holomorphic and anti-holomorphic transformations on $z$ and $\bar{z}$, and the conformal Killing equation is always satisfied. This shows that there are infinitely more conformal transformations in $d = 2$ than in $d > 2$, and also that there is no significant difference between two-dimensional Euclidean and Minkowski conformal symmetry, as the symmetry acts essentially on the two light-cone/holomorphic coordinates independently.
+complex-conjugate to each other, and the same logic follows: we can apply arbitrary holomorphic and anti-holomorphic transformations on $z$ and $\bar{z}$, and the conformal Killing equation is always satisfied. This shows that there are infinitely more conformal transformations in $d = 2$ than in $d > 2$, and also that there is no significant difference between Euclidean and Minkowski conformal transformation in $d = 2$, as the transformation acts essentially on the two light-cone/holomorphic coordinates independently.
 
 
 \subsection{The conformal algebra}
@@ -731,8 +732,7 @@ This can be used to show that
 \end{equation}
 
 \begin{exercise}
-	Use eq.~\eqref{eq:K:inversion} to show \eqref{eq:K:finite}.\\
-	\hint{Contract both sides of eq.~\eqref{eq:K:inversion} with $x_\mu$, $x'_\mu$ and $b_\mu$, and use the three equations that you get to solve for $x'^2$.}
+	Use eq.~\eqref{eq:K:inversion} to show \eqref{eq:K:finite}.
 \end{exercise}
 
 What do special transformation do globally?
@@ -806,7 +806,7 @@ $\varphi = 0$ is the north pole, corresponding to $r \to \infty$, and $\varphi =
 \end{equation}
 This shows that the metric is flat up to an overall Weyl factor that depends on $\varphi$.
 In these new coordinates, conformal transformations are always non-singular. 
-For this reason, it is often very convenient to study \emph{classical} conformal symmetry on the sphere $S^d$ instead of Euclidean space.
+For this reason, it is often very convenient to study \emph{classical} conformal transformations on the sphere $S^d$ instead of Euclidean space.
 
 However, this compactification is not as nice in a \emph{quantum} theory in which one wants to foliate the space along some direction: if one chooses $\varphi$ as the ``Euclidean time'', then the ``space'' direction is a sphere $S^{d-1}$ whose volume depends on $\varphi$. In other words, the generator of ``time'' translations is not a symmetry of the system. Being on a perfectly symmetric sphere, this is also true of any other choice of time direction.
 This is not forbidden, but it complicates vastly the analysis.
@@ -871,7 +871,7 @@ Time evolution on that cylinder is given by the Hamiltonian $H = \frac{1}{2} (P^
 The lesson that we need to learn from this is that only the infinitesimal form of special conformal transformation can be used in Minkowski space-time: \emph{any} finite special conformal transformation would bring part of space-time into another patch on the cylinder.
 This is sometimes called \emph{weak conformal invariance}.
 
-The fact that a quantum field theory defined on Minkowski space-time with \emph{weak conformal invariance} uniquely defines a quantum field theory on the Lorentzian cylinder with global conformal invariance is quite non-trivial. The proof was given by Martin Lüscher and Gerhard Mack in 1974 \cite{Luscher:1974ez}, both employed at the University of Bern at the time. In their own words:
+A quantum field theory defined on Minkowski space-time with weak conformal invariance uniquely defines a quantum field theory on the Lorentzian cylinder with global conformal invariance. This non-trivial fact was proven by Martin Lüscher and Gerhard Mack in 1974 \cite{Luscher:1974ez}, both employed at the University of Bern at the time. In their own words:
 
 \begin{center}
 
@@ -881,21 +881,240 @@ The fact that a quantum field theory defined on Minkowski space-time with \emph{
 \end{center}
 
 
-\subsection{The energy-momentum tensor}
+\subsection{Conformal symmetry in classical field theory}
+
+So far we have been discussing conformal transformations of the coordinates. The next step is to consider a field theory (for the moment a classical one) that has conformal symmetry built in. For this, consider a field theory defined by an action. The simplest example is the free scalar field theory
+\begin{equation}
+	S = \int d^dx
+	\left[ - \frac{1}{2} \partial_\mu \phi \partial^\mu \phi \right].
+	\label{eq:freescalaraction}
+\end{equation}
+We shall see in the next section that the action principle can in fact be dropped in the conformal field theory, but for now it is a convenient starting point.
+
+In this context, a conformal transformation is a transformation \emph{of the fields}.
+There are two different and complementary perspectives one can adopt. It is often convenient to think of the metric tensor as a field in its own right, and to define a conformal transformation as a (position-dependent) scale transformation of the field
+\begin{equation}
+	\phi(x) \to e^{\Delta \sigma(x)} \phi(x),
+	\label{eq:freescalar:conformaltransformation:1}
+\end{equation}
+combined with a Weyl transformation of the metric
+\begin{equation}
+	g_{\mu\nu}(x) \to e^{2 \sigma(x)} g_{\mu\nu}(x).
+	\label{eq:freescalar:conformaltransformation:2}
+\end{equation}
+$\Delta$ is the \emph{scaling dimension} of the field $\phi$. In a free theory it coincides with the engineering dimension of the field in units of energy (inverse units of length), namely
+\begin{equation}
+	\Delta = \frac{d-2}{2}.
+\end{equation}
+$\sigma(x)$ is an infinitesimal scale factor that satisfies $\partial^2 \sigma = 0$.
+The advantage of this perspective is that the conformal transformations are simple, multiplicative transformations of the fields. The disadvantage is that it requires thinking of theory in curved space-time. This means that the metric that is implicit in the action \eqref{eq:freescalaraction} must be made explicit. 
+%
+\begin{exercise}
+	Verify that the action \eqref{eq:freescalaraction}
+	is invariant under the infinitesimal conformal transformations
+	\eqref{eq:freescalar:conformaltransformation:1} and
+	\eqref{eq:freescalar:conformaltransformation:2},
+	after the explicit dependence on the curved-space metric 
+	has been taken into account in the contraction of Lorentz
+	indices and in the measure of integration.
+\end{exercise}
+%
+Moreover, the action could be augmented with a term depending on the scalar curvature tensor $R$ as
+\begin{equation}
+	S = \int d^dx
+	\left[ - \frac{1}{2} \partial_\mu \phi \partial^\mu \phi
+	+ \alpha R \phi^2 \right].
+\end{equation}
+Since $R$ vanishes in flat space, it looks like this additional term could appear with an arbitrary coefficient $\alpha$ without modifying the original flat-space action.
+
+For this reason, it is also convenient to consider the opposite perspective in which conformal transformations are transformations of the (dynamical) fields and of the coordinates, but not of the metric. In this case the conformal transformation can be defined as
+\begin{equation}
+	\phi(x) \to e^{\Delta \sigma(x)} \phi(x + \varepsilon),
+\end{equation}
+where the parameters $\sigma$ and $\epsilon$ are related by the conformal Killing equation \eqref{eq:conformalkillingeq}, e.g.~$d \sigma = \partial_\mu \varepsilon^\mu$. 
+In infinitesimal form, this transformation becomes
+\begin{equation}
+	\phi(x) \to \left[ 1
+	+ \frac{d-2}{2d} (\partial_\nu \varepsilon^\nu)
+	+ \varepsilon^\nu \partial_\nu \right] \phi(x).
+	\label{eq:freescalar:conformaltransformation:3}
+\end{equation}
+%
+\begin{exercise}
+	Show that under the transformation
+	\eqref{eq:freescalar:conformaltransformation:3},
+	the free scalar field Lagrangian
+	$$
+	\Lagr = - \frac{1}{2} \partial_\mu \phi \partial^\mu \phi,
+	$$
+	is shifted by a total derivative term
+	$$
+	\delta\Lagr = \partial_\mu \left( 
+	- \frac{1}{2} \varepsilon^\mu \partial_\nu \phi \partial^\nu \phi
+	- \frac{d-2}{2d} \partial_\nu \varepsilon^\nu
+	\phi \partial^\mu \phi \right),
+	$$
+	hence proving that this is a symmetry of the action.
+	You will need the fact that $\varepsilon$ is at most quadratic
+	in $x$.
+\end{exercise}
+Note that Poincaré symmetry is a special case of this transformation, corresponding to constant $\varepsilon$ (and thus $\sigma = 0$).
+
+By Noether's theorem, whenever an action is invariant under some transformation of the field
+\begin{equation}
+	\phi \to \phi + \delta_\varepsilon \phi,
+\end{equation}
+i.e.~whenever the Lagrangian varies by a total derivative term,
+\begin{equation}
+	\Lagr \to \Lagr + \partial_\mu \Lambda_\varepsilon^\mu,
+\end{equation}
+then there exists a conserved current
+\begin{equation}
+	J_\varepsilon^\mu = \Lambda^\mu_\varepsilon
+	- \frac{\partial \Lagr}{\partial (\partial_\mu \phi)}
+	\delta_\varepsilon \phi.
+\end{equation}
+In our example, this conserved current is therefore
+\begin{equation}
+	J_\varepsilon^\mu = \varepsilon_\nu
+	\left( \partial^\mu \phi \partial^\nu \phi
+	- \frac{1}{2} g^{\mu\nu} \partial_\rho \phi \partial^\rho \phi
+	\right)
+	\equiv \varepsilon_\nu T_c^{\mu\nu}.
+	\label{eq:Noethercurrent}
+\end{equation}
+The 2-index tensor on the right-hand side is called the \emph{canonical energy-momentum tensor}.
+Its divergence satisfies
+\begin{equation}
+	\partial_\nu T_c^{\mu\nu}
+	= \partial^\mu \phi \partial^2 \phi,
+	\label{eq:Tcanonical:conservation}
+\end{equation}
+therefore vanishing by the equation of motion for the free field, $\partial^2 \phi = 0$.
+This implies in turn that the Noether current \eqref{eq:Noethercurrent} is conserved \emph{for constant $\varepsilon$}.
+If on the contrary $\varepsilon$ depends on space(-time), then we have
+\begin{equation}
+	\partial_\mu J_\varepsilon^\mu
+	= (\partial_\nu \varepsilon_\mu) T_c^{\mu\nu}.
+\end{equation}
+In our example the canonical energy-momentum tensor is symmetric in its indices $\mu$ and $\nu$, and therefore we can write
+\begin{equation}
+	\partial_\mu J_\varepsilon^\mu
+	= \frac{1}{2} (\partial_\mu \varepsilon_\nu
+	+ \partial_\nu \varepsilon_\mu) T_c^{\mu\nu}
+	= \sigma g_{\mu\nu} T_c^{\mu\nu}
+	= -\frac{d-2}{2} \, \sigma \, \partial_\mu \phi \partial^\mu \phi.
+\end{equation}
+In dimensions $d > 2$, this current is only conserved when $\sigma = 0$. This is surprising, because we just showed that scale and special conformal transformations are also symmetries of the action, so why is the Noether current not conserved?
+
+The reason is that the version of Noether's theorem given above does not straightforwardly apply to the case of a space-time dependent parameter $\varepsilon$. In fact, the energy-momentum tensor that we computed in this example is not unique: one can always add to it a piece proportional to
+\begin{equation}
+	\left( \partial^\mu \partial^\nu - g^{\mu\nu} \partial^2 \right)
+	\phi^2,
+\end{equation}
+without affecting the conservation equation \eqref{eq:Tcanonical:conservation}, but changing the value of its trace. The combination
+\begin{equation}
+	T^{\mu\nu} = T^{\mu\nu}_c + \frac{d-2}{2(d-1)}
+	\left( \partial^\mu \partial^\nu - g^{\mu\nu} \partial^2 \right)
+	\phi^2
+\end{equation}
+is for instance traceless in any $d$.
+It turns out that it is always possible in a field theory with conformal symmetry to construct an energy-momentum tensor that is:
+\begin{itemize}
+\item symmetric ($T^{\mu\nu} = T^{\nu\mu}$),
+\item traceless ($g_{\mu\nu} T^{\mu\nu} = 0$), and
+\item conserved ($\partial_\nu T^{\mu\nu} = 0$) once the equation of motions are imposed.
+\end{itemize}
+This is a non-trivial fact, but we will skip its proof. As already mentioned, we are interested in theories that are not necessarily defined through an action.
+% \cite{Polchinski:1987dy}
+
+Strictly speaking, Noether's theorem only applies to theories that have a Lagrangian description, but we will assume the existence of a traceless energy-momentum tensor in all cases (in some sense this is going to be one of the ``axioms'' of conformal field theory).
+From this assumption, we can deduce that the theory is invariant under conformal transformations. A conserved current can always be built from the energy-momentum tensor and a conformal Killing vector $\varepsilon$ as
+\begin{equation}
+	J^\mu = \varepsilon_\nu T^{\mu\nu}
+	\qquad\Rightarrow\qquad
+	\partial_\mu J^\mu
+	= \varepsilon_\nu \partial_\mu T^{\mu\nu}.
+\end{equation}
+As always, conserved charges can be constructed as the integral of the time component of a conserved current over space. The simplest example is 
+\begin{equation}
+	P^\mu = -i \int d^{d-1}\vec{x}\, T^{0\mu}(x).
+	\label{eq:conservedcharge:P}
+\end{equation}
+This is a priori a function of $x^0$, but it is in fact constant in time, since
+\begin{equation}
+	\partial_0 P^\mu
+	= -i \int d^{d-1}\vec{x}\, \partial_0 T^{0\mu}(x)
+	= i \int d^{d-1}\vec{x}\, \partial_i T^{i\mu}(x) = 0.
+\end{equation}
+This conserved charge is the \emph{momentum}, associated with translation symmetry. Similarly, conserved charges associated with Lorentz transformations,
+\begin{equation}
+	M^{\mu\nu} = -i \int d^{d-1}\vec{x}\, \left[
+	x^\mu T^{0\nu}(x) - x^\nu T^{0\nu}(x) \right]
+	\label{eq:conservedcharge:M}
+\end{equation}
+with scale transformations,
+\begin{equation}
+	D = -i \int d^{d-1}\vec{x}\, x_\mu T^{0\mu}(x),
+	\label{eq:conservedcharge:D}
+\end{equation}
+and with special conformal transformations
+\begin{equation}
+	K^\mu = -i \int d^{d-1}\vec{x} \,
+	\left[ 2 x^\mu x_\nu T^{0\nu}(x) - x^2 T^{0\mu}(x) \right].
+	\label{eq:conservedcharge:K}
+\end{equation}
+%
+\begin{exercise}
+	Show that the charges \eqref{eq:conservedcharge:M},
+	\eqref{eq:conservedcharge:D} and \eqref{eq:conservedcharge:K}
+	are conserved in time.
+\end{exercise}
+
+Note that the conservation of all these charges relies on vanishing divergence of the energy-momentum tensor, $\partial_\nu T^{\mu\nu}$, which itself relies on the equation of motion being satisfied.
+This is certainly true in the absence of sources. But when source terms are added to the action, the equation of motion is modified.
+In our example of the free scalar field theory, this would correspond to adding to the action \eqref{eq:freescalaraction} a source term of the form
+\begin{equation}
+	S_\text{source} = \int d^dx \, J(x) \phi(x),
+\end{equation}
+which modifies the equation of motion to
+\begin{equation}
+	\partial^2 \phi + J = 0.
+\end{equation}
+Instead of the conservation equation \eqref{eq:Tcanonical:conservation} for the canonical energy-momentum tensor, we must replace it with
+\begin{equation}
+	\partial_\nu T^{\mu\nu}(x) = - J \partial^\mu \phi.
+\end{equation}
+In the presence of such a source, the charges \eqref{eq:conservedcharge:P}--\eqref{eq:conservedcharge:K} are not conserved anymore.
+However, let us assume that the source is local, say $J(x) = \delta^d(x - x_\odot)$, so that
+\begin{equation}
+	\partial_\nu T^{\mu\nu}(x) = -\delta^d(x - x_\odot)
+	\partial^\mu \phi(x_\odot).
+\end{equation}
+Then we determine the change in one of the charge --- say $P^\mu$ ---
+between a time $x^0 < x_\odot^0$ anterior to the local source, and a time $x^0 > x_\odot^0$ posterior to it, and call this difference the momentum of the source, $P_\mu(\phi_\odot)$. 
+By our definition, this is equal to
+\begin{equation}
+	P_\mu(\phi_\odot) = -i \int\limits_{\partial\Sigma} d^{d-1} n_\nu
+	T^{\mu\nu},
+\end{equation}
+where $\partial\Sigma$ is a codimension-one surface in $\mathds{R}^{1,d-1}$ that consists in two planes of constant $x^0$, joining at spatial infinity, and surrounding the point $x_\odot$.
+By the divergence theorem, this is equal to 
+\begin{equation}
+	P_\mu(\phi_\odot) = -i \int\limits_{\Sigma} d^dx \, \partial_\nu
+	T^{\mu\nu}
+	= i \int\limits_{\Sigma} d^dx \, J \partial^\mu \phi
+	= i \partial^\mu \phi(x_\odot).
+\end{equation}
+This equation says that the charge $P_\mu$ associated with a local source for the field $\phi$ is equal to $\partial^\mu \phi$. This is strikingly similar to the action of the generator \eqref{eq:P:fcts} on functions. In fact, it is easy to verify that the other charges \eqref{eq:conservedcharge:M}, \eqref{eq:conservedcharge:D}, and \eqref{eq:conservedcharge:K} also act on the classical field $\phi(x)$ exactly like the generators \eqref{eq:M:fcts}, \eqref{eq:D:fcts}, and \eqref{eq:K:fcts} respectively.
+
+We worked with the free scalar field theory example, but it is straightforward to generalized this to arbitrary classical field theories. This shows that a traceless energy-momentum tensor can be used to give a field-theoretical realization of the conformal generators discussed before.
+
+
+\section{Conformal quantum field theory}
+\label{sec:quantum}
 
 \ldots
-
-%classical field theory and action principle
-%
-%postulate that conformal transformation are a symmetry of the theory
-%
-%by Noether's theorem, this implies the existence of a conserved current
-%
-% energy-momentum tensor
-%
-%use the metric as source?
-%
-%condition for Weyl invariance is tracelessness of energy-momentum tensor
 
 \newpage
 \bibliography{Bibliography}
@@ -904,10 +1123,15 @@ The fact that a quantum field theory defined on Minkowski space-time with \emph{
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Quantum field theory with conformal symmetry}
-\label{sec:quantum}
+quantize the theory: promote field to operator acting on a Hilbert space;
+start with vacuum, and local operators
 
-Wightman axioms
+energy momentum tensor is used to define topological charges
+
+then Wightman axioms for other operators
+
+
+
 
 operators are not necessarily invariant under conformal symmetry, but they transform unitarily
 
@@ -931,6 +1155,14 @@ positivity of energy
 
 
 
+remark: energy momentum conservation is an \emph{operator equation}
+consequence: conservation of charge only away from operator insertions
+(see Simmons-Duffin)
+
+
+
+
+
 note: assuming symmetry are there at the quantum level, there exists a traceless energy-momentum tensor and generators of conformal transformations can be constructed from them
 
 (this only goes in one direction: given $T$, one can construct generators; but given the symmetry, Noether's theorem only gives a conserved current if there is a Lagrangian, it is unproven for non-lagrangian theories; additional condition of existence of energy-momentum tensor is sometimes called \emph{locality})
@@ -940,6 +1172,13 @@ but their commutators with local operators is local (see Simmons-Duffin)
 
 discuss connection with path integral formalism (in an exercise? or a parenthesis?)
 
+\begin{equation}
+	\phi(x) = e^{\pm i x \cdot P} \phi(0) e^{\mp i x \cdot P}
+\end{equation}
+is the integrated form of the commutator
+\begin{equation}
+	\left[ P^\mu, \phi(x) \right] = \ldots \partial^\mu \phi(x)
+\end{equation}
 
 \subsection{Non-perturbative QFT}
 
