@@ -17,6 +17,7 @@
 \newcommand{\ket}[1]{\left| #1 \right\rangle}
 \newcommand{\bra}[1]{\left\langle #1 \right|}
 \newcommand{\Lagr}{\mathscr{L}}
+\renewcommand{\O}{\mathcal{O}}
 
 % double angle-bracket notation:
 %\makeatletter
@@ -200,7 +201,7 @@ $g$ is dimensionless in $d = 4$ dimensions. If one considers the theory defined 
 \begin{equation}
 	\beta_g = \mu \frac{dg}{d\mu}
 	= - \varepsilon + \frac{3g}{(4\pi)^2}
-	+ \mathcal{O}(g^2).
+	+ \O(g^2).
 \end{equation}
 It vanishes when
 \begin{equation}
@@ -215,7 +216,7 @@ A similar type of fixed point can be found in the beta function of a $SU(N_c)$ g
 \begin{equation}
 	\beta_\alpha = \mu \frac{d\alpha}{d\mu}
 	= -\frac{2}{3} \alpha^2 \left(11 N_c - 2 N_f \right)
-	+ \mathcal{O}(\alpha^3).
+	+ \O(\alpha^3).
 \end{equation}
 When $N_f = \frac{11}{2} N_c$, the leading order term in this beta function vanishes, so the next-to-leading term becomes important. Around that value, the first two terms are of similar importance, and one finds a perturbative fixed point of when $N_f \lesssim \frac{11}{2} N_c$. This is called the (Caswell-)Banks-Zaks fixed point. A theory in this situation is asymptotically free like QCD, but in the low-energy limit it approaches an interacting conformal field theory.
 For an $SU(3)$ gauge theory like QCD this critical value is at $N_f = 16.5$. There is strong evidence from lattice simulation that a theory with $N_f = 16$ is conformal. On the other hand a theory with low $N_f$ (QCD has only 3 light quarks) is clearly confining, meaning that its low-energy limit is a theory massless Goldstone bosons (if the quarks are massless), or of massive pions. There is a critical value $N_f^* \approx 12$ above which we expect an interacting conformal field theory in the low-energy limit. The domain $N_f^* \leq N_f \leq \frac{11}{2} N_c$ is called the \emph{conformal window}. Note that gauge theories with different gauge groups and/or fermions coupling differently to the gauge fields (i.e.~in different representations) can also have a conformal window. It is even possible to engineer gauge theories with perturbative UV fixed points using not only fermions but also scalars.
@@ -1105,194 +1106,421 @@ By the divergence theorem, this is equal to
 	T^{\mu\nu}
 	= i \int\limits_{\Sigma} d^dx \, J \partial^\mu \phi
 	= i \partial^\mu \phi(x_\odot).
+	\label{eq:P:localsource}
 \end{equation}
 This equation says that the charge $P_\mu$ associated with a local source for the field $\phi$ is equal to $\partial^\mu \phi$. This is strikingly similar to the action of the generator \eqref{eq:P:fcts} on functions. In fact, it is easy to verify that the other charges \eqref{eq:conservedcharge:M}, \eqref{eq:conservedcharge:D}, and \eqref{eq:conservedcharge:K} also act on the classical field $\phi(x)$ exactly like the generators \eqref{eq:M:fcts}, \eqref{eq:D:fcts}, and \eqref{eq:K:fcts} respectively.
 
 We worked with the free scalar field theory example, but it is straightforward to generalized this to arbitrary classical field theories. This shows that a traceless energy-momentum tensor can be used to give a field-theoretical realization of the conformal generators discussed before.
 
+%note that scale invariance and unitarity generally imply that the trace of the energy-momentum tensor is zero; it can at most be derivative of virial current!
+% advanced exercise
+
 
 \section{Conformal quantum field theory}
 \label{sec:quantum}
 
-\ldots
+Let us now turn to quantum field theory and study the implications of conformal symmetry in that context. The most standard approach to quantum field theory is to think of a classical field theory, for which we now have a basic understanding of what conformal symmetry does, and then quantize it by promoting the fields to operators acting on some Hilbert space.
+But this is not the approach we will take here. There will still be states and operators, but the latter will not \emph{necessarily} be associated with fields appearing in a Lagrangian.
+
+\subsection{Non-perturbative quantum field theory}
+
+To define a quantum field theory non-perturbatively, we need the following ingredients:
+\begin{enumerate}
+
+\item
+The Minkowski space-time is foliated into surfaces of equal-time,
+and to each time slice we associate a Hilbert space of quantum states.
+This Hilbert space includes a vacuum state $\ket{0}$.
+
+\item
+There are a number of (in fact infinitely many) \emph{local} operators that act on this Hilbert space. For instance, let us take $\phi(x^0, \vec{x})$ to be an operator acting on the Hilbert space at time $t = x^0$.
+We call this operator \emph{local} in $\vec{x}$ because it commutes with any other local operators on the same time slice inserted at a point $\vec{x}' \neq \vec{x}$:
+\begin{equation}
+	\left[ \phi(x^0, \vec{x}), \phi(x^0, \vec{x}') \right]
+	= 0 
+	\qquad\qquad
+	\vec{x} \neq \vec{x}'.
+	\label{eq:locality:equaltime}
+\end{equation}
+
+\item
+One of the local operators of the theory is the energy-momentum tensor, and from it we can define conserved charges, including $P^\mu$ as in eq.~\eqref{eq:conservedcharge:P}. $P^\mu$ is conserved in time, so it is a good operator valid on all Hilbert spaces at any time $t$. 
+In particular, we shall assume that the vacuum state has zero charge,
+\begin{equation}
+	P^\mu \ket{0} = 0.
+	\label{eq:vacuuminvariance:P}
+\end{equation}
+The value of $P^\mu$ changes however every time an operator is inserted at some point $(x^0, \vec{x})$. In analogy with eq.~\eqref{eq:P:localsource}, this change is encoded in the commutator
+\begin{equation}
+	\left[ P^\mu, \phi(x) \right] = i \partial^\mu \phi(x).
+	\label{eq:commutator:P}
+\end{equation}
+This equation is solved by 
+\begin{equation}
+	\phi(x) = e^{-i x \cdot P} \phi(0) e^{i x \cdot P}.
+	\label{eq:P:exponentiated}
+\end{equation}
+Note that while $P^\mu$ is not a local operator, its commutator with any local operator is again local.
+
+Since $P^\mu$ is Hermitian (this can be seen from \eqref{eq:commutator:P} in the case of a Hermitian local operator $\phi$), this equation indicates that translations are represented by a unitary operator on the Hilbert space.
+This is true both of space- and time-translations, and therefore the Hamiltonian that defines the time-evolution of states is $P^0$: a state $\ket{\Psi}$ defined at time $t = 0$ is translated to another state at time $t$ by 
+\begin{equation}
+	\ket{ \Psi}_t = e^{i t P^0} \ket{ \Psi}.
+\end{equation}
+Since time evolution is unitary, the Hilbert space will be the same on all surfaces.
+
+\item
+Lorentz transformations are similarly realized as unitary transformations of the Hilbert space. The charge $M^{\mu\nu}$ associated with Lorentz symmetry is again a conserved operator whose commutator with any local operator can be expressed as another local operator. If we choose to decompose a local operator inserted at the origin of space-time into irreducible representations of the Lorentz group and denote these with $\phi^a(0)$, $a$ collectively denoting some Lorentz indices, then we must have
+\begin{equation}
+	\left[ M^{\mu\nu}, \phi_a(0) \right]
+	= i \left( \mathcal{S}^{\mu\nu} \right)_{ab} \phi^b(0),
+\end{equation}
+where $\left( \mathcal{S}^{\mu\nu} \right)_{ab}$ is a matrix that satisfies the $SO(1, d-1)$ algebra. It vanishes for a scalar operator. For a vector operator with one Lorentz index, it is given by
+\begin{equation}
+	\left( \mathcal{S}^{\mu\nu} \right)_{\alpha\beta}
+	= \delta^\mu_\alpha \delta^\nu_\beta
+	- \delta^\mu_\beta \delta^\nu_\alpha.
+\end{equation}
+When combined with eq.~\eqref{eq:P:exponentiated}, this implies
+\begin{equation}
+	\left[ M^{\mu\nu}, \phi^a(x) \right] = 
+	i \left( x^\mu \partial^\nu - x^\nu \partial^\mu \right) \phi^a(x)
+	+ i \left( \mathcal{S}^{\mu\nu} \right)^a_{~b} \phi^b(0).
+	\label{eq:commutator:M}
+\end{equation}
+As with translations, we shall also assume that the vacuum is invariant under rotations, namely
+\begin{equation}
+	M^{\mu\nu} \ket{0} = 0.
+\end{equation}
+The fact that the quantum theory is Poincaré invariant implies that the locality condition \eqref{eq:locality:equaltime} can be rewritten as
+\begin{equation}
+	\left[ \phi(x), \phi(y) \right] = 0
+	\qquad
+	\text{if}~(x-y)^2 > 0.
+	\label{eq:causality}
+\end{equation}
+In other words, local operators commute as long as they are space-like separated.
+
+\item
+Finally, the last condition has to do with the positivity of energy.
+Working in a basis of eigenstates of energy and momentum, 
+\begin{equation}
+	P^\mu \ket{p} = p^\mu \ket{p},
+\end{equation}
+then we require $p^0 \geq 0$. Since this must be true in any Lorentz frame, $p$ must be contained inside the forward light-cone, i.e.
+\begin{equation}
+	p^0 \geq \left| \vec{p} \right|
+	\qquad \Leftrightarrow \qquad
+	p^2 < 0 ~\text{and}~ p^0 > 0.
+	\label{eq:forwardcone}
+\end{equation}
+This gives a strong constraint on local operators: eigenstates of $P^\mu$ can be constructed taking the Fourier transform of a local operator acting on the vacuum,
+\begin{equation}
+	\widetilde{\phi}(p) \ket{0}
+	= \int d^dx \, e^{i p \cdot x} \phi(x) \ket{0}.
+	\label{eq:momentumspace}
+\end{equation}
+
+\end{enumerate}
+%
+\begin{exercise}
+	Using eq.~\eqref{eq:P:exponentiated}, show that 
+	$$ 
+		P^\mu \widetilde{\phi}(p) \ket{0}
+		= p^\mu \widetilde{\phi}(p) \ket{0} 
+	$$
+\end{exercise}
+%
+Note that the operators $P^\mu$ and $M^{\mu\nu}$ are in fact topological charges (they can be defined on any codimension-1 surfaces, not only time slices), so the commutation relations \eqref{eq:commutator:P} and \eqref{eq:commutator:M} can be motivated in \emph{any} quantization of the theory, including on the Lorentzian cylinder with Hamiltonian $\frac{1}{2}(P^0 - K^0)$.
+The points 1 to 4 in the list above can actually directly be used to define a Euclidean quantum field theory.
+However, it is obvious from point 5 that the generator $P^0$ plays a special role in quantum field theory in Minkowski space-time: not all of the conformal generators are treated on the same footing.%
+%
+\footnote{On the other hand the existence of the conserved charge $M^{\mu\nu}$ is not needed: one can for instance consider quantum field theories in which the boost symmetry is broken}.
+
+These five points are essentially the most general definition a non-perturbative quantum field theory. They are nearly in one-to-one correspondence with the so-called \emph{Wightman axioms}. The only difference (besides the level of mathematical rigor) is that the Wightman axioms do not rely on the existence of an energy-momentum tensor, but assume directly that the Poincaré transformations are realized as unitary transformations on the Hilbert space.
+
+\subsection{Wightman functions}
+
+With these axioms in mind, the next thing we can do is compute the vacuum expectation value of products of local operators,
+\begin{equation}
+	\bra{0} \phi_1(x_1) \cdots \phi_n(x_n) \ket{0}.
+\end{equation}
+This can be viewed as an overlap of the vacuum state ($\bra{0}$) with a  state created acting on the vacuum with a sequence of local operators. Note that these operators need not be time-ordered: the time evolution operator is unitary, so it can go both ways. This is in stark contrast with time-ordered correlation functions obtained from the path integral.
+
+Correlators of this type are called \emph{Wightman functions}. They are really the fundamental observables in non-perturbative quantum field theory. In fact, it is even possible to completely define a quantum field theory just by its Wightman functions: the \emph{Wightman reconstruction theorem} states that the Hilbert space of a quantum field theory can be constructed from all its Wightman function.
+A convenient perspective is therefore to forget about the Hilbert space and focus on correlation functions.
+
+Symmetry is encoded in this correlation functions in the form of Ward identities. Given a conserved charge $G$ that annihilates the vacuum, $G \ket{0} = 0$ (this could be $P^\mu$ or $M^{\mu\nu}$), the following equation must be satisfied
+\begin{align}
+	& \bra{0} \left[ G, \phi_1(x_1) \right] \phi_2(x_2) \cdots 
+	\phi_n(x_n) \ket{0}
+	\nonumber \\
+	& + \bra{0} \phi_1(x_1) \left[ G, \phi_2(x_2) \right] \cdots 
+	\phi_n(x_n) \ket{0}
+	\nonumber \\
+	& + \ldots
+	\nonumber \\
+	& + \bra{0} \phi_1(x_1) \, \phi_2(x_2) \cdots 
+	\left[ G, \phi_n(x_n) \right] \ket{0} = 0.
+\end{align}
+This is an equation that is obvious in the Hilbert space picture, but it is also valid as a differential equation for the Wightman function, since each commutator is again related to the local operator. Let us consider some examples
+
+The simplest Wightman function is that involving a single scalar local operator, 
+\begin{equation}
+	\bra{0} \phi(x) \ket{0}.
+\end{equation}
+In this case the Ward identity associated with translations implies
+\begin{equation}
+	\frac{\partial}{\partial x^\mu}
+	\bra{0} \phi(x) \ket{0} = 0,
+\end{equation}
+or in other words that the vacuum expectation value of the operator is a constant over all of space-time. Lorentz symmetry does not give more information about that constant, but it forbids a vacuum expectation value for any operator transforming non-trivially under the Lorentz group.
+
+Let us consider next a Wightman 2-point function of identical scalar operators,
+\begin{equation}
+	\bra{0} \phi(x) \phi(y) \ket{0}.
+\end{equation}
+In this case, translation symmetry tells us that
+\begin{equation}
+	\left( \frac{\partial}{\partial x^\mu}
+	+ \frac{\partial}{\partial y^\mu} \right)
+	\bra{0} \phi(x) \phi(y) \ket{0}.
+\end{equation}
+If we think of the correlator as being a function of $x + y$ and $x - y$, then this Ward identities establishes that there is no dependence on the former, i.e.~
+\begin{equation}
+	\bra{0} \phi(x) \phi(y) \ket{0} = f(x - y).
+\end{equation}
+
+In general, the consequences of translation symmetry are easier to see in momentum space, using the Fourier transform \eqref{eq:momentumspace} of the local operators. By this very definition, we can establish that
+\begin{equation}
+	\big[ P^\mu, \widetilde{\phi}(p) \big]
+	= p^\mu \, \widetilde{\phi}(p),
+\end{equation}
+and therefore the Fourier transform of the Wightman 2-point function obeys
+\begin{equation}
+	(p^\mu + q^\mu)
+	\bra{0} \widetilde{\phi}(p) \widetilde{\phi}(q) \ket{0}.
+\end{equation}
+From this, we conclude that
+\begin{equation}
+	\bra{0} \widetilde{\phi}(p) \widetilde{\phi}(q) \ket{0}
+	\propto \delta^d(p + q).
+\end{equation}
+
+Taking into account Lorentz symmetry, one can also establish that the 2-point function in position space must only depend on the invariant distance $(x - y)^2$ between the two points, although there are subtleties associated to possible light-cone crossings (see below). In momentum space, the delta function in $p + q$ also multiplies a function $\rho$ of the only Lorentz invariant $q^2$ (or equivalently $p^2$).
+When combined with the condition that only states of positive energy can exist, we deduce (up to factors of $2 \pi$ that are purely conventional)
+\begin{equation}
+	\bra{0} \widetilde{\phi}(p) \widetilde{\phi}(q) \ket{0}
+	= (2\pi)^{d+1} \delta^d(p + q)
+	\theta\left( q^0 - \left| \vec{q} \right| \right) \rho(-q^2).
+	\label{eq:spectraldensity}
+\end{equation}
+
+This result is in fact raising an important point (also part of the Wightman axioms): in spite of their names, Wightman functions are \emph{not} functions but rather distributions. The above 2-point function computes in fact the overlap between the two states (note that the Hermitian conjugation flips the sign of momenta)
+\begin{equation}
+	\widetilde{\phi}(q) \ket{0}
+	\qquad\text{and}\qquad
+	\widetilde{\phi}(-p) \ket{0},
+\end{equation}
+and therefore one would expect that it computes the norm of this state in the limit $p \to q$. However, this limit is clearly discontinuous, or the norm of the state infinite.
+
+The resolution of this issue is that the objects $\phi(x)$ and its Fourier transform $\widetilde{\phi}(p)$ are not operators, but rather \emph{operator-valued distributions}. In other words, $\phi(x) \ket{0}$ is \emph{not} a state of the theory, as it has in fact infinite norm (see example below). Formally, these operator-valued distributions only make sense when they are integrated against test functions, defining
+\begin{equation}
+	\phi[f] = \int d^dx \, f(x) \phi(x),
+\end{equation}
+or 
+\begin{equation}
+	\widetilde{\phi}[\tilde{f}] = \int d^dp \, \tilde{f}(p)
+	\widetilde{\phi}(p),
+\end{equation}
+where $f$ and $\widetilde{f}$ are Schwartz-class test functions (i.e.~functions decaying faster than any power at infinity).
+When acting on the vacuum, these smeared states give well-defined states, with finite norms. For instance, we have
+\begin{align}
+	\left\| \widetilde{\phi}[\tilde{f}] \ket{0} \right\|^2
+	&= \int d^dp d^dq \tilde{f}^*(p) \tilde{f}(q)
+	\bra{0} \widetilde{\phi}(p) \widetilde{\phi}(q) \ket{0}
+	\nonumber \\
+	&= 2\pi
+	\int\limits_{q^0 > \left| \vec{q} \right|} \!\!
+	d^dq \left| \tilde{f}(q) \right|^2
+	\rho(-q^2).
+	\label{eq:norm}
+\end{align}
+Test functions won't appear in these lectures anymore. For physicists, this is mostly an annoyance that we prefer to avoid. However, it is important to know that there exists a mathematically rigorous way of dealing with Wightman functions.
+For one thing, this gives a proper justification of why it is always fine to take the Fourier transform way and back between the position- and momentum-space representation, at least as long as we are dealing with Wightman functions.
+
+% more details needed on this
+
+\subsection{Spectral representation}
+
+The norm \eqref{eq:norm} is also giving away important information: is is positive if and only if the function $\rho$ is positive for any $-q^2 > 0$. This is not an accident: the function $\rho$ is in fact the \emph{spectral density} encountered in standard quantum field theory textbooks, where we can often find it in the form
+\begin{equation}
+	\bra{0} \phi(x) \phi(y) \ket{0}
+	= 2\pi \int \frac{d^dk}{(2\pi)^d}
+	\int\limits_0^\infty d\mu^2 \,
+	e^{i k \cdot (x - y)} \theta(k^0) 
+	\delta(k^2 + \mu^2) \rho(\mu^2).
+	\label{eq:spectralrepresentation}
+\end{equation}
+\begin{exercise}
+	Verify that this expression matches eq.~\eqref{eq:spectraldensity}
+	upon Fourier transforming in $x$ and $y$.
+\end{exercise}
+The spectral representation is also used to construct the time-ordered correlation function
+\begin{equation}
+	\langle \phi(x) \phi(y) \rangle_T
+	\equiv 
+	\theta(x^0 - y^0) \bra{0} \phi(x) \phi(y) \ket{0}
+	+ \theta(y^0 - x^0) \bra{0} \phi(y) \phi(x) \ket{0}.
+\end{equation}
+Unlike the Wightman function, this is not a tempered distribution, because the $\theta$ functions are not differentiable at the origin.
+Nevertheless, the time-ordered product admits the simple representation
+\begin{equation}
+	\langle \phi(x) \phi(y) \rangle_T
+	= \int \frac{d^dk}{(2\pi)^d}
+	\int\limits_0^\infty d\mu^2 \,
+	e^{i k \cdot (x - y)}
+	\frac{-i \rho(\mu^2)}
+	{k^2 + \mu^2 - i \varepsilon}
+\end{equation}
+to be understood in the limit $\varepsilon \to 0_+$.
+This is the \emph{Källen-Lehmann} representation for the time-ordered 2-point function.
+%
+\begin{exercise}
+	Derive the Källen-Lehmann representation starting from
+	eq.~\eqref{eq:spectralrepresentation}.
+%	\begin{align*}
+%		\bra{0} & \phi(x) \phi(y) \ket{0}
+%		\nonumber \\
+%		&= \int \frac{d^dk}{(2\pi)^d}
+%		\int\limits_0^\infty d\mu^2 \,
+%		e^{i k \cdot (x - y)} \theta(k^0) 
+%		\left[ \frac{i}{k^2 + \mu^2 + i \varepsilon}
+%		- \frac{i}{k^2 + \mu^2 - i \varepsilon} \right]
+%		\rho(\mu^2).
+%	\end{align*}
+\end{exercise}
+%
+In the theory of a free, massive scalar field, the spectral density obeys
+\begin{equation}
+	\rho(\mu^2) = \delta(\mu^2 - m^2),
+\end{equation}
+and therefore
+\begin{equation}
+	\bra{0} \phi(x) \phi(y) \ket{0}
+	= \int \frac{d^dk}{(2\pi)^d}
+	e^{i k \cdot (x - y)}
+	\frac{-i}
+	{k^2 + m^2 - i \varepsilon}
+\end{equation}
+is the ordinary propagator for a massive field.
+
 
 \newpage
 \bibliography{Bibliography}
 \bibliographystyle{utphys}
 \end{document}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-quantize the theory: promote field to operator acting on a Hilbert space;
-start with vacuum, and local operators
+%%%%%%%%
 
-energy momentum tensor is used to define topological charges
 
-then Wightman axioms for other operators
+discuss connection with path integral formalism: time-ordered correlation functions
 
 
 
 
-operators are not necessarily invariant under conformal symmetry, but they transform unitarily
-
-unitary representations on Hilbert space
-
-(e.g.~pair of point-like particle
-
-no action principle
-(i.e.~no need for ``quantization'')
-
-
-only deal with \textbf{local} operators
-
-warning about meaning of locality: related to causality?
-
-
-
-generator of translations plays a special role: energy and momentum vector
-
-positivity of energy 
-
-
-
-remark: energy momentum conservation is an \emph{operator equation}
-consequence: conservation of charge only away from operator insertions
-(see Simmons-Duffin)
-
-
-
-
-
-note: assuming symmetry are there at the quantum level, there exists a traceless energy-momentum tensor and generators of conformal transformations can be constructed from them
-
-(this only goes in one direction: given $T$, one can construct generators; but given the symmetry, Noether's theorem only gives a conserved current if there is a Lagrangian, it is unproven for non-lagrangian theories; additional condition of existence of energy-momentum tensor is sometimes called \emph{locality})
-
-these generators are non-local!
-but their commutators with local operators is local (see Simmons-Duffin)
-
-discuss connection with path integral formalism (in an exercise? or a parenthesis?)
-
-\begin{equation}
-	\phi(x) = e^{\pm i x \cdot P} \phi(0) e^{\mp i x \cdot P}
-\end{equation}
-is the integrated form of the commutator
-\begin{equation}
-	\left[ P^\mu, \phi(x) \right] = \ldots \partial^\mu \phi(x)
-\end{equation}
-
-\subsection{Non-perturbative QFT}
-
-%\subsection{Hilbert space(s)}
-
-take $P^0$ as the Hamiltonian
-
-space-time is foliated by surfaces of equal time
-
-each equal-time surface has a Hilbert space; evolution between different surfaces at times $t_1$ and $t_2$ is given by the unitary evolution operator $U = e^{\pm i (t_1 - t_2) P^0}$
-
-because of time-translation symmetry, the Hilbert space is the same on each surface!
-
-states characterized by energy and momentum: $P^\mu \ket{p} = p^\mu \ket{p}$
-
-there is a unique vacuum state: $\ket{0}$
-
-there are local operators: an infinity of them
-example: free scalar theory
-
-%\subsection{Wightman functions}
-
-
-$\phi(x)$ are not operators, but operator-valued distributions
-
-smeared operator $\phi[f]$ have finite norm; $\phi(x)$ don't
-
-but don't worry for the rest of these lectures
-
-
-positivity of norm of smeared operators implies positivity of thing multiplying delta function!
-
-
-
-
-good observable: Wightman correlation function
-(note: operator need not be time-ordered; time evolution is unitary, so it can go both ways!)
-
-operators define correlation functions, but the opposite is also true (Wightman reconstruction theorem); so use the latter and forget about Hilbert space
-
-
-
-but then lose connection with path integral formulation: this gives time-ordered correlation functions!
-
-
-
-representation theory: follow Shester's notes
-commutation relations for infinitesimal transformations
-exponentiated form is an abstract unitary operator
-
-forget about unitary rep of SCT: only act on Lorentz cylinder, infinite cover of Minkowski space-time; we know this rep exists
-but keep infinitesimal form
-
-
-
-
-Wigner construction: use reference momentum
-
-
-generator of Lorentz transformation can be diagonalize at a point: the origin of space-time
-
-get the action of $M^{\mu\nu}$ at arbitrary point
-
-
-
-conformal Ward identities
-
-
-
-%\subsection{Spectral representation}
-
-operator vs.~field
 
 \subsection{Scale symmetry}
 
-action of generator of translations
+since generator $D$ commutes with $M^{\mu\nu}$, it is always possible to diagonalize it at point $x = 0$
+\begin{equation}
+	\left[ D, \phi(0) \right] = 
+\end{equation}
 
-no mass (often said)
+implies
+\begin{equation}
+	\left[ D, \phi(x) \right] = 
+\end{equation}
 
-or better said: all masses!
+equivalent to transformation rule for the field in the Lagrangian?
 
-reference vector, then construct spectral density
+compute conformal generators in momentum-space representation
+
+impose and get result for spectral density
+
+keep coefficient arbitrary so far
+
+use Källen-Lehman representation to get time-ordered 2-point function
+
+fix the coefficient to be one there
 
 
-remark: only operator that is a scalar with scaling dimension zero can have a one-point function
+unitarity bound
 
 
 
-\subsection{Special conformal symmetry}
+show that the spectral density in the case $\Delta = \frac{d}{2} - 1$ is that of a free scalar field;
 
-note: finite special conformal transformations brings us outside of Minkowski space-time;
-but no need for them: only infinitesimal form
+show also that in the case $\Delta = \frac{d}{2}$ it is given by the phase space of two massless particle states (see Rychkov eq. 1.13)
 
-special conformal generator implies two things:
 
-primary and descendant operators
+
+
+interpretation:
+operator vs.~field;
+often said that CFT is a theory of massless excitations: true, but also of all masses
+
+
+similar to Wigner construction of particle of mass $m$: use reference momentum
+
+
+then Fourier transform back to position space, and get ordinary propagator;
+verify that the constant is positive for all $\Delta$
+
+fix coefficient to be one in position space
+
+
+consequence: 
+one-point functions vanish unless operator has scaling dimension 0?
+
+only identity!
+
+exercise show that scaling dim of $T^{\mu\nu}$ is $d$
+
+
+
+\subsection{Conformal symmetry}
+
+$P^\mu$ raises scaling dimension, $K^\mu$ lowers it
+
+if bounded, there must be an operator that is annihilated by $K^\mu$:
+
+declare this to be a \emph{primary} operator, with
+\begin{equation}
+	\left[ K^\mu, \phi(0) \right] = 0
+\end{equation}
+
+get general case
+\begin{equation}
+	\left[ K^\mu, \phi(x) \right] = \ldots
+\end{equation}
+
 
 special condition on 2-point function of primary operators: that they have identical scaling dimensions
 
+use this to diagonalize space of operators (usually possible)
 
-%%%%%%%
-
-note that scale invariance and unitarity generally imply that the trace of the energy-momentum tensor is zero: then Hamiltonian is invariant under change of the metric $\delta g_{\mu\nu} = \sigma(x) \eta_{\mu\nu}$,
-\begin{equation}
-	\delta H = \int d^dx \, T_{\mu\nu} \delta g^{\mu\nu}
-	= \int d^x \, \sigma(x) T^\mu_\mu = 0
-\end{equation}
-invariance under infinitesimal Weyl transformations 
-
-note that $T_{\mu\nu}$ is only defined in flat space, or rather that it acquires a vacuum expectation value in curved space: the Weyl anomaly
-so let us only consider Weyl transformations that do not change the geometry of space-time: those that are equivalent to a coordinate transformation (a diffeomorphism)
+this proves a posteriori many assumptions made before
 
 
-exercise: compute conformal generators in momentum-space representation
+
+also: for spinning operators, gives more unitarity bounds
+
+give explicitly result for vector
+
+exercise: do the same for 2-index symmetric, traceless tensor
+
 
 
 Mack's classification in 4d
@@ -1302,51 +1530,9 @@ representation: long and short multiplets!
 
 
 
-%%%%
-
-compare this with Slava's approach:
-
-organize operators into representation of conformal group:
-
-call some operators \emph{primary}
-
-operators are local, which mean that they do not feel the effect of the transformation of the metric, or only through coordinate dependence:
-$\phi(x) \to \phi(x') = \Omega(x)^{-\Delta} \phi(x)$
-
-note: if $\phi$ transforms like this, then $\partial_\mu \phi(x)$ does not! call it a \emph{descendant}
-
-
-comment on scale vs.~conformal invariance
-
-correlation functions:
-
-no need for action principle
-
-
-\subsection{Time-ordered products and path integrals}
-
-
-%use Simmons-Duffin intro
-
-
-\subsection{The energy-momentum tensor}
-
-
-locality
-
-allows to construct conformal charges
-
-
-\subsection{Exercises}
-
-show that the spectral density in the case $\Delta = \frac{d}{2} - 1$ is that of a free scalar field;
-
-show also that in the case $\Delta = \frac{d}{2}$ it is given by the phase space of two massless particle states (see Rychkov eq. 1.13)
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Conformal correlators}
+\section{3- and 4-point correlation functions}
 \label{sec:correlators}
 
 correlation functions aka Green's functions
