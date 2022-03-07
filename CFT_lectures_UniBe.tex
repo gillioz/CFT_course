@@ -18,6 +18,7 @@
 \newcommand{\bra}[1]{\left\langle #1 \right|}
 \newcommand{\Lagr}{\mathscr{L}}
 \renewcommand{\O}{\mathcal{O}}
+\DeclareMathOperator{\im}{\text{im}}
 
 % double angle-bracket notation:
 %\makeatletter
@@ -907,7 +908,7 @@ $\Delta$ is the \emph{scaling dimension} of the field $\phi$. In a free theory i
 \begin{equation}
 	\Delta = \frac{d-2}{2}.
 \end{equation}
-$\sigma(x)$ is an infinitesimal scale factor that satisfies $\partial^2 \sigma = 0$.
+$\sigma(x)$ is an infinitesimal scale factor that satisfies $\partial_\mu \partial_\nu \sigma = 0$.
 The advantage of this perspective is that the conformal transformations are simple, multiplicative transformations of the fields. The disadvantage is that it requires thinking of theory in curved space-time. This means that the metric that is implicit in the action \eqref{eq:freescalaraction} must be made explicit. 
 %
 \begin{exercise}
@@ -1288,8 +1289,10 @@ In this case, translation symmetry tells us that
 \end{equation}
 If we think of the correlator as being a function of $x + y$ and $x - y$, then this Ward identities establishes that there is no dependence on the former, i.e.~
 \begin{equation}
-	\bra{0} \phi(x) \phi(y) \ket{0} = f(x - y).
+	\bra{0} \phi(x) \phi(y) \ket{0} = W(y - x),
+	\label{eq:W}
 \end{equation}
+where $W$ denotes an arbitrary function.
 
 In general, the consequences of translation symmetry are easier to see in momentum space, using the Fourier transform \eqref{eq:momentumspace} of the local operators. By this very definition, we can establish that
 \begin{equation}
@@ -1304,27 +1307,40 @@ and therefore the Fourier transform of the Wightman 2-point function obeys
 From this, we conclude that
 \begin{equation}
 	\bra{0} \widetilde{\phi}(p) \widetilde{\phi}(q) \ket{0}
-	\propto \delta^d(p + q).
+	= (2\pi)^d \delta^d(p + q) \widetilde{W}(q).
+	\label{eq:Wtilde}
 \end{equation}
-
-Taking into account Lorentz symmetry, one can also establish that the 2-point function in position space must only depend on the invariant distance $(x - y)^2$ between the two points, although there are subtleties associated to possible light-cone crossings (see below). In momentum space, the delta function in $p + q$ also multiplies a function $\rho$ of the only Lorentz invariant $q^2$ (or equivalently $p^2$).
-When combined with the condition that only states of positive energy can exist, we deduce (up to factors of $2 \pi$ that are purely conventional)
+$\widetilde{W}$ is another unknown function. As the notation suggests, it is actually the Fourier transform of $W$,
 \begin{equation}
-	\bra{0} \widetilde{\phi}(p) \widetilde{\phi}(q) \ket{0}
-	= (2\pi)^{d+1} \delta^d(p + q)
-	\theta\left( q^0 - \left| \vec{q} \right| \right) \rho(-q^2).
+	\widetilde{W}(q) = \int d^dx \, e^{i p \cdot x} W(x).
+\end{equation}
+%
+\begin{exercise}
+	Verify that the Fourier transform of eq.~\eqref{eq:W}
+	with respect to both $x$ and $y$ reproduces eq.~\eqref{eq:Wtilde}.
+\end{exercise}
+
+
+
+Taking into account Lorentz symmetry, one can also establish that the Wightman function $W(x)$ can only depend on the Lorentz-invariant distance $x^2$, although there are subtleties associated with light-like points (see below).
+In momentum space, the same arguments says that $\widetilde{W}(q)$ must be a function of $q^2$. In this case, the condition that only states of positive energy can exist requires that $\widetilde{W}(q)$ vanishes unless $q^2 < 0$ with $q^0 > 0$, and therefore therefore we can unambiguously write
+\begin{equation}
+	\widetilde{W}(q)
+	= 2\pi \, \theta\left( q^0 - \left| \vec{q} \right| \right)
+	\rho(-q^2),
 	\label{eq:spectraldensity}
 \end{equation}
+where $\rho$ is a function of the positive quantity $-q^2$, and $\theta$ is the Heaviside step function ($\theta(a) = 0$ for $a < 0$, $\theta(a) = 1$ for $a > 1$).
 
-This result is in fact raising an important point (also part of the Wightman axioms): in spite of their names, Wightman functions are \emph{not} functions but rather distributions. The above 2-point function computes in fact the overlap between the two states (note that the Hermitian conjugation flips the sign of momenta)
+The fact that the Wightman 2-point function \eqref{eq:Wtilde} is proportional to a delta function raises an important concern: in spite of their names, Wightman functions are \emph{not} functions but rather distributions (this is also part of the Wightman axioms). Note also that the same function computes the overlap between the two states 
 \begin{equation}
 	\widetilde{\phi}(q) \ket{0}
 	\qquad\text{and}\qquad
-	\widetilde{\phi}(-p) \ket{0},
+	\widetilde{\phi}(-p) \ket{0}
 \end{equation}
-and therefore one would expect that it computes the norm of this state in the limit $p \to q$. However, this limit is clearly discontinuous, or the norm of the state infinite.
-
-The resolution of this issue is that the objects $\phi(x)$ and its Fourier transform $\widetilde{\phi}(p)$ are not operators, but rather \emph{operator-valued distributions}. In other words, $\phi(x) \ket{0}$ is \emph{not} a state of the theory, as it has in fact infinite norm (see example below). Formally, these operator-valued distributions only make sense when they are integrated against test functions, defining
+(note that the Hermitian conjugation flips the sign of momenta). Therefore, the limit $p \to - q$ corresponds to the norm of either of these states. But this limit is clearly discontinuous, or the norm of the state infinite.
+The resolution of this issue is that the objects $\phi(x)$ and its Fourier transform $\widetilde{\phi}(p)$ are not operators, but rather \emph{operator-valued distributions}. In other words, $\phi(x) \ket{0}$
+and $\widetilde{\phi}(p) \ket{0}$ are \emph{not} states of the theory, as they have in fact infinite norm. Formally, these operator-valued distributions only make sense when they are integrated against test functions, defining
 \begin{equation}
 	\phi[f] = \int d^dx \, f(x) \phi(x),
 \end{equation}
@@ -1333,8 +1349,8 @@ or
 	\widetilde{\phi}[\tilde{f}] = \int d^dp \, \tilde{f}(p)
 	\widetilde{\phi}(p),
 \end{equation}
-where $f$ and $\widetilde{f}$ are Schwartz-class test functions (i.e.~functions decaying faster than any power at infinity).
-When acting on the vacuum, these smeared states give well-defined states, with finite norms. For instance, we have
+where $f$ and $\widetilde{f}$ are Schwartz-class test functions (smooth functions decaying faster than any power at infinity).
+When acting on the vacuum, these smeared operator give well-defined states, with finite norms. For instance, we have
 \begin{align}
 	\left\| \widetilde{\phi}[\tilde{f}] \ket{0} \right\|^2
 	&= \int d^dp d^dq \tilde{f}^*(p) \tilde{f}(q)
@@ -1346,14 +1362,19 @@ When acting on the vacuum, these smeared states give well-defined states, with f
 	\rho(-q^2).
 	\label{eq:norm}
 \end{align}
-Test functions won't appear in these lectures anymore. For physicists, this is mostly an annoyance that we prefer to avoid. However, it is important to know that there exists a mathematically rigorous way of dealing with Wightman functions.
-For one thing, this gives a proper justification of why it is always fine to take the Fourier transform way and back between the position- and momentum-space representation, at least as long as we are dealing with Wightman functions.
-
-% more details needed on this
+Test functions will not appear further in these lectures. For physicists, they are mostly an annoyance that we prefer to avoid. However, it is important to know that there exists a mathematically rigorous way of dealing with Wightman functions.
+For one thing, this gives a proper justification of why it is always fine to take the Fourier transform way and back between the position- and momentum-space representation, as tempered distribution (the proper name of such distributions) always admit a Fourier transform.
+Note however that this is true of Wightman functions, but not of time-ordered correlators that will appear later!
 
 \subsection{Spectral representation}
 
-The norm \eqref{eq:norm} is also giving away important information: is is positive if and only if the function $\rho$ is positive for any $-q^2 > 0$. This is not an accident: the function $\rho$ is in fact the \emph{spectral density} encountered in standard quantum field theory textbooks, where we can often find it in the form
+The norm \eqref{eq:norm} is also giving away important information: it is positive if and only if the function $\rho$ is positive,
+\begin{equation}
+	\rho(\mu^2) \geq 0
+	\qquad\quad
+	\forall \, \mu^2 > 0
+\end{equation}
+The function $\rho$ is in fact the \emph{spectral density} encountered in standard quantum field theory textbooks, where we can often find it in the form
 \begin{equation}
 	\bra{0} \phi(x) \phi(y) \ket{0}
 	= 2\pi \int \frac{d^dk}{(2\pi)^d}
@@ -1362,11 +1383,7 @@ The norm \eqref{eq:norm} is also giving away important information: is is positi
 	\delta(k^2 + \mu^2) \rho(\mu^2).
 	\label{eq:spectralrepresentation}
 \end{equation}
-\begin{exercise}
-	Verify that this expression matches eq.~\eqref{eq:spectraldensity}
-	upon Fourier transforming in $x$ and $y$.
-\end{exercise}
-The spectral representation is also used to construct the time-ordered correlation function
+The spectral density is an essential tool in non-perturbative quantum field theory. It can for instance be used to construct the time-ordered correlation function
 \begin{equation}
 	\langle \phi(x) \phi(y) \rangle_T
 	\equiv 
@@ -1380,41 +1397,262 @@ Nevertheless, the time-ordered product admits the simple representation
 	= \int \frac{d^dk}{(2\pi)^d}
 	\int\limits_0^\infty d\mu^2 \,
 	e^{i k \cdot (x - y)}
-	\frac{-i \rho(\mu^2)}
-	{k^2 + \mu^2 - i \varepsilon}
+	\frac{i}
+	{ -k^2 - \mu^2 + i \varepsilon} \, \rho(\mu^2)
+	\label{eq:KallenLehmann}
 \end{equation}
-to be understood in the limit $\varepsilon \to 0_+$.
-This is the \emph{Källen-Lehmann} representation for the time-ordered 2-point function.
+where the limit $\varepsilon \to 0_+$ is understood.
+This is the \emph{Källen-Lehmann representation} for the time-ordered 2-point function.
 %
 \begin{exercise}
-	Derive the Källen-Lehmann representation starting from
-	eq.~\eqref{eq:spectralrepresentation}.
-%	\begin{align*}
-%		\bra{0} & \phi(x) \phi(y) \ket{0}
-%		\nonumber \\
-%		&= \int \frac{d^dk}{(2\pi)^d}
-%		\int\limits_0^\infty d\mu^2 \,
-%		e^{i k \cdot (x - y)} \theta(k^0) 
-%		\left[ \frac{i}{k^2 + \mu^2 + i \varepsilon}
-%		- \frac{i}{k^2 + \mu^2 - i \varepsilon} \right]
-%		\rho(\mu^2).
-%	\end{align*}
+	Derive the Källen-Lehmann representation.
+	An elegant derivation is to first show that the 
+	time-ordered 2-point function can be written as the difference
+	between the Wightman function and the vacuum expectation value
+	of a retarded commutator,
+	$$
+	\langle \phi(x) \phi(y) \rangle_T
+	\equiv 
+	W(y - x)
+	- \theta(y^0 - x^0)
+	\bra{0} \left[ \phi(x), \phi(y) \right] \ket{0}.
+	$$
+	The next step is to Fourier transform both terms in $y$
+	after setting $x = 0$.
+	We know that the Wightman function \eqref{eq:Wtilde}
+	has a nice Fourier transform
+	$$
+		\widetilde{W}(q)
+		= 2\pi \int\limits_0^\infty d\mu^2 \,
+		\theta(q^0) 
+		\delta(q^2 + \mu^2) \rho(\mu^2),
+	$$
+	which can be equivalently written
+	$$
+		\widetilde{W}(q)
+		= \int\limits_0^\infty d\mu^2 \,
+		\theta(q^0) 
+		\left[ \frac{i}{q^2 + \mu^2 + i \varepsilon}
+		- \frac{i}{q^2 + \mu^2 - i \varepsilon} \right] \rho(\mu^2).
+	$$
+	The retarded commutator is only non-zero in the forward light cone
+	in $y$, and therefore it also admits a Fourier transform
+	that converges provided that give a small imaginary part to $q$.
+	Compute this Fourier transform, and show that it is equal to
+	$$
+		\int\limits_0^\infty d\mu^2 \,
+		\left[ \theta(q^0) \frac{i}{q^2 + \mu^2 + i \varepsilon}
+		+ \theta(-q^0) \frac{i}{q^2 + \mu^2 - i \varepsilon}
+		\right] \rho(\mu^2).
+	$$
+	The difference of these last two integrals can then easily be
+	turned into the Källen-Lehmann representation
+	\eqref{eq:KallenLehmann}.
 \end{exercise}
 %
-In the theory of a free, massive scalar field, the spectral density obeys
+The spectral representation for 2-point function gives familiar results in non-interacting theories. A massive scalar field has for instance the spectral density
 \begin{equation}
 	\rho(\mu^2) = \delta(\mu^2 - m^2),
 \end{equation}
-and therefore
+and from this we recover the known massive propagator
 \begin{equation}
-	\bra{0} \phi(x) \phi(y) \ket{0}
+	\langle \phi(x) \phi(y) \rangle_T
 	= \int \frac{d^dk}{(2\pi)^d}
 	e^{i k \cdot (x - y)}
-	\frac{-i}
-	{k^2 + m^2 - i \varepsilon}
+	\frac{i}
+	{-k^2 - m^2 + i \varepsilon}.
 \end{equation}
-is the ordinary propagator for a massive field.
+In an interacting theory, the spectral density will generically have a non-zero contribution above a certain threshold corresponding to particle production (see figure \ref{fig:spectraldensity}.
 
+The discussion applied so far to a generic quantum field theory without conformal symmetry. Let us now examine the role of scale and special conformal invariance, starting with the former.
+
+
+\subsection{Scale symmetry}
+
+The assumption of scale invariance coincides with the existence of a third conserved charge besides $P^\mu$ and $M^{\mu\nu}$, namely the operator $D$.
+We obtained before the commutator of a generic local operator with $M^{\mu\nu}$ assuming that it transforms in some irreducible representation of the Lorentz group at the origin $x = 0$
+(an operator inserted at some other point is not in an irreducible representation because $P^\mu$ does not commute with $M^{\mu\nu}$).
+Since $M^{\mu\nu}$ commutes with $D$, the same assumption can be made about scale: any local operator can be decomposed into irreducible representations of the group of scaling transformations, meaning that we can write
+\begin{equation}
+	\left[ D, \phi(0) \right] = i \Delta \phi(0).
+\end{equation}
+$\Delta$ is called the \emph{scaling dimension} of the operator $\phi$ (each local operator of the theory has its own scaling dimension).
+The factor of $i$ ensures that $\Delta$ is a real number when $\phi$ is a real operator.
+As before, we can use eq.~\eqref{eq:P:exponentiated} to obtain the commutator at any other point $x$:
+\begin{equation}
+	\left[ D, \phi(x) \right]
+	= i \left( x^\mu \partial_\mu + \Delta \right) \phi(x).
+	\label{eq:commutator:D}
+\end{equation}
+Note that this is precisely equivalent to the transformation rule \eqref{eq:freescalar:conformaltransformation:3} for a classical field:
+the scaling dimension $\Delta$ coincides with the mass dimension of the operator $\phi$ in a free theory.
+
+Using this new commutator and assuming that the vacuum state is invariant under scale transformations, a new Ward identity can be obtained for the Wightman 2-point function,
+\begin{equation}
+	\left( x^\mu \frac{\partial}{\partial x^\mu} 
+	+ y^\mu \frac{\partial}{\partial y^\mu}  + 2\Delta \right)
+	\bra{0} \phi(x) \phi(y) \ket{0} = 0,
+\end{equation}
+or equivalently
+\begin{equation}
+	\left( x^\mu \frac{\partial}{\partial x^\mu} + 2 \Delta \right) 
+	W(x) = 0. 
+\end{equation}
+The corresponding condition on the momentum-space 2-point function
+is obtained from the Fourier transform, using integration by parts, and we find
+\begin{equation}
+	\left( -q^\mu \frac{\partial}{\partial q^\mu} + 2 \Delta - d \right)
+	\widetilde{W}(q) = 0. 
+\end{equation}
+The solution to this equation consistent with the form \eqref{eq:spectraldensity} is unique, up to a constant multiplicative coefficient $C$,
+\begin{equation}
+	\widetilde{W}(q)
+	= 2\pi C \, \theta\left( q^0 - \left| \vec{q} \right| \right)
+	(-q^2)^{\Delta - d/2},
+\end{equation}
+implying that the spectral density is a power law,
+\begin{equation}
+	\rho(\mu^2) = C \, (\mu^2)^{\Delta - d/2}.
+\end{equation}
+This kind of spectral density is very different from that of a massive interacting theory: the operator $\phi$ has excitations of all masses.
+At the same time, its simplicity is striking: it is characterized by a single number $\Delta$.
+
+It is instructive to compute the time-ordered 2-point function using the Källen-Lehmann representation: performing the integral over $\mu^2$, we find
+\begin{equation}
+	\langle \phi(x) \phi(y) \rangle_T
+	= \frac{i \pi C}
+	{\sin\left[ \pi \left( \Delta - \frac{d}{2} \right) \right]}
+	\int \frac{d^dk}{(2\pi)^d}
+	e^{i k \cdot (x - y)}
+	\left( k^2 - i \varepsilon \right)^{\Delta - d/2}.
+\end{equation}
+The term $\left( k^2 - i \varepsilon \right)^{\Delta - d/2}$ in the integral looks like the propagator of a massless scalar field raised to an arbitrary power. This is in fact what we expect in perturbation theory when the beta function has a non-trivial fixed point: the renormalized 2-point function has logarithms that can be resummed into a power controlled by the anomalous dimension $\gamma$ of the field $\phi$,
+\begin{equation}
+	\frac{1}{k^2} \left[ 1 + \gamma \log(k^2) + \ldots \right]
+	\approx (k^2)^{-1 + \gamma}.
+\end{equation}
+In this case, the scaling dimension of the scalar operator corresponding to the renormalized field is
+\begin{equation}
+	\Delta = \frac{d-2}{2} + \gamma.
+\end{equation}
+In the limit $\gamma \to 0$, we recover the free propagator mentioned above.
+Note however that this requires the coefficient $C$ to obey
+\begin{equation}
+	C \approx \gamma = \Delta - \frac{d-2}{2}
+	\label{eq:C:freelimit}
+\end{equation}
+in order to recover the ordinary, finite normalization of the propagator.
+In this case, the spectral density obeys
+\begin{equation}
+	\rho(\mu^2) \approx \gamma \, (\mu^2)^{-1 + \gamma}
+	\xrightarrow{\gamma \to 0} \delta(\mu^2).
+\end{equation}
+(This identity can be verified integrating both sides in $\mu^2$ and taking the limit $\gamma \to 0$ afterwards).
+This is precisely the spectral density that is expected in the free scalar field theory. In this case (and this case only!), the operator $\phi$ describes a massless scalar particle.
+
+It turns out that the case $\Delta = \frac{d-2}{2}$ is the lowest possible value for $\Delta$: for any $\Delta$ below that value, the spectral density is not integrable in the limit $\mu^2 \to 0$.
+One might then also worry about the opposite limit $\mu^2 \to \infty$ in the integral: for any $\Delta > \frac{d}{2}$, the spectral density increases with $\mu^2$. However, remember that this spectral density is in fact a Wightman function, i.e.~a tempered distribution that should be understood as integrated against test functions that decay faster than any power at large $q^2$. Therefore, arbitrarily large values of $\Delta$ are possible.
+The inequality
+\begin{equation}
+	\Delta \geq \frac{d-2}{2}.
+	\label{eq:unitarybound:scalar}
+\end{equation}
+is known in the literature as the \emph{unitarity bound} for scalar operators. Note that any scalar operator that saturates this unitarity bound has
+\begin{equation}
+	\bra{0} \widetilde{\phi}(p) \widetilde{\phi}(q) \ket{0}
+	\propto \delta(q^2),
+\end{equation}
+which implies
+\begin{equation}
+	q^2 \bra{0} \widetilde{\phi}(p) \widetilde{\phi}(q) \ket{0}
+	= 0,
+\end{equation}
+or in position space
+\begin{equation}
+	\bra{0} \phi(x) \partial^2 \phi(y) \ket{0}.
+\end{equation}
+Since this is true for any $x$ and $y$, it implies that
+\begin{equation}
+	\partial^2 \phi(x) = 0
+\end{equation}
+is true as an operator equation. In other words, a theory in which $\Delta = \frac{d-2}{2}$ is a free field theory.
+
+The simplicity of the momentum-space 2-point function in a scale-invariant theory also means that it can easily be Fourier transformed back to position space using
+\begin{equation}
+	W(x) = \int \frac{d^dq}{(2\pi)^d} e^{- i q \cdot x}
+	\widetilde{W}(q).
+\end{equation}
+\begin{exercise}
+	Perform the Fourier transform explicitly.
+	Note that we can use the fact that the integral is Lorentz
+	invariant to determine that $W(x)$ is in fact a function of $x^2$.
+	Moreover, since the integrand only has support for $q$
+	in the forward light-cone, this defines a function of $x$
+	that is in fact analytic in $x$ as long as $\im x$ is contained in 
+	the future light cone, since the integrand is then damped by the
+	exponential $e^{q \cdot \im x}$ with $q \cdot \im x < 0$
+	(this domain of analyticity is known as the ``future tube'').
+	This means that we are free to evaluate the integral at a point 
+	$x = (i \tau, 0)$, and then use $\tau^2 = x^2$ to recover the 
+	general solution.
+	The integral at that point is convergent for all $\Delta$
+	satisfying the unitarity bound, and one finds
+	$$
+	W(\tau) = C \frac{2^{2\Delta} \Gamma(\Delta)
+	\Gamma\left( \Delta - \frac{d-2}{2} \right)}
+	{(4\pi)^{d/2}} \,
+	\tau^{-2\Delta}
+	$$
+	This can be used to obtain the result below.
+\end{exercise}
+The result of this integral can be written as
+\begin{equation}
+	W(x) = \frac{C'}
+	{\left[ -(x^0 + i \varepsilon)^2 + \vec{x}^2 \right]^\Delta}
+\end{equation}
+where the limit $\varepsilon \to 0_+$ is understood to make sense of the case in which $x^2 < 0$, and the coefficient $C'$ is related to $C$ by
+\begin{equation}
+	C' = \frac{2^{2\Delta} \Gamma(\Delta)
+	\Gamma\left( \Delta - \frac{d-2}{2} \right)}
+	{(4\pi)^{d/2}} C.
+\end{equation}
+Note that the proportionality factor is positive for all $\Delta$ satisfying the unitary bound \eqref{eq:unitarybound:scalar}. This implies that the 2-point correlation function is always decreasing with the distance, and not the other way around.
+
+It is in fact customary in conformal field theory to normalize the scalar operator $\phi$ so that $C' = 1$. In this case, we have
+\begin{equation}
+	C = \frac{(4\pi)^{d/2}}
+	{2^{2\Delta} \Gamma(\Delta)
+	\Gamma\left( \Delta - \frac{d-2}{2} \right)}.
+\end{equation}
+\begin{exercise}
+	Verify that the the coefficient $C$ vanishes
+	as in eq.~\eqref{eq:C:freelimit} in the limit $\Delta \to \frac{d-2}{2}$.
+\end{exercise}
+This also implies that the time-ordered 2-point function satisfies
+\begin{equation}
+	\langle \phi(x) \phi(y) \rangle_T
+	= -i
+	\frac{(4\pi)^{d/2} \Gamma\left( \frac{d}{2} - \Delta \right)}
+	{2^{2\Delta} \Gamma(\Delta)}
+	\int \frac{d^dk}{(2\pi)^d}
+	e^{i k \cdot (x - y)}
+	\left( k^2 - i \varepsilon \right)^{\Delta - d/2}.
+\end{equation}
+This time-ordered 2-point function diverges whenever $\Delta = \frac{d}{2} + n$, with integer $n$. This is a very special case, in which contact terms of the form
+\begin{equation}
+	(\partial^2)^n \delta^d(x - y)
+\end{equation}
+are in fact scale-invariant and can be added to the correlation function without affecting the Ward identities.
+Such terms are forbidden in the Wightman function: in momentum space they become polynomial terms $(p^2)^n$ whose presence is incompatible with the spectral condition. And in fact the Wightman function is already well-defined for all values of $\Delta$.
+But these contact terms are allowed, and in fact required, in the time-ordered correlation functions.
+In path integral language, this is the situation in which the source field $J$ for the operator $\phi$ has scaling dimension, $\Delta = \frac{d}{2} - n$ and therefore contact terms of the form $J (\partial^2)^n J$ must be added to the action.
+
+Finally, let us conclude the analysis of scale symmetry with a comment about one-point functions. We saw in the previous section that a constant vacuum expectation value for a scalar operator was compatible with Poincaré symmetry. However, the commutator \eqref{eq:commutator:D} requires then that $\Delta = 0$, which violates the unitarity bounds.
+We conclude that all one-point functions must vanish in a scale-invariant theory.
+
+\subsection{Conformal symmetry}
+
+\ldots
 
 \newpage
 \bibliography{Bibliography}
@@ -1422,79 +1660,9 @@ is the ordinary propagator for a massive field.
 \end{document}
 
 
-%%%%%%%%
-
-
-discuss connection with path integral formalism: time-ordered correlation functions
-
-
-
-
-
-\subsection{Scale symmetry}
-
-since generator $D$ commutes with $M^{\mu\nu}$, it is always possible to diagonalize it at point $x = 0$
-\begin{equation}
-	\left[ D, \phi(0) \right] = 
-\end{equation}
-
-implies
-\begin{equation}
-	\left[ D, \phi(x) \right] = 
-\end{equation}
-
-equivalent to transformation rule for the field in the Lagrangian?
-
-compute conformal generators in momentum-space representation
-
-impose and get result for spectral density
-
-keep coefficient arbitrary so far
-
-use Källen-Lehman representation to get time-ordered 2-point function
-
-fix the coefficient to be one there
-
-
-unitarity bound
-
-
-
-show that the spectral density in the case $\Delta = \frac{d}{2} - 1$ is that of a free scalar field;
-
-show also that in the case $\Delta = \frac{d}{2}$ it is given by the phase space of two massless particle states (see Rychkov eq. 1.13)
-
-
-
-
-interpretation:
-operator vs.~field;
-often said that CFT is a theory of massless excitations: true, but also of all masses
-
-
-similar to Wigner construction of particle of mass $m$: use reference momentum
-
-
-then Fourier transform back to position space, and get ordinary propagator;
-verify that the constant is positive for all $\Delta$
-
-fix coefficient to be one in position space
-
-
-consequence: 
-one-point functions vanish unless operator has scaling dimension 0?
-
-only identity!
-
-exercise show that scaling dim of $T^{\mu\nu}$ is $d$
-
-
-
-\subsection{Conformal symmetry}
-
 $P^\mu$ raises scaling dimension, $K^\mu$ lowers it
 
-if bounded, there must be an operator that is annihilated by $K^\mu$:
+since scaling dimensions must be bounded, there must be an operator that is annihilated by $K^\mu$:
 
 declare this to be a \emph{primary} operator, with
 \begin{equation}
@@ -1507,26 +1675,41 @@ get general case
 \end{equation}
 
 
-special condition on 2-point function of primary operators: that they have identical scaling dimensions
+verify that Wightman 2-point function readily satisfies this differential equation
+
+however: one could have 2-point function of two distinct operators:
+give condition that they have identical scaling dimensions
 
 use this to diagonalize space of operators (usually possible)
 
-this proves a posteriori many assumptions made before
+
+
+%this proves a posteriori many assumptions made before?
 
 
 
-also: for spinning operators, gives more unitarity bounds
+also: for spinning operators, gives relation between  different polarizations
 
-give explicitly result for vector
+give explicitly example for vector
 
 exercise: do the same for 2-index symmetric, traceless tensor
 
+exercise show that scaling dim of $T^{\mu\nu}$ is $d$
+
+conclude that $\Delta = d$ for the energy-momentum tensor 
+(also proves that $T^{\mu\nu}$ is a primary operator)
+
+
+
+representation theory: long and short multiplets!
 
 
 Mack's classification in 4d
 
 
-representation: long and short multiplets!
+similar to Wigner construction of particle of mass $m$: use reference momentum
+
+
 
 
 
@@ -1535,60 +1718,24 @@ representation: long and short multiplets!
 \section{3- and 4-point correlation functions}
 \label{sec:correlators}
 
-correlation functions aka Green's functions
+%remark about ``physicality''
+%in ordinary QFT, correlation functions are not physical observables: they depend on renormalization scale; only scattering amplitudes are!
+%here no scale: they are physical
 
-remark about ``physicality''
-in ordinary QFT, correlation functions are not physical observables: they depend on renormalization scale; only scattering amplitudes are!
-here no scale: they are physical
+\subsection{From Minkowksi space-time to Euclidean space}
 
-
-2-pt function: go from Wightman 2-pt function in momentum space to Euclidean 2-pt function in position space in two ways:
+go from Wightman 2-pt function in momentum space to Euclidean 2-pt function in position space in two ways:
 
 - Fourier transform first, then analytic continuation of Wightman function
 - first construct T product (Källen-Lehmann representation), then Wick rotation to Euclidean momentum space, then Fourier transform
 
-%%%%%
-
-
-T-products vs. Wightman functions
-
-use retarded products and micro-causality
-
-
-Ward identities
-
-more identities for conserved currents and the energy-momentum tensor
-(there cannot be higher-spin conserved currents otherwise the theory must be free; reference?)
-
-
-generalities:
-
-one-point functions vanish (in flat space; not so on conformally flat manifolds such as $S^d$, where 1-point function might depend on radius)
-
-\subsection{Spectral representation for spinning operators}
-
-unitary bounds
-
-\subsection{From momentum to position}
-
-taking fourier transforms
-
-\subsection{From Minkowski to Eulidean space}
-
-analytic continuation of Wightman functions vs. Wick rotation of T-products
 
 reflection positivity
-
 
 going in the other direction: Osterwalder-Schrader
 
 
-do we need to use the cylinder interpretation?
-I prefer not: only CFT in flat space here
-
-
-
-\subsection{Embedding-space formalism}
+\subsection{From Euclidean space to the embedding space}
 
 conformal group acts linearly in embedding space with $d+2$ dimensions, among which two times
 
@@ -1623,12 +1770,21 @@ historical note (cite Rychkov, around eq. 2.43): birth of conformal field theory
 
 check: 2-point functions involving conserved currents and energy-momentum tensors are automatically conserved; for 3-point functions this gives additional constraint: scaling dimensions of operators must be equal
 
+what about 3-point functions in momentum space?
+a bit of self-promotion here...
+
 
 
 \subsection{4-point functions}
 % and higher?
 
 invariant cross-ratios for 4-point functions
+
+
+
+more identities for conserved currents and the energy-momentum tensor?
+(there cannot be higher-spin conserved currents otherwise the theory must be free; reference?)
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
