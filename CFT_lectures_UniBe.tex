@@ -1185,7 +1185,7 @@ where $\left( \mathcal{S}^{\mu\nu} \right)_{ab}$ is a matrix that satisfies the 
 When combined with eq.~\eqref{eq:P:exponentiated}, this implies
 \begin{equation}
 	\left[ M^{\mu\nu}, \phi^a(x) \right] = 
-	i \left( x^\mu \partial^\nu - x^\nu \partial^\mu \right) \phi^a(x)
+	-i \left( x^\mu \partial^\nu - x^\nu \partial^\mu \right) \phi^a(x)
 	+ i \left( \mathcal{S}^{\mu\nu} \right)^a_{~b} \phi^b(0).
 	\label{eq:commutator:M}
 \end{equation}
@@ -1322,7 +1322,7 @@ $\widetilde{W}$ is another unknown function. As the notation suggests, it is act
 
 
 
-Taking into account Lorentz symmetry, one can also establish that the Wightman function $W(x)$ can only depend on the Lorentz-invariant distance $x^2$, although there are subtleties associated with light-like points (see below).
+Taking into account Lorentz symmetry, one can also establish that the Wightman function $W(x)$ can only depend on the Lorentz-invariant distance $x^2$, although there is a subtlety: this can be a different function depending whether $x$ is space-like or time-like (future- or past-directed), as Lorentz transformations act separately on each of these regions.
 In momentum space, the same arguments says that $\widetilde{W}(q)$ must be a function of $q^2$. In this case, the condition that only states of positive energy can exist requires that $\widetilde{W}(q)$ vanishes unless $q^2 < 0$ with $q^0 > 0$, and therefore therefore we can unambiguously write
 \begin{equation}
 	\widetilde{W}(q)
@@ -1332,7 +1332,7 @@ In momentum space, the same arguments says that $\widetilde{W}(q)$ must be a fun
 \end{equation}
 where $\rho$ is a function of the positive quantity $-q^2$, and $\theta$ is the Heaviside step function ($\theta(a) = 0$ for $a < 0$, $\theta(a) = 1$ for $a > 1$).
 
-The fact that the Wightman 2-point function \eqref{eq:Wtilde} is proportional to a delta function raises an important concern: in spite of their names, Wightman functions are \emph{not} functions but rather distributions (this is also part of the Wightman axioms). Note also that the same function computes the overlap between the two states 
+The fact that the Wightman 2-point function \eqref{eq:Wtilde} is proportional to a delta function raises an important concern: in spite of their names, Wightman functions are \emph{not} functions but rather distributions (this is also part of the Wightman axioms: they are in fact \emph{tempered distributions}). Note also that the same function computes the overlap between the two states 
 \begin{equation}
 	\widetilde{\phi}(q) \ket{0}
 	\qquad\text{and}\qquad
@@ -1354,7 +1354,7 @@ When acting on the vacuum, these smeared operator give well-defined states, with
 \begin{align}
 	\left\| \widetilde{\phi}[\tilde{f}] \ket{0} \right\|^2
 	&= \int d^dp d^dq \tilde{f}^*(p) \tilde{f}(q)
-	\bra{0} \widetilde{\phi}(p) \widetilde{\phi}(q) \ket{0}
+	\bra{0} \widetilde{\phi}(-p) \widetilde{\phi}(q) \ket{0}
 	\nonumber \\
 	&= 2\pi
 	\int\limits_{q^0 > \left| \vec{q} \right|} \!\!
@@ -1412,7 +1412,7 @@ This is the \emph{Källen-Lehmann representation} for the time-ordered 2-point f
 	of a retarded commutator,
 	$$
 	\langle \phi(x) \phi(y) \rangle_T
-	\equiv 
+	= 
 	W(y - x)
 	- \theta(y^0 - x^0)
 	\bra{0} \left[ \phi(x), \phi(y) \right] \ket{0}.
@@ -1462,7 +1462,7 @@ and from this we recover the known massive propagator
 	\frac{i}
 	{-k^2 - m^2 + i \varepsilon}.
 \end{equation}
-In an interacting theory, the spectral density will generically have a non-zero contribution above a certain threshold corresponding to particle production (see figure \ref{fig:spectraldensity}.
+In an interacting theory, the spectral density will generically have a non-zero contribution above a certain threshold corresponding to particle production (see figure \ref{fig:spectraldensity}).
 
 The discussion applied so far to a generic quantum field theory without conformal symmetry. Let us now examine the role of scale and special conformal invariance, starting with the former.
 
@@ -1474,14 +1474,14 @@ We obtained before the commutator of a generic local operator with $M^{\mu\nu}$ 
 (an operator inserted at some other point is not in an irreducible representation because $P^\mu$ does not commute with $M^{\mu\nu}$).
 Since $M^{\mu\nu}$ commutes with $D$, the same assumption can be made about scale: any local operator can be decomposed into irreducible representations of the group of scaling transformations, meaning that we can write
 \begin{equation}
-	\left[ D, \phi(0) \right] = i \Delta \phi(0).
+	\left[ D, \phi(0) \right] = -i \Delta \phi(0).
 \end{equation}
 $\Delta$ is called the \emph{scaling dimension} of the operator $\phi$ (each local operator of the theory has its own scaling dimension).
 The factor of $i$ ensures that $\Delta$ is a real number when $\phi$ is a real operator.
 As before, we can use eq.~\eqref{eq:P:exponentiated} to obtain the commutator at any other point $x$:
 \begin{equation}
 	\left[ D, \phi(x) \right]
-	= i \left( x^\mu \partial_\mu + \Delta \right) \phi(x).
+	= -i \left( x^\mu \partial_\mu + \Delta \right) \phi(x).
 	\label{eq:commutator:D}
 \end{equation}
 Note that this is precisely equivalent to the transformation rule \eqref{eq:freescalar:conformaltransformation:3} for a classical field:
@@ -1650,7 +1650,38 @@ In path integral language, this is the situation in which the source field $J$ f
 Finally, let us conclude the analysis of scale symmetry with a comment about one-point functions. We saw in the previous section that a constant vacuum expectation value for a scalar operator was compatible with Poincaré symmetry. However, the commutator \eqref{eq:commutator:D} requires then that $\Delta = 0$, which violates the unitarity bounds.
 We conclude that all one-point functions must vanish in a scale-invariant theory.
 
-\subsection{Conformal symmetry}
+\subsection{Special conformal symmetry}
+
+As with scale symmetry, the presence of special conformal symmetry is associated with the existence of the conserved charges $K^\mu$ organized in a $d$-dimensional vector.
+Unlike $D$, however, $K^\mu$ does not commute with $M^{\mu\nu}$, so it cannot be diagonalized at the point $x = 0$.
+Nevertheless, we can use the conformal algebra to establish that, if $\phi$ is a local operator with scaling dimension $\Delta$, then $\left[ K^\mu, \phi \right]$ has scaling dimension $\Delta - 1$:
+\begin{align}
+	\big[ D, [ K^\mu, \phi(0) ] \big]
+	&= \big[ K^\mu, [ D, \phi(0) ] \big]
+	+ \big[ [ D, K^\mu ], \phi(0) \big]
+	\nonumber \\
+	&= \big[ K^\mu, -i \Delta \phi(0) \big]
+	+ \big[ i K^\mu, \phi(0) \big]
+	= -i (\Delta - 1) [ P^\mu, \phi(0) ]
+\end{align}
+This should be contrasted with the fact that the operator $\left[P^\mu, \phi(x)\right]$ has scaling dimension $\Delta + 1$,
+\begin{equation}
+	\big[ D, [ P^\mu, \phi(0) ] \big]
+	= -i (\Delta + 1) [ P^\mu, \phi(0) ].
+\end{equation}
+This seems to be in contradiction with our findings of the last section that $\Delta$ is bounded below: given any local operator, one can always construct other local operators with arbitrarily smaller scaling dimension.
+
+The only way out of this paradox is to assume that at some point the action of $K^\mu$ annihilates the operator. In other words, there exists some local operator such that
+\begin{equation}
+	\left[ K^\mu, \phi(0) \right] = 0.
+\end{equation}
+We call this local operator a \emph{primary}. Any other local operator obtained acting on a primary with $P^\mu$ is called a \emph{descendant}. Since the action of $P^\mu$ coincides with taking derivatives, a primary operator is simply an operator that cannot be written as the derivative of some other operator.
+Unless specified otherwise, we shall from now on only consider Wightman correlation functions of primary operators. Descendants will be explicitly denoted with a derivative.
+
+The transformation of a primary operator away from the origin can once again be obtained from eq.~\eqref{eq:P:exponentiated}. Note that since the commutator of $P^\mu$ and $K^\mu$ involves both $D$ and $M^{\mu\nu}$, this transformation depends on the scaling dimension and on the Lorentz representation of the operators. We find
+\begin{equation}
+	\left[ K^\mu, \phi(x) \right] = \ldots
+\end{equation}
 
 \ldots
 
@@ -1659,23 +1690,9 @@ We conclude that all one-point functions must vanish in a scale-invariant theory
 \bibliographystyle{utphys}
 \end{document}
 
-
-$P^\mu$ raises scaling dimension, $K^\mu$ lowers it
-
-since scaling dimensions must be bounded, there must be an operator that is annihilated by $K^\mu$:
-
-declare this to be a \emph{primary} operator, with
-\begin{equation}
-	\left[ K^\mu, \phi(0) \right] = 0
-\end{equation}
-
-get general case
-\begin{equation}
-	\left[ K^\mu, \phi(x) \right] = \ldots
-\end{equation}
+verify that the Wightman 2-point function of scalar operators readily satisfies this differential equation
 
 
-verify that Wightman 2-point function readily satisfies this differential equation
 
 however: one could have 2-point function of two distinct operators:
 give condition that they have identical scaling dimensions
@@ -1684,25 +1701,32 @@ use this to diagonalize space of operators (usually possible)
 
 
 
-%this proves a posteriori many assumptions made before?
 
+then discuss non-scalar case
+gives relation between  different polarizations
 
-
-also: for spinning operators, gives relation between  different polarizations
-
-give explicitly example for vector
 
 exercise: do the same for 2-index symmetric, traceless tensor
-
-exercise show that scaling dim of $T^{\mu\nu}$ is $d$
 
 conclude that $\Delta = d$ for the energy-momentum tensor 
 (also proves that $T^{\mu\nu}$ is a primary operator)
 
-
+equivalence between an operator being conserved, and saturating the unitarity bound
 
 representation theory: long and short multiplets!
 
+
+conservation equation satisfied for Wightman function: the state is null;
+only up to contact terms in time-ordered correlation functions!
+
+
+
+mention: Wightman function always finite;
+time-ordered product can have both IR and UV divergences!
+
+
+
+%this proves a posteriori many assumptions made before?
 
 Mack's classification in 4d
 
@@ -1712,15 +1736,17 @@ similar to Wigner construction of particle of mass $m$: use reference momentum
 
 
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{3- and 4-point correlation functions}
 \label{sec:correlators}
 
-%remark about ``physicality''
-%in ordinary QFT, correlation functions are not physical observables: they depend on renormalization scale; only scattering amplitudes are!
-%here no scale: they are physical
+logic: it is in principle possible to keep going along the way of constructing Wightman functions from Ward identities
+
+3-point function: hard (I did it)
+
+instead, introduce convenient tools here
+
 
 \subsection{From Minkowksi space-time to Euclidean space}
 
