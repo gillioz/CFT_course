@@ -1917,28 +1917,11 @@ In terms of representations of the conformal group, generic operators are said t
 
 \subsection{UV/IR divergences and anomalies}
 
+The discussion has been focused so far on Wightman functions. Beside having a Hilbert-space interpretation and satisfying conformal Ward identities that give strong constraints on their possible form, Wightman functions are also free of divergences.
+In momentum space, regularity at small momenta (IR) is enforced by the unitarity bound, whereas the power-law growth at large momenta (UV) is compatible with the damping provided by Schwartz-class test functions.
+In position space, the apparent singularity at short distance (UV) is in fact resolved by $i \varepsilon$ that provides a unequivocal prescription for deforming a contour of integration.
 
-
-\newpage
-\bibliography{Bibliography}
-\bibliographystyle{utphys}
-\end{document}
-
-
-
-conservation equation satisfied for Wightman function: the state is null;
-only up to contact terms in time-ordered correlation functions!
-
-
-mention: Wightman function always finite;
-time-ordered product can have both IR and UV divergences!
-
-
-
-
-\eqref{eq:standardnormalization}
-
-This also implies that the time-ordered 2-point function satisfies
+These properties are not true of time-ordered products. Let us consider for instance once again the scalar 2-point function. Using the standard CFT normalization \eqref{eq:standardnormalization} and the Källen-Lehmann representation, we find
 \begin{equation}
 	\langle \phi(x) \phi(y) \rangle_T
 	= -i
@@ -1947,93 +1930,145 @@ This also implies that the time-ordered 2-point function satisfies
 	\int \frac{d^dk}{(2\pi)^d}
 	e^{i k \cdot (x - y)}
 	\left( k^2 - i \varepsilon \right)^{\Delta - d/2}.
+	\label{eq:UVdivergence}
 \end{equation}
-This time-ordered 2-point function diverges whenever $\Delta = \frac{d}{2} + n$, with integer $n$. This is a very special case, in which contact terms of the form
+This expression diverges whenever $\Delta = \frac{d}{2} + n$ with integer $n$ due to the $\Gamma$-function multiplying the integral.
+This corresponds precisely to a case in which the 2-point function has scaling dimension $d + 2n$, and is therefore compatible with contact terms of the form
 \begin{equation}
-	(\partial^2)^n \delta^d(x - y)
+	(\partial^2)^n \delta^d(x - y).
 \end{equation}
-are in fact scale-invariant and can be added to the correlation function without affecting the Ward identities.
-Such terms are forbidden in the Wightman function: in momentum space they become polynomial terms $(p^2)^n$ whose presence is incompatible with the spectral condition. And in fact the Wightman function is already well-defined for all values of $\Delta$.
-But these contact terms are allowed, and in fact required, in the time-ordered correlation functions.
-In path integral language, this is the situation in which the source field $J$ for the operator $\phi$ has scaling dimension, $\Delta = \frac{d}{2} - n$ and therefore contact terms of the form $J (\partial^2)^n J$ must be added to the action.
+These contact terms are obviously covariant under Poincaré and scale transformations, so the can be added to the correlation function without affecting the Ward identities at separated points.
+This is the only possible contact term appearing in a scalar 2-point function, but more terms can appear in higher-point correlation functions, also involving operators that carry spin.
+
+When Fourier transformed to momentum space, all such contact terms become polynomials in the momenta. In the scalar 2-point function case, these are $(p^2)^n$. Polynomial terms are incompatible with the spectral condition for the Wightman function, as they have support over all causal regions. But there are allowed (and in fact required) in time-ordered products. Time-ordered products are defined in position space as the product of Wightman functions, which are tempered distributions, with step functions, which are not: therefore they do not necessarily have a Fourier transform. Contact terms can be seen as a way of ``fixing'' the time-ordered product so that they can be Fourier transformed. 
+
+In path integral language, this is the situation in which the source field $J$ for the operator $\phi$ has scaling dimension, $d - \Delta = \frac{d}{2} - n$ and therefore contact terms of the form $J (\partial^2)^n J$ can (and must) be added to the action. This can be understood by analytic continuation in scaling dimension $\Delta$. Let us assume that our scalar operator has scaling dimension $\Delta = \frac{d}{2} + n - \epsilon$, and take the limit $\epsilon \to 0$ (note that this $\epsilon$ is different from the one in the $i \varepsilon$ limit). Then the time-ordered 2-point function in momentum space takes the form
+\begin{equation}
+	\Gamma(-n + \epsilon) (p^2)^{n - \epsilon}
+	+ Z (p^2)^n,
+\end{equation}
+where the first term with a pole in $\epsilon$ comes from the expression \eqref{eq:UVdivergence} valid at $x \neq y$, and the second term is the counterterm added to the action.
+Choosing $Z \propto \epsilon^{-1}$ allows to cancel the divergence as $\epsilon \to 0$, but it also gives rise to a logarithm, 
+\begin{equation}
+	c_1 (p^2) + c_2 (p^2)^n \log(p^2).
+\end{equation}
+The term proportional to $c_2$ is sometimes called a \emph{conformal anomaly}, as its behavior under a scale transformation is anomalous.
+Anomalies are generically associated with contact terms, whose QFT interpretation is that of UV divergences.
+
+Note that the presence of contact term is associated with a very special type of operators of (half-)integer scaling dimension. Such operators are generically absent in an interacting conformal field theory, where the scaling dimensions take arbitrary real values. 
+However, an exception to this rule concerns conserved currents, whose dimension is always linked with that of space-time. For instance, a conserved current in $d = 4$ has scaling dimensions $\Delta = 3$; it is therefore associated in the path integral language with a source $a_\mu$ with scaling dimension 1. This source is also subject to a gauge symmetry, $a_\mu \sim a_\mu + \partial_\mu \alpha$, and therefore a possible contact term is generated by $f_{\mu\nu} f^{\mu\nu}$, where $f_{\mu\nu} = \partial_\mu a_\nu - \partial_\nu a_\mu$. As in the scalar case, this term must be used as a counterterm to cancel a divergence arising in the time-ordered correlation function, leading generically to logarithms in correlation functions involving the transverse polarization of the current.
+
+Note however that time-ordered correlation functions involving a conserved current do not only have transverse polarization: while the conservation condition implies the vanishing of the state
+\begin{equation}
+	\partial_\mu J^\mu(x) \ket{0} = 0,
+\end{equation}
+and thus of Wightman correlation functions constructed from that state, this is not true of the divergence of $J^\mu$ appearing in a time-ordered product: the conservation equation $\partial_\mu J^\mu(x) = 0$ is only true as an \emph{operator equation}, namely away from coincident points. On general grounds, one expects
+\begin{align}
+	\langle \phi_1(x_1) \cdots \phi_n(x_n)
+	\partial_\mu J^\mu(y) \rangle_T
+	&= - \delta^d(x_1 - y)
+	\langle \delta\phi_1(x_1) \cdots \phi_n(x_n)  \rangle_T
+	\nonumber \\
+	& \quad - \ldots
+	\nonumber \\
+	& \quad -\delta^d(x_n - y)
+	\langle \phi_1(x_1) \cdots \delta\phi_n(x_n)  \rangle_T,
+\end{align}
+where $\delta\phi_i$ indicates the charge of the field $\phi$ under $J^\mu$.%
+%
+\footnote{Note that it is conventional to normalize the conserved current $J$ so that this equation is true, which means that the 2-point function of $J$ cannot be arbitrarily normalized like a scalar operator in eq.~\eqref{eq:standardnormalization}. The same is true of the energy-momentum tensor, and of higher-spin conserved currents. For all of these operator the normalization of the 2-point function involves a coefficient of physical relevance.}
+%
 
 
+A consequence of this equation is that a conserved current inside a time-ordered correlator has generically a non-zero longitudinal polarization. However, since the gauge-invariant counterterm $f_{\mu\nu} f^{\mu\nu}$ can only cure divergences in the transverse part of the current, the longitudinal part of the time-ordered correlator might not be well-defined. This is an example of a divergence that we would generically call an IR divergence in quantum field theory. %Unlike the UV divergences that are 
+
+
+
+% In the context of CFT, though, there is no clear distinction between UV and IR, as the two are closely related.
+
+% both types of divergences correspond to unability to perform Fourier transform; one of them is curable with local counterterm: UV divergence
+%the other is not: IR
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{3- and 4-point correlation functions}
+\section{Conformal correlation functions}
 \label{sec:correlators}
 
-logic: it is in principle possible to keep going along the way of constructing Wightman functions from Ward identities
 
-3-point function: hard (I did it)
-
-instead, introduce convenient tools here
+%
+%
+%logic: it is in principle possible to keep going along the way of constructing Wightman functions from Ward identities
+%
+%3-point function: hard (I did it)
+%
+%instead, introduce convenient tools here
 
 
 \subsection{From Minkowksi space-time to Euclidean space}
 
-go from Wightman 2-pt function in momentum space to Euclidean 2-pt function in position space in two ways:
-
-- Fourier transform first, then analytic continuation of Wightman function
-- first construct T product (Källen-Lehmann representation), then Wick rotation to Euclidean momentum space, then Fourier transform
-
-
-reflection positivity
-
-going in the other direction: Osterwalder-Schrader
+%go from Wightman 2-pt function in momentum space to Euclidean 2-pt function in position space in two ways:
+%
+%- Fourier transform first, then analytic continuation of Wightman function
+%- first construct T product (Källen-Lehmann representation), then Wick rotation to Euclidean momentum space, then Fourier transform
+%
+%
+%reflection positivity
+%
+%going in the other direction: Osterwalder-Schrader
 
 
 \subsection{From Euclidean space to the embedding space}
-
-conformal group acts linearly in embedding space with $d+2$ dimensions, among which two times
-
-$X'^M = \Lambda^M_{~N} X^N$
-
-get rid of two dimensions by restricting to light-cone $X^2 = 0$, and identifying $X^+ \sim \lambda X^+$
-
-
-can take $X^+ = 1$, so that
-\begin{equation}
-	(X^+, X^-, X^\mu) = (1, x^2, x^\mu)
-\end{equation}
-
-
-fields defined on the cone, depending homogeneously on $X$
-
-rewrite 2-point function
-
-
-see section 2.1 of Rychkov
+%
+%conformal group acts linearly in embedding space with $d+2$ dimensions, among which two times
+%
+%$X'^M = \Lambda^M_{~N} X^N$
+%
+%get rid of two dimensions by restricting to light-cone $X^2 = 0$, and identifying $X^+ \sim \lambda X^+$
+%
+%
+%can take $X^+ = 1$, so that
+%\begin{equation}
+%	(X^+, X^-, X^\mu) = (1, x^2, x^\mu)
+%\end{equation}
+%
+%
+%fields defined on the cone, depending homogeneously on $X$:
+%
+%i.e.~define fields on the section above, then extend their definition by homogeneous transformation rule
+%
+%rewrite 2-point function
+%
+%
+%see section 2.1 of Rychkov
 
 \subsection{3-point functions}
 
-scalar 3-point function
-
-remarkable fact! fixed up to a single coefficient
-
-if only scale invariance, this could be arbitrarily complicated
-
-historical note (cite Rychkov, around eq. 2.43): birth of conformal field theory
-
-
-check: 2-point functions involving conserved currents and energy-momentum tensors are automatically conserved; for 3-point functions this gives additional constraint: scaling dimensions of operators must be equal
-
-what about 3-point functions in momentum space?
-a bit of self-promotion here...
+%scalar 3-point function
+%
+%remarkable fact! fixed up to a single coefficient
+%
+%if only scale invariance, this could be arbitrarily complicated
+%
+%historical note (cite Rychkov, around eq. 2.43): birth of conformal field theory
+%
+%
+%check: 2-point functions involving conserved currents and energy-momentum tensors are automatically conserved; for 3-point functions this gives additional constraint: scaling dimensions of operators must be equal
+%
+%what about 3-point functions in momentum space?
+%a bit of self-promotion here...
 
 
 
 \subsection{4-point functions}
 % and higher?
 
-invariant cross-ratios for 4-point functions
-
-
-
-more identities for conserved currents and the energy-momentum tensor?
-(there cannot be higher-spin conserved currents otherwise the theory must be free; reference?)
+%invariant cross-ratios for 4-point functions
+%
+%
+%
+%more identities for conserved currents and the energy-momentum tensor?
+%(there cannot be higher-spin conserved currents otherwise the theory must be free; reference?)
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2042,125 +2077,121 @@ more identities for conserved currents and the energy-momentum tensor?
 \label{sec:OPE}
 
 
-start with Hilbert-space completeness in Minkowski space-time
-
-unitarity implies norms are positive, hence 2-point function invertible
-
-
-how does this go through in Euclidean space?
-
-
-
-
-
-goal of this section: prove state/operator correspondence heuristically, justifying a posteriori some facts assumed before
-
-not only a curiosity: also useful computationally
-
-
-\subsection{N-S quantization}
-
-different foliation of space-time than the one discussed above
-
-
-
-same Hilbert space on a slice at $t = 0$; use different evolution operator
-
-
-conjugation in Euclidean space?
-
-takes $x_d \to - x_d$
-
-use Hamiltonian
-\begin{equation}
-	H = P_d + K_d
-\end{equation}
-instead of $P_d$
-
-fixed points
-
-operators can be evolved to fixed points by Hamiltonian
-
-
-\subsection{Radial quantization}
-
-in Euclidean, take the generator of dilatations as Hamiltonian
-
-simple rotation in $\text{SO}(d+1,1)$
-
-apply conformal transformation mapping the two fixed points to 0 and $\infty$
-
-conjugation is inversion $r \to 1/r$
-
-generators $P_\mu$ and $K_\mu$ are conjugate under inversion!
-
-raising and lowering operators
-
-
-equivalence between state living on a sphere (arbitary radius) and operators inserted at the origin
-
-organize states as eigenstates of scale and Lorentz (commuting): matches the construction we did above!
-
-this shows that every state can be created by local primary operator (and possibly action of translation generators); conversely, every operator defines a state (this part was already clear)
-
-not necessarily so in QFT! (e.g.~gauge theories? do we also need non-local operators? Wilson lines?)
-
-
-
-how to define an operator from a state? see Rychkov (3.26)
-operator is defined by all of its correlation functions
-
-
-
-note: state/operator correspondence validates our interpretation of Wightman 2-point function
-
-note 2: operator inside the unit sphere need not be smeared anymore; they have a well-defined norm!
-
-
-
-exercise: unitarity bound in radial quantization (Rychkov section 3.2)
-
-
-
-path integral interpretation: state is created by performing path integral inside unit sphere
-
-
-
-\subsection{Conformal OPE}
-
-derive OPE from radial quantization
-
-relate this to Lorentzian OPE on vacuum
-
-
-use in 3-point function: relates OPE coefficient with 3-pt fct coefficient
-(structure constants of the operator algebra)
-
-exercise: compute function entering the OPE
-
-
-\subsection{OPE convergence}
-
-Hilbert-space argument
-
-
-radius? 
-
-absolute convergence as long as one can find a sphere separating the points:
-
-note that a plane is also a sphere with radius infinity
-
-
-%%%
-
-
-concluding remarks:
-
-
-CFT data: spectrum of operators and OPE coefficients
-completely determines the theory!
-
-OPE reduces any higher-point function to 2-point
+%start with Hilbert-space completeness in Minkowski space-time
+%
+%unitarity implies norms are positive, hence 2-point function invertible
+%
+
+
+%
+%goal of this section: prove state/operator correspondence heuristically, justifying a posteriori some facts assumed before
+%
+%not only a curiosity: also useful computationally
+
+
+\subsection{The OPE in quantum field theory}
+%
+%different foliation of space-time than the one discussed above
+%
+%
+%
+%same Hilbert space on a slice at $t = 0$; use different evolution operator
+%
+%
+%conjugation in Euclidean space?
+%
+%takes $x_d \to - x_d$
+%
+%use Hamiltonian
+%\begin{equation}
+%	H = P_d + K_d
+%\end{equation}
+%instead of $P_d$
+%
+%fixed points
+%
+%operators can be evolved to fixed points by Hamiltonian
+
+
+\subsection{The state-operator correspondence in radial quantization}
+
+%in Euclidean, take the generator of dilatations as Hamiltonian
+%
+%simple rotation in $\text{SO}(d+1,1)$
+%
+%apply conformal transformation mapping the two fixed points to 0 and $\infty$
+%
+%conjugation is inversion $r \to 1/r$
+%
+%generators $P_\mu$ and $K_\mu$ are conjugate under inversion!
+%
+%raising and lowering operators
+%
+%
+%equivalence between state living on a sphere (arbitary radius) and operators inserted at the origin
+%
+%organize states as eigenstates of scale and Lorentz (commuting): matches the construction we did above!
+%
+%this shows that every state can be created by local primary operator (and possibly action of translation generators); conversely, every operator defines a state (this part was already clear)
+%
+%not necessarily so in QFT! (e.g.~gauge theories? do we also need non-local operators? Wilson lines?)
+%
+%
+%
+%how to define an operator from a state? see Rychkov (3.26)
+%operator is defined by all of its correlation functions
+%
+%
+%
+%note: state/operator correspondence validates our interpretation of Wightman 2-point function
+%
+%note 2: operator inside the unit sphere need not be smeared anymore; they have a well-defined norm!
+%
+%
+%
+%exercise: unitarity bound in radial quantization (Rychkov section 3.2)
+%
+%
+%
+%path integral interpretation: state is created by performing path integral inside unit sphere
+
+
+
+\subsection{The conformal OPE}
+
+%derive OPE from radial quantization
+%
+%relate this to Lorentzian OPE on vacuum
+%
+%
+%use in 3-point function: relates OPE coefficient with 3-pt fct coefficient
+%(structure constants of the operator algebra)
+%
+%exercise: compute function entering the OPE
+
+
+\subsection{Convergence properties}
+
+%Hilbert-space argument
+%
+%
+%radius? 
+%
+%absolute convergence as long as one can find a sphere separating the points:
+%
+%note that a plane is also a sphere with radius infinity
+%
+%
+%%%%
+%
+%
+%concluding remarks:
+%
+%
+%CFT data: spectrum of operators and OPE coefficients
+%completely determines the theory!
+%
+%OPE reduces any higher-point function to 2-point
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2168,169 +2199,172 @@ OPE reduces any higher-point function to 2-point
 \section{The conformal bootstrap}
 \label{sec:bootstrap}
 
-any CFT data defines a good theory? no!
-
-different quantization surfaces gives different OPEs in the same theory
-
-OPE associativity
-
-often called ``crossing symmetry'' (note: quite different from crossing symmetry of scattering amplitudes)
-
-(in fact this argument shows that Schwinger functions are symmetric!)
-
-focus on 4-point functions:
-all 4-point functions of all operators contain all the associativity constraints
-
-
-simplifications:
-only 4 identical operators, all scalars
+%any CFT data defines a good theory? no!
+%
+%different quantization surfaces gives different OPEs in the same theory
+%
+%OPE associativity
+%
+%often called ``crossing symmetry'' (note: quite different from crossing symmetry of scattering amplitudes)
+%
+%(in fact this argument shows that Schwinger functions are symmetric!)
+%
+%focus on 4-point functions:
+%all 4-point functions of all operators contain all the associativity constraints
+%
+%
+%simplifications:
+%only 4 identical operators, all scalars
 
 
 \subsection{Conformal blocks}
 
-rather conformal partial waves
-
-diagrammatics (not to be confused with Feynman diags)
-
-
-
-square configuration and expansion in rho coordinates
-
+%
+%diagrammatics (not to be confused with Feynman diags)
+%
+%
+%
+%square configuration and expansion in rho coordinates
 
 
-\subsection{The numerical boostrap}
+\subsection{The crossing equation and simple solutions}
 
-discussion about universality: see Poland, Rychkov, Vichi
-also Shai Chester's notes
+%generalized free field theory
 
-
-
-bound on scaling dimensions
-
-also spectrum at the boundary
-
-
-\subsection{Generalized free field theory}
-
-aka mean free theory, Gaussian theory
-
-double-twist operator
-
-corresponds to large-N limit of gauge theory
+%aka mean free theory, Gaussian theory
+%
+%double-twist operator
+%
+%corresponds to large-N limit of gauge theory
 
 
-\subsection{Analytic bootstrap}
-
-Euclidean $z^* = \bar{z}$
-$z = \bar{z} = \frac{1}{2}$ gives bootstrap equations that constrain operators of low scaling dimension $\Delta$
-
-Minkowski: $z \neq \bar{z}$, both real 
-light-cone limit $z \to 0$, $\bar{z}$ fixed is dominated by operators of low twist 
-
-rigorous bound in the limit $\ell \to \infty$
-
-Regge trajectories
 
 
-light-cone limit?
+
+\subsection{The numerical bootstrap}
+
+%discussion about universality: see Poland, Rychkov, Vichi
+%also Shai Chester's notes
+%
+%
+%
+%bound on scaling dimensions
+%
+%also spectrum at the boundary
+
+%
+%\subsection{Analytical bootstrap}
+%
+%Euclidean $z^* = \bar{z}$
+%$z = \bar{z} = \frac{1}{2}$ gives bootstrap equations that constrain operators of low scaling dimension $\Delta$
+%
+%Minkowski: $z \neq \bar{z}$, both real 
+%light-cone limit $z \to 0$, $\bar{z}$ fixed is dominated by operators of low twist 
+%
+%rigorous bound in the limit $\ell \to \infty$
+%
+%Regge trajectories
+%
+%
+%light-cone limit?
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Selected advanced topics}
-
-Other things to fit in:
-
-- Composite operators and anomalies?
-- IR divergences? see di Francesco ex. 4.5
-- cluster decomposition of 4-point function (di Francesco ex. 5.2)
-- Massless regularization of propagator in 2D; Bessel integral form of propagator, with IR and UV divergences
-
-
-
-Virasoro symmetry in 2d:
-
-
-conformal anomalies: anomalies are contact term in the action for the source
-
-
-superconformal bootstrap? note classification of all superconformal algebras
-
-
-\subsection{The 2d conformal bootstrap}
-
-historical presentation
-
-see Rychkov section 4.3.1
-
-advantage 1:
-full Virasoro symmetry
-
-advantage 2:
-easier to deal with spin: left- and right-moving, i.e.~holomorphic and anti-holomorphic
-
-by looking at just the energy-momentum tensor, already get strong constraints on its 2-point function (the central charge)
-
-for $c < 1$, only minimal models possible:
-match Ising, \ldots
-
-finitely many primaries in 2d (still infinitely many quasi-primaries)
-
-note: infinitely many primaries for theories with $c > 1$
-
-also can put the theory on torus and study modular properties of partition function
-
-
-other point to discuss: non-unitarity!
-many possibilities:
-\begin{itemize}
-
-\item
-scaling dimension below unitarity bound
-
-\item
-several operators with same scaling dimension forming a matrix that is not positive-definite (logarithmic CFTs)
-
-\item
-\ldots
-
-\end{itemize}
-
-
-
-\subsection{How to continue from here}
-
-
-\begin{itemize}
-
-\item
-holography: see Joao's TASI lectures
-
-\item
-superconformal: Tajikawa pedestrian lectures
-
-\item
-bootstrap: Shai Chester's lectures
-
-\item
-condensed matter:
-note that unitarity is unnecessary: many non-unitary fixed points, yet they have conformal invariance (why?)
-
-\end{itemize}
-
-
-
-
-
-
-\begin{center}	
-	
-\parbox{11.8cm}{
-\emph{%
-[Courses] are fantastically good for learning physics. The lecturer learns a lot of physics. After my first few studies, just about everything I learned about physics came from teaching it. I don’t know if the students learned a lot, but I certainly did. So I consider teaching physics very important.}
---- Leonard Susskind \cite{Susskind}}
-
-\end{center}
+%
+%\section{Selected advanced topics}
+%
+%Other things to fit in:
+%
+%- Composite operators and anomalies?
+%- IR divergences? see di Francesco ex. 4.5
+%- cluster decomposition of 4-point function (di Francesco ex. 5.2)
+%- Massless regularization of propagator in 2D; Bessel integral form of propagator, with IR and UV divergences
+%
+%
+%
+%Virasoro symmetry in 2d:
+%
+%
+%conformal anomalies: anomalies are contact term in the action for the source
+%
+%
+%superconformal bootstrap? note classification of all superconformal algebras
+%
+%
+%\subsection{The 2d conformal bootstrap}
+%
+%historical presentation
+%
+%see Rychkov section 4.3.1
+%
+%advantage 1:
+%full Virasoro symmetry
+%
+%advantage 2:
+%easier to deal with spin: left- and right-moving, i.e.~holomorphic and anti-holomorphic
+%
+%by looking at just the energy-momentum tensor, already get strong constraints on its 2-point function (the central charge)
+%
+%for $c < 1$, only minimal models possible:
+%match Ising, \ldots
+%
+%finitely many primaries in 2d (still infinitely many quasi-primaries)
+%
+%note: infinitely many primaries for theories with $c > 1$
+%
+%also can put the theory on torus and study modular properties of partition function
+%
+%
+%other point to discuss: non-unitarity!
+%many possibilities:
+%\begin{itemize}
+%
+%\item
+%scaling dimension below unitarity bound
+%
+%\item
+%several operators with same scaling dimension forming a matrix that is not positive-definite (logarithmic CFTs)
+%
+%\item
+%\ldots
+%
+%\end{itemize}
+%
+%
+%
+%\subsection{How to continue from here}
+%
+%
+%\begin{itemize}
+%
+%\item
+%holography: see Joao's TASI lectures
+%
+%\item
+%superconformal: Tajikawa pedestrian lectures
+%
+%\item
+%bootstrap: Shai Chester's lectures
+%
+%\item
+%condensed matter:
+%note that unitarity is unnecessary: many non-unitary fixed points, yet they have conformal invariance (why?)
+%
+%\end{itemize}
+%
+%
+%
+%
+%
+%
+%\begin{center}	
+%	
+%\parbox{11.8cm}{
+%\emph{%
+%[Courses] are fantastically good for learning physics. The lecturer learns a lot of physics. After my first few studies, just about everything I learned about physics came from teaching it. I don’t know if the students learned a lot, but I certainly did. So I consider teaching physics very important.}
+%--- Leonard Susskind \cite{Susskind}}
+%
+%\end{center}
 
 
 \bibliography{Bibliography}

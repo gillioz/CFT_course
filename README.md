@@ -26,6 +26,6 @@ The material covered in the lectures corresponds to the following parts of the n
 - Lectures 5 & 6 (08.03.2022): from section 2.6 to 3.1
 - Lectures 7 & 8 (15.03.2022): from section 3.2 to 3.5 (up to operators with spin)
 - Lectures 9 & 10 (22.03.2022): from section 3.5 (the rest) to 4.3
-- Lectures 11 & 12 (29.03.2022): 
-- Lectures 13 & 14 (05.04.2022): 
+- Lectures 11 & 12 (29.03.2022): from section 4.4 to 5.4
+- Lectures 13 & 14 (05.04.2022): section 6
 
