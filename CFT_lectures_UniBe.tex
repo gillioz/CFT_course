@@ -2636,8 +2636,9 @@ This means that we can express the completeness of the Hilbert space through the
 	\frac{d^dp}{(2\pi)^d}
 	\frac{\widetilde{\phi}_i(p) \ket{0} \bra{0} \widetilde{\phi}_i(-p) }
 	{(-p^2)^{\Delta - d/2}}
-	+ \ldots
+	+ \ldots,
 \end{equation}
+where the sum is over all primary operators of the theory.
 The denominator is simply the scalar 2-point function, and states that carry spin have been omitted for simplicity (this is the meaning of the ellipsis): they could be included in the same way after inverting the  Lorentz tensor appearing in the 2-point function, which is positive definite by unitarity.
 
 This identity can be applied whenever we encounter a product of two local operators acting on the vacuum, to rewrite the product as a sum of local operators. This takes its simplest form when the operators are all expressed in momentum space:
@@ -2656,8 +2657,44 @@ Since we saw before that even Schwinger functions can be given a Hilbert space i
 	C_i\left( x_1 - x_2, \partial_{x_2} \right) \phi_i(x_2).
 	\label{eq:OPE:Euclidean}
 \end{equation}
-Unlike the Minkowskian OPE \eqref{eq:OPE:Minkowski}, the convergence of this OPE is conditional: it is only true inside a correlation function in which the points $x_1$ and $x_2$ can be separated from any other insertions of local operators by a quantization surface, say a sphere in radial quantization. However, since the radius and center of the sphere can be chosen at will thanks to translation and scale symmetry, this includes many configurations of points, as we shall see below.
+Unlike the Minkowskian OPE \eqref{eq:OPE:Minkowski}, the convergence of this OPE is conditional: it is only true inside a correlation function in which the points $x_1$ and $x_2$ can be separated from any other insertions of local operators by a quantization surface, say a sphere in radial quantization. However, since the radius and center of the sphere can be chosen at will thanks to translation and scale symmetry, this includes many (in fact nearly all) configurations of points, as we shall see below.
 
+In the notation of eq.~\eqref{eq:OPE:Euclidean}, the coefficient $C_i$ do not only depend on the distance between the two operators, but also on derivatives acting on the primary operator $\phi_i$. This is a compact way of including all descendants in the sum. Keep in mind however that there are infinitely many such descendants, so $C_i$ is itself an infinite series.
+The only exception is the identity operator, which enters the OPE if and only if the two primary operators on the left-hand side of \eqref{eq:OPE:Euclidean} are identical: in a 2-point function, the OPE takes the form
+\begin{equation}
+	\langle \phi(x) \phi(0) \rangle = 
+	\frac{1}{(x^2)^{\Delta_\phi}} \langle \mathds{1} \rangle,
+\end{equation}
+with $\langle \mathds{1} \rangle = 1$,
+from which we deduce 
+\begin{equation}
+	C_\mathds{1}(x, \partial) = \frac{1}{(x^2)^{\Delta_\phi}}.
+\end{equation}
+When viewed as a primary operator, the identity does not have any descendants.
+In all other cases, the value of $C_i(x, \partial)$ can be determined from a 3-point function: using the OPE in the scalar 3-point function \eqref{eq:3ptfunction}, one can for instance deduce that
+\begin{equation}
+	C_i(x, \partial)
+	= \frac{\lambda_{12i}}{(x^2)^{\Delta_{12,i}}}
+	\left[ 1 + a x^\mu \partial_\mu
+	+ b_1 x^\mu x^\nu \partial_\mu \partial_\nu
+	+ b_2 x^2 \partial^2 + \ldots \right]
+\end{equation}
+where
+\begin{align}
+	a &= \frac{\Delta_{i2,1}}{\Delta_i},
+	\nonumber \\
+	b_1 &= \frac{\Delta_{i2,1} (\Delta_{i2,1} + 1)}
+	{2\Delta_i (\Delta_i + 1)},
+	\\
+	b_2 &= - \frac{\Delta_{i2,1} \Delta_{i1,2}}
+	{4 \Delta_i (\Delta_i + 1) \left( \Delta_i - \frac{d-2}{2} \right)}
+	\nonumber 
+\end{align}
+and so on. This expression is valid when $\phi_i$ is a scalar operator.
+But in general there are also operators with spin entering the OPE. This is the case even when $\phi_1$ and $\phi_2$ are scalars: the operators being inserted at separated points in space, they carry angular momentum; for a point-like operator on the other side of the OPE, this angular momentum is expressed as internal spin.
+Note however that not all Lorentz representations appear in the OPE of two scalars, but only symmetric tensors. Moreover, when the operators are identical, then only symmetric tensors with an even number of Lorentz indices appear. What representations appear or not can be determined from the group theory associated with Lorentz symmetry. On the other hand, representation of any scaling dimension $\Delta$ can in general be present.
+
+There are therefore still many unknown in the OPE (we will see in the next section that there are in fact always infinitely many primary operators in the sum). But when compared with the OPE in a generic quantum field theory, even in the presence of scale symmetry, the conformal OPE is extremely rigid: in a scale-invariant QFT the coefficients $a$, $b_1$, $b_2$, $\ldots$, entering the definition of the coefficient $C_i(x, \partial)$ are all theory-dependent factors. In CFT, on the contrary, they are completely fixed by the kinematics. The only dynamical information is contained in the OPE coefficients $\lambda_{12i}$ multiplying the contribution of a primary and all of its descendants.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
