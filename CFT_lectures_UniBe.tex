@@ -3045,6 +3045,7 @@ The starting point is to rewrite the crossing equation as
 and to realize that this can be viewed as an equation in an infinite vector space
 \begin{equation}
 	\sum_i \lambda_i^2 \, \vec{F}_i(\Delta_\phi, \Delta_i, \ell_i) = 0.
+	\label{eq:crossingequation:vector}
 \end{equation}
 The components of the vector $\vec{F}_i$ correspond to $v^{\Delta_\phi} g_i(u,v) - u^{\Delta_\phi} g_i(v,u)$ evaluated at an infinite set of points $(u,v)$, or equivalently as the coefficient of a Taylor expansion around some preferred point.%
 %
@@ -3121,7 +3122,7 @@ where the dots indicate contribution from all (infinitely many) irrelevant prima
 
 \end{itemize}
 %
-Using these properties as an input, and studying all 4-point functions involving $\sigma$ and $\epsilon$, one is able to make the allowed region of parameters ($\Delta_\sigma, \Delta_\epsilon$) shrink to a island surrounding the value known experimentally and through numerical simulations, see figure~\ref{fig:Ising:island}.
+Using these properties as an input, and studying all 4-point functions involving $\sigma$ and $\epsilon$, one is able to make the allowed region of parameters ($\Delta_\sigma, \Delta_\epsilon$) shrink to a island surrounding the value known experimentally, see figure~\ref{fig:Ising:island}. With the more recent numerical analysis, the size of this allowed island has shrunk to become much smaller than the best Monte-Carlo simulations, so that the current best theoretical prediction for the critical exponents of the Ising model come from the conformal bootstrap.
 
 \begin{table}
 	\centering
@@ -3151,19 +3152,9 @@ Using these properties as an input, and studying all 4-point functions involving
 \end{table}
 
 
-
-\bibliography{Bibliography}
-\bibliographystyle{utphys}
-
-\end{document}
-
-
-success story; universality at work!
-
-
-
-$\Delta_\sigma = 0.5181489$
-
+This is very impressive, and it illustrates admirably how the concept of \emph{universality} in statistical physics works: given some very general assumptions 
+(conformal symmetry, only two relevant operators, and a $\mathbb{Z}_2$ symmetry), the conformal bootstrap essentially establishes that there is a unique theory and provides excellent numerical results with rigorous error bars. Moreover, at the intersection between the allowed and disallowed regions (i.e.~on the boundary of the island), the crossing equation \eqref{eq:crossingequation:vector} must be satisfied in a peculiar way: many vectors must lie precisely on the separating plane, and only these vectors can have non-zero OPE coefficients for the equation to be satisfied. Reading out the scaling dimensions $\Delta_i$ and spins $\ell_i$ associated with these vectors, one gets an numerical estimate of the spectrum of primary operators entering the OPE. Figure~\ref{fig:Ising:spectrum} shows such an estimate. The spectrum of operators is shown there as a function of the spin $\ell_i$ and of the difference $\Delta_i - \ell_i$, so that an underlying geometric structure appears clearly: the operators are organized into \emph{conformal Regge trajectories}. 
+%
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\linewidth]{figures/IsingSpectrum.pdf}
@@ -3171,132 +3162,77 @@ $\Delta_\sigma = 0.5181489$
 	$\sigma \times \sigma$ in the 3-dimensional Ising model,
 	for spins up to 40
 	and scaling dimensions of the order of the spin, 
-	taken from ref.~\cite{Simmons-Duffin:2016wlq}.}
+	based on data taken from ref.~\cite{Simmons-Duffin:2016wlq}.}
 	\label{fig:Ising:spectrum}
 \end{figure}
 
-%discussion about universality: see Poland, Rychkov, Vichi
-%also Shai Chester's notes
-%
-%
-%
-%bound on scaling dimensions
-%
-%also spectrum at the boundary
+This observation matches the state-of-the-art analytical understanding of the crossing equation: every operators with a low scaling dimension $\Delta_i$ (and also low spin by the unitarity bound) is related by crossing symmetry to families of operators with scaling dimensions $2\Delta_i + 2n + \ell$. This is what we found in generalized free field theory, but it works reasonably well in the Ising model, as seen in the figure: for $\Delta - \ell \lesssim 4$, there are 3 families of operators that are aligned with the values $\Delta_i - \ell_i = 2 \Delta_\sigma$, $2 \Delta_\epsilon$, and $2 \Delta_\sigma + 2$.
+The equivalence between these families and operators of low scaling dimension has been established rigorously in the limit of infinite spin. We do not only know what is the asymptotic value as $\ell \to \infty$, but we also know the leading correction that is proportional to a power of the spin $\ell$.
 
+The reach of the conformal bootstrap is not limited to the Ising model.
+Our understanding of many conformal field theories has been significantly improved by the conformal bootstrap. This is particularly true of theories in 2 and 3 dimensions. In 3 dimensions, there is a generalization of the Lagrangian \eqref{eq:IsingLagrangian} to $N$ scalar fields $\phi_a$, with an interaction term of the form $(\phi_a \phi_a)^2$, which are called $\text{O}(N)$ models, which has led to interesting physics predictions from the bootstrap:
+\begin{itemize}
+
+\item
+The $\text{O}(2)$ model describes for instance the superfluid transition of liquid helium. There is an large unresolved discrepancy between the best measurement of this transition (an experiment performed in the space shuttle) and the best Monte-Carlo simulations. In this case, the prediction of the conformal bootstrap is consistent with the Monte-Carlo result~\cite{Chester:2019ifh}. 
+
+\item
+The $\text{O}(3)$ model is perhaps even more exciting, because it describes the critical behavior of Heisenberg magnets. These are statistical physics models in which the magnetization is isotropic: it can point in any direction in space, without preferred direction. However, in practice it seems very difficult to achieve the required level of isotropy on a lattice: the $\text{O}(3)$ symmetry tends to be spontaneously broken, for instance to its cubic subgroup (the finite group of symmetries of the cube).
+The interesting question here is whether the 4-index operator $\mathcal{O}_{ijkl}$ that could trigger an RG flow from the $\text{O}(3)$ model to a CFT with cubic symmetry is relevant or not. Since its scaling dimension is accidentally very close to 3, this is very hard to determine from lattice simulations. 
+The conformal bootstrap has now established on rigorous grounds that the scaling dimension of this operator is below 3, and hence that the $\text{O}(3)$ naturally tends to be broken~\cite{Chester:2020iyt}.
+
+\end{itemize}
 %
-%\subsection{Analytical bootstrap}
-%
-%Euclidean $z^* = \bar{z}$
-%$z = \bar{z} = \frac{1}{2}$ gives bootstrap equations that constrain operators of low scaling dimension $\Delta$
-%
-%Minkowski: $z \neq \bar{z}$, both real 
-%light-cone limit $z \to 0$, $\bar{z}$ fixed is dominated by operators of low twist 
-%
-%rigorous bound in the limit $\ell \to \infty$
-%
-%Regge trajectories
-%
-%
-%light-cone limit?
+There are many more interesting results and exciting open questions related to the conformal bootstrap, and this is not the place to list them exhaustively (the list would not stay up-to-date for long). For a recent summary, see for instance the \emph{Snowmass White Papers} on the numerical~\cite{Poland:2022qrs} and analytic bootstrap~\cite{Hartman:2022zik}.
+So far, for physics in $d = 3 + 1$ Minkowski space, generic bounds have remained relatively weak and featureless. The CFTs that are known to exists seem to all be gauge theories (e.g.~various conformal windows for different gauge groups and matter content), and this is an additional difficulty since the information on the gauge group is encoded in a complicated way in the CFT data and cannot be directly used as for instance the global symmetry in the $\text{O}(N)$ models in 3 dimensions.
+But this should not be taken as a failure of the conformal bootstrap, but rather as a challenge for the next generation of physicists!
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%\section{Selected advanced topics}
-%
+
+\section{Going beyond}
+
+There are many topics in conformal field theory that have not been addressed in these lectures. To list a few:
+\begin{itemize}
+
+\item
+Conformal symmetry in two dimensions. 
+We mentioned in section~\ref{sec:classical} that there are many more Killing vectors, and hence conformal generators when $d = 2$. In theories that have an energy-momentum tensor, this gives rise to the infinite-dimensional Virasoro algebra, which has been used to solve completely a class of theories called \emph{minimal models}. 
+One can also place a 2-dimensional CFT on a torus and study the modular properties of its partition function in a bootstrap setup. This is a vast topic that has its own literature.
+% references?
+
+\item
+Superconformal symmetry~\cite{Argyres:2022mnu}. When combined with supersymmetry, the conformal algebra also gets extended to a bigger and more rigid structure. All superconformal algebras have been classified and are restricted to dimensions $d \leq 6$. 
+% references: Tajikawa pedestrian lectures? 
+
+\item
+AdS/CFT and the holographic principle.
+Correlation functions of operators living at the boundary of AdS have the isometries of a conformal field theory, which means that most CFT techniques can be applied there. There are two quite distinct situations: On the one hand, one can consider theories of quantum gravity that only approach AdS space-time asymptotically; these would be dual to a true CFT with an energy-momentum tensor, but the question is which CFT. 
+% reference?
+On the other hand, one can place a quantum field theory in a fixed AdS background, and study the CFT correlators on its boundary; this CFT does not necessarily have an energy-momentum tensor, and it is in fact very similar to the generalized free field theory (or a large-N theory).
+%references: Joao's TASI lectures
+It should also be noted that one can study the limit of infinite AdS radius in this latter approach to recover flat-space scattering amplitude. This observation is at the heart of the recently-revived S-matrix bootstrap techniques~\cite{Kruczenski:2022lot}.
+
+\item
+Hamiltonian truncation~\cite{Fitzpatrick:2022dwq}.
+This is a numerical technique that studies renormalization group flows using the CFT data as an input: the Hilbert space of a UV CFT is truncated with some cutoff, before a relevant deformation is introduced; the new Hamiltonian can then be diagonalized numerically in the truncated basis, and IR observables measured; iterating the process with a varying cutoff gives a sense of how the observables depend on the cutoff scale. 
+ 
+\end{itemize}
+
 %Other things to fit in:
 %
-%- Composite operators and anomalies?
 %- IR divergences? see di Francesco ex. 4.5
 %- cluster decomposition of 4-point function (di Francesco ex. 5.2)
 %- Massless regularization of propagator in 2D; Bessel integral form of propagator, with IR and UV divergences
-%
-%
-%
-%Virasoro symmetry in 2d:
-%
-%
-%conformal anomalies: anomalies are contact term in the action for the source
-%
-%
-%superconformal bootstrap? note classification of all superconformal algebras
-%
-%
-%\subsection{The 2d conformal bootstrap}
-%
-%historical presentation
-%
-%see Rychkov section 4.3.1
-%
-%advantage 1:
-%full Virasoro symmetry
-%
-%advantage 2:
-%easier to deal with spin: left- and right-moving, i.e.~holomorphic and anti-holomorphic
-%
-%by looking at just the energy-momentum tensor, already get strong constraints on its 2-point function (the central charge)
-%
-%for $c < 1$, only minimal models possible:
-%match Ising, \ldots
-%
-%finitely many primaries in 2d (still infinitely many quasi-primaries)
-%
-%note: infinitely many primaries for theories with $c > 1$
-%
-%also can put the theory on torus and study modular properties of partition function
-%
-%
-%other point to discuss: non-unitarity!
-%many possibilities:
-%\begin{itemize}
-%
-%\item
-%scaling dimension below unitarity bound
-%
-%\item
-%several operators with same scaling dimension forming a matrix that is not positive-definite (logarithmic CFTs)
-%
-%\item
-%\ldots
-%
-%\end{itemize}
-%
-%
-%
-%\subsection{How to continue from here}
-%
-%
-%\begin{itemize}
-%
-%\item
-%holography: see Joao's TASI lectures
-%
-%\item
-%superconformal: Tajikawa pedestrian lectures
-%
-%\item
-%bootstrap: Shai Chester's lectures
-%
-%\item
-%condensed matter:
-%note that unitarity is unnecessary: many non-unitary fixed points, yet they have conformal invariance (why?)
-%
-%\end{itemize}
-%
-%
-%
-%
-%
-%
-%\begin{center}	
-%	
-%\parbox{11.8cm}{
-%\emph{%
-%[Courses] are fantastically good for learning physics. The lecturer learns a lot of physics. After my first few studies, just about everything I learned about physics came from teaching it. I don’t know if the students learned a lot, but I certainly did. So I consider teaching physics very important.}
-%--- Leonard Susskind \cite{Susskind}}
-%
-%\end{center}
+
+
+
+\vspace{30mm}
+
+\noindent
+\emph{[Courses] are fantastically good for learning physics. The lecturer learns a lot of physics. After my first few studies, just about everything I learned about physics came from teaching it. I don’t know if the students learned a lot, but I certainly did. So I consider teaching physics very important.} \\
+\hspace*{0.6\linewidth} --- Leonard Susskind \cite{Susskind}
 
 
 \bibliography{Bibliography}
