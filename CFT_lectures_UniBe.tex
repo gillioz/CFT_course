@@ -21,15 +21,6 @@
 \DeclareMathOperator{\im}{\text{im}}
 \newcommand{\SO}{\text{SO}}
 
-% double angle-bracket notation:
-%\makeatletter
-%\newsavebox{\@brx}
-%\newcommand{\llangle}[1][]{\savebox{\@brx}{\(\m@th{#1\langle}\)}%
-%  \mathopen{\copy\@brx\kern-0.5\wd\@brx\usebox{\@brx}}}
-%\newcommand{\rrangle}[1][]{\savebox{\@brx}{\(\m@th{#1\rangle}\)}%
-%  \mathclose{\copy\@brx\kern-0.5\wd\@brx\usebox{\@brx}}}
-%\makeatother
-
 \numberwithin{equation}{section}
 
 \newcounter{exercise}[section]
@@ -89,10 +80,10 @@ Suggestions for improvements are welcome and can be directly submitted on the Gi
 
 \subsection{What is conformal field theory?}
 
-Conformal field theory is a quantum field theory with conformal symmetry:
+Conformal field theory (CFT) is a quantum field theory (QFT) with conformal symmetry:
 \begin{equation}
-	\text{conformal field theory}
-	= \text{quantum field theory} + \text{conformal symmetry},
+	\text{CFT}
+	= \text{QFT} + \text{conformal symmetry},
 \end{equation}
 where under conformal symmetry we understand
 \begin{itemize}
@@ -110,15 +101,15 @@ scale transformations, also known as dilatations,
 special conformal transformations.
 
 \end{itemize}
-The course will begin in section~\ref{sec:classical} with a precise definition of all these symmetries, even though the first two (the Poincaré symmetry) should be familiar from an elementary quantum field theory class, and you should even have heard of the importance of dilatations in the context of the \emph{renormalization group}.
+The course will begin in section~\ref{sec:classical} with a precise definition of all these symmetries, even though the first two (forming together the Poincaré symmetry) should be familiar from an elementary quantum field theory class, and you should even have heard of the importance of dilatations in the context of renormalization.
 
-Most courses on CFT put the emphasis on conformal symmetry as a whole, which makes a lot of sense because it forms a group (more on this latter). However, this approach often requires to work in Euclidean space (we will see why), and the connection with quantum field theory as we know it appears very late in the course, if at all.
+Most introductory courses on CFT put the emphasis on conformal symmetry as a whole, which makes a lot of sense because it forms a group (more on this latter). However, this approach often requires to work in Euclidean space (we will see why), and the connection with quantum field theory as we know it appears very late in the course, if at all.
 
 Instead, in this lecture we would like to stay as close as possible to quantum field theory; in some sense, we will defined conformal field theory as
 \begin{equation}
 \begin{aligned}
-	\text{conformal field theory}
-	&= \text{relativistic quantum field theory} 
+	\text{CFT}
+	&= \text{relativistic QFT} 
 	\\
 	& \quad
 	+ \text{scale symmetry}
@@ -127,9 +118,9 @@ Instead, in this lecture we would like to stay as close as possible to quantum f
 	+ \text{special conformal symmetry},
 \end{aligned}
 \end{equation}
-and go through this definition carefully.
-The first element is quantum field theory in flat Minkowski space-time. We have a good intuition of this part from particle physics. However, we do not want to restrict our attention to theories that have a nice classical limit and an understanding in terms of perturbation theory!
-Therefore, we will discuss in section~\ref{sec:quantum} the basics of a non-perturbative quantum field theory.
+and go through each element on the right-hand side one after the other.
+The first element is quantum field theory in flat Minkowski space-time. We have a good intuition of this part from particle physics. However, we do not want to restrict our attention to theories that have a nice classical limit and an understanding in terms of perturbation theory.
+Therefore, we will see in section~\ref{sec:quantum} the basics of a non-perturbative quantum field theory.
 Even though we care about unitary quantum field theory in Minkowski space-time, it will be useful to establish a connection with the same theory defined in flat Euclidean space. For this reason, we will work with the Minkowski metric convention
 \begin{equation}
 	\eta_{\mu\nu} = \left( \begin{array}{cccc}
@@ -139,30 +130,31 @@ Even though we care about unitary quantum field theory in Minkowski space-time, 
 	\mu, \nu = 0, 1, \ldots, d-1,
 \end{equation}
 so that going from Minkowski space-time to Euclidean space will be achieved through a rotation of the time coordinate in the complex plane, $x^0 = t \to i \tau$.
-Since for us the space-time will always be flat (no matter whether Minkowski or Euclidean), we will raise and lower the indices at will.
+Since for us space-time will always be flat (no matter whether Minkowski or Euclidean), we will raise and lower the indices at will.
 
 After giving a non-perturbative definition of relativistic quantum field theory, we will examine the role of scale symmetry. The main novelty here is that scale invariance forbids the presence of particles with a definite mass; instead, in a scale-invariant theory there are excitations of \emph{any} energy (unless we are in the very special case of a free theory).
 
 Finally, special conformal symmetry will be discussed last. The point is that it (nearly always) come along with scale symmetry. Nevertheless, it provides extremely powerful tools to understand the theory from a non-perturbative point of view. This will lead us to a comprehensive study of conformally-invariant correlation functions in section~\ref{sec:correlators}, and to the formulation of an \emph{operator product expansion} (OPE) that has very nice features in section~\ref{sec:OPE}.
-
-%- UV/IR divergences and anomalies 
-%these are precisely subjects that will be covered in these lectures
 
 
 \subsection{Why is conformal field theory interesting?}
 
 Nature is certainly not scale invariant, so why do we care so much about conformal field theory?
 
-First of all, scale transformations play an essential role in quantum field theory, even when this is not a symmetry of the theory. The Callan-Symanzik equation in renormalization is essentially a Ward identity associated with the (broken) scale symmetry. 
+First of all, scale transformations play an essential role in quantum field theory, even when they are not symmetries of the theory. The Callan-Symanzik equation in renormalization is essentially a Ward identity associated with the (broken) scale symmetry. 
 We will see that conformal transformations can be viewed as a \emph{local} generalization of scale transformations, in which the rescaling factor is different at every point in space-time, while still being consistent with Poincaré symmetry.
 
-We also know that all end points of renormalization group trajectories are described by scale-invariant fixed points, and it turns out that \emph{all} known fixed points are in fact conformally invariant. Therefore, conformal field theory is automatically relevant for the description of the low- and high-energy limits of any quantum field theory.
+We also know that all end points of renormalization group trajectories are described by scale-invariant fixed points, and it turns out that \emph{all} known fixed points are in fact conformally invariant.%
+%
+\footnote{Unless one gives up unitarity.}
+%
+Therefore, conformal field theory is automatically relevant for the description of the low- and high-energy limits of any quantum field theory.
 
-But one of the main reasons why it is important to study conformal field theory now (or at least have a basic understanding of it) is that it has been yielding exciting results in the last 10-15 years. In section~\ref{sec:bootstrap}, we will give a short review of the  \emph{conformal bootstrap}, a technique that allows to completely solve conformal field theory in certain cases.
-Even though the modern conformal bootstrap was invented to solve a particle physics problem, its results so far have had more impact in condensed matter physics. There, the concept of \emph{universality} is playing a central role: it turns out that the critical exponents of very different systems coincide. This has a simple explanation from the fact that there are only ``few'' conformal field theories that can exist at all (at least once global symmetries are specified together with some information about what are the relevant operators). In other words, the space of all conformal field theories is sparse, unlike in QFT where it is always possible to add some new operator in a Lagrangian to slightly deform the theory.
+But one of the main reasons to study conformal field theory right now (or at least have a basic understanding of it) is that it has been producing many exciting results in the last 10-15 years. In section~\ref{sec:bootstrap}, we will give a short review of the  \emph{conformal bootstrap}, a technique that allows to completely solve conformal field theory in certain cases.
+Even though the modern conformal bootstrap was invented to solve a particle physics problem, its results so far have had more impact in condensed matter physics. There, the concept of \emph{universality} is playing a central role: it turns out that the critical exponents of very different systems coincide. This has a simple explanation from the fact that there are only ``few'' conformal field theories that can exist at all (at least once global symmetries are specified, together with some information about relevant operators). In other words, the space of all conformal field theories is sparse, unlike in QFT where it is always possible to add some new operator in a Lagrangian to slightly deform the theory.
 This concept is extremely successful in $d = 2$ and 3 dimensions, but there is also a big hope to classify all possible conformal field theories in $d = 4$ (or higher) dimensions. 
-This goal would have a huge impact also for QFT with scale dependence, because it would strongly constrain the possible renormalization group flow.
-But this is still a young field, and much more work needs to be done before anything like this can be claimed.
+This goal would have a huge impact also in QFT, because it would strongly constrain the possible renormalization group flows.
+But the conformal bootstrap is still a young field, and much more work needs to be done before anything like this can be claimed.
 
 Besides its importance in quantum field theory and condensed matter physics, conformal field theory has also given very nice insights into:
 \begin{itemize}
@@ -185,7 +177,7 @@ CFT admits a mathematically rigorous definition, which does not require to ``qua
 
 \subsection{Examples of conformal field theories}
 
-Conformal field theories are everywhere in physics, and not necessarily limited to very special situations. Here are some examples, some of which you may already have encountered:%
+Conformal field theories can be found everywhere in physics. Here are some examples, some of which you may already have encountered:%
 %
 \begin{itemize}
 
@@ -193,13 +185,13 @@ Conformal field theories are everywhere in physics, and not necessarily limited 
 Free massless theories are conformal. This is the case of the free boson and free fermion in any number of dimensions, but also of the $n$-form gauge theory in $d = 2n + 2$ dimensions (e.g.~the free vector theory in $d = 4$). The same is true of theories with any number of free fields.
 
 \item
-Theories in which the $\beta$-function admits a perturbative fixed points. Typical examples are deformations of the free scalar theory with a potential of the type $\phi^n$. For instance, consider
+Theories in which the $\beta$-function has a perturbative fixed point. Typical examples are deformations of the free scalar theory with a potential of the type $\phi^n$. For instance, consider
 \begin{equation}
 	S = \int d^dx \left[
 	- \frac{1}{2} \partial_\mu \phi \partial^\mu \phi
 	- \frac{g}{4!} \phi^4 \right].
 \end{equation}
-$g$ is dimensionless in $d = 4$ dimensions. If one considers the theory defined in $d = 4 - \varepsilon$ dimensions, then the beta function for $g$ is
+$g$ is dimensionless in $d = 4$ dimensions. If one considers the same theory in $d = 4 - \varepsilon$ dimensions (this makes sense in perturbation theory), then the $\beta$-function for $g$ is
 \begin{equation}
 	\beta_g = \mu \frac{dg}{d\mu}
 	= - \varepsilon + \frac{3g}{(4\pi)^2}
@@ -209,22 +201,22 @@ It vanishes when
 \begin{equation}
 	\frac{g_*}{(4\pi)^2} = \frac{\varepsilon}{3}.
 \end{equation}
-Corrections of higher order in $g$ can be neglected in the limit $\varepsilon \ll 1$.
-There are similar fixed points for a $\phi^3$ interaction in $d = 6 + \varepsilon$ dimensions, of for a $\phi^6$ interaction around $d = 3$.
+Higher-order corrections are negligible in the limit $\varepsilon \ll 1$.
+There are similar fixed points with a $\phi^3$ interaction in $d = 6 + \varepsilon$ dimensions, of with a $\phi^6$ interaction around $d = 3$.
 
 
 \item
-A similar type of fixed point can be found in the beta function of a $SU(N_c)$ gauge theory with $N_f$ fermions (in the fundamental representation), which is given at leading order in the gauge coupling $\alpha = g^2/(4\pi)^2$ by
+A similar type of fixed point can be found in the $\beta$-function of a $SU(N_c)$ gauge theory with $N_f$ fermions (in the fundamental representation), which is given at leading order in the gauge coupling $\alpha = g^2/(4\pi)^2$ by
 \begin{equation}
 	\beta_\alpha = \mu \frac{d\alpha}{d\mu}
 	= -\frac{2}{3} \alpha^2 \left(11 N_c - 2 N_f \right)
 	+ \O(\alpha^3).
 \end{equation}
-When $N_f = \frac{11}{2} N_c$, the leading order term in this beta function vanishes, so the next-to-leading term becomes important. Around that value, the first two terms are of similar importance, and one finds a perturbative fixed point of when $N_f \lesssim \frac{11}{2} N_c$. This is called the (Caswell-)Banks-Zaks fixed point. A theory in this situation is asymptotically free like QCD, but in the low-energy limit it approaches an interacting conformal field theory.
+When $N_f = \frac{11}{2} N_c$, the leading order term in this $\beta$-function vanishes, so the next-to-leading term becomes important. Around that value, the first two terms are of similar importance, and one finds a perturbative fixed point of when $N_f \lesssim \frac{11}{2} N_c$. This is called the (Caswell-)Banks-Zaks fixed point. A theory in this situation is asymptotically free like QCD, but in the low-energy limit it approaches an interacting conformal field theory.
 For an $SU(3)$ gauge theory like QCD this critical value is at $N_f = 16.5$. There is strong evidence from lattice simulation that a theory with $N_f = 16$ is conformal. On the other hand a theory with low $N_f$ (QCD has only 3 light quarks) is clearly confining, meaning that its low-energy limit is a theory massless Goldstone bosons (if the quarks are massless), or of massive pions. There is a critical value $N_f^* \approx 12$ above which we expect an interacting conformal field theory in the low-energy limit. The domain $N_f^* \leq N_f \leq \frac{11}{2} N_c$ is called the \emph{conformal window}. Note that gauge theories with different gauge groups and/or fermions coupling differently to the gauge fields (i.e.~in different representations) can also have a conformal window. It is even possible to engineer gauge theories with perturbative UV fixed points using not only fermions but also scalars.
 
 \item
-There are theories with extended supersymmetry in which the beta function is exactly zero at all orders in perturbation theory, for instance $\mathcal{N} = 4$ supersymmetric Yang-Mills. More generically, in theories with sufficiently many supersymmetries, it is often sufficient to engineer the matter content to make the beta function zero at leading order, and then non-renormalization theorems ensure their vanishing at all orders. Theories with conformal symmetry and supersymmetry are called \emph{superconformal}.
+There are theories with extended supersymmetry in which the $\beta$-function is exactly zero at all orders in perturbation theory, for instance $\mathcal{N} = 4$ supersymmetric Yang-Mills. More generically, in theories with sufficiently many supersymmetries, it is often sufficient to engineer the matter content to make the $\beta$-function zero at leading order, and then non-renormalization theorems ensure their vanishing at all orders. Theories with conformal symmetry and supersymmetry are called \emph{superconformal}.
 
 \item
 An example of truly non-perturbative fixed point in $d = 3$ dimensions is given by the following action:
@@ -240,19 +232,19 @@ Note that the free scalar field has mass dimension $\left[ \phi \right] = \frac{
 	\qquad\qquad
 	\left[ g \right] = 1.
 \end{equation}
-Since both $m^2$ and $g$ have positive mass dimensions, they are \emph{relevant} operators: they determine the dynamics in the low-energy limit (IR), but their importance decreases at higher and higher energies (UV): at energies $E \gg g, |m|$, this is approaches the theory of a massless free scalar.
+Since both $m^2$ and $g$ have positive mass dimensions, they are \emph{relevant} operators: they determine the dynamics in the low-energy limit (IR), but their importance decreases at high energy (UV): at energies $E \gg g, |m|$, this approaches the theory of a massless free scalar.
 On the other hand, at low energies the physics depends obvioulsy on $g$ and $m$: when $m^2 \gg g^2$, it is a theory of a massive scalar of mass $m$, whereas when $m^2 \ll -g^2$, then the potential has two minima at
 \begin{equation}
 	\langle \phi \rangle = \pm \sqrt{- \frac{6m^2}{g}},
 \end{equation}
-with excitations fo mass $\sqrt{2} |m|$ around it. Clearly this theory has two phases, and there must therefore be an intermediate value of $m^2$ where the phase transition happens (or working in units set by $g$, a specific value of the dimensionless ratio $m^2/g^2$). Note that this theory has a $\mathds{Z}_2$ symmetry in the UV corresponding to $\phi \to -\phi$, which is spontaneously broken in one phase and not in the other.
+with excitations of mass $\sqrt{2} |m|$ around it. Clearly this theory has two phases, and there must therefore be an intermediate value of $m^2$ where the phase transition happens (or working in units set by $g$, a specific value of the dimensionless ratio $m^2/g^2$). Note that this theory has a $\mathbb{Z}_2$ symmetry in the UV corresponding to $\phi \to -\phi$, which is spontaneously broken in one phase and not in the other.
 
-It turns out that the theory describing the IR physics exactly at the phase transition is a conformal field theory. Unlike the two phases surrounding it, it admits excitations of arbitrarily small energies (but they are not particles). How do we know that? Feynman diagram computations cannot be trusted in the IR: the approximation given by the (asymptotic) perturbative series is valid in the UV, but it breaks down in the IR, as in QCD. One way of understanding the phase transition is examining the theory in $d \neq 3$ dimensions: the same theory in $d = 4 - \varepsilon$ expansion has a perturbative fixed point, and computations at the fixed point can be performed in an expansion in $\varepsilon$. The value of the fixed point depends on the renormalization scheme, but there are other quantities that are scheme-independent. This is for instance the case of the anomalous dimension of the operator $\phi$.
-Using a 6-loop beta-function computation, one finds
+It turns out that the theory describing the IR physics exactly at the phase transition is a conformal field theory. Unlike the two phases surrounding it, it admits excitations of arbitrarily small energies (but they are not particles). How do we know that? Feynman diagram computations cannot be trusted in the IR: the approximation given by the (asymptotic) perturbative series is valid in the UV, but it breaks down in the IR, as in QCD. One way of understanding the phase transition is to examine the theory in $d \neq 3$ dimensions: the same theory in $d = 4 - \varepsilon$ has a perturbative fixed point. The value of the fixed point depends on the renormalization scheme, but there are other quantities that are scheme-independent. This is for instance the case of the anomalous dimension of the operator $\phi$.
+The state-of-the-art 6-loop beta-function computation gives
 \begin{equation}
 	\gamma_\phi \approx 0.0182.
 \end{equation}
-This is more conveniently expressed as a \emph{scaling dimension} of $\phi$,
+This is more conveniently expressed as the \emph{scaling dimension} of $\phi$,
 \begin{equation}
 	\Delta_\phi = \frac{d-2}{2} + \gamma_\phi \approx 0.5182,
 \end{equation}
@@ -261,13 +253,13 @@ which in position space describes how the correlation between two points decays 
 	\langle \phi(x) \phi(0) \rangle \propto |x|^{-2\Delta_\phi}.
 \end{equation}
 
-A surprising thing about this scaling dimension is that it coincides preciesely with that of a statistical physics model. The \emph{Ising model} is a theory of classical spins $s_i = \pm 1$ on a lattice with nearest-neighbor interactions, characterized by the Hamiltonian
+A surprising thing about this scaling dimension is that it coincides precisely with that of a statistical physics model. The \emph{Ising model} is a theory of classical spins $\sigma_i = \pm 1$ on a lattice with nearest-neighbor interactions, characterized by the Hamiltonian
 \begin{equation}
-	H = - J \sum_{\langle ij \rangle} s_i s_j.
+	H = - J \sum_{\langle ij \rangle} \sigma_i \sigma_j.
 \end{equation}
 This model has a critical value of $J$ whose continuum limit is described by a CFT. At this value, Monte-Carlo simulations show that the correlation between two spins decay with the distance with power given by
 \begin{equation}
-	\Delta_s \approx 0.5181.
+	\Delta_\sigma \approx 0.5181.
 \end{equation}
 The two theories have completely different microscopic descriptions: one is a quantum field theory describing particles in Minkowski space-time, the other a simple theory on a Euclidean lattice. 
 Even more surprisingly, the same critical exponent is found in other systems, such as the critical point of water and other liquids. This is an example of \emph{universality}.
@@ -276,26 +268,27 @@ The explanation for this coincidence is that there are not many candidate confor
 \begin{itemize}
 
 \item
-A global $\mathbb{Z}_2$ symmetry ($s_i \to - s_i$) that is broken in one phase and unbroken in the other;
+A global $\mathbb{Z}_2$ symmetry ($\sigma_i \to - \sigma_i$) that is broken in one phase and unbroken in the other;
 
 \item
-Exactly 2 relevant operators 
-(in addition to $J$ the Ising model can be parametrized in terms of a coupling to an external magnetic field $\delta H = - \mu \sum s_i$).
+Exactly two relevant operators 
+(in addition to $J$, the Ising model can be characterized by its coupling to an external magnetic field $\delta H = - \mu \sum s_i$).
 
 \end{itemize}
 %
-The conformal bootstrap philosophy is quite different from the two examples above, in the sense that it does not care about the microscopic details of the theory: instead, it attempts to solve the conformal field theory that is expected to be there at the fixed point, based on symmetry arguments only. 
-We shall see that the conformal bootstrap can be used to show that there exists a unique conformal field theory with 2 relevant operators and a $\mathds{Z}_2$ symmetry, and that the scaling dimension of its leading operator is equal to
+The conformal bootstrap philosophy is quite different from the two examples above, in the sense that it does not care about the microscopic details: instead, it attempts to solve the conformal field theory that is expected to be there at the fixed point, based on symmetry arguments only. 
+We shall see that the conformal bootstrap shows that there exists a unique conformal field theory with two relevant operators and a $\mathbb{Z}_2$ symmetry, and that the scaling dimension of its leading operator is equal to
 \begin{equation}
-	\Delta_s \approx 0.5181489.
+	\Delta_\sigma \approx 0.5181489.
 \end{equation}
 In fact, the conformal bootstrap does not only establish that, but it gives access to the whole spectrum of operators in that conformal field theory.
 This is truly a success story of the bootstrap.
 
 \item
-Finally, another example of CFT is the family of theories obtained by considering a quantum field theory in $d+1$-dimensional anti de Sitter (AdS) space-time. AdS admits a compactification to a sphere with a boundary, and correlation functions on that boundary are isomorphic with that of a $d$-dimensional conformal field theory.
-A generic (e.g.~perturbative) theory in AdS gives rise to a CFT on the boundary that does not satisfy all the ordinary assumptions of a quantum field theory (for instance it does not have an energy-momentum tensor), but there is evidence that a theory that includes gravity does.
-Note that the same type of correspondence applies to late-time correlators in de Sitter space-time.
+Finally, another example of CFT is the family of theories obtained by considering a quantum field theory in $d+1$-dimensional anti-de-Sitter (AdS) space-time. AdS admits a compactification to a sphere with a boundary, and correlation functions on that boundary are isomorphic with that of a $d$-dimensional conformal field theory.
+A generic (e.g.~perturbative) theory in AdS gives rise to a CFT on the boundary that does not satisfy all the ordinary assumptions of a quantum field theory (for instance it does not have an energy-momentum tensor), but there is evidence that a theory that includes gravity does.%
+%
+\footnote{The same type of correspondence applies to late-time correlators in de Sitter space-time.}
 
 \end{itemize}
 
@@ -351,15 +344,15 @@ There are also modern reviews specifically on the topic of CFT in $d = 2$ dimens
 
 \item
 Sylvain Ribault's notes~\cite{Ribault:2014hia}, 
-also accepting suggestions on GitHub: \\ 
-\url{https://github.com/ribault/CFT-Review}
+also accepting suggestions for improvement on GitHub:
+\url{https://github.com/ribault/CFT-Review}.
 
 \item
 Schellekens ``Conformal Field Theory'' lecture notes~\cite{Schellekens:1996tg}, and a recent version available at:
 \url{https://www.nikhef.nl/\textasciitilde t58/CFT.pdf}.
 
 \end{itemize}
-More classical literature on the subject can be found in:
+More classic literature on the subject can be found in:
 \begin{itemize}
 
 \item
@@ -437,16 +430,16 @@ In this case, we can write
 	+ \partial_\nu \varepsilon_\mu \right).
 \end{aligned}
 \end{equation}
-If we require the different observers to also agree on the metric, then  we must have $g'_{\mu\nu} = g_{\mu\nu}$, which gives a constraint on what kind of coordinate transformations are possible: we must have
+If we require the different observers to also agree on the metric, then  we must have $g'_{\mu\nu} = g_{\mu\nu}$, which gives a constraint on what kind of coordinate transformations are possible: they must satisfy
 \begin{equation}
 	\partial_\mu \varepsilon_\nu
 	+ \partial_\nu \varepsilon_\mu = 0.
 \end{equation}
-This condition admits as a most general solution
+This condition admits as most general solution
 \begin{equation}
 	\varepsilon^\mu = a^\mu + \omega^\mu_{~\nu} x^\nu,
 \end{equation}
-where $a^\mu$ is a constant vector and $g_{\mu\rho} \omega^\rho_{~\nu} = \omega_{\mu\nu}$ an antisymmetric tensor.
+where $a^\mu$ is a constant vector and $\omega_{\mu\nu} = g_{\mu\rho} \omega^\rho_{~\nu}$ an antisymmetric tensor, i.e.~$\omega_{\nu\mu} = - \omega_{\mu\nu}$.
 The transformation
 \begin{equation}
 	x^\mu \xrightarrow{P} x^\mu + a^\mu
@@ -457,7 +450,7 @@ is obviously a translation and
 	\left( \delta^\mu_\nu + \omega^\mu_{~\nu} \right) x^\nu
 \end{equation}
 a rotation/Lorentz transformation around the origin $x = 0$: the matrix $R^\mu_{~\nu} = \delta^\mu_\nu + \omega^\mu_{~\nu}$ satisfies $R^\mu_{~\alpha} g^{\alpha\beta} R^{T\nu}_\beta = g^{\mu\nu}$. The composition of these two operations generates the Poincaré group.
-This is the fundamental symmetry of space-time underlying all relativistic quantum field theory. It is a symmetry of nature to a very good approximation, at least up to energy scales in which quantum gravity becomes important.
+This is the fundamental symmetry of space-time underlying all relativistic quantum field theory. It is a symmetry of nature to a very good approximation, at least up to energy scales at which quantum gravity becomes important.
 
 However, one can also consider the situation in which the two observers use different systems of units, i.e.~they disagree on the overall definition of scale, but agree otherwise on the metric being flat.
 In this case we must have $g'_{\mu\nu} \propto g_{\mu\nu}$, and therefore the constraint becomes
@@ -465,7 +458,7 @@ In this case we must have $g'_{\mu\nu} \propto g_{\mu\nu}$, and therefore the co
 	\partial_\mu \varepsilon_\nu
 	+ \partial_\nu \varepsilon_\mu = 2 \lambda g_{\mu\nu},
 \end{equation}
-for some real number $\lambda$,
+for some positive real number $\lambda$,
 with the most general solution
 \begin{equation}
 	\varepsilon^\mu = a^\mu + \omega^\mu_{~\nu} x^\nu
@@ -473,12 +466,12 @@ with the most general solution
 \end{equation}
 The new infinitesimal transformation is
 \begin{equation}
-	x^\mu \xrightarrow{D} (1 + \lambda) x^\nu.
+	x^\mu \xrightarrow{D} (1 + \lambda) x^\mu.
 \end{equation}
 It is a scale transformation. Note that scale symmetry is not a good symmetry of nature: there is in fact a fundamental energy scale on which all observer must agree (this can be for instance chosen to be the mass of the electron).
-Nevertheless, there are some systems in which this is a very good approximate symmetry. One can also make very interesting \emph{Gedankenexperimente} that have scale symmetry built in. These are reasons that make it worth studying.
+Nevertheless, there are systems in which this is a very good approximate symmetry, making it worth studying.
 
-If one pushes this logic further, in a scale-invariant world in which observers have no physical mean of agreeing on a fundamental scale, they might even decide to change their definition of scale as they walk around, or as time passes. This would correspond to the case in which the metric $g'_{\mu\nu}$ of one observer can differ from the original metric $g_{\mu\nu}$ by a function of space(-time):
+If one pushes this logic further, in a scale-invariant world in which observers have no physical mean of agreeing on a fundamental scale, they might even decide to change their definition of scale as they walk around, or as time passes. This would correspond to the case in which the metric $g'_{\mu\nu}$ of one observer can differ from the original metric $g_{\mu\nu}$ by a function of space-time:
 \begin{equation}
 	g'_{\mu\nu}(x) = \Omega(x) g_{\mu\nu}.
 \end{equation}
@@ -489,7 +482,7 @@ The condition on $\varepsilon^\mu$ becomes in this case
 	+ \partial_\nu \varepsilon_\mu = 2 \sigma g_{\mu\nu},
 	\label{eq:conformalkillingeq}
 \end{equation}
-where $\Omega(x) = e^{-2 \sigma(x)} \cong 1 - 2\sigma(x)$. To find the most general solution to this equation, note that contracting the indices with $g^{\mu\nu}$ gives
+where $\sigma$ is the infinitesimal version of $\Omega$, i.e.~$\Omega(x) = e^{-2 \sigma(x)} \approx 1 - 2\sigma(x)$. To find the most general solution to this equation, note that contracting the indices with $g^{\mu\nu}$ gives
 \begin{equation}
 	\partial_\mu \varepsilon^\mu  = d \sigma,
 \end{equation}
@@ -519,18 +512,18 @@ In $d > 2$, we obtain therefore the condition $\partial_\mu \partial_\nu \sigma 
 \begin{equation}
 	\sigma(x) = \lambda + 2 b \cdot x.
 \end{equation}
-We have therefore
+The corresponding value of $\varepsilon^\mu$ is
 \begin{equation}
 	\varepsilon^\mu = a^\mu + \omega^\mu_{~\nu} x^\nu
 	+ \lambda x^\mu
 	+ 2 (b \cdot x) x^\mu - x^2 b^\mu.
 	\label{eq:conformalkillingvec}
 \end{equation}
-In addition to the transformations found before, we also find
+Therefore, in addition to the transformations found before, we also have
 \begin{equation}
 	x^\mu \xrightarrow{K} x^\mu +  2 (b \cdot x) x^\mu - x^2 b^\mu,
 \end{equation}
-which is a \emph{special conformal transformation}.
+which is called \emph{special conformal transformation}.
 If we examine the Jacobian for this transformation, we find
 \begin{equation}
 	\frac{\partial x'^\mu}{\partial x^\nu}
@@ -545,21 +538,20 @@ We have written this as a position-dependent scale factor $(1 + 2 b \cdot x)$, m
 	+ 2 \left( b_\nu x^\mu - x_\nu b^\mu \right).
 \end{equation}
 This shows that special conformal transformation act locally as the composition of a scale transformation and a rotation (or Lorentz transformation). This also shows that conformal transformations preserve angles, which is the origin of their name.
-Eq.~\eqref{eq:conformalkillingeq} is sometimes called the (conformal) Killing equation and its solutions \eqref{eq:conformalkillingvec} the Killing vectors.
+Eq.~\eqref{eq:conformalkillingeq} is called the conformal Killing equation and its solutions \eqref{eq:conformalkillingvec} the Killing vectors.
 
 
 
-Note that in our derivation the original metric $g_{\mu\nu}$ was flat, but the new metric $g'_{\mu\nu}$ is not. It is however conformally flat: it is always possible to make a change of coordinate after which it is flat. In general, transformations
+Note that in our derivation the original metric $g_{\mu\nu}$ was flat, but the new metric $g'_{\mu\nu}$ is not. It is however conformally flat: it is always possible to make a change of coordinate after which it is flat again. In general, transformations
 \begin{equation}
 	g_{\mu\nu}(x) \to \Omega(x) g_{\mu\nu}(x)
 \end{equation}
 are called \emph{Weyl transformations}. They change the geometry of space-time. We found that any Weyl transformation which is at most quadratic in $x$ can be compensated by a change of coordinates to go back to flat space. The corresponding flat-space transformation is called conformal transformation.%
 %
-\footnote{This implies that the group of conformal transformation is a subgroup of diffeomorphisms. It is in fact the largest \emph{finite-dimensional} subgroup.}% Rychkov (1.53)
+\footnote{This implies that the group of conformal transformation is a subgroup of diffeomorphisms. It is in fact the largest finite-dimensional subgroup.}% Rychkov (1.53)
 
 
-
-Note that in $d = 2$ the situation is a bit different: the conditions $\partial^2 \sigma = 0$ is sufficient to ensure that the Killing equation has a solution. This is most easily seen in light-cone coordinates,
+In $d = 2$ the situation is a bit different: the conditions $\partial^2 \sigma = 0$ is sufficient to ensure that the Killing equation has a solution. This is most easily seen in light-cone coordinates,
 \begin{equation}
 	x^+ = \frac{x^0 + x^1}{2},
 	\qquad
@@ -576,17 +568,17 @@ In the Euclidean case we take
 	\qquad
 	\bar{z} = \frac{x^1 - i x^2}{2},
 \end{equation}
-complex-conjugate to each other, and the same logic follows: we can apply arbitrary holomorphic and anti-holomorphic transformations on $z$ and $\bar{z}$, and the conformal Killing equation is always satisfied. This shows that there are infinitely more conformal transformations in $d = 2$ than in $d > 2$, and also that there is no significant difference between Euclidean and Minkowski conformal transformation in $d = 2$, as the transformation acts essentially on the two light-cone/holomorphic coordinates independently.
+complex-conjugate to each other, and the same logic follows: we can apply arbitrary holomorphic and anti-holomorphic transformations on $z$ and $\bar{z}$, and the conformal Killing equation is always satisfied. This shows that there are (infinitely) many more conformal transformations in $d = 2$ than in $d > 2$, and also that there is no significant difference between Euclidean and Minkowski conformal transformation in $d = 2$, as the transformation acts essentially on the two light-cone/holomorphic coordinates independently.
 
 
 \subsection{The conformal algebra}
 
 The conformal Killing equation \eqref{eq:conformalkillingvec} determines the most general form of \emph{infinitesimal} conformal transformations. \emph{Finite} conformal transformations follow from a sequence of infinitesimal transformations.
-However, one has to bear in mind that the infinitesimal conformal transformations do not all commute: for instance, a translation followed by a rotation is not the same as the opposite.
+However, one has to bear in mind that the infinitesimal conformal transformations do not commute: for instance, a translation followed by a rotation is not the same as the opposite.
 In fact, the conformal transformations form a \emph{group}: the composition of conformal transformations is again a conformal transformations.
 
 As we all know from quantum field theory, a group is characterized by its \emph{generators} and their commutation relations (the \emph{algebra}). A generator $G$ describes an infinitesimal transformation in some direction, and finite transformation are obtained using exponentiation, $e^{i \theta G}$, with parameter $\theta$ (the factor of $i$ is the physicist's convention that make the generators Hermitian).
-A representation of the conformal group is given on the functions of the coordinates, $f(x)$. For instance, under an infinitesimal translation, we have
+A representation of the conformal group can be obtained from the functions of the coordinates, $f(x)$. For instance, under an infinitesimal translation, we have
 \begin{equation}
 	f(x) \xrightarrow{P} f(x') = f(x + a) \approx f(x)
 	+ a^\mu \partial_\mu f(x)
@@ -598,14 +590,14 @@ and we require this to be equal to $e^{-i a_\mu P^\mu} f(x)$, which means
 \end{equation}
 Performing the same analysis for the other infinitesimal transformations given in eq.~\eqref{eq:conformalkillingvec}, we obtain for the other generators%
 %
-\footnote{The sign of these generators is an arbitrary convention. It defines once and for all the commutations relations that we will derive next. After that, we will always refer to the commutation relations as the definition of the generators.}
+\footnote{The sign of these generators is an arbitrary convention. It defines once and for all the commutations relations that we will derive next. After that, we will always refer to the commutation relations as defining the generators.}
 \begin{align}
 	& \text{rotations/Lorentz transformations:} \quad &
 	M^{\mu\nu} &= i \left( x^\mu \partial^\nu
 	- x^\nu \partial^\mu \right)
 	\label{eq:M:fcts}
 	\\
-	& \text{dilatations:} & 
+	& \text{scale transformations:} & 
 	D &= i x^\mu \partial_\mu,
 	\label{eq:D:fcts}
 	\\
@@ -664,11 +656,11 @@ and a metric defined by the line element
 	- dX^{d+2} dX^{d+2}
 	\equiv \eta_{MN} dX^M dX^N.
 \end{equation}
-Then we write all conformal commutation relations as being defined by the Lorentzian algebra
+Then we can write all conformal commutation relations as being defined by the Lorentzian algebra
 \begin{equation}
 	\left[ J^{MN}, J^{RS} \right]
 	= -i \left( \eta^{MR} J^{NS} - \eta^{MS} J^{NR}
-	- \eta^{NR} J^{MS} + \eta^{NS} J^{MR} \right],
+	- \eta^{NR} J^{MS} + \eta^{NS} J^{MR} \right),
 \end{equation}
 provided that we identify the antisymmetric generators $J^{MN}$ with the conformal generators as follows:
 \begin{equation}
@@ -726,7 +718,7 @@ This transformation does not have an infinitesimal form, but otherwise it shares
 	= \frac{1}{x^2}
 	\left[ \delta^\mu_\nu - 2 \frac{x^\mu x_\nu}{x^2} \right],
 \end{equation}
-which is the product of a position-dependent scale factor $x^{-2}$ with an orthogonal matrix. To understand what this transformation does globally, let us consider a point $\vec{x} = (x, 0, \ldots 0) \in \mathds{R}^d$. Then the matrix is square bracket is diagonal, and equates $\text{diag}(-1, 1, \ldots, 1)$. This is an orthogonal matrix with determinant $-1$, which is part of $\text{O}(d)$ but not $\SO(d)$. This shows that the inversion is a discrete transformations not connected to identity.
+which is the product of a position-dependent scale factor ($x^{-2}$) with an orthogonal matrix. To understand what this transformation does globally, let us consider a point $\vec{x} = (a, 0, \ldots 0) \in \mathbb{R}^d$. Then the matrix is square bracket is diagonal, and equates $\text{diag}(-1, 1, \ldots, 1)$. This is an orthogonal matrix with determinant $-1$, which is part of $\text{O}(d)$ but not $\SO(d)$. This shows that the inversion is a discrete transformations not connected to identity.
 A conformally invariant theory might be invariant under inversions, but it needs not be.
 
 Eq.~\eqref{eq:K:inversion} shows that infinitesimal special conformal transformations are obtained taking an inversion followed by a translation, followed by an inversion again. Since this process involves the inversion twice, and since inversion is its own inverse, it does not matter whether inversion is a true symmetry of the system or not.
@@ -759,11 +751,11 @@ Conversely, the ``point'' $x \to \infty$ is mapped to the finite vector $-b^\mu/
 \end{itemize}
 %
 These properties can be understood from the fact that special conformal transformations and translations are related by inversion:
-special conformal transformations keep the origin fixed but move every other points, including $\infty$; translations move every point \emph{except} $\infty$. The other two transformations, rotations and scale transformations, keep both $0$ and $\infty$ fixed.
+special conformal transformations keep the origin fixed but move every other points, including $\infty$; translations move every point except $\infty$. The other two transformations, rotations and scale transformations, keep both $0$ and $\infty$ fixed.
 
 
 An essential property of conformal transformations is that they allow to map any 3 points $(x_1, x_2, x_3)$ onto another set $( x'_1, x'_2, x'_3)$. This can be seen as follows: first, apply a translation to place $x_1$ at the origin, followed by a special conformal transformation that takes $x_3$ to $\infty$, after which the image of the original triplet is $(0, x_2'', \infty)$; then use rotations and scale transformations to move $x''_2$ to another point $x'''_2$, while keeping $0$ and $\infty$ fixed; finally apply again a special conformal transformation that takes $\infty$ to $x'_3 - x'_1$, and a translation by $x'^1$ to reach the configuration $( x'_1, x'_2, x'_3)$.
-This property has an immediate physical consequence: in correlation functions of 2 or 3-points (see next sections for a definition), all kinematics is fixed by conformal symmetry. The only freedom encodes information about the operators themselves, not about their position in space.
+This property has an immediate physical consequence: in correlation functions involving 2 or 3 local operators (see next sections for a definition), all kinematics is fixed by conformal symmetry. The only freedom is about the operators themselves, not about their position in space.
 
 Another interesting property of conformal transformations is that they map spheres to spheres: this is is an obvious property of translations, rotations and scale transformations, but it is also true of special conformal transformations. 
 
@@ -781,9 +773,9 @@ Another interesting property of conformal transformations is that they map spher
 	
 \end{exercise}
 
-Note that in $d = 2$, the additional conformal transformations (infinitely many of them!) mean that (nearly) any shape can be mapped onto another. This is known as the Riemann mapping theorem.%
+Note that in $d = 2$, the additional conformal transformations (infinitely many of them!) mean that (nearly) any shape can be mapped onto another.%
 %
-\footnote{A neat example of how a disk is be mapped onto a polygon is available at \\
+\footnote{This is known as the Riemann mapping theorem. A neat example of how a disk can be mapped onto a polygon is available at \\
 \url{https://herbert-mueller.info/uploads/3/5/2/3/35235984/circletopolygon.pdf}.}
 
 
@@ -791,11 +783,12 @@ Note that in $d = 2$, the additional conformal transformations (infinitely many 
 
 It is often said that conformal symmetry is a symmetry of flat space(-time).
 This is true, as we have just seen, provided that we treat the point $\infty$ as being part of the space.
-This is quite straightforward in Euclidean space, but much more subtle in Minkowski space-time, as there are different ways of reaching $\infty$ there.
+This is quite straightforward in Euclidean space, but much more subtle in Minkowski space-time, as there are different, inequivalent ways of reaching $\infty$ there.
 
-To gain a better understanding of this, it can be useful to map the flat Euclidean space $\mathds{R}^d$ or the Minkowski space-time $\mathds{R}^{1,d-1}$ onto a curved (but hopefully compact) manifold.
-In Euclidean space this is for instance achieved by the (inverse) stereographic projection that maps $\mathds{R}^d \cup \{ \infty \}$ to the unit sphere $S^d$.
-Geometrically, the stereographic projection is constructed as follows: embed $\mathds{R}^d$ as a (hyper-)plane in $\mathds{R}^{d+1}$, together with a sphere of unit radius centered at the origin. Every point on the plane has an image on the sphere obtained drawing a segment between the original point and the north pole of the sphere, and noting where it intersects the sphere. The origin is mapped to the south pole, $\infty$ to the north pole, and the sphere $S^{d-1}$ of unit radius to the equator.
+To gain a better understanding of this, it is useful to map the flat Euclidean space $\mathbb{R}^d$ or the Minkowski space-time $\mathbb{R}^{1,d-1}$ onto a curved manifold.
+In Euclidean space, this is for instance achieved by the (inverse) stereographic projection that maps $\mathbb{R}^d \cup \{ \infty \}$ to the unit sphere $S^d$.
+% this would be better with a picture
+Geometrically, the stereographic projection is constructed as follows: embed $\mathbb{R}^d$ as a plane in $\mathbb{R}^{d+1}$, together with a sphere of unit radius centered at the origin. Every point on the plane has an image on the sphere obtained drawing a segment between the original point and the north pole of the sphere, and noting where it intersects the sphere. The origin is mapped to the south pole, $\infty$ to the north pole, and the sphere $S^{d-1}$ of unit radius to the equator.
 Algebraically, this is achieved as follows: first write the Euclidean metric in spherical coordinates,
 \begin{equation}
 	ds^2 = dr^2 + r^2 d\Omega_{d-1}^2,
@@ -816,13 +809,12 @@ This shows that the metric is flat up to an overall Weyl factor that depends on 
 In these new coordinates, conformal transformations are always non-singular. 
 For this reason, it is often very convenient to study \emph{classical} conformal transformations on the sphere $S^d$ instead of Euclidean space.
 
-However, this compactification is not as nice in a \emph{quantum} theory in which one wants to foliate the space along some direction: if one chooses $\varphi$ as the ``Euclidean time'', then the ``space'' direction is a sphere $S^{d-1}$ whose volume depends on $\varphi$. In other words, the generator of ``time'' translations is not a symmetry of the system. Being on a perfectly symmetric sphere, this is also true of any other choice of time direction.
-This is not forbidden, but it complicates vastly the analysis.
+However, this compactification is not as nice in a \emph{quantum} theory in which one wants to foliate the space along some direction: if one chooses $\varphi$ as the ``Euclidean time'', then the ``space'' direction is a sphere $S^{d-1}$ whose volume depends on $\varphi$. In other words, the generator of ``time'' translations is not a symmetry of the system. This is also true of any other choice of time direction on the sphere.
 
 Instead, another compactification is often preferred to the sphere: from the Euclidean metric in spherical coordinates, one can make the change of variable
 \begin{equation}
 	\tau = \log(r)
-	\qquad\Rightarrow\qquad
+	\qquad\Leftrightarrow\qquad
 	r = e^\tau,
 \end{equation}
 after which
@@ -831,40 +823,45 @@ after which
 	\label{eq:cylindercoordinates}
 \end{equation}
 This is again a flat metric, up to a Weyl factor $r^2 = e^{2\tau}$. In this case however the metric is completely independent of $\tau$.
-This space has the geometry of the \emph{cylinder}, $\mathds{R} \times S^{d-1}$. It is not fully compact: $\tau$ goes from $-\infty$ to $+\infty$. But it has a important advantage: translations in $\tau$ are generated by dilatations $D$, which will be taken to be a symmetry of quantum field theory. Foliating the space into surfaces of constant $\tau$ will later lead us to the famous radial quantization in conformal field theory.
+This space has the geometry of the \emph{cylinder}, $\mathbb{R} \times S^{d-1}$. It is not fully compact: $\tau$ goes from $-\infty$ to $+\infty$. But it has a important advantage: translations in $\tau$ are generated by dilatations $D$, which will be taken to be a symmetry of the quantum theory. Foliating the space into surfaces of constant $\tau$ will later lead us to radial quantization in conformal field theory.
 
-Note that in $\SO(d + 1, 1)$ language, the generator $D = J^{d+1, d+2}$ is completely equivalent to any other generator $J^{\mu, d+2} = \frac{1}{2} \left( P^\mu - K^\mu \right)$. So for instance we might as well look for a cylinder compactification in which the non-compact direction corresponds to transformation generated by
+Note that in $\SO(d + 1, 1)$ language, the generator $D = J^{d+1, d+2}$ is completely equivalent to any other generator $J^{\mu, d+2} = \frac{1}{2} \left( P^\mu - K^\mu \right)$, since they are related by  $\SO(d + 1)$ rotations. So we might as well look for a cylinder compactification in which the non-compact direction corresponds to transformation generated by
 $\frac{1}{2} \left( P^0 - K^0 \right)$. This combination of generators obeys
 \begin{equation}
 	\frac{1}{2} \left( P^0 - K^0 \right)
 	= i \left( \frac{1 - (x^0)^2 + \vec{x}^2}{2} \partial_0
 	- x^0 \, \vec{x} \cdot \vec{\partial} \right),
 \end{equation}
-with two fixed points at $x^0 = \pm 1$ with $\vec{x} = 0$ 
-(see figure~\ref{fig:foliations} appearing later).
-
-\begin{exercise}
-	Find the change of coordinate that make the Euclidean metric Weyl-equivalent to a cylinder in which translations in the non-compact direction are generated by $\frac{1}{2} \left( P^0 - K^0 \right)$. \\
-	\hint{Find a special conformal transformation followed by a translation that take $(0, \infty)$ to $(-1, 1)$, and apply it to the cylinder coordinates.}
-\end{exercise}
-
-The cylinder compactifications of Euclidean space are interesting by themselves, but they are also extremely convenient to understand the connection between Euclidean and Minkowski space-times: in this last form, performing a Wick rotation $\tau \to \pm i t$ defines a Lorentzian cylinder on which the conformal group with a simple action of the Lorentzian conformal group $\SO(d, 2)$. 
-But before going there, let us go back to flat Minkowski space-time and make some general remarks.
-
-
+with two fixed points at $x^0 = \pm 1$ with $\vec{x} = 0$. 
+The foliation of space generated by this linear combination of generators is what is used in N-S quantization,%
+%
+\footnote{The lines drawn when evolving a point with this Hamiltonian look like magnetic field lines connecting the north (N) and south (S) poles of a magnet, hence the name N-S quantization.}
+discussed later in section~\ref{sec:OPE}.
+Figure~\ref{fig:foliations} illustrates the two foliations of Euclidean space by $D$ and $\frac{1}{2} \left( P^0 - K^0 \right)$,
+and the corresponding cylinder interpretations are shown in figure~\ref{fig:cylinders}.
+%
 \begin{figure}
-	\includegraphics[width=0.48\linewidth]{figures/NSfoliation.pdf}
-	\hfill
 	\includegraphics[width=0.48\linewidth]{figures/Rfoliation.pdf}
+	\hfill
+	\includegraphics[width=0.48\linewidth]{figures/NSfoliation.pdf}
 	\caption{Foliations of Euclidean space
-	(here only showing the case $d = 2$) 
-	in N-S (left) and radial quantization (right).
+	(here in $d = 2$) 
+	in radial (left) and N-S quantization (right).
 	Circles of identical colors are mapped onto each other
 	by a conformal transformation. In particular, the plane 
 	$x^0 = 0$ in N-S quantization is mapped to the unit sphere 
 	in radial quantization.}
 	\label{fig:foliations}
 \end{figure}
+
+\begin{exercise}
+	Find the change of coordinate that makes the Euclidean metric Weyl-equivalent to a cylinder in which translations in the non-compact direction are generated by $\frac{1}{2} \left( P^0 - K^0 \right)$. \\
+	\hint{Find a special conformal transformation followed by a translation that take $(0, \infty)$ to $(-1, 1)$, and apply it to the cylinder coordinates.}
+\end{exercise}
+
+The cylinder compactifications of Euclidean space are interesting by themselves, but they are also extremely convenient to understand the connection between Euclidean and Minkowski space-times: in this last form, performing a Wick rotation $\tau \to - i t$ defines a cylinder on which the Lorentzian conformal group $\SO(d, 2)$ acts naturally. 
+But before going there, let us go back to flat Minkowski space-time and make some general remarks.
+
 \begin{figure}
 	\includegraphics[width=0.25\linewidth]
 	{figures/RCylinder.pdf}
@@ -878,7 +875,7 @@ But before going there, let us go back to flat Minkowski space-time and make som
 	coordinates \eqref{eq:cylindercoordinates}, in which
 	the evolution in the non-compact direction is given by
 	the generator $D$ of scale transformations;
-	the blue circle corresponds to the unit sphere in $x$ coordinates.
+	the blue circle corresponds to the unit sphere.
 	Middle: same Euclidean cylinder after a conformal transformation,
 	so that the evolution is given by $\frac{1}{2} (P^0 - K^0)$;
 	the blue circle is now the plane $x^0 = 0$, which includes
@@ -895,9 +892,9 @@ But before going there, let us go back to flat Minkowski space-time and make som
 
 \subsection{Minkowski space-time}
 
-Everybody is familiar with translations and Lorentz transformations in Minkowski space-time, and even with dilatations as this is a standard tool in the renormalization group analysis. But what do conformal transformations do?
+Translations and Lorentz transformations in Minkowski space-time are familiar, and even dilatations are a standard tool in the renormalization group analysis. But what do conformal transformations do?
 
-To understand this, let us place an observer at the origin of Minkowski space-time. The presence of this observer breaks translations, but not Lorentz transformations (the observer is point-like), nor dilatations and special conformal transformations. For the observer, space-time is split into three regions: a future light cone, a past light cone, and a   space-like region from which they know nothing.
+To understand this, let us place an observer at the origin of Minkowski space-time. The presence of this observer breaks translations, but not Lorentz transformations (the observer is point-like), nor dilatations or special conformal transformations. For the observer, space-time is split into three regions: a future light cone, a past light cone, and a   space-like region from which they know nothing.
 Lorentz and scale transformation preserve this causal structure: the future and past light-cones are mapped onto themselves. In other words, if a point $x$ is space-like separated from the observed, it will remain space-like separated no matter the choice of scale and Lorentz frame. Without loss of generality, let us choose this point to be at position $x = (0, \vec{n})$, where $\vec{n}$ is a unit vector (units can be chosen so that this is the case).
 Now apply a special conformal transformation with parameter $b^\mu = (-\alpha, \alpha \vec{n})$, with $\alpha$ varying between 0 and 1.
 This draws a curve $y^\mu $ in space-time, parameterized by $\alpha$,
@@ -907,22 +904,22 @@ with
 	\qquad\qquad
 	\vec{y}(\alpha) = \frac{1 - \alpha}{1 - 2 \alpha} \vec{n}.
 \end{equation}
-This curves begins at the space-like point $y = (0, \vec{n})$, and ends in the past light cone at $y = (-1, \vec{0})$!
+This curves begins at the space-like point $y = (0, \vec{n})$, and ends in the past light cone at $y = (-1, \vec{0})$.
 Note that $y$ never crosses a light cone: the image of $x$ is never null if $x$ is not itself null, since $x'^2 = x^2 / (1 - 2 x \cdot b + x^2 b^2)$.
 Instead, we have
 \begin{equation}
 	y^2(\alpha) = \frac{1}{1 - 2\alpha} \neq 0.
 \end{equation}
-The point goes all the way to space-like infinity when $\alpha = \frac{1}{2}$, and comes back from past infinity.
-Clearly, special conformal transformation break causality.
+What happens is that the point travels all the way to space-like infinity at $\alpha = \frac{1}{2}$, and comes back from past infinity.
+Clearly, special conformal transformation break causality!
 
-The resolution of this paradox is that conformal transformation do not act directly on Minkowski space, but rather on its universal cover that is isomorphic to the Lorentzian cylinder described in the previous section.
-Time evolution on that cylinder is given by the Hamiltonian $H = \frac{1}{2} (P^0 - K^0)$. At any given time $t_0$, space is compactified in such a way that the notion of infinite distance is unequivocal: space-like infinity corresponds to a point on the sphere. If one takes any other point of that sphere and apply finite translations using the generator $P^\mu$, then this defines a compact \emph{Poincaré patch}. The full cylinder is a patchwork of Minkowski space-times, but every observer only has access to one.
+The resolution of this paradox is that conformal transformation do not act directly on Minkowski space, but rather on its universal cover that is isomorphic to the Lorentzian cylinder described above, and shown in figure~\ref{fig:cylinders}.
+Evolution on that cylinder is given by the Hamiltonian $H = \frac{1}{2} (P^0 - K^0)$, but this differs from the Minkowski time evolution by $P^0$. On any given slice of the Lorentzian cylinder, space is compactified in such a way that the notion of infinite distance is unequivocal: space-like infinity corresponds to a point on the sphere, antipodal to the origin. If one takes any other point of that sphere and apply finite translations using the generator $P^\mu$, then this defines a compact \emph{Poincaré patch}. The full Lorentzian cylinder is a patchwork of Poincaré patches, but every observer only has access to one.
 
-The lesson that we need to learn from this is that only the infinitesimal form of special conformal transformation can be used in Minkowski space-time: \emph{any} finite special conformal transformation would bring part of space-time into another patch on the cylinder.
+The lesson that we must to learn from this is that only the infinitesimal form of special conformal transformation can be used in Minkowski space-time: \emph{any} finite special conformal transformation would bring part of space-time into another patch on the cylinder.
 This is sometimes called \emph{weak conformal invariance}.
 
-A quantum field theory defined on Minkowski space-time with weak conformal invariance uniquely defines a quantum field theory on the Lorentzian cylinder with global conformal invariance. This non-trivial fact was proven by Martin Lüscher and Gerhard Mack in 1974 \cite{Luscher:1974ez}, both employed at the University of Bern at the time. In their own words:
+A quantum field theory defined on Minkowski space-time with weak conformal invariance uniquely defines a quantum field theory on the Lorentzian cylinder with global conformal invariance. This non-trivial fact was proven by Martin Lüscher and Gerhard Mack in 1974 \cite{Luscher:1974ez} (both were employed at the University of Bern at the time). In their own words:
 
 \begin{center}
 
@@ -934,13 +931,13 @@ A quantum field theory defined on Minkowski space-time with weak conformal invar
 
 \subsection{Conformal symmetry in classical field theory}
 
-So far we have been discussing conformal transformations of the coordinates. The next step is to consider a field theory (for the moment a classical one) that has conformal symmetry built in. For this, consider a field theory defined by an action. The simplest example is the free scalar field theory
+So far we have been discussing conformal transformations of the coordinates. The next step is to consider a field theory (for the moment a classical one) that has conformal symmetry built in. The simplest example is the free scalar field theory, defined by the action
 \begin{equation}
 	S = \int d^dx
 	\left[ - \frac{1}{2} \partial_\mu \phi \partial^\mu \phi \right].
 	\label{eq:freescalaraction}
 \end{equation}
-We shall see in the next section that the action principle can in fact be dropped in the conformal field theory, but for now it is a convenient starting point.
+We shall see in the next section that the action principle can in fact be dropped in CFT, but for now it is a convenient starting point.
 
 In this context, a conformal transformation is a transformation \emph{of the fields}.
 There are two different and complementary perspectives one can adopt. It is often convenient to think of the metric tensor as a field in its own right, and to define a conformal transformation as a (position-dependent) scale transformation of the field
@@ -958,31 +955,32 @@ $\Delta$ is the \emph{scaling dimension} of the field $\phi$. In a free theory i
 	\Delta = \frac{d-2}{2}.
 \end{equation}
 $\sigma(x)$ is an infinitesimal scale factor that satisfies $\partial_\mu \partial_\nu \sigma = 0$.
-The advantage of this perspective is that the conformal transformations are simple, multiplicative transformations of the fields. The disadvantage is that it requires thinking of theory in curved space-time. This means that the metric that is implicit in the action \eqref{eq:freescalaraction} must be made explicit. 
-%
-\begin{exercise}
-	Verify that the action \eqref{eq:freescalaraction}
-	is invariant under the infinitesimal conformal transformations
-	\eqref{eq:freescalar:conformaltransformation:1} and
-	\eqref{eq:freescalar:conformaltransformation:2},
-	after the explicit dependence on the curved-space metric 
-	has been taken into account in the contraction of Lorentz
-	indices and in the measure of integration.
-\end{exercise}
-%
-Moreover, the action could be augmented with a term depending on the scalar curvature tensor $R$ as
+The advantage of this perspective is that the conformal transformations are simple, multiplicative transformations of the fields. The disadvantage is that it requires thinking of theory in curved space-time. This means that the metric that is implicit in the action \eqref{eq:freescalaraction} must be made explicit, but also that the action could be augmented with a term depending on the scalar curvature tensor $R$ as
 \begin{equation}
 	S = \int d^dx
 	\left[ - \frac{1}{2} \partial_\mu \phi \partial^\mu \phi
 	+ \alpha R \phi^2 \right].
 \end{equation}
-Since $R$ vanishes in flat space, it looks like this additional term could appear with an arbitrary coefficient $\alpha$ without modifying the original flat-space action.
+Since $R$ vanishes in flat space, it looks like this additional term could appear with an arbitrary coefficient $\alpha$ without modifying the original flat-space action, but this is not the case.
+%
+\begin{exercise}
+	Verify that there is a specific value of $\alpha$ 
+	for which this action is invariant
+	under the infinitesimal conformal transformations
+	\eqref{eq:freescalar:conformaltransformation:1} and
+	\eqref{eq:freescalar:conformaltransformation:2},
+	after the explicit dependence on the curved-space metric 
+	has been taken into account in the contraction of Lorentz
+	indices and in the measure of integration.
+	What is this value of $\alpha$?
+\end{exercise}
 
-For this reason, it is also convenient to consider the opposite perspective in which conformal transformations are transformations of the (dynamical) fields and of the coordinates, but not of the metric. In this case the conformal transformation can be defined as
+
+For this reason, it is also convenient to consider the opposite perspective in which conformal transformations are transformations of the dynamical fields and of the coordinates, but not of the metric. In this case the conformal transformation can be defined as
 \begin{equation}
 	\phi(x) \to e^{\Delta \sigma(x)} \phi(x + \varepsilon),
 \end{equation}
-where the parameters $\sigma$ and $\epsilon$ are related by the conformal Killing equation \eqref{eq:conformalkillingeq}, e.g.~$d \sigma = \partial_\mu \varepsilon^\mu$. 
+where the parameters $\sigma$ and $\varepsilon$ are related by the conformal Killing equation \eqref{eq:conformalkillingeq}, i.e.~$\sigma = \frac{1}{d} \partial_\mu \varepsilon^\mu$. 
 In infinitesimal form, this transformation becomes
 \begin{equation}
 	\phi(x) \to \left[ 1
@@ -1006,8 +1004,8 @@ In infinitesimal form, this transformation becomes
 	\phi \partial^\mu \phi \right),
 	$$
 	hence proving that this is a symmetry of the action.
-	You will need the fact that $\varepsilon$ is at most quadratic
-	in $x$.
+	You will need to use the fact that $\varepsilon$
+	is at most quadratic in $x$.
 \end{exercise}
 Note that Poincaré symmetry is a special case of this transformation, corresponding to constant $\varepsilon$ (and thus $\sigma = 0$).
 
@@ -1076,11 +1074,11 @@ It turns out that it is always possible in a field theory with conformal symmetr
 \item traceless ($g_{\mu\nu} T^{\mu\nu} = 0$), and
 \item conserved ($\partial_\nu T^{\mu\nu} = 0$) once the equation of motions are imposed.
 \end{itemize}
-This is a non-trivial fact, but we will skip its proof. As already mentioned, we are interested in theories that are not necessarily defined through an action.
+This is a non-trivial fact, but we will skip its proof (as already mentioned, we are interested in theories that are not necessarily defined through an action).
 % \cite{Polchinski:1987dy}
 
 Strictly speaking, Noether's theorem only applies to theories that have a Lagrangian description, but we will assume the existence of a traceless energy-momentum tensor in all cases (in some sense this is going to be one of the ``axioms'' of conformal field theory).
-From this assumption, we can deduce that the theory is invariant under conformal transformations. A conserved current can always be built from the energy-momentum tensor and a conformal Killing vector $\varepsilon$ as
+From this assumption, we can deduce that the theory is invariant under conformal transformations: a conserved current can always be built from the energy-momentum tensor and a conformal Killing vector $\varepsilon$ as
 \begin{equation}
 	J^\mu = \varepsilon_\nu T^{\mu\nu}
 	\qquad\Rightarrow\qquad
@@ -1098,7 +1096,7 @@ This is a priori a function of $x^0$, but it is in fact constant in time, since
 	= -i \int d^{d-1}\vec{x}\, \partial_0 T^{0\mu}(x)
 	= i \int d^{d-1}\vec{x}\, \partial_i T^{i\mu}(x) = 0.
 \end{equation}
-This conserved charge is the \emph{momentum}, associated with translation symmetry. Similarly, conserved charges associated with Lorentz transformations,
+This conserved charge is the \emph{momentum}, associated with translation symmetry. Similarly, there are conserved charges associated with Lorentz transformations,
 \begin{equation}
 	M^{\mu\nu} = -i \int d^{d-1}\vec{x}\, \left[
 	x^\mu T^{0\nu}(x) - x^\nu T^{0\nu}(x) \right]
@@ -1122,13 +1120,13 @@ and with special conformal transformations
 	are conserved in time.
 \end{exercise}
 
-Note that the conservation of all these charges relies on vanishing divergence of the energy-momentum tensor, $\partial_\nu T^{\mu\nu}$, which itself relies on the equation of motion being satisfied.
+Note that the conservation of all these charges relies on the vanishing divergence of the energy-momentum tensor, $\partial_\nu T^{\mu\nu}$, which itself relies on the equation of motion being satisfied.
 This is certainly true in the absence of sources. But when source terms are added to the action, the equation of motion is modified.
-In our example of the free scalar field theory, this would correspond to adding to the action \eqref{eq:freescalaraction} a source term of the form
+In our example of the free scalar field theory, adding to the action \eqref{eq:freescalaraction} a source term of the form
 \begin{equation}
 	S_\text{source} = \int d^dx \, J(x) \phi(x),
 \end{equation}
-which modifies the equation of motion to
+modifies the equation of motion to
 \begin{equation}
 	\partial^2 \phi + J = 0.
 \end{equation}
@@ -1137,30 +1135,32 @@ Instead of the conservation equation \eqref{eq:Tcanonical:conservation} for the 
 	\partial_\nu T^{\mu\nu}(x) = - J \partial^\mu \phi.
 \end{equation}
 In the presence of such a source, the charges \eqref{eq:conservedcharge:P}--\eqref{eq:conservedcharge:K} are not conserved anymore.
-However, let us assume that the source is local, say $J(x) = \delta^d(x - x_\odot)$, so that
+However, if the source is local, say $J(x) = \delta^d(x - x_\odot)$, so that
 \begin{equation}
 	\partial_\nu T^{\mu\nu}(x) = -\delta^d(x - x_\odot)
-	\partial^\mu \phi(x_\odot).
+	\partial^\mu \phi(x_\odot),
 \end{equation}
-Then we determine the change in one of the charge --- say $P^\mu$ ---
+then we can determine the change in one of the charge --- say $P^\mu$ ---
 between a time $x^0 < x_\odot^0$ anterior to the local source, and a time $x^0 > x_\odot^0$ posterior to it, and call this difference the momentum of the source, $P_\mu(\phi_\odot)$. 
 By our definition, this is equal to
 \begin{equation}
 	P_\mu(\phi_\odot) = -i \int\limits_{\partial\Sigma} d^{d-1} n_\nu
 	T^{\mu\nu},
 \end{equation}
-where $\partial\Sigma$ is a codimension-one surface in $\mathds{R}^{1,d-1}$ that consists in two planes of constant $x^0$, joining at spatial infinity, and surrounding the point $x_\odot$.
+where $\partial\Sigma$ is a codimension-one surface in $\mathbb{R}^{1,d-1}$ that consists in two planes of constant $x^0$, joining at spatial infinity, and surrounding the point $x_\odot$.
+% also here a figure would be welcome
 By the divergence theorem, this is equal to 
 \begin{equation}
 	P_\mu(\phi_\odot) = -i \int\limits_{\Sigma} d^dx \, \partial_\nu
-	T^{\mu\nu}
-	= i \int\limits_{\Sigma} d^dx \, J \partial^\mu \phi
+	T^{\mu\nu}(x)
+	= i \int\limits_{\Sigma} d^dx \, \delta^d(x - x_\odot)
+	\partial^\mu \phi(x)
 	= i \partial^\mu \phi(x_\odot).
 	\label{eq:P:localsource}
 \end{equation}
-This equation says that the charge $P_\mu$ associated with a local source for the field $\phi$ is equal to $\partial^\mu \phi$. This is strikingly similar to the action of the generator \eqref{eq:P:fcts} on functions. In fact, it is easy to verify that the other charges \eqref{eq:conservedcharge:M}, \eqref{eq:conservedcharge:D}, and \eqref{eq:conservedcharge:K} also act on the classical field $\phi(x)$ exactly like the generators \eqref{eq:M:fcts}, \eqref{eq:D:fcts}, and \eqref{eq:K:fcts} respectively.
+This equation says that the charge $P_\mu$ associated with a local source for the field $\phi$ is equal to $i \partial^\mu \phi$. This is strikingly similar to the action of the generator \eqref{eq:P:fcts} on functions. In fact, it is easy to verify that the other charges \eqref{eq:conservedcharge:M}, \eqref{eq:conservedcharge:D}, and \eqref{eq:conservedcharge:K} also act on the classical field $\phi(x)$ exactly like the generators \eqref{eq:M:fcts}, \eqref{eq:D:fcts}, and \eqref{eq:K:fcts} respectively, and therefore that the charges obey the conformal algebra.
 
-We worked with the free scalar field theory example, but it is straightforward to generalized this to arbitrary classical field theories. This shows that a traceless energy-momentum tensor can be used to give a field-theoretical realization of the conformal generators discussed before.
+We worked with the free scalar field theory as example, but our discussion can be generalized to arbitrary classical field theories. This shows that a traceless energy-momentum tensor can be used to give a field-theoretical realization of the conformal generators discussed before.
 
 %note that scale invariance and unitarity generally imply that the trace of the energy-momentum tensor is zero; it can at most be derivative of virial current!
 % advanced exercise
@@ -1169,8 +1169,8 @@ We worked with the free scalar field theory example, but it is straightforward t
 \section{Conformal quantum field theory}
 \label{sec:quantum}
 
-Let us now turn to quantum field theory and study the implications of conformal symmetry in that context. The most standard approach to quantum field theory is to think of a classical field theory, for which we now have a basic understanding of what conformal symmetry does, and then quantize it by promoting the fields to operators acting on some Hilbert space.
-But this is not the approach we will take here. There will still be states and operators, but the latter will not \emph{necessarily} be associated with fields appearing in a Lagrangian.
+Let us now turn to quantum field theory and study the implications of conformal symmetry in that context. The most standard approach to quantum field theory is to think of a classical field theory, in which we now have a basic understanding of what conformal symmetry does, and then quantize it by promoting the fields to operators acting on some Hilbert space.
+But this is not the approach that we will take here. There will still be states and operators, but the latter will not necessarily be associated with fields appearing in a Lagrangian.
 
 \subsection{Non-perturbative quantum field theory}
 
@@ -1184,48 +1184,51 @@ This Hilbert space includes a vacuum state $\ket{0}$.
 
 \item
 There are a number of (in fact infinitely many) \emph{local} operators that act on this Hilbert space. For instance, let us take $\phi(x^0, \vec{x})$ to be an operator acting on the Hilbert space at time $t = x^0$.
-We call this operator \emph{local} in $\vec{x}$ because it commutes with any other local operators on the same time slice inserted at a point $\vec{x}' \neq \vec{x}$:
+We call this operator \emph{local} in $\vec{x}$ and we require that it commutes with any other local operators on the same time slice inserted at a point $\vec{x}' \neq \vec{x}$:
 \begin{equation}
 	\left[ \phi(x^0, \vec{x}), \phi(x^0, \vec{x}') \right]
-	= 0 
+	= 0,
 	\qquad\qquad
 	\vec{x} \neq \vec{x}'.
 	\label{eq:locality:equaltime}
 \end{equation}
 
 \item
-One of the local operators of the theory is the energy-momentum tensor, and from it we can define conserved charges, including $P^\mu$ as in eq.~\eqref{eq:conservedcharge:P}. $P^\mu$ is conserved in time, so it is a good operator valid on all Hilbert spaces at any time $t$. 
+One of the local operators of the theory is the energy-momentum tensor, and from it we can define conserved charges, including $P^\mu$ and $M^{\mu\nu}$ as in eqs.~\eqref{eq:conservedcharge:P} and \eqref{eq:conservedcharge:M}. In a generic QFT the energy-momentum tensor needs not be traceless, so the charges $D$ and $K^\mu$ cannot be considered. 
+$P^\mu$ and $M^{\mu\nu}$ are conserved in time, so they are good operator valid on all Hilbert spaces at any time $t$. 
 In particular, we shall assume that the vacuum state has zero charge,
 \begin{equation}
-	P^\mu \ket{0} = 0.
+	P^\mu \ket{0} = M^{\mu\nu} \ket{0} = 0.
 	\label{eq:vacuuminvariance:P}
 \end{equation}
-The value of $P^\mu$ changes however every time an operator is inserted at some point $(x^0, \vec{x})$. In analogy with eq.~\eqref{eq:P:localsource}, this change is encoded in the commutator
+
+\item
+The value of $P^\mu$ and $M^{\mu\nu}$ changes however every time an operator is inserted at some point $(x^0, \vec{x})$. In analogy with eq.~\eqref{eq:P:localsource}, we require that this change is encoded in the commutator
 \begin{equation}
 	\left[ P^\mu, \phi(x) \right] = i \partial^\mu \phi(x).
 	\label{eq:commutator:P}
 \end{equation}
-This equation is solved by 
+Note that while $P^\mu$ is not a local operator, its commutator with any local operator is again local.
+Since this equation is solved by
 \begin{equation}
-	\phi(x) = e^{-i x \cdot P} \phi(0) e^{i x \cdot P}.
+	\phi(x) = e^{-i x \cdot P} \phi(0) e^{i x \cdot P},
 	\label{eq:P:exponentiated}
 \end{equation}
-Note that while $P^\mu$ is not a local operator, its commutator with any local operator is again local.
-
-Since $P^\mu$ is Hermitian (this can be seen from \eqref{eq:commutator:P} in the case of a Hermitian local operator $\phi$), this equation indicates that translations are represented by a unitary operator on the Hilbert space.
-This is true both of space- and time-translations, and therefore the Hamiltonian that defines the time-evolution of states is $P^0$: a state $\ket{\Psi}$ defined at time $t = 0$ is translated to another state at time $t$ by 
+we see that translations are realized as \emph{unitarity} transformations of the operators (note that $P^\mu$ is Hermitian).
+This is true of time translations as well, and therefore the Hamiltonian that defines the time-evolution of states can be identified with $P^0$: a state $\ket{\Psi}$ defined at time $t = 0$ is translated to another state at time $t$ by 
 \begin{equation}
 	\ket{ \Psi}_t = e^{i t P^0} \ket{ \Psi}.
 \end{equation}
-Since time evolution is unitary, the Hilbert space will be the same on all surfaces.
+Since this evolution is unitary, the Hilbert space will be the same on all surfaces.
 
 \item
-Lorentz transformations are similarly realized as unitary transformations of the Hilbert space. The charge $M^{\mu\nu}$ associated with Lorentz symmetry is again a conserved operator whose commutator with any local operator can be expressed as another local operator. If we choose to decompose a local operator inserted at the origin of space-time into irreducible representations of the Lorentz group and denote these with $\phi^a(0)$, $a$ collectively denoting some Lorentz indices, then we must have
+Lorentz transformations are similarly realized as unitary transformations, generated by the charge $M^{\mu\nu}$.
+We choose to decompose local operators inserted at the origin of space-time into irreducible representations of the Lorentz group and denote these with $\phi^a(0)$, with $a$ standing for a collection of Lorentz indices, so that
 \begin{equation}
 	\left[ M^{\mu\nu}, \phi_a(0) \right]
 	= i \left( \mathcal{S}^{\mu\nu} \right)_{ab} \phi^b(0),
 \end{equation}
-where $\left( \mathcal{S}^{\mu\nu} \right)_{ab}$ is a matrix that satisfies the $SO(1, d-1)$ algebra. It vanishes for a scalar operator. For a vector operator with one Lorentz index, it is given by
+where $\left( \mathcal{S}^{\mu\nu} \right)_{ab}$ is a matrix that satisfies the Lorentz algebra. It vanishes for a scalar operator. For a vector operator with one Lorentz index, it is given by
 \begin{equation}
 	\left( \mathcal{S}^{\mu\nu} \right)_{\alpha\beta}
 	= \delta^\mu_\alpha \delta^\nu_\beta
@@ -1239,10 +1242,6 @@ When combined with eq.~\eqref{eq:P:exponentiated}, this implies
 	+ i \left( \mathcal{S}^{\mu\nu} \right)^a_{~b} \phi^b(0).
 	\label{eq:commutator:M}
 \end{equation}
-As with translations, we shall also assume that the vacuum is invariant under rotations, namely
-\begin{equation}
-	M^{\mu\nu} \ket{0} = 0.
-\end{equation}
 The fact that the quantum theory is Poincaré invariant implies that the locality condition \eqref{eq:locality:equaltime} can be rewritten as
 \begin{equation}
 	\left[ \phi(x), \phi(y) \right] = 0
@@ -1250,7 +1249,10 @@ The fact that the quantum theory is Poincaré invariant implies that the localit
 	\text{if}~(x-y)^2 > 0.
 	\label{eq:causality}
 \end{equation}
-In other words, local operators commute as long as they are space-like separated.
+In other words, local operators commute as long as they are space-like separated.%
+%
+\footnote{For operators of half-integer spins, the commutator must be replaced by an anti-commutator.} 
+%
 
 \item
 Finally, the last condition has to do with the positivity of energy.
@@ -1258,14 +1260,14 @@ Working in a basis of eigenstates of energy and momentum,
 \begin{equation}
 	P^\mu \ket{p} = p^\mu \ket{p},
 \end{equation}
-then we require $p^0 \geq 0$. Since this must be true in any Lorentz frame, $p$ must be contained inside the forward light-cone, i.e.
+we require $p^0 \geq 0$ for \emph{all} states in the Hilbert space. Since this must be true in any Lorentz frame, $p$ must be contained inside the forward light-cone, i.e.
 \begin{equation}
 	p^0 \geq \left| \vec{p} \right|
 	\qquad \Leftrightarrow \qquad
 	p^2 < 0 ~\text{and}~ p^0 > 0.
 	\label{eq:forwardcone}
 \end{equation}
-This gives a strong constraint on local operators: eigenstates of $P^\mu$ can be constructed taking the Fourier transform of a local operator acting on the vacuum,
+Note that eigenstates of $P^\mu$ can be constructed taking the Fourier transform of a local operator acting on the vacuum,
 \begin{equation}
 	\widetilde{\phi}(p) \ket{0}
 	= \int d^dx \, e^{i p \cdot x} \phi(x) \ket{0}.
@@ -1282,13 +1284,10 @@ This gives a strong constraint on local operators: eigenstates of $P^\mu$ can be
 	$$
 \end{exercise}
 %
-Note that the operators $P^\mu$ and $M^{\mu\nu}$ are in fact topological charges (they can be defined on any codimension-1 surfaces, not only time slices), so the commutation relations \eqref{eq:commutator:P} and \eqref{eq:commutator:M} can be motivated in \emph{any} quantization of the theory, including on the Lorentzian cylinder with Hamiltonian $\frac{1}{2}(P^0 - K^0)$.
-The points 1 to 4 in the list above can actually directly be used to define a Euclidean quantum field theory.
-However, it is obvious from point 5 that the generator $P^0$ plays a special role in quantum field theory in Minkowski space-time: not all of the conformal generators are treated on the same footing.%
-%
-\footnote{On the other hand the existence of the conserved charge $M^{\mu\nu}$ is not needed: one can for instance consider quantum field theories in which the boost symmetry is broken}.
+Note that the operators $P^\mu$ and $M^{\mu\nu}$ are in fact topological charges (they can be defined on any codimension-1 surfaces, not only time slices), so the commutation relations \eqref{eq:commutator:P} and \eqref{eq:commutator:M} can be motivated in \emph{any} quantization of the theory.
+However, it is obvious from point 6 that the generator $P^0$ plays a special role in quantum field theory in Minkowski space-time: not all of the conformal generators are treated on the same footing.
 
-These five points are essentially the most general definition a non-perturbative quantum field theory. They are nearly in one-to-one correspondence with the so-called \emph{Wightman axioms}. The only difference (besides the level of mathematical rigor) is that the Wightman axioms do not rely on the existence of an energy-momentum tensor, but assume directly that the Poincaré transformations are realized as unitary transformations on the Hilbert space.
+These six points are essentially the most general definition a non-perturbative quantum field theory. They are nearly in one-to-one correspondence with the so-called \emph{Wightman axioms}. The only difference (besides the level of mathematical rigor) is that the Wightman axioms do not rely on the existence of an energy-momentum tensor, but assume directly that the Poincaré transformations are realized as unitary transformations on the Hilbert space.
 
 \subsection{Wightman functions}
 
@@ -1592,7 +1591,7 @@ It is instructive to compute the time-ordered 2-point function using the Källen
 	e^{i k \cdot (x - y)}
 	\left( k^2 - i \varepsilon \right)^{\Delta - d/2}.
 \end{equation}
-The term $\left( k^2 - i \varepsilon \right)^{\Delta - d/2}$ in the integral looks like the propagator of a massless scalar field raised to an arbitrary power. This is in fact what we expect in perturbation theory when the beta function has a non-trivial fixed point: the renormalized 2-point function has logarithms that can be resummed into a power controlled by the anomalous dimension $\gamma$ of the field $\phi$,
+The term $\left( k^2 - i \varepsilon \right)^{\Delta - d/2}$ in the integral looks like the propagator of a massless scalar field raised to an arbitrary power. This is in fact what we expect in perturbation theory when the $\beta$-function has a non-trivial fixed point: the renormalized 2-point function has logarithms that can be resummed into a power controlled by the anomalous dimension $\gamma$ of the field $\phi$,
 \begin{equation}
 	\frac{i}{-q^2} \left[ 1 + \gamma \log(-q^2) + \ldots \right]
 	\approx i (-q^2)^{-1 + \gamma}.
@@ -2605,9 +2604,7 @@ In this way, any Euclidean correlation function in which the operators are order
 Once we adopt the Euclidean path integral perspective, then it does not matter whether we use $P^0$ as the Hamiltonian, or an other conformal generator, as long as the surface at $\tau = 0$ is part of the foliation of space that it defines. For instance, one can use the so-called conformal Hamiltonian $\frac{1}{2} (P^0 \pm K^0)$, which foliates Euclidean space as shown in figure~\ref{fig:foliations}.
 We mentioned already in section~\ref{sec:classical} that this combination of generators is in fact equivalent to the dilatation generator $D$, in the sense that they are related by a rotation in the compact subgroup $\SO(d + 1)$ of the conformal group $\SO(d+1, 1)$.
 This means that there exists a conformal transformation that maps the surface $\tau = 0$ to the unit sphere, and the other surfaces related by Hamiltonian evolution to spheres of different radii (see figure~\ref{fig:foliations}).
-Foliating Euclidean space with spheres centered at the origin and using the dilatation generator as a Hamiltonian is called \emph{radial quantization}. In comparison, the physically-equivalent choice of Hamiltonian  $\frac{1}{2} (P^0 \pm K^0)$ is often called \emph{N-S quantization}.%
-%
-\footnote{The lines drawn when evolving a point with this Hamiltonian look like magnetic field lines connecting the north (N) and south (S) poles of a magnet, hence the name N-S quantization.}
+Foliating Euclidean space with spheres centered at the origin and using the dilatation generator as a Hamiltonian is called \emph{radial quantization}. In comparison, the physically-equivalent choice of Hamiltonian  $\frac{1}{2} (P^0 \pm K^0)$ is often called \emph{N-S quantization}.
 
 The importance of these two quantizations in conformal field theory is due to the fact that they have fixed points, unlike $P^0$: evolving back in ``time'', the path integral shrinks to a ball of arbitrarily small radius surrounding of these fixed points (the origin or the south pole). This means that any state on the unit sphere, or on the plane $\tau = 0$, can be related by Hamiltonian evolution to a state \emph{localized} at the fixed point, and it is therefore equivalent to a state created by a local operator inserted there.
 This is in essence the argument showing that the state/operator correspondence goes both way: a local operator defines a state, but any state also defines a local operator (or a superposition of local operators).
@@ -2891,7 +2888,7 @@ In terms of the coordinate $z$, this is obviously true for all $\left| z \right|
 This is even more easily seen in a different reference frame: using a conformal transformation on the plane of $z$, one can map the 4 points to a configuration depicted on the right-hand side of figure~\ref{fig:conformalframes}, with the pairs of points $(x_1, x_2) $ and  $(x_3, x_4)$ placed at antipodal points on two circles centered at the origin. The map is given by
 \begin{equation}
 	\rho = \frac{z}{\left( 1 + \sqrt{1-z} \right)^2}
-	\qquad\qquad
+	\qquad\Leftrightarrow\qquad
 	z = \frac{4\rho}{(1 + \rho)^2},
 \end{equation}
 and it takes all of the complex $z$ plane to the unit disk in $\rho$, with the half-line $z > 1$ being mapped to the unit circle. In this frame, it is now obvious that the OPE converges in radial quantization unless $\left| \rho \right| = 1$, corresponding to $z > 1$.
@@ -3054,15 +3051,29 @@ The components of the vector $\vec{F}_i$ correspond to $v^{\Delta_\phi} g_i(u,v)
 $\vec{F}_i$ has infinitely many components, but the equation is also true if we truncate it to any finite subset. Some interesting results can already be obtained from considerations about a 2-dimensional subset, but typically the more stringent bounds that are shown below require scanning over spaces with a large number of dimensions.
 
 
-%\begin{figure}
-%	\centering
-%	sphere
-%	\caption{}
-%	\label{fig:bootstrap}
-%\end{figure}
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{figures/separating-plane.pdf}
+	\caption{A toy example of the behavior of vectors $\vec{F}_i$
+	in a 3-dimensional space.
+	For each spin $\ell_i = 0, 2, 4, 6, \ldots$, the vector $\vec{F}_i$
+	draws a smooth curve on the unit sphere as $\Delta_i$ varies
+	between the unitarity bound ($\Delta_\text{min}$) and infinity.
+	All curves are contained in the upper hemisphere, except
+	for the scalar case $\ell = 0$ which is in the lower hemisphere
+	when $\Delta < \Delta_*$.
+	This means that a putative theory with no scalar primary operator
+	with $\Delta < \Delta_*$ is excluded, as the crossing equation 
+	\eqref{eq:crossingequation:vector} cannot be satisfied:
+	all vectors $\vec{F}_i$ are on the same side of
+	the horizontal \emph{separating plane}.
+	Note that the curves shown here are made up
+	and do not correspond to actual conformal blocks.}
+	\label{fig:separatingplane}
+\end{figure}
 %
 The norm of the vector $\vec{F}_i$ is irrelevant in this equation, as it gets multiplied by an unknown positive factor $\lambda_i^2$. But the direction in which the vector $\vec{F}_i$ points is crucial: if all vector $\vec{F}_i$ point in the same general direction, for all spins $\ell_i$ and all $\Delta_i$ above the corresponding unitarity bound, then the equation does not have a solution, because no non-trivial linear combinations of $\vec{F}_i$ can ever sum to zero.
-%A toy example is shown in figure~\ref{fig:bootstrap}.
+%A toy example is shown in figure~\ref{fig:separatingplane}.
 This observation is at the core of all numerical bootstrap algorithms, which go along the following lines:
 we begin with making a hypothesis about the scaling dimension $\Delta_\phi$,%
 %
@@ -3220,21 +3231,14 @@ This is a numerical technique that studies renormalization group flows using the
  
 \end{itemize}
 
-%Other things to fit in:
-%
-%- IR divergences? see di Francesco ex. 4.5
-%- cluster decomposition of 4-point function (di Francesco ex. 5.2)
-%- Massless regularization of propagator in 2D; Bessel integral form of propagator, with IR and UV divergences
 
-
-
-\vspace{30mm}
+\vspace{20mm}
 
 \noindent
 \emph{[Courses] are fantastically good for learning physics. The lecturer learns a lot of physics. After my first few studies, just about everything I learned about physics came from teaching it. I don’t know if the students learned a lot, but I certainly did. So I consider teaching physics very important.} \\
 \hspace*{0.6\linewidth} --- Leonard Susskind \cite{Susskind}
 
-
+\newpage
 \bibliography{Bibliography}
 \bibliographystyle{utphys}
 
