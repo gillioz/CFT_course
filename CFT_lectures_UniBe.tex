@@ -1271,7 +1271,7 @@ Note that eigenstates of $P^\mu$ can be constructed taking the Fourier transform
 \begin{equation}
 	\widetilde{\phi}(p) \ket{0}
 	= \int d^dx \, e^{i p \cdot x} \phi(x) \ket{0}.
-	\label{eq:momentumspace}
+	\label{eq:momentumspace:state}
 \end{equation}
 
 \end{enumerate}
@@ -1287,7 +1287,7 @@ Note that eigenstates of $P^\mu$ can be constructed taking the Fourier transform
 Note that the operators $P^\mu$ and $M^{\mu\nu}$ are in fact topological charges (they can be defined on any codimension-1 surfaces, not only time slices), so the commutation relations \eqref{eq:commutator:P} and \eqref{eq:commutator:M} can be motivated in \emph{any} quantization of the theory.
 However, it is obvious from point 6 that the generator $P^0$ plays a special role in quantum field theory in Minkowski space-time: not all of the conformal generators are treated on the same footing.
 
-These six points are essentially the most general definition a non-perturbative quantum field theory. They are nearly in one-to-one correspondence with the so-called \emph{Wightman axioms}. The only difference (besides the level of mathematical rigor) is that the Wightman axioms do not rely on the existence of an energy-momentum tensor, but assume directly that the Poincaré transformations are realized as unitary transformations on the Hilbert space.
+The six items essentially give the most general non-perturbative definition of quantum field theory. They are nearly in one-to-one correspondence with the so-called \emph{Wightman axioms}. The only difference (besides the level of mathematical rigor) is that the Wightman axioms do not rely on the existence of an energy-momentum tensor, but assume directly that the Poincaré transformations are realized as unitary transformations on the Hilbert space.
 
 \subsection{Wightman functions}
 
@@ -1295,12 +1295,12 @@ With these axioms in mind, the next thing we can do is compute the vacuum expect
 \begin{equation}
 	\bra{0} \phi_1(x_1) \cdots \phi_n(x_n) \ket{0}.
 \end{equation}
-This can be viewed as an overlap of the vacuum state ($\bra{0}$) with a  state created acting on the vacuum with a sequence of local operators. Note that these operators need not be time-ordered: the time evolution operator is unitary, so it can go both ways. This is in stark contrast with time-ordered correlation functions obtained from the path integral.
+This can be viewed as an overlap of the vacuum state, $\bra{0}$, with a  state created acting on the vacuum with a sequence of local operators. Note that these operators need not be time-ordered: the translation operator is unitary, so it can go both ways. This is very different from time-ordered correlation functions obtained from the path integral.
 
-Correlators of this type are called \emph{Wightman functions}. They are really the fundamental observables in non-perturbative quantum field theory. In fact, it is even possible to completely define a quantum field theory just by its Wightman functions: the \emph{Wightman reconstruction theorem} states that the Hilbert space of a quantum field theory can be constructed from all its Wightman function.
+Correlators of this type are called \emph{Wightman functions}. They are really the fundamental observables in non-perturbative quantum field theory. In fact, it is even possible to completely define a quantum field theory just by its Wightman functions: the Wightman reconstruction theorem states that the Hilbert space of a quantum field theory can be constructed from all its Wightman function.
 A convenient perspective is therefore to forget about the Hilbert space and focus on correlation functions.
 
-Symmetry is encoded in this correlation functions in the form of Ward identities. Given a conserved charge $G$ that annihilates the vacuum, $G \ket{0} = 0$ (this could be $P^\mu$ or $M^{\mu\nu}$), the following equation must be satisfied
+Symmetry is encoded in this correlation functions through Ward identities: given a conserved charge $G$ that annihilates the vacuum, $G \ket{0} = 0$ (this could be $P^\mu$ or $M^{\mu\nu}$), the following equation must be satisfied
 \begin{align}
 	& \bra{0} \left[ G, \phi_1(x_1) \right] \phi_2(x_2) \cdots 
 	\phi_n(x_n) \ket{0}
@@ -1313,7 +1313,7 @@ Symmetry is encoded in this correlation functions in the form of Ward identities
 	& + \bra{0} \phi_1(x_1) \, \phi_2(x_2) \cdots 
 	\left[ G, \phi_n(x_n) \right] \ket{0} = 0.
 \end{align}
-This is an equation that is obvious in the Hilbert space picture, but it is also valid as a differential equation for the Wightman function, since each commutator is again related to the local operator. Let us consider some examples
+This is an equation that is obvious in the Hilbert space picture, but it is also valid as a differential equation for the Wightman function, since each commutator is again related to the local operator. Let us see some examples.
 
 The simplest Wightman function is that involving a single scalar local operator, 
 \begin{equation}
@@ -1341,9 +1341,15 @@ If we think of the correlator as being a function of $x + y$ and $x - y$, then t
 	\bra{0} \phi(x) \phi(y) \ket{0} = W(y - x),
 	\label{eq:W}
 \end{equation}
-where $W$ denotes an arbitrary function.
+where $W$ denotes so far an arbitrary function.
 
-In general, the consequences of translation symmetry are easier to see in momentum space, using the Fourier transform \eqref{eq:momentumspace} of the local operators. By this very definition, we can establish that
+In general, the consequences of translation symmetry are easier to see in momentum space, using the Fourier transform of the local operators, analogous to eq.~\eqref{eq:momentumspace:state}: 
+\begin{equation}
+	\widetilde{\phi}(p)
+	= \int d^dx \, e^{i p \cdot x} \phi(x).
+	\label{eq:momentumspace}
+\end{equation}
+By this definition, we can establish that
 \begin{equation}
 	\big[ P^\mu, \widetilde{\phi}(p) \big]
 	= p^\mu \, \widetilde{\phi}(p),
@@ -1388,7 +1394,7 @@ The fact that the Wightman 2-point function \eqref{eq:Wtilde} is proportional to
 	\qquad\text{and}\qquad
 	\widetilde{\phi}(-p) \ket{0}
 \end{equation}
-(note that the Hermitian conjugation flips the sign of momenta). Therefore, the limit $p \to - q$ corresponds to the norm of either of these states. But this limit is clearly discontinuous, or the norm of the state infinite.
+(Hermitian conjugation flips the sign of momenta). Therefore, the limit $p \to - q$ corresponds to the norm of either of these states. But this limit is clearly discontinuous, or the norm of the state infinite.
 The resolution of this issue is that the objects $\phi(x)$ and its Fourier transform $\widetilde{\phi}(p)$ are not operators, but rather \emph{operator-valued distributions}. In other words, $\phi(x) \ket{0}$
 and $\widetilde{\phi}(p) \ket{0}$ are \emph{not} states of the theory, as they have in fact infinite norm. Formally, these operator-valued distributions only make sense when they are integrated against test functions, defining
 \begin{equation}
@@ -1413,16 +1419,16 @@ When acting on the vacuum, these smeared operator give well-defined states, with
 	\label{eq:norm}
 \end{align}
 Test functions will not appear further in these lectures. For physicists, they are mostly an annoyance that we prefer to avoid. However, it is important to know that there exists a mathematically rigorous way of dealing with Wightman functions.
-For one thing, this gives a proper justification of why it is always fine to take the Fourier transform way and back between the position- and momentum-space representation, as tempered distribution (the proper name of such distributions) always admit a Fourier transform.
-Note however that this is true of Wightman functions, but not of time-ordered correlators that will appear later!
+For one thing, this gives a proper justification of why it is always fine to take the Fourier transform way and back between the position- and momentum-space representation, as tempered distribution always admit a Fourier transform.
+This is however only true of Wightman functions, not of time-ordered correlators (see below).
 
 \subsection{Spectral representation}
 
-The norm \eqref{eq:norm} is also giving away important information: it is positive if and only if the function $\rho$ is positive,
+The norm \eqref{eq:norm} is also giving away important information: it can only be positive if the function $\rho$ is positive,
 \begin{equation}
-	\rho(\mu^2) \geq 0
+	\rho(\mu^2) \geq 0,
 	\qquad\quad
-	\forall \, \mu^2 > 0
+	\forall \, \mu^2 > 0.
 \end{equation}
 The function $\rho$ is in fact the \emph{spectral density} encountered in standard quantum field theory textbooks, where we can often find it in the form
 \begin{equation}
@@ -1487,7 +1493,7 @@ This is the \emph{Källen-Lehmann representation} for the time-ordered 2-point f
 	$$
 	The retarded commutator is only non-zero in the forward light cone
 	in $y$, and therefore it also admits a Fourier transform
-	that converges provided that give a small imaginary part to $q$.
+	that converges provided that we give a small imaginary part to $q$.
 	Compute this Fourier transform, and show that it is equal to
 	$$
 		\int\limits_0^\infty d\mu^2 \,
@@ -1500,7 +1506,7 @@ This is the \emph{Källen-Lehmann representation} for the time-ordered 2-point f
 	\eqref{eq:KallenLehmann}.
 \end{exercise}
 %
-The spectral representation for 2-point function gives familiar results in non-interacting theories. A massive scalar field has for instance the spectral density
+The spectral representation for the 2-point function gives familiar results in non-interacting theories. A massive scalar field has for instance the spectral density
 \begin{equation}
 	\rho(\mu^2) = \delta(\mu^2 - m^2),
 \end{equation}
@@ -1532,10 +1538,11 @@ The discussion applied so far to a generic quantum field theory without conforma
 
 \subsection{Scale symmetry}
 
-The assumption of scale invariance coincides with the existence of a third conserved charge besides $P^\mu$ and $M^{\mu\nu}$, namely the operator $D$.
+The assumption of scale symmetry coincides with the existence of a third conserved charge besides $P^\mu$ and $M^{\mu\nu}$, namely the operator $D$.
 We obtained before the commutator of a generic local operator with $M^{\mu\nu}$ assuming that it transforms in some irreducible representation of the Lorentz group at the origin $x = 0$
 (an operator inserted at some other point is not in an irreducible representation because $P^\mu$ does not commute with $M^{\mu\nu}$).
-Since $M^{\mu\nu}$ commutes with $D$, the same assumption can be made about scale: any local operator can be decomposed into irreducible representations of the group of scaling transformations, meaning that we can write
+Since $M^{\mu\nu}$ commutes with $D$, the same assumption can be made about scale: any local operator can be decomposed into 
+irreducible representations of the group of scaling transformations, meaning that we can write
 \begin{equation}
 	\left[ D, \phi(0) \right] = -i \Delta \phi(0).
 \end{equation}
@@ -1578,9 +1585,8 @@ implying that the spectral density is a power law,
 \begin{equation}
 	\rho(\mu^2) = C \, (\mu^2)^{\Delta - d/2}.
 \end{equation}
-This kind of spectral density is very different from that of a massive interacting theory: the operator $\phi$ has excitations of all masses.
+This kind of spectral density shown in figure~\ref{fig:spectraldensity} is very different from that of a massive interacting theory: the operator $\phi$ describes excitations of all energies.
 At the same time, its simplicity is striking: it is characterized by a single number $\Delta$.
-(see fig.~\ref{fig:spectraldensity})
 
 It is instructive to compute the time-ordered 2-point function using the Källen-Lehmann representation: performing the integral over $\mu^2$, we find
 \begin{equation}
@@ -1616,7 +1622,7 @@ In this case, the spectral density obeys
 This is precisely the spectral density that is expected in the free scalar field theory. In this case (and this case only!), the operator $\phi$ describes a massless scalar particle.
 
 It turns out that the case $\Delta = \frac{d-2}{2}$ is the lowest possible value for $\Delta$: for any $\Delta$ below that value, the spectral density is not integrable in the limit $\mu^2 \to 0$.
-One might then also worry about the opposite limit $\mu^2 \to \infty$ in the integral: for any $\Delta > \frac{d}{2}$, the spectral density increases with $\mu^2$. However, remember that this spectral density is in fact a Wightman function, i.e.~a tempered distribution that should be understood as integrated against test functions that decay faster than any power at large $q^2$. Therefore, arbitrarily large values of $\Delta$ are possible.
+One might also worry about the opposite limit $\mu^2 \to \infty$ in the integral: for any $\Delta > \frac{d}{2}$, the spectral density increases with $\mu^2$. However, remember that this spectral density is in fact a Wightman function, i.e.~a tempered distribution that should be understood as integrated against test functions that decay faster than any power at large $q^2$. Therefore, arbitrarily large values of $\Delta$ are possible, but there is a lower bound on $\Delta$ below which the states smeared with test functions have infinite norm.
 The inequality
 \begin{equation}
 	\Delta \geq \frac{d-2}{2}.
@@ -1640,7 +1646,7 @@ Since this is true for any $x$ and $y$, it implies that
 \begin{equation}
 	\partial^2 \phi(x) = 0
 \end{equation}
-is true as an operator equation. In other words, a theory in which $\Delta = \frac{d-2}{2}$ is a free field theory.
+is true as an operator equation. Since this is the equation of motion for a free field, a theory in which $\Delta = \frac{d-2}{2}$ is a free field theory.
 
 The simplicity of the momentum-space 2-point function in a scale-invariant theory also means that it can easily be Fourier transformed back to position space using
 \begin{equation}
@@ -1649,19 +1655,20 @@ The simplicity of the momentum-space 2-point function in a scale-invariant theor
 \end{equation}
 \begin{exercise}
 	Perform the Fourier transform explicitly.
-	Note that we can use the fact that the integral is Lorentz
+	You can use the fact that the integral is Lorentz
 	invariant to determine that $W(x)$ is in fact a function of $x^2$.
 	Moreover, since the integrand only has support for $q$
 	in the forward light-cone, this defines a function of $x$
-	that is in fact analytic in $x$ as long as $\im x$ is contained in 
-	the future light cone, since the integrand is then damped by the
+	that is analytic in $x$ as long as $\im x$ is contained in 
+	the future light cone: the integrand is damped by the
 	exponential $e^{q \cdot \im x}$ with $q \cdot \im x < 0$
+	in that case
 	(this domain of analyticity is known as the ``future tube'').
 	This means that we are free to evaluate the integral at a point 
 	$x = (i \tau, 0)$, and then use $\tau^2 = x^2$ to recover the 
 	general solution.
 	The integral at that point is convergent for all $\Delta$
-	satisfying the unitarity bound, and one finds
+	satisfying the unitarity bound, and you should find
 	$$
 	W(\tau) = C \frac{2^{2\Delta} \Gamma(\Delta)
 	\Gamma\left( \Delta - \frac{d-2}{2} \right)}
@@ -1675,7 +1682,7 @@ The result of this integral can be written as
 	W(x) = \frac{C'}
 	{\left[ -(x^0 + i \varepsilon)^2 + \vec{x}^2 \right]^\Delta}
 \end{equation}
-where the limit $\varepsilon \to 0_+$ is understood to make sense of the case in which $x^2 < 0$, and the coefficient $C'$ is related to $C$ by
+where the limit $\varepsilon \to 0_+$ is understood to make sense of the case in which $x^2 \leq 0$, and the coefficient $C'$ is related to $C$ by
 \begin{equation}
 	C' = \frac{2^{2\Delta} \Gamma(\Delta)
 	\Gamma\left( \Delta - \frac{d-2}{2} \right)}
@@ -1690,18 +1697,15 @@ It is in fact customary in conformal field theory to normalize the scalar operat
 	\Gamma\left( \Delta - \frac{d-2}{2} \right)}.
 	\label{eq:standardnormalization}
 \end{equation}
-\begin{exercise}
-	Verify that the the coefficient $C$ vanishes
-	as in eq.~\eqref{eq:C:freelimit} in the limit $\Delta \to \frac{d-2}{2}$.
-\end{exercise}
-
-Finally, let us conclude the analysis of scale symmetry with a comment about one-point functions. We saw in the previous section that a constant vacuum expectation value for a scalar operator was compatible with Poincaré symmetry. However, the commutator \eqref{eq:commutator:D} requires then that $\Delta = 0$, which violates the unitarity bounds.
+Note that $C$ vanishes as in eq.~\eqref{eq:C:freelimit} in the limit $\Delta \to \frac{d-2}{2}$.
+	
+Finally, let us conclude the analysis of scale symmetry with a comment about one-point functions. We saw in the previous section that a constant vacuum expectation value for a scalar operator was compatible with Poincaré symmetry. However, the commutator \eqref{eq:commutator:D} requires then that $\Delta = 0$, which violates the unitarity bound.
 We conclude that all one-point functions must vanish in a scale-invariant theory.
 
 
 \subsection{Special conformal symmetry}
 
-As with scale symmetry, the presence of special conformal symmetry is associated with the existence of the conserved charges $K^\mu$ organized in a $d$-dimensional vector.
+As with scale symmetry, the presence of special conformal symmetry is associated with the existence of the conserved charges $K^\mu$, organized in a $d$-dimensional vector.
 Unlike $D$, however, $K^\mu$ does not commute with $M^{\mu\nu}$, so it cannot be diagonalized at the point $x = 0$.
 Nevertheless, we can use the conformal algebra to establish that, if $\phi$ is a local operator with scaling dimension $\Delta$, then $\left[ K^\mu, \phi \right]$ has scaling dimension $\Delta - 1$:
 \begin{align}
@@ -1711,9 +1715,9 @@ Nevertheless, we can use the conformal algebra to establish that, if $\phi$ is a
 	\nonumber \\
 	&= \big[ K^\mu, -i \Delta \phi(0) \big]
 	+ \big[ i K^\mu, \phi(0) \big]
-	= -i (\Delta - 1) [ K^\mu, \phi(0) ]
+	= -i (\Delta - 1) [ K^\mu, \phi(0) ].
 \end{align}
-This should be contrasted with the fact that the operator $\left[P^\mu, \phi(x)\right]$ has scaling dimension $\Delta + 1$,
+This is similar to the observation that the commutator $\left[P^\mu, \phi(x)\right]$ has scaling dimension $\Delta + 1$,
 \begin{equation}
 	\big[ D, [ P^\mu, \phi(0) ] \big]
 	= -i (\Delta + 1) [ P^\mu, \phi(0) ],
@@ -1756,11 +1760,11 @@ or after permuting the derivatives with $q$,
 \end{equation}
 This is now a second-order differential acting on the operator expressed in momentum space. This is the price to pay for using a representation in which the commutator \eqref{eq:commutator:P:momentum} takes a simple diagonal form.
 
-The first thing we can do with this commutator is to examine the related Ward identity for the Wightman 2-point function. Writing this function as
+The first thing we can do with this commutator is to examine the related Ward identity for the Wightman 2-point function. Remember that this function can be written as
 \begin{equation}
-	W(x) = \bra{0} \phi(0) \phi(x) \ket{0},
+	W(x) = \bra{0} \phi(0) \phi(x) \ket{0}.
 \end{equation}
-we can see that the commutator act trivially on the operator on the left, so that we must have (note that $S^{\mu\nu} = 0$ for scalar operators)
+The commutator acts trivially on the operator inserted at the origin, so that we must have (note that $S^{\mu\nu} = 0$ for scalar operators)
 \begin{equation}
 	\left( 2 x^\mu x^\nu \partial_\nu - x^2 \partial^\mu 
 	+ 2 \Delta x^\mu \right) W(x) = 0.
@@ -1770,7 +1774,7 @@ The same can be verified in momentum space: by definition, we have
 \begin{equation}
 	\widetilde{W}(q) = \bra{0} \phi(0) \widetilde{\phi}(q) \ket{0},
 \end{equation}
-where only the operator on the right is Fourier transformed while the one on the left is kept fixed at the origin, and so the commutator above implies that
+where only the operator on the right is Fourier transformed while the one on the left is kept fixed at the origin in position space, and so the commutator above implies that
 \begin{equation}
 	\left[ 2 q^\nu \frac{\partial^2}{\partial q_\mu \partial q^\nu} 
 	- q^\mu \frac{\partial^2}{\partial q_\nu \partial q^\nu}
@@ -1793,7 +1797,7 @@ This is still a function of $(x-y)^2$ by Poincaré symmetry. But there are now t
 	\bra{0} \phi_1(0) \phi_2(x) \ket{0} = 0.
 \end{equation}
 The solution is fixed up to a multiplicative constant to be
-(assuming $x - y$ is space-like for simplicity)
+(assuming $x$ space-like for simplicity)
 \begin{equation}
 	\bra{0} \phi_1(0) \phi_2(x) \ket{0}
 	= \frac{C_{12}}{(x^2)^{(\Delta_1 + \Delta_2)/2}}.
@@ -1810,20 +1814,20 @@ Using $\partial_\mu \left[ (x^2)^{-(\Delta_1 + \Delta_2)/2} \right] = -(\Delta_1
 	\left( \Delta_2 - \Delta_1 \right) C_{12} 
 	\frac{x^\mu}{(x^2)^{(\Delta_1 + \Delta_2)/2}} = 0.
 \end{equation}
-When the scaling dimensions are different, $\Delta_1 \neq \Delta_2$, then the 2-point function must vanish. In conformal field theory, only primary operators of identical scaling dimensions can have non-zero 2-point functions.
+If the scaling dimensions are different ($\Delta_1 \neq \Delta_2$), then $C_{12}$ must vanish. In conformal field theory, only primary operators of identical scaling dimensions can have non-zero 2-point functions.
 
 In fact, if there are several scalar operators with the same scaling dimension $\phi_i$ with $i = 1, \ldots, N$, then 
 \begin{equation}
 	\bra{0} \phi_i(0) \phi_j(x) \ket{0}
-	= \frac{C_{ij}}{(x^2)^{(\Delta_1 + \Delta_2)/2}},
+	= \frac{C_{ij}}{(x^2)^\Delta},
 \end{equation}
 where $C_{ij}$ is a symmetric $N \times N$ matrix. By unitarity, this matrix must be positive-definite: if this were not the case, then one could define a negative-norm state by taking an appropriate linear combination of the $\phi_i$ and smearing. Therefore, it is always possible to choose a basis of operators in which $C_{ij}$ is diagonal. Moreover, the operators can be normalized so that $C_{ij} = \delta_{ij}$. From now on, we will therefore always assume that the only non-zero 2-point functions are those involving identical operators.
 
 
 \paragraph{Operators with spin}
 
-The other situation in which special conformal symmetry plays an essential role is for operators with spin.
-Let us take as the simplest example a vector operator $A^\mu(x)$, and denotes its 2-point function by
+The other situation in which special conformal symmetry plays an essential role is when the operators carry spin.
+Let us take the simplest example of a vector operator $A^\mu(x)$, and denote its 2-point function by
 \begin{equation}
 	W^{\mu\nu}(x) = \bra{0} A^\mu(0) A^\nu(x) \ket{0}.
 \end{equation}
@@ -1846,7 +1850,7 @@ By Lorentz symmetry, this function of a single momentum can be decomposed into t
 	+ p^\mu p^\nu \widetilde{W}_0(p).
 	\label{eq:vector:polarizations}
 \end{equation}
-Moreover, using scale symmetry and the spectral condition, we can infer that the functions $\widetilde{W}_{1,0}$ are just powers of $p^2$ over the forward light cone,
+Moreover, using scale symmetry and the positive-energy condition, we can infer that the functions $\widetilde{W}_{1,0}$ are just powers of $p^2$ over the forward light cone,
 \begin{equation}
 	\widetilde{W}_{1,0}(p)
 	= \theta\left( p^0 - \left| \vec{p} \right| \right)
@@ -1854,7 +1858,7 @@ Moreover, using scale symmetry and the spectral condition, we can infer that the
 \end{equation}
 where $\Delta$ is the scaling dimensions of the operator $A^\mu$ and $C_1$, $C_0$ two constants that cannot be related by scale and Poincaré symmetry only.
 
-There is a good reason for using precisely the two tensor structures in eq.~\eqref{eq:vector:polarizations} and not, say, $g^{\mu\nu}$. Thanks to the spectral condition, it is always possible to choose a Lorentz frame in which $\vec{p} = 0$.%
+There is a good reason for using precisely the two tensor structures in eq.~\eqref{eq:vector:polarizations} and not, say, $g^{\mu\nu}$. Thanks to the positive-energy condition, it is always possible to choose a Lorentz frame in which $\vec{p} = 0$.%
 %
 \footnote{This is similar to going to a massive particle's rest frame in Wigner's group-theoretical approach to quantum field theory.}
 %
@@ -1862,7 +1866,7 @@ In this frame, the momentum is invariant under the group $\SO(d-1)$ of spatial r
 In particle physics language, we would call these two parts respectively \emph{longitudinal} and \emph{transverse}.
 
 Being able to use irreducible representations of $\SO(d-1)$ is an advantage of working in momentum space: there is no obvious Lorentz frame in which such a decomposition can be made in position space, since the 2-point function has support over all of Minkowski space-time. The disadvantage of working in momentum space is that the Ward identity for special conformal transformation is a second-order differential equation in $p$, while it is a first-order differential in position space.
-Nevertheless, this Ward identity can be straightforwardly applied to eq.~\eqref{eq:vector:polarizations}, in which case it yields a relation between the longitudinal and transverse parts, i.e.~between the coefficients $C_0$ and $C_1$, given by (see exercise)
+This Ward identity can nevertheless be straightforwardly applied to eq.~\eqref{eq:vector:polarizations}, and it yields a relation between the longitudinal and transverse parts, i.e.~between the coefficients $C_0$ and $C_1$, given by (see exercise)
 \begin{equation}
 	C_0 = \frac{\Delta - d + 1}{\Delta - 1} \, C_1.
 	\label{eq:vector:polarizationrelations}
@@ -1892,14 +1896,14 @@ This has consequences on the possible values that $\Delta$ can take. As before, 
 \begin{itemize}
 
 \item
-$\Delta > \frac{d}{2}$ so that the 2-point function is integrable in all cases;
+$\Delta > \frac{d}{2}$ so that the 2-point function is integrable at $p^2 \to 0$;
 
 \item
 $C_0$ and $C_1$ are both positive so that the norm is positive for any choice of external polarization vector (i.e.~the tensor $\widetilde{W}^{\mu\nu}$ is positive-definite). This requires that $\Delta - 1$ and $\Delta - d + 1$ have the same sign.
 
 \end{itemize}
 %
-The combination of these two conditions in $d > 2$ dimensions (spin is treated differently in $d = 2$) imply
+The combination of these two conditions in $d > 2$ dimensions (spin is treated differently in $d = 2$) implies
 \begin{equation}
 	\Delta \geq d - 1.
 \end{equation}
@@ -1911,23 +1915,23 @@ and $\widetilde{W}^{\mu\nu}$ vanishes when contracted with $p_\mu$ or $p_\nu$. T
 	p_\mu \widetilde{A}^\mu(p) \ket{0} = 0,
 \end{equation}
 or equivalently that $\widetilde{A}^\mu(p) \ket{0}$ is a state that only describes transverse excitations.
-The position-space equivalent is that 
+The equivalent statement in position-space is 
 \begin{equation}
 	\partial_\mu A^\mu(x) \ket{0} = 0,
 \end{equation}
-or in other words that $A^\mu$ is a conserved current.
-The equivalence goes both way: any vector operator with $\Delta = d - 1$ is a conserved current, and any conserved current must have scaling dimension $\Delta = d - 1$. This also shows that conserved currents are  primary operators: they cannot be written as $\partial^2$ acting on another current (that current would have $\Delta = d - 3$), nor as $\partial^\mu \phi$ where $\phi$ is a scalar operator, because the conservation requirement implies $\partial^2 \phi = 0$, which is only possible if $\phi$ has scaling dimensions $d/2 - 1$ and thus the current $\Delta = d/2$.
+in other words that $A^\mu$ is a conserved current.
+The equivalence goes both way: any vector operator with $\Delta = d - 1$ is a conserved current, and any conserved current must have scaling dimension $\Delta = d - 1$. This also shows that conserved currents are  primary operators: they cannot be written as $\partial^2$ acting on another current (that current would have $\Delta = d - 3$, below the unitarity bound), nor as $\partial^\mu \phi$ where $\phi$ is a scalar operator, because the conservation requirement implies $\partial^2 \phi = 0$, which is only possible if $\phi$ has scaling dimensions $(d-2)/2,$ and thus the current $\Delta = d/2$ (again below the unitarity bound).
 
 
 The fact that 2-point functions of primary operators are completely fixed by conformal symmetry up to a coefficient that corresponds to a choice of normalization is not specific to scalar and vector operators. In fact, any local operator specified by a representation under the Lorentz group and a scaling dimension defines an irreducible representation of the conformal group $\SO(d,2)$, and as such its 2-point function is fixed by group theory (up to a conventional normalization). This also explains on more general grounds why 2-point functions of distinct operators vanish.
 The construction of all unitary representations of the conformal group in $d = 4$ dimensions was performed by Mack in 1975~\cite{Mack:1975je}, and similar constructions can be done in other dimensions. 
-Some Lorentz representations are specific to a given dimension $d$, and others exist in any $d$, like the scalar and all symmetric traceless representations with spin $\ell$, of which the vector discussed above is a special case corresponding to $\ell = 1$. All such tensors satisfy the unitarity bound
+Some Lorentz representations are specific to a given dimension $d$, and others exist in any $d$, like the scalar and all symmetric traceless representations with spin $\ell$, of which the vector discussed above is a special case corresponding to $\ell = 1$. All such symmetric tensors satisfy the unitarity bound
 \begin{equation}
 	\Delta \geq d - 2 + \ell,
 	\label{eq:unitaritybound:symmetricops}
 \end{equation}
-and they are in general described by $\ell + 1$ distinct polarizations (irreducible representations of rotation group), except when the bound is saturated, where there is just a single, transverse polarization. In this case the operators are higher-spin conserved currents.
-In terms of representations of the conformal group, generic operators are said to belong to \emph{long multiplets}, whereas special cases such as scalars with $\Delta = d/2 - 1$ or symmetric tensors with $\Delta = d - 2 + \ell$ are said to be in \emph{short multiplets} (there are fewer states). 
+and they are in general described by $\ell + 1$ distinct polarizations (irreducible representations of rotation group), except when the bound is saturated, where there is just a single, transverse polarization: in this case the operators are higher-spin conserved currents.
+In terms of representations of the conformal group, generic operators are said to belong to \emph{long multiplets}, whereas special cases such as scalars with $\Delta = (d-2)/2$ or symmetric tensors with $\Delta = d - 2 + \ell$ are said to be in \emph{short multiplets} (they contain fewer descendants). 
 
 %note about representation theory: 
 %one way of constructing the representations of the conformal group is to diagonalize the largest possible subgroup;
@@ -1937,7 +1941,6 @@ In terms of representations of the conformal group, generic operators are said t
 %however, to impose unitarity (positivity of norm) it is better to work in momentum space, where we diagonalize $P^\mu$
 
 \begin{exercise}
-	(difficult)
 	Construct explicitly the 2-point function of a 2-index
 	symmetric traceless operator $B^{\mu\nu}(x)$.
 	As a starting point, let us decompose the momentum-space
@@ -1946,7 +1949,7 @@ In terms of representations of the conformal group, generic operators are said t
 	$$ g_\perp^{\mu\nu} = g^{\mu\nu} - \frac{p^\mu p^\nu}{p^2}$$
 	satisfying $p_\mu g_\perp^{\mu\nu} = 0$, this can be done as
 	\begin{align*}
-		\bra{0} B^{\mu\nu}(0) \widetilde{B}^{\rho\sigma} \ket{0}
+		\bra{0} B^{\mu\nu}(0) \widetilde{B}^{\rho\sigma}(p) \ket{0}
 		= \bigg[ & \frac{1}{2}
 		\left( g_\perp^{\mu\rho} g_\perp^{\nu\sigma}
 		+ g_\perp^{\mu\sigma} g_\perp^{\nu\rho} - \text{traces} \right)
@@ -1962,7 +1965,8 @@ In terms of representations of the conformal group, generic operators are said t
 		(-p^2)^{\Delta - d/2 + 1}.
 	\end{align*}
 	Then write down the Ward identity for special conformations
-	(including the spin operator for a 2-index tensor),
+	(including the spin operator for a 2-index tensor, which 
+	you have to determine),
 	and show that it leads to the conditions
 	\begin{align*}
 		C_1 &= 2 \frac{\Delta - d}{\Delta} \, C_0,
@@ -1981,9 +1985,9 @@ In terms of representations of the conformal group, generic operators are said t
 
 The discussion has been focused so far on Wightman functions. Beside having a Hilbert-space interpretation and satisfying conformal Ward identities that give strong constraints on their possible form, Wightman functions are also free of divergences.
 In momentum space, regularity at small momenta (IR) is enforced by the unitarity bound, whereas the power-law growth at large momenta (UV) is compatible with the damping provided by Schwartz-class test functions.
-In position space, the apparent singularity at short distance (UV) is in fact resolved by $i \varepsilon$ that provides a unequivocal prescription for deforming a contour of integration.
+In position space, the apparent singularity at short distance (UV) is resolved by the $i \varepsilon$ that provides a unequivocal prescription for deforming a contour of integration.
 
-These properties are not true of time-ordered products. Let us consider for instance once again the scalar 2-point function. Using the standard CFT normalization \eqref{eq:standardnormalization} and the Källen-Lehmann representation, we find
+These properties are not true of time-ordered products. Let us consider once again the scalar 2-point function. Using the standard CFT normalization \eqref{eq:standardnormalization} and the Källen-Lehmann representation, we find
 \begin{equation}
 	\langle \phi(x) \phi(y) \rangle_T
 	= -i
@@ -1998,13 +2002,15 @@ This expression diverges whenever $\Delta = \frac{d}{2} + n$ with integer $n$ du
 This corresponds precisely to a case in which the 2-point function has scaling dimension $d + 2n$, and is therefore compatible with contact terms of the form
 \begin{equation}
 	(\partial^2)^n \delta^d(x - y).
+	\label{eq:contactterm}
 \end{equation}
+In path integral language, this is the situation in which the source field $J$ for the operator $\phi$ has scaling dimension $d - \Delta = \frac{d}{2} - n$, and therefore contact terms of the form $J (\partial^2)^n J$ can (and must) be added to the action. 
 These contact terms are obviously covariant under Poincaré and scale transformations, so the can be added to the correlation function without affecting the Ward identities at separated points.
-This is the only possible contact term appearing in a scalar 2-point function, but more terms can appear in higher-point correlation functions, also involving operators that carry spin.
+\eqref{eq:contactterm} is the only possible contact term appearing in a scalar 2-point function, but more terms can appear in higher-point correlation functions, also involving operators that carry spin.
 
-When Fourier transformed to momentum space, all such contact terms become polynomials in the momenta. In the scalar 2-point function case, these are $(p^2)^n$. Polynomial terms are incompatible with the spectral condition for the Wightman function, as they have support over all causal regions. But there are allowed (and in fact required) in time-ordered products. Time-ordered products are defined in position space as the product of Wightman functions, which are tempered distributions, with step functions, which are not: therefore they do not necessarily have a Fourier transform. Contact terms can be seen as a way of ``fixing'' the time-ordered product so that they can be Fourier transformed. 
+When Fourier transformed to momentum space, all such contact terms become polynomials in the momenta. In the scalar 2-point function case, these are $(p^2)^n$. Polynomial terms are incompatible with the positive-energy condition of Wightman functions, as they have support over all causal regions. But there are allowed (and in fact required) in time-ordered products. Time-ordered products are defined in position space as the product of Wightman functions, which are tempered distributions, with step functions, which are not: therefore they do not necessarily have a Fourier transform. Contact terms can be seen as a way of ``fixing'' the time-ordered product so that they can be Fourier transformed. 
 
-In path integral language, this is the situation in which the source field $J$ for the operator $\phi$ has scaling dimension, $d - \Delta = \frac{d}{2} - n$ and therefore contact terms of the form $J (\partial^2)^n J$ can (and must) be added to the action. This can be understood by analytic continuation in scaling dimension $\Delta$. Let us assume that our scalar operator has scaling dimension $\Delta = \frac{d}{2} + n - \epsilon$, and take the limit $\epsilon \to 0$ (note that this $\epsilon$ is different from the one in the $i \varepsilon$ limit). Then the time-ordered 2-point function in momentum space takes the form
+This can be understood by analytic continuation in scaling dimension $\Delta$. Let us assume that our scalar operator has scaling dimension $\Delta = \frac{d}{2} + n - \epsilon$, and take the limit $\epsilon \to 0$ (note that this $\epsilon$ is different from the one in the $i \varepsilon$ limit). Then the time-ordered 2-point function in momentum space takes the form
 \begin{equation}
 	\Gamma(-n + \epsilon) (p^2)^{n - \epsilon}
 	+ Z (p^2)^n,
@@ -2023,9 +2029,17 @@ The fact that we need to introduce a dimensionful quantity is the sign of a \emp
 However, the anomalous term on the right-hand side is a polynomial in the momenta, corresponding to a contact term, indicating that the anomaly is local. In QFT language, this is typical of a (renormalized) UV divergence.
 
 Note that the presence of contact term is associated with a very special type of operators of (half-)integer scaling dimension. Such operators are generically absent in an interacting conformal field theory, where the scaling dimensions take arbitrary real values. 
-However, an exception to this rule concerns conserved currents in even space-time dimension $d$. For instance, a conserved current in $d = 4$ has scaling dimensions $\Delta = 3$; it is therefore associated in the path integral language with a source $a_\mu$ with scaling dimension 1. This source is also subject to a gauge symmetry, $a_\mu \sim a_\mu + \partial_\mu \alpha$, and therefore a possible contact term is generated by $f_{\mu\nu} f^{\mu\nu}$, where $f_{\mu\nu} = \partial_\mu a_\nu - \partial_\nu a_\mu$. As in the scalar case, this term must be used as a counterterm to cancel a divergence arising in the time-ordered correlation function, leading generically to logarithms in correlation functions involving the transverse polarization of the current.
+However, an exception to this rule concerns conserved currents in even space-time dimension $d$. For instance, a conserved current $J^\mu$ in $d = 4$ has scaling dimensions $\Delta = 3$; it is therefore associated in the path integral language with a source $a_\mu$ that carries dimension 1. This source is also subject to a gauge symmetry, $a_\mu \sim a_\mu + \partial_\mu \alpha$, and therefore a possible contact term is generated by $f_{\mu\nu} f^{\mu\nu}$, where $f_{\mu\nu} = \partial_\mu a_\nu - \partial_\nu a_\mu$. As in the scalar case, this term must be used as a counterterm to cancel a divergence arising in the time-ordered correlation function, leading generically to logarithms in correlation functions involving the transverse polarization of the current,
+\begin{equation}
+	\langle J^\mu(p) J^\nu(q) \rangle_T
+	\propto (2\pi)^4 \delta^4(p + q)
+	( q^\mu q^\nu - q^2 g^{\mu\nu} )
+	\log\left( \frac{q^2}{\mu^2} \right).
+\end{equation}
+As in the scalar case, this is the manifestation of a UV divergence. However, the logarithm also implies that the limit $q^2 \to 0$ diverges: this is what we would call an IR divergence in quantum field theory. 
+In the context of CFT, there is no clear distinction between UV and IR divergences, as the two are closely related. They both arise from an ambiguity in taking the Fourier transform. UV divergences can be cured with local counterterms, at the price of introducing a reference scale, but IR divergences are physical.
 
-Note however that time-ordered correlation functions involving a conserved current do not only have transverse polarization: while the conservation condition implies the vanishing of the state
+Note finally that time-ordered correlation functions involving a conserved current do not only have transverse polarization: while the conservation condition implies the vanishing of the state
 \begin{equation}
 	\partial_\mu J^\mu(x) \ket{0} = 0,
 \end{equation}
@@ -2044,27 +2058,7 @@ and thus of Wightman correlation functions constructed from that state, this is 
 where $\delta\phi_i$ indicates the charge of the field $\phi$ under $J^\mu$.%
 %
 \footnote{Note that it is conventional to normalize the conserved current $J$ so that this equation is true, which means that the 2-point function of $J$ cannot be arbitrarily normalized like a scalar operator in eq.~\eqref{eq:standardnormalization}. The same is true of the energy-momentum tensor, and of higher-spin conserved currents. For all of these operator the normalization of the 2-point function involves a coefficient of physical relevance.}
-%
 
-In the case of 2-point functions, however, the divergence of the current is zero because there are no 1-point correlation functions in conformal field theory. Therefore, for a conserved current the representation~\eqref{eq:vector:polarizations} is still valid
-\begin{align}
-	\bra{0} J^\mu(p) J^\nu(q) \ket{0}
-	&= (2\pi)^d \delta^d(p + q) 
-	\nonumber \\
-	& \quad \times C_J
-	\theta\left( q^0 - \left| \vec{q} \right| \right)
-	( q^\mu q^\nu - q^2 g^{\mu\nu} )
-	(-q^2)^{d/2 - 2}.
-\end{align}
-In $d = 4$ dimensions, the vanishing power of $q^2$ indicates the presence of a logarithm in the time-ordered correlator,
-\begin{equation}
-	\langle J^\mu(p) J^\nu(q) \rangle_T
-	\propto (2\pi)^4 \delta^4(p + q)
-	( q^\mu q^\nu - q^2 g^{\mu\nu} )
-	\log\left( \frac{q^2}{\mu^2} \right).
-\end{equation}
-As in the scalar case, this is the manifestation of a UV divergence. However, the logarithm also implies that the limit $q^2 \to 0$ diverges: this is what we would call an IR divergence in quantum field theory. 
-In the context of CFT, there is no clear distinction between UV and IR divergences, as the two are closely related. They both arise from an ambiguity in taking the Fourier transform. UV divergences can be cured with local counterterms, at the price of introducing a reference scale, but IR divergences are not.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2074,9 +2068,9 @@ In the context of CFT, there is no clear distinction between UV and IR divergenc
 
 The method presented in the last section using conformal Ward identities and the Wightman axioms could in principle be used to determine 3- and higher-point correlation functions.%
 %
-\footnote{The conformal Ward identities give differential equations and the Wightman axioms boundary conditions. Together, these are sufficient to constrain the conformal correlation functions. Note however that the spectral condition alone is not sufficient: the micro-causality axiom is required as well (see e.g.~ref.~\cite{Gillioz:2021sce} for a discussion at the level of 3-point functions).}
+\footnote{The conformal Ward identities give differential equations and the Wightman axioms boundary conditions. Together, these are sufficient to constrain the conformal correlation functions. Note however that the positive-energy condition alone is not sufficient: the micro-causality axiom is required as well (see e.g.~ref.~\cite{Gillioz:2021sce} for a discussion at the level of 3-point functions).}
 %
-However, it is highly inconvenient, and it hides the simplicity of the result. To put things in perspective, note that the Wightman 3-point function of scalar operators in momentum space was only constructed in 2019~\cite{Gillioz:2019lgs}, whereas the position-space correlator has been known since the work of Polyakov in 1970~\cite{Polyakov:1970xd} using the Euclidean construction presented in this section.
+However, it is quite inconvenient, and it hides the simplicity of the result. To put things in perspective, note that the Wightman 3-point function of scalar operators in momentum space was only constructed in 2019~\cite{Gillioz:2019lgs}, whereas the position-space correlator has been known since the work of Polyakov in 1970~\cite{Polyakov:1970xd}.
 
 
 \subsection{From Minkowksi space-time to Euclidean space}
@@ -2105,7 +2099,7 @@ Note that the Schwinger function transforms covariantly under the Euclidean conf
 \begin{equation}
 	\langle \phi(0) \phi(x) \rangle
 	\stackrel{\text{rotation}}{=} \langle \phi(0) \phi(-x) \rangle
-	\stackrel{\text{translaiton}}{=} \langle \phi(x) \phi(0) \rangle,
+	\stackrel{\text{translation}}{=} \langle \phi(x) \phi(0) \rangle,
 \end{equation}
 showing that it is symmetric under the exchange of the order of the two operators.
 Also note that the Schwinger 2-point function is positive, and that it is not defined at the point $x_E = 0$, unlike the Wightman function whose $i \varepsilon$ prescription indicates how to approach any null point.
@@ -2128,8 +2122,8 @@ Also note that the Schwinger 2-point function is positive, and that it is not de
 	\left( p^2 - i \varepsilon \right)^{\Delta - d/2},
 	$$
 	one can perform a Wick rotation in which $x^0$ and $p^0$
-	are simultaneously rotated in the complex plane in opposite
-	directions, to arrive at the Euclidean result
+	are simultaneously rotated  in opposite directions
+	in the complex plane, to arrive at the Euclidean result
 	$$
 	\langle \phi(-p) \phi(p) \rangle
 	= 
@@ -2156,7 +2150,7 @@ and complexify all time components $x_i^0$. This function of several complex var
 	\phi_2(x_2 - x_1) \phi_1(x_1) \rangle,
 \end{equation}
 in which the Euclidean times all satisfy $\tau_i > 0$, i.e.~the operators are ordered along the Euclidean time direction. 
-This latter observation is however irrelevant, because the ordering of operators does not matter in a Schwinger function: the analytic continuation from real to imaginary Minkowski times can be performed starting with a configuration in which all real Minkowski times are equal, in which case the operators commute by micro-causality. 
+This latter observation is however irrelevant, because the ordering of operators does not matter in a Schwinger function: the analytic continuation can be performed starting with a configuration in which all real Minkowski times are equal, in which case the operators commute by micro-causality. 
 The observation made on the 2-point function is therefore valid more generally: 
 \begin{itemize}
 
@@ -2171,11 +2165,11 @@ The other observations made before are also true in general:
 Schwinger functions transform covariantly under the Euclidean conformal group $\SO(d+1, 1)$. This property will be very useful because it means that we can use finite conformal transformations that act nicely in Euclidean space (including $\infty$ as a point) to simplify our computations.
 
 \item
-Schwinger functions are ill-defined at coincident points. This is not a bug but a feature: using functions that are only defined at separated points means that we do not need to worry about contact terms and UV divergences.%
+Schwinger functions are not defined at coincident points. This is not a bug but a feature: using functions that are only defined at separated points means that we do not need to worry about contact terms and UV divergences.%
 %
 \footnote{It is in fact possible to describe contact terms (local and semi-local ones) using a generalization of the embedding formalism described in the next section~\cite{Nakayama:2019mpz}. But these contact terms are ambiguous: they carry more information than the Schwinger or Wightman functions themselves, and as such are unphysical.}
 %
-It means however that we cannot simply take the Fourier transform of these functions to obtain momentum-space Schwinger functions. From now on we shall focus on position space. 
+It means however that we cannot simply take the Fourier transform of these functions to obtain momentum-space Schwinger functions. 
 
 \item
 Schwinger functions enjoy a property called \emph{reflection positivity}: if the operators are organized in a configuration that is invariant under reflection across a plane (e.g.~four points on the edges of a square; or trivially any two points), then the correlator is positive.%
@@ -2186,23 +2180,23 @@ However, the conformal bootstrap described in section~\ref{sec:bootstrap} relies
 
 \end{itemize}
 
-So far we have only showed that the Wightman functions let us define Schwinger functions by analytic continuation. But it turns out that the opposite is also true: the Osterwalder-Schrader theorem states that the properties of Schwinger functions listed above are sufficient to reconstruct Wightman functions.%
+We have seen that the Wightman functions let us define Schwinger functions by analytic continuation. But it turns out that the opposite is also true: the Osterwalder-Schrader theorem states that the properties of Schwinger functions listed above are sufficient to reconstruct Wightman functions.%
 %
-\footnote{There is in fact another property that is needed in the proof, called \emph{linear growth condition}. This property is very difficult to establish in quantum field theory. But within conformal field theory it has recently been shown that the linear growth condition can be replaced by a set of ``bootstrap axioms'', which are otherwise equivalent with the Osterwalder-Schrader axioms, and from which the Wightman axioms can be recovered~\cite{Kravchuk:2020scc, Kravchuk:2021kwe}.}
+\footnote{There is in fact another property that is needed in the proof, called \emph{linear growth condition}. This property is very difficult to establish in quantum field theory. But within conformal field theory the linear growth condition is not necessary if one works instead with a set of ``Euclidean CFT axioms'', which are otherwise equivalent to the Osterwalder-Schrader axioms, and from which the Wightman axioms can be recovered~\cite{Kravchuk:2020scc, Kravchuk:2021kwe}.}
 %
-This means that we can in fact focus on the Euclidean Schwinger functions for all our purposes, as any other physical observable can be reconstructed from them (we did not say that this reconstruction is necessarily easy, though).
+This means that we can in fact focus on the Euclidean Schwinger functions for all our purposes, as any other physical observable can be reconstructed from them (we do not claim that this reconstruction is easy, though).
 
-The only piece of information that we shall take with us from the analysis of section~\ref{sec:quantum} is the unitarity bound on the scaling dimension of operators. Working out these bounds purely from the Schwinger functions is possible, but it the procedure is not particularly enlightening.
+The only piece of information that we shall take for granted from the analysis of section~\ref{sec:quantum} is the unitarity bound on the scaling dimension of operators. Working out these bounds purely from the Schwinger functions is possible, but the procedure is not particularly enlightening.
 
 
 \subsection{From Euclidean space to embedding space}
 
-Once we are dealing with correlation functions that transform under the Euclidean conformal group $\SO(d + 1, 1)$, it makes a lot of sense to try and make use of our particle physicist's understanding of the Lorentz group in $d+2$ dimensions to gain mileage. We already introduced in section~\ref{sec:classical} a set of coordinates in this  $(d+2)$-dimensional, \emph{embedding} space: the line element obeys
+Once we are dealing with correlation functions that transform under the Euclidean conformal group $\SO(d + 1, 1)$, it makes a lot of sense to try and make use of our understanding of the Lorentz group in $d+2$ dimensions to gain mileage. We already introduced in section~\ref{sec:classical} a set of coordinates in this  $(d+2)$-dimensional, \emph{embedding} space, and a metric obeying
 \begin{equation}
 	\eta_{MN} dX^M dX^N
 	= (dX^\mu)^2 + (dX^{d+1})^2 - (dX^{d+2})^2.
 \end{equation}
-Note that the directions labeled with indices $\mu$ are all space-like,  while the time-like direction is $X^{d+2}$ (this is arguably confusing).
+Note that the directions labeled with indices $\mu$ are all space-like: the time-like direction is $X^{d+2}$.
 
 The question is how do we go from $X^M \in \mathbb{R}^{d+1,1}$ to $x^\mu \in \mathbb{R}^d$ without explicitly breaking the Lorentz symmetry. This can be done in two steps:
 %
@@ -2231,8 +2225,7 @@ Conformal transformations now act linearly in embedding space,
 \begin{equation}
 	X^M \to X'^M = \Lambda^M_{~N} X^N
 \end{equation}
-To obtain the action on $x^\mu$, we first map it to our preferred section using eq.~\eqref{eq:embedding:section}, apply the Lorentz transformation on $X^M$, then perform a (space-time dependent) rescaling $X'^M \to \lambda(X') X'^M$ to get back on the section, and read off $x'^\mu$ from the coordinate $\lambda(X') X'^\mu$.
-%Note that the rescaling in the last step is equivalent to a Weyl transformation of the metric.
+To obtain the action on $x^\mu$, we first map it to our preferred section of the cone using eq.~\eqref{eq:embedding:section}, apply the Lorentz transformation on $X^M$, then perform a (space-time dependent) rescaling $X'^M \to \lambda(X') X'^M$ to get back on the section, and read off $x'^\mu = \lambda(X') X'^\mu$.
 
 Local operators in Euclidean space must also be lifted to the embedding space, or at least to the null cone. On our preferred section, we declare
 \begin{equation}
@@ -2245,7 +2238,7 @@ Then primary operators are defined on the rest of the cone by the scaling rule
 	\phi(\lambda X) = \lambda^{-\Delta} \phi(X).
 	\label{eq:embeddingconescaling}
 \end{equation}
-Note that this rule can only apply to \emph{primary} operators: descendants obtained acting with derivatives will not satisfy the same scaling property.
+Note that this rule can only apply to \emph{primary} operators: descendants obtained acting with derivatives do not satisfy the same scaling property.
 This choice gives the right transformation rules for primary operators under all infinitesimal conformal transformations. This can be verified explicitly (see the exercise below), or argued as follows: a conformal transformation is a composition of a $(d+2)$-dimensional Lorentz transformation, which locally acts on the operator like a rotation or a boost, followed by a position-dependent scale transformation to get back to the preferred section, which by the rule \eqref{eq:embeddingconescaling} amounts to a local scale transformation with weight given by the scaling dimension $\Delta$ of the operator. The combination of these two local transformations is precisely what we expect from the conformal transformation of an operator.
 %
 \begin{exercise}
@@ -2255,7 +2248,7 @@ This choice gives the right transformation rules for primary operators under all
 	and that operators transform accordingly. 
 \end{exercise}
 
-A bit more care is required to define operators that carry spin on the projective null cone, as the additional Lorentz indices in the directions of $X^{d+1}$ and $X^{d+2}$ imply that there is more degrees of freedom that need to be examined. This can be done imposing transversality in embedding space, together with a gauge symmetry condition, but we do want to dive into this here. We will therefore restrict our attention to 3- and higher-point functions of scalar primary operators only.
+A bit more care is required to define operators that carry spin on the projective null cone, as the additional Lorentz indices in the directions of $X^{d+1}$ and $X^{d+2}$ imply that there are more degrees of freedom that need to be addressed. This can be done imposing transversality in embedding space, together with a gauge symmetry condition, but we do want to dive into this here. We will therefore restrict our attention to 3- and higher-point functions of scalar primary operators only.
 
 Once the transformation properties of local operators are clear, the construction of correlation functions of $n$ points $X_1$ to $X_n$ follows two simple rules:
 \begin{itemize}
@@ -2278,7 +2271,7 @@ the correlator must transform homogeneously as
 
 \end{itemize}
 %
-This rules imply immediately that there cannot be one-point functions, as there simply is no corresponding Lorentz-invariant quantity on the projective null cone. The simplest non-trivial case is that of a 2-point function, which must obey
+These rules imply immediately that there cannot be one-point functions, as there simply is no corresponding Lorentz-invariant quantity on the projective null cone. The simplest non-trivial case is that of a 2-point function, which must obey
 \begin{equation}
 	\langle \phi(X_1) \phi(X_2) \rangle
 	\propto (X_1 \cdot X_2)^{-\Delta}.
@@ -2287,7 +2280,7 @@ Note that this is only consistent with the homogeneous scaling rule if both oper
 To recover the dependence on the $d$-dimensional Euclidean coordinates, one simply needs to use the identification \eqref{eq:embedding:section}, yielding
 \begin{equation}
 	X_1 \cdot X_2
-	= x_1 \cdot x_2 - \frac{1}{2} \left(x_1^2 + x_2^2 \right)
+%	= x_1 \cdot x_2 - \frac{1}{2} \left(x_1^2 + x_2^2 \right)
 	= -\frac{1}{2} (x_1 - x_2)^2.
 \end{equation}
 Upon fixing the proportionality factor in the above result, one recovers the expected result
@@ -2303,7 +2296,7 @@ The embedding space formalism becomes very interesting when examining the 3-poin
 	\langle \phi_1(X_1) \phi_2(X_2) \phi_3(X_3) \rangle,
 \end{equation}
 where the 3 scalar operators have now a priori distinct scaling dimensions $\Delta_1$, $\Delta_2$ and $\Delta_3$.
-Solving the conformal Ward identities for this 3-point function would be an annoying task. Instead, by the above rules we immediately know that this is a function of the only 3 invariant quantities 
+Solving the conformal Ward identities for this 3-point function would be an annoying task. Instead, by the above rules we immediately know that this is a function of the 3 invariant quantities 
 \begin{equation}
 	X_1 \cdot X_2,
 	\qquad
@@ -2353,8 +2346,7 @@ and
 \begin{equation}
 	\Delta_{ij,k} = \frac{\Delta_i + \Delta_j - \Delta_k}{2}.
 \end{equation}
-
-One cannot overemphasize how amazing eq.~\eqref{eq:3ptfunction} is. It should be compared with the most general 3-point function invariant under Poincaré and scale symmetry only: In this case, any term of the form
+Eq.~\eqref{eq:3ptfunction} is truly special. It should be compared with the most general 3-point function invariant under Poincaré and scale symmetry only: in this case, any term of the form
 \begin{equation}
 	(x_{12}^2)^\alpha
 	(x_{13}^2)^\beta
@@ -2395,7 +2387,8 @@ To give another point of comparison, let us examine a 3-point function that invo
 	\label{eq:3pt:descendant}
 \end{align}
 Unlike the correlation function of primary operators, this is now the sum of three terms with distinct powers of the distances $x_{ij}^2$, all of which are individually consistent with Poincaré and scale symmetry.
-However, the peculiar form of the coefficients multiplying all three terms implies that there are special cases in which this 3-point function takes the general form of eq.~\eqref{eq:3ptfunction}.
+
+Thanks to the peculiar form of the coefficients multiplying all three terms, there are special cases in which this descendant 3-point function takes the general primary form of eq.~\eqref{eq:3ptfunction}.
 These are not accidental, but correspond to physically interesting cases:
 \begin{itemize}
 
@@ -2443,8 +2436,8 @@ This property will in fact be essential in the conformal bootstrap discussed in 
 
 \subsection{4-point functions}
 
-The embedding space technique can used for higher-point functions as well, but we shall see that things get more complicated.
-To avoid dealing with four distinct operators and as many scaling dimensions, let us focus our attention to the case of 4 identical scalar operators,
+The embedding space technique can be used for higher-point functions as well, but we shall see that things get more complicated.
+To avoid dealing with four distinct operators and as many scaling dimensions, let us focus our attention on the case of 4 identical scalar operators,
 \begin{equation}
 	\langle \phi(X_1) \phi(X_2) \phi(X_3) \phi(X_4) \rangle.
 \end{equation}
@@ -2452,12 +2445,12 @@ In these case there are 6 Lorentz invariants $X_i \cdot X_j$ with $i \neq j$. It
 \begin{equation}
 	\frac{1}{(X_1 \cdot X_2)^\Delta (X_3 \cdot X_4)^\Delta}
 \end{equation}
-satisfies all the constraints of conformal symmetry. It is however definitely not unique: 
+satisfies all the constraints of conformal symmetry. It is however definitely not unique: so does
 \begin{equation}
-	\frac{1}{(X_1 \cdot X_3)^\Delta (X_2 \cdot X_4)^\Delta}
+	\frac{1}{(X_1 \cdot X_3)^\Delta (X_2 \cdot X_4)^\Delta}.
 \end{equation}
-does too, and so does a third term with yet a different combination of indices. This shows right away that there is no hope of constraining the 4-point function as much as we did with the 3-point function.
-In fact, one can construct two invariant quantities out of the $X_i$:
+This shows right away that there is no hope of constraining the 4-point function as much as we did with the 3-point function.
+In fact, one can construct two \emph{invariant} quantities out of the $X_i$:
 \begin{equation}
 	u = \frac{(X_1 \cdot X_2) (X_3 \cdot X_4)}
 	{(X_1 \cdot X_3) (X_2 \cdot X_4)},
@@ -2465,8 +2458,8 @@ In fact, one can construct two invariant quantities out of the $X_i$:
 	v = \frac{(X_1 \cdot X_4) (X_2 \cdot X_3)}
 	{(X_1 \cdot X_3) (X_2 \cdot X_4)}.
 \end{equation}
-These are usually called \emph{conformal cross-ratios}. 
-Therefore, any function of $u$ and $v$ is conformally invariant, and the most general 4-point function must take the form
+These are called \emph{conformal cross-ratios}. 
+Any function of $u$ and $v$ is conformally invariant, and the most general 4-point function must take the form
 \begin{equation}
 	\langle \phi(X_1) \phi(X_2) \phi(X_3) \phi(X_4) \rangle
 	\propto
@@ -2475,7 +2468,7 @@ Therefore, any function of $u$ and $v$ is conformally invariant, and the most ge
 In terms of Euclidean coordinates, this can be written
 \begin{equation}
 	\langle \phi(x_1) \phi(x_2) \phi(x_3) \phi(x_4) \rangle
-	= \frac{g(u,v)}{\left[ x_{12}^2 x_{34}^2 \right]^\Delta}
+	= \frac{g(u,v)}{\left( x_{12}^2 x_{34}^2 \right)^\Delta}
 	\label{eq:4pt}
 \end{equation}
 with
@@ -2495,7 +2488,7 @@ Using translations, it is always possible to choose a reference frame in which $
 Using a special conformal transformation, one can then send $x_4 \to \infty$ without moving $x_1$.
 
 \item
-A rotation can then be used to place $x_3$ along a last axis, followed by a scale transformation to get $x_3 = (0, \ldots, 0, 1)$, without touching the origin nor the point at infinity.
+A rotation can then be used to place $x_3$ along some chosen direction, followed by a scale transformation to get $x_3 = (0, \ldots, 0, 1)$, without touching the origin nor the point at infinity.
 
 \item
 Finally, there is still a subset of rotations that do not affect $x_3$, those around the last axis. They can be used to move the point $x_2$ to the position $x_2 = (b, 0, \ldots, 0, a)$, shown later in figure~\ref{fig:conformalframes}.
@@ -2512,7 +2505,7 @@ The cross-ratios are then related to $z$ and $\bar{z}$ by
 \end{equation}
 Since Schwinger functions are analytic at all non-coincident configurations of points, the function $g(z)$ is a single-valued function over the complex plane minus the points $\{ 0, 1, \infty \}$. Note that $g$ is also subject to the \emph{crossing symmetry} of the 4-point function, which requires%
 %
-\footnote{It is standard in the CFT literature to call ``crossing symmetry'' the property of Schwinger functions to be symmetric under the exchange of operators, in analogy with scattering amplitudes (the two types of crossing are related, but not quite the same).}
+\footnote{It is standard in the CFT literature to call ``crossing symmetry'' the property of Schwinger functions to be symmetric under the exchange of operators, in analogy with scattering amplitudes. The two types of crossing are related, but they are not quite the same.}
 %
 \begin{equation}
 	g(u, v) =
@@ -2524,9 +2517,9 @@ upon exchanging the operators $\phi(x_1)$ and $\phi(x_2)$, as well as
 \end{equation}
 upon $\phi(x_1) \leftrightarrow \phi(x_3)$.
 
-The situation is however much more complicated in Minkowski space-time. One can still define cross ratios by eq.~\eqref{eq:crossratios}, with Minkowski distances defined through $i \varepsilon$ prescriptions as in \eqref{eq:Minkowskidistance}. But the Wightman functions are not analytic (they lie at the boundary of the domain of analyticity in complexified time), and therefore $g$ is a multi-valued function. Its values can be obtained by analytic continuation from a configuration in which all 4 operators live on a time slice, in which case in coincides with the Schwinger function. For instance, keeping $x_1$, $x_3$ and $x_4$ on that time slice but letting the time component $b$ of $x_2$ become imaginary, one ends up in a configuration in which $z$ and $\bar{z}$ are both real but distinct, $z \neq \bar{z}$. This procedure is in general tedious, and it is fair to say that the current understanding of conformal Wightman 4-point functions is incomplete.%
+The situation is however much more complicated in Minkowski space-time. One can still define cross ratios by eq.~\eqref{eq:crossratios}, with Minkowski distances defined through $i \varepsilon$ prescriptions as in \eqref{eq:Minkowskidistance}. But the Wightman functions are not analytic (they lie at the boundary of the domain of analyticity in complexified time), and therefore $g$ is a multi-valued function. Its values can be obtained by analytic continuation from a configuration in which all 4 operators live on a time slice, in which case in coincides with the Schwinger function. For instance, keeping $x_1$, $x_3$ and $x_4$ on that time slice but letting the time component $b$ of $x_2$ become imaginary, one ends up in a configuration in which $z$ and $\bar{z}$ are both real but distinct. This procedure is in general tedious, and it is fair to say that the current understanding of conformal Wightman 4-point functions is incomplete.%
 %
-\footnote{Working in momentum space is not helping, even though the spectral condition reduces the number of non-trivial configurations: since the Ward identity for special conformal transformation is a second-order differential equation, the solution cannot be formulated in terms of invariants. The fact that there exists conformal invariants in position space is intimately connected with Ward identities being first-order differential equations.}
+\footnote{Working in momentum space is not helping, even though the positive-energy condition reduces the number of non-trivial configurations: since the Ward identity for special conformal transformation is a second-order differential equation, the solution cannot be formulated in terms of invariants. The fact that there exists conformal invariants in position space is intimately connected with Ward identities being first-order differential equations.}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2539,7 +2532,7 @@ The construction of correlation functions could be continued beyond 4 points, bu
 
 \subsection{The OPE in quantum field theory}
 
-The operator product expansion in quantum field theory is the statement that when two local operators are ``sufficiently close'' to each other, they can be replaced by another local operator, or a sum of them:
+The operator product expansion in quantum field theory is the statement that when two local operators are ``sufficiently close'' to each other, they can be replaced by another local operator, or rather a sum of them:
 \begin{equation}
 	\phi_1(x) \phi_2(y) \xrightarrow{x \to y} \sum_i C_i(x-y) \phi_i(y),
 	\label{eq:OPE:operators}
@@ -2563,9 +2556,9 @@ where the constant $C_i$ is related to a ratio of Wightman functions
 	\frac{\bra{0} \phi_i(z) \phi_1(x) \phi_2(y) \ket{0}}
 	{\bra{0} \phi_i(z) \phi_i(y) \ket{0}}.
 \end{equation}
-This formulation remains however very heuristic, and it is not obvious how to make it rigorous on general grounds.
+This formulation remains however quite heuristic, and it is not obvious how to make it rigorous using only general principles.
 
-In conformal field theory, however, the operator product expansion takes a completely new importance, thanks to the following observations:
+In conformal field theory, however, the operator product expansion goes to a completely new level, thanks to the following observations:
 %
 \begin{itemize}
 
@@ -2598,16 +2591,16 @@ Since the spectrum of $P^0$ is non-negative, this can be analytically continued 
 By going to purely imaginary values, $x^0 = i \tau$, we can therefore define a state of the theory through an operator insertion in Euclidean space, provided that this operator is inserted at Euclidean time $\tau > 0$.
 
 This has an immediate interpretation in terms of Euclidean path integral: 
-a state on the Euclidean surface $\tau = 0$ (which is \emph{identical} to the original Minkowski time slice $x^0 = 0$) is defined by a path integral over all field configurations restricted to the region $\tau < 0$. This is also valid for any number of operators inserted at separated points of Euclidean time $\tau < 0$, including the case of no operators, corresponding to the vacuum state. But the identification also works the other way: a given state on the surface $\tau = 0$ defines a boundary condition for the path integral at $\tau < 0$, which might correspond to some number of local operators inserted in the bulk (or a superposition of such configurations). If there are no operators with $\tau < 0$, then the state at $\tau = 0$ is the vacuum.
+a state on the Euclidean surface $\tau = 0$ (which is \emph{identical} to the original Minkowski time slice $x^0 = 0$) is defined by a path integral over all field configurations restricted to the region $\tau < 0$. This is also valid for any number of operators inserted at separated points of Euclidean time $\tau < 0$, including the case of no operators, corresponding to the vacuum state. But the identification also works the other way: a given state on the surface $\tau = 0$ defines a boundary condition for the path integral at $\tau < 0$, which might correspond to some number of local operators inserted in the bulk (or a superposition of such configurations).
 In this way, any Euclidean correlation function in which the operators are ordered in Euclidean time $\tau$ can be given a Hilbert space interpretation.
 
-Once we adopt the Euclidean path integral perspective, then it does not matter whether we use $P^0$ as the Hamiltonian, or an other conformal generator, as long as the surface at $\tau = 0$ is part of the foliation of space that it defines. For instance, one can use the so-called conformal Hamiltonian $\frac{1}{2} (P^0 \pm K^0)$, which foliates Euclidean space as shown in figure~\ref{fig:foliations}.
+Once we adopt the Euclidean path integral perspective, then it does not matter whether we use $P^0$ as the Hamiltonian, or an other conformal generator, as long as the surface at $\tau = 0$ is part of the foliation of space that it defines. For instance, one can use the so-called conformal Hamiltonian $\frac{1}{2} (P^0 - K^0)$, which foliates Euclidean space as shown in figure~\ref{fig:foliations}.
 We mentioned already in section~\ref{sec:classical} that this combination of generators is in fact equivalent to the dilatation generator $D$, in the sense that they are related by a rotation in the compact subgroup $\SO(d + 1)$ of the conformal group $\SO(d+1, 1)$.
 This means that there exists a conformal transformation that maps the surface $\tau = 0$ to the unit sphere, and the other surfaces related by Hamiltonian evolution to spheres of different radii (see figure~\ref{fig:foliations}).
-Foliating Euclidean space with spheres centered at the origin and using the dilatation generator as a Hamiltonian is called \emph{radial quantization}. In comparison, the physically-equivalent choice of Hamiltonian  $\frac{1}{2} (P^0 \pm K^0)$ is often called \emph{N-S quantization}.
+Foliating Euclidean space with spheres centered at the origin and using the dilatation generator as a Hamiltonian is called \emph{radial quantization}. In comparison, the physically-equivalent choice of Hamiltonian  $\frac{1}{2} (P^0 - K^0)$ is often called \emph{N-S quantization}.
 
-The importance of these two quantizations in conformal field theory is due to the fact that they have fixed points, unlike $P^0$: evolving back in ``time'', the path integral shrinks to a ball of arbitrarily small radius surrounding of these fixed points (the origin or the south pole). This means that any state on the unit sphere, or on the plane $\tau = 0$, can be related by Hamiltonian evolution to a state \emph{localized} at the fixed point, and it is therefore equivalent to a state created by a local operator inserted there.
-This is in essence the argument showing that the state/operator correspondence goes both way: a local operator defines a state, but any state also defines a local operator (or a superposition of local operators).
+The importance of these two quantizations in conformal field theory is due to the fact that they have fixed points, unlike $P^0$: evolving back in ``time'', the path integral shrinks to a ball of arbitrarily small radius surrounding one of these fixed points (the origin or the south pole). This means that any state on the unit sphere, or on the plane $\tau = 0$, can be related by Hamiltonian evolution to a state \emph{localized} at the fixed point, and it is therefore equivalent to a state created by a local operator inserted there.
+This is in essence the argument showing that the state/operator correspondence goes both way: a local operator defines a state, but any state also defines a local operator (or rather a superposition of local operators).
 
 This correspondence is in fact justifying a posteriori our choice made in section~\ref{sec:quantum} to organize the operators into irreducible representations of the Lorentz group with a definite scaling dimension: the diagonalization can be performed at the level of the Hilbert space, and then radial quantization used to argue that each state corresponds to a local operator.
 Note that there are both primary and descendant states, in the sense that the local operator needs not be a primary.
@@ -2618,7 +2611,7 @@ Once this limit is taken into account, the unitarity bounds can be derived using
 
 \subsection{The conformal OPE}
 
-The lesson we learned from radial quantization is that every state in the Hilbert space can be written as a linear combination of states created by the action of a single local operator on the vacuum, including primaries as well as descendants. Applying this lesson to Wightman functions in Minkowski space-time, we can be tempted to write the complete Hilbert space as
+The lesson we learn from radial quantization is that every state in the Hilbert space can be written as a linear combination of states created by the action of a single local operator on the vacuum, including primaries as well as descendants. Applying this lesson to Wightman functions in Minkowski space-time, we can be tempted to write the complete Hilbert space as
 \begin{equation}
 	\mathscr{H} \stackrel{?}{=} \text{span}\big\{
 	\ket{0}, 
@@ -2656,7 +2649,7 @@ This means that we can express the completeness of the Hilbert space through the
 	+ \ldots,
 \end{equation}
 where the sum is over all primary operators of the theory.
-The denominator is simply the scalar 2-point function, and states that carry spin have been omitted for simplicity (this is the meaning of the ellipsis): they could be included in the same way after inverting the  Lorentz tensor appearing in the 2-point function, which is positive definite by unitarity.
+The denominator is simply the scalar 2-point function, and states that carry spin have been omitted for simplicity (this is the meaning of the dots): they could be included in the same way after inverting the  Lorentz tensor appearing in the 2-point function, which is positive definite by unitarity.
 
 This identity can be applied whenever we encounter a product of two local operators acting on the vacuum, to rewrite the product as a sum of local operators. This takes its simplest form when the operators are all expressed in momentum space:
 \begin{equation}
@@ -2666,7 +2659,7 @@ This identity can be applied whenever we encounter a product of two local operat
 \end{equation}
 This is the conformal OPE in Minkowski space-time, which reduces higher-point functions to lower-point ones. It is trivial when applied to 2-point functions, as only the vacuum state appears in the sum (the identity operator can be interpreted as a primary operator in its own right). When applied to a 3-point function, it allows us to determine the proportionality factor $\widetilde{C}_i$ in all generality in terms of the scaling dimension, Lorentz representation, and 3-point coefficients. Using this OPE further, any 4-point function (or higher) can be decomposed into a sum (or multiple sums) of terms whose kinematics is completely determined by conformal symmetry.
 
-This form of the OPE is however rarely used, for two reasons: our understanding of Wightman 3-point functions in momentum space is incomplete, and the convergence properties of this OPE are not particularly nice. By this we mean that the OPE converges in the distributional sense, but this will never be as nice as the convergence properties of the Euclidean OPE discussed next.
+This form of the OPE is however rarely used, for two reasons: our understanding of Wightman 3-point functions in momentum space is incomplete, and the convergence of this OPE is not particularly nice. By this we mean that the OPE converges in the distributional sense, but this will never be as nice as the convergence properties of the Euclidean OPE discussed next.
 
 Since we saw before that even Schwinger functions can be given a Hilbert space interpretation, we might as well formulate the OPE directly in Euclidean space. We write
 \begin{equation}
@@ -2676,7 +2669,7 @@ Since we saw before that even Schwinger functions can be given a Hilbert space i
 \end{equation}
 Unlike the Minkowskian OPE \eqref{eq:OPE:Minkowski}, the convergence of this OPE is conditional: it is only true inside a correlation function in which the points $x_1$ and $x_2$ can be separated from any other insertions of local operators by a quantization surface, say a sphere in radial quantization. However, since the radius and center of the sphere can be chosen at will thanks to translation and scale symmetry, this includes many (in fact nearly all) configurations of points, as we shall see below.
 
-In the notation of eq.~\eqref{eq:OPE:Euclidean}, the coefficient $C_i$ do not only depend on the distance between the two operators, but also on derivatives acting on the primary operator $\phi_i$. This is a compact way of including all descendants in the sum. Keep in mind however that there are infinitely many such descendants, so $C_i$ is itself an infinite series.
+In the notation of eq.~\eqref{eq:OPE:Euclidean}, the coefficient $C_i$ does not only depend on the distance between the two operators, but also on derivatives acting on the primary operator $\phi_i$. This is a compact way of including all descendants in the sum. Keep in mind however that there are infinitely many such descendants, so $C_i$ is itself an infinite series.
 The only exception is the identity operator, which enters the OPE if and only if the two primary operators on the left-hand side of \eqref{eq:OPE:Euclidean} are identical: in a 2-point function, the OPE takes the form
 \begin{equation}
 	\langle \phi(x) \phi(0) \rangle = 
@@ -2709,7 +2702,7 @@ where
 \end{align}
 and so on. This expression is valid when $\phi_i$ is a scalar operator.
 But in general there are also operators with spin entering the OPE. This is the case even when $\phi_1$ and $\phi_2$ are scalars: the operators being inserted at separated points in space, they carry angular momentum; for a point-like operator on the other side of the OPE, this angular momentum is expressed as internal spin.
-Note however that not all Lorentz representations appear in the OPE of two scalars, but only symmetric tensors. Moreover, when the operators are identical, then only symmetric tensors with an even number of Lorentz indices appear. What representations appear or not can be determined from the group theory associated with Lorentz symmetry. On the other hand, representation of any scaling dimension $\Delta$ can in general be present.
+Note however that not all Lorentz representations appear in the OPE of two scalars, but only symmetric tensors. Moreover, when the operators are identical, then only symmetric tensors with an even number of Lorentz indices appear. The list of representations that appear can be determined from the group theory associated with Lorentz symmetry. At the same time, any scaling dimension $\Delta$ can in general be present.
 
 There are therefore still many unknown in the OPE (we will see in the next section that there are in fact always infinitely many primary operators in the sum). But when compared with the OPE in a generic quantum field theory, even in the presence of scale symmetry, the conformal OPE is extremely rigid: in a scale-invariant QFT the coefficients $a$, $b_1$, $b_2$, $\ldots$, entering the definition of the coefficient $C_i(x, \partial)$ are all theory-dependent factors. In CFT, on the contrary, they are completely fixed by the kinematics. The only dynamical information is contained in the OPE coefficients $\lambda_{12i}$ multiplying the contribution of a primary and all of its descendants.
 
@@ -2721,7 +2714,7 @@ There are therefore still many unknown in the OPE (we will see in the next secti
 
 Our approach to conformal field theory so far has been an \emph{algebraic} one:
 in section~\ref{sec:quantum} we have defined primary operators as irreducible representations of the conformal group, characterized by their transformations under Lorentz symmetry and by a scaling dimension.
-In section~\ref{sec:OPE} we have seen that these operators can be combined using the operator product expansion. The OPE coefficients play in some sense the role of the structure constants of this algebra.
+In section~\ref{sec:OPE} we have seen that these operators can be combined using the operator product expansion. The OPE coefficients play the role of the structure constants of this algebra.
 The set of all scaling dimensions and representations under the Lorentz group of a theory, together with the OPE coefficients,
 \begin{equation}
 	\big\{ (\Delta_i, R_i), \lambda_{ijk} \big\}
@@ -2735,9 +2728,12 @@ The answer to this question is no: the algebra of local operators must close, gi
 \footnote{This is very similar in spirit to the classification of simple Lie group, leading to the well-known families $\text{SU}(N)$, $\text{SO}(N)$, $Sp(2N)$ and a few exceptional groups.}
 %
 The precise formulation of this closure condition depends whether we are talking about the Euclidean or Lorentzian conformal groups.
-For a conformal field theory in Minkowski space-time, the crucial point is that the OPE must be consistent with the micro-causality condition~\eqref{eq:causality}. We have not used it in an essential way in the construction of Wightman 2- and 3-point functions so far, so it is not at all obvious that this condition is respected in a 4-point function constructed through the OPE. However, this causality condition is quite difficult in implement in practice, so this is not the way one usually thinks.
+For a conformal field theory in Minkowski space-time, the crucial point is that the OPE must be consistent with the micro-causality condition~\eqref{eq:causality}. 
+But this logic is quite difficult to implement in practice.
+%We have not used it in an essential way in the construction of Wightman 2- and 3-point functions so far, so it is not at all obvious that this condition is respected in a 4-point function constructed through the OPE.
+%However, this causality condition is quite difficult in implement in practice, so this is not the way one usually thinks.
 
-Instead, there is a much simpler consistency condition for Schwinger functions in Euclidean space: since these functions are symmetric under the exchange of operators (a property that is in fact related to micro-causality), then the Euclidean OPE must be associative. To illustrate this, let us focus on 4-point functions (imposing associativity of the OPE on \emph{all} 4-point functions is in fact sufficient to guarantee associativity on higher-point functions), and for simplicity consider the case of 4 identical scalar primary operators with scaling dimension $\Delta_\phi$:
+Instead, there is a much simpler consistency condition for Schwinger functions in Euclidean space: since these functions are symmetric under the exchange of operators (a property that is in fact related to micro-causality), then the Euclidean OPE must be associative. To illustrate this, let us focus on 4-point functions (imposing associativity of the OPE on \emph{all} 4-point functions is in fact sufficient to guarantee associativity of higher-point functions), and for simplicity consider as before the case of 4 identical scalar primary operators with scaling dimension $\Delta_\phi$:
 \begin{equation}
 	\langle \phi(x_1) \phi(x_2) \phi(x_3) \phi(x_4) \rangle
 	= \frac{1}{(x_{12}^2 x_{34}^2)^{\Delta_\phi}}
@@ -2755,7 +2751,7 @@ The simplest way to understand how this 4-point function can be expressed in ter
 	C_i\left( x_3 - x_4, \partial_{x_4} \right)
 	\langle \phi_i(x_2) \phi_i(x_4) \rangle
 \end{equation}
-There is a single sum on the right-hand side because the 2-point function is diagonal: it vanishes unless the two primary operators are identical. To put this in a convenient form, let us extract the OPE coefficient $\lambda_i$ corresponding to the 3-point function $\phi\phi\phi_i\rangle$, and a power of the distance, defining
+There is a single sum on the right-hand side because the 2-point function is diagonal: it vanishes unless the two primary operators are identical. To put this in a convenient form, let us extract the OPE coefficient $\lambda_i$ corresponding to the 3-point function $\langle \phi\phi\phi_i\rangle$, and a power of the distance, defining
 \begin{equation}
 	C_i(x, \partial)
 	= \frac{\lambda_i}{(x^2)^{\Delta_\phi}}
@@ -2821,8 +2817,8 @@ commutes with all individual generator, e.g.
 \begin{equation}
 	\left[ \mathcal{C}_2, P^\mu \right] = 0.
 \end{equation}
-In group theory language, this is called the quadratic Casimir invariant.
-Since it commutes with translation, its action on a state created by a local operator is the same no matter where the operator is inserted, or whether it is a primary or a descendant: in all cases, one has
+In group theory language, $\mathcal{C}_2$ is called the quadratic Casimir invariant.
+Since it commutes with translations, its action on a state created by a local operator is the same no matter where the operator is inserted, or whether it is a primary or a descendant: in all cases,
 \begin{equation}
 	\mathcal{C}_2 \, \phi(x) \ket{0}
 	= \big[ \Delta (\Delta - d) + \ell (\ell + d - 2) \big]
@@ -2891,7 +2887,7 @@ This is even more easily seen in a different reference frame: using a conformal 
 	\qquad\Leftrightarrow\qquad
 	z = \frac{4\rho}{(1 + \rho)^2},
 \end{equation}
-and it takes all of the complex $z$ plane to the unit disk in $\rho$, with the half-line $z > 1$ being mapped to the unit circle. In this frame, it is now obvious that the OPE converges in radial quantization unless $\left| \rho \right| = 1$, corresponding to $z > 1$.
+and it takes all of the complex $z$ plane to the unit disk in $\rho$, with the half-line $z > 1$ being mapped to the unit circle. In this frame, it is now obvious that the OPE converges in radial quantization unless $\left| \rho \right| = 1$.
 
 
 \begin{figure}
@@ -2906,7 +2902,7 @@ and it takes all of the complex $z$ plane to the unit disk in $\rho$, with the h
 	\label{fig:rho}
 \end{figure}
 
-This conformal frame is also very useful to understand the convergence properties of the OPE. It can be seen as a configuration on the radial quantization cylinder, as in figure~\ref{fig:rho}, with coordinates
+This conformal frame is also very useful for understanding the convergence properties of the OPE. It can be seen as a configuration on the radial quantization cylinder, as in figure~\ref{fig:rho}, with coordinates
 \begin{equation}
 	x_1 = (\tau, \vec{n}),
 	\qquad
@@ -2927,7 +2923,7 @@ A conformal block corresponds to the projection onto intermediate primary and de
 	\mathcal{C}_j^{(d-2)/2}(\cos\theta),
 	\label{eq:radialexpansion}
 \end{equation}
-where $\mathcal{C}_j^{(d-2)/2}(\cos\theta)$ is  Gegenbauer polynomial obtained from the contraction of a symmetric and traceless tensor $\vec{n}^{\mu_1} \cdots \vec{n}^{\mu_j}$ with $\vec{n}'^{\mu_1} \cdots \vec{n}'^{\mu_j}$.
+where $\mathcal{C}_j^{(d-2)/2}(\cos\theta)$ is a Gegenbauer polynomial obtained from the contraction of a symmetric and traceless tensor $\vec{n}^{\mu_1} \cdots \vec{n}^{\mu_j}$ with $\vec{n}'^{\mu_1} \cdots \vec{n}'^{\mu_j}$.
 The coefficients $B_{n,j}$ are positive by unitarity, because they are the norm of a descendant projected onto eigenstates of definite spin (labeled by $n$ and $j$). They are in fact rational functions of $\Delta_i$.
 This representation is very useful: one the one hand, it gives an efficient way of evaluating the conformal block at any given level of precision by truncating the series in $n$, since by assumption $r < 1$; on the other hand, it shows that the $g_i$ are nice (i.e.~analytic) functions of scaling dimension $\Delta_i$ for all values of $\Delta_i$ above the unitarity bound.
 
@@ -2936,14 +2932,14 @@ For instance, a configuration in which the operators are placed on the corners o
 
 This is a fantastic property of the \emph{Euclidean} OPE. The situation is not as nice in Minkowski space-time. 
 The power-law dependence in $r$ in eq.~\eqref{eq:radialexpansion} is the consequence of exponential damping in Euclidean ``time'' $\tau$ ($r^{\Delta_i} = e^{\tau \Delta_i}$ with negative $\tau$), through Hamiltonian evolution in radial quantization.
-In Minkowski space-time, independently of the choice of quantization, the evolution is \emph{unitary}, e.g.~$e^{i E t}$: there is in principle no reason why operators of higher scaling dimension contribute less than those of lower dimension in a generic configuration.
+In Minkowski space-time, independently of the choice of quantization, the evolution is always \emph{unitary}, e.g.~$e^{i E t}$: there is in principle no reason why operators of higher scaling dimension contribute less than those of lower dimension in a generic configuration.
 This does not mean that the Minkowskian OPE is uninteresting, but it is more difficult to harness than the Euclidean one.
 
 
 \subsection{The crossing equation and simple solutions}
 
 We have so far only discussed one particular OPE, in which the points $x_1$ and $x_2$ were supposed to be closed to each other (in a conformal sense). But since Schwinger functions are symmetric under the exchange of operators, there is no reason not to also consider different OPEs, e.g.~between the operators $\phi(x_1)$ and $\phi(x_3)$, or $\phi(x_1)$ and $\phi(x_4)$.
-For the vast majority of configurations of 4 points, the space can be split in two with a spherical surface in three inequivalent ways. Even in the special case in which the 4 points are on a circle, there are still two inequivalent ways of surrounding pairs of points with a sphere. This means that we expect different OPEs to converge in all cases.%
+In the vast majority of configurations of 4 points, the space can be split in half by a sphere in three inequivalent ways. Even in the special case in which the 4 points are on a circle, there are still two inequivalent ways of surrounding pairs of points with a sphere. This means that we expect different OPEs to converge in all cases.%
 %
 \footnote{In term of Hilbert space, this is a consequence of the fact that the same Schwinger function can be obtained by analytic continuation from distinct Wightman functions with different orderings of operators.}
 
@@ -2977,9 +2973,9 @@ and since the two are related, that we must have the equality
 	= \left( \frac{u}{v} \right)^{\Delta_\phi} 
 	\sum_i \lambda_i^2 g_i(v, u).
 \end{equation}
-This equation is illustrated in figure~\ref{fig:crossing}. Note that in the case of identical external operators the two sums are over the same set of primary operators, but in general these could be different sum if one considers the 4-point correlation function of operators with distinct symmetry properties.
+This equation is illustrated in figure~\ref{fig:crossing}. Note that in the case of identical external operators the two sums are over the same set of primary operators, but in general these could be different sums.
 
-This is a relatively simple equation, but it is quite difficult to solve it. We saw above that the OPE is dominated by intermediate operators of low $\Delta_i$ in the limit $u \to 0$, but this only applies to the left-hand side: taking the same limit on the right-hand side, one reaches the boundary of the domain of convergence of the OPE.
+This is a relatively simple equation, but it is quite difficult to solve. We saw above that the OPE is dominated by intermediate operators of low $\Delta_i$ in the limit $u \to 0$, but this only applies to the left-hand side: taking the same limit on the right-hand side, one reaches the boundary of the domain of convergence of the OPE.
 Using the known expression for the conformal blocks in terms of the hypergeometric functions, one can see that the limit $z \to 1$ approaches a branch cut around which
 \begin{equation}
 	g_i(z, \bar{z}) \propto \log(1 - z).
@@ -3033,7 +3029,7 @@ It is nevertheless an physically interesting theory, because the large-$N$ limit
 
 \subsection{The numerical bootstrap}
 
-The idea of a strategy to solve the crossing equation appeared in 2008 and gave birth to the modern conformal bootstrap~\cite{Rattazzi:2008pe}.
+The revolutionary approach to the crossing equation that gave birth to the modern conformal bootstrap appeared in 2008~\cite{Rattazzi:2008pe}.
 The starting point is to rewrite the crossing equation as
 \begin{equation}
 	\sum_i \lambda_i^2 \left[ v^{\Delta_\phi} g_i(u,v)
@@ -3046,7 +3042,7 @@ and to realize that this can be viewed as an equation in an infinite vector spac
 \end{equation}
 The components of the vector $\vec{F}_i$ correspond to $v^{\Delta_\phi} g_i(u,v) - u^{\Delta_\phi} g_i(v,u)$ evaluated at an infinite set of points $(u,v)$, or equivalently as the coefficient of a Taylor expansion around some preferred point.%
 %
-\footnote{Traditionally the numerical bootstrap uses a Taylor expansion around the point $u = v = \frac{1}{4}$, with corresponds to $z = \frac{1}{2}$, i.e.~the symmetric point that has the fastest convergence rate in both channels.}
+\footnote{Traditionally the numerical bootstrap uses a Taylor expansion around the point $u = v = \frac{1}{4}$, which corresponds to $z = \frac{1}{2}$, i.e.~the symmetric point that has the fastest convergence rate in both channels.}
 %
 $\vec{F}_i$ has infinitely many components, but the equation is also true if we truncate it to any finite subset. Some interesting results can already be obtained from considerations about a 2-dimensional subset, but typically the more stringent bounds that are shown below require scanning over spaces with a large number of dimensions.
 
@@ -3060,7 +3056,7 @@ $\vec{F}_i$ has infinitely many components, but the equation is also true if we 
 	draws a smooth curve on the unit sphere as $\Delta_i$ varies
 	between the unitarity bound ($\Delta_\text{min}$) and infinity.
 	All curves are contained in the upper hemisphere, except
-	for the scalar case $\ell = 0$ which is in the lower hemisphere
+	for the scalar curve $\ell = 0$ which is in the lower hemisphere
 	when $\Delta < \Delta_*$.
 	This means that a putative theory with no scalar primary operator
 	with $\Delta < \Delta_*$ is excluded, as the crossing equation 
@@ -3068,18 +3064,19 @@ $\vec{F}_i$ has infinitely many components, but the equation is also true if we 
 	all vectors $\vec{F}_i$ are on the same side of
 	the horizontal \emph{separating plane}.
 	Note that the curves shown here are made up
-	and do not correspond to actual conformal blocks.}
+	and do not correspond to actual functionals acting on
+	conformal blocks.}
 	\label{fig:separatingplane}
 \end{figure}
 %
 The norm of the vector $\vec{F}_i$ is irrelevant in this equation, as it gets multiplied by an unknown positive factor $\lambda_i^2$. But the direction in which the vector $\vec{F}_i$ points is crucial: if all vector $\vec{F}_i$ point in the same general direction, for all spins $\ell_i$ and all $\Delta_i$ above the corresponding unitarity bound, then the equation does not have a solution, because no non-trivial linear combinations of $\vec{F}_i$ can ever sum to zero.
 %A toy example is shown in figure~\ref{fig:separatingplane}.
 This observation is at the core of all numerical bootstrap algorithms, which go along the following lines:
-we begin with making a hypothesis about the scaling dimension $\Delta_\phi$,%
+we begin with making a hypothesis about the scaling dimension $\Delta_\phi$, and say the operator with the lowest scaling dimension appearing in the OPE $\phi \times \phi$;%
 %
 \footnote{We know that there exist a crossing symmetric solution for all values of $\Delta_\phi$, namely the generalized free field theory one. Therefore it is not sufficient to make a hypothesis on $\Delta_\phi$ alone.} 
 %
-and say the operator with the lowest scaling dimension appearing in the OPE $\phi \times \phi$; then we study the behavior of the vector $\vec{F}_i$ under this assumption, and try to find a separating plane so that all vectors point on the same side of the plane
+then we study the behavior of the vector $\vec{F}_i$ under this assumption, and try to find a separating plane so that all vectors point on the same side of the plane
 (this part is hard!); if such a plane is found, the equation cannot be satisfied, which implies that the hypothesis is wrong.
 Iterating over this strategy allows to exclude entire regions in the space of possible parameters. Figure~\ref{fig:Ising:island} shows the result of this procedure for scalar operators in $d = 3$ dimensions. 
 \begin{figure}
@@ -3109,7 +3106,7 @@ Very often, a lot of mileage is gained when one can input assumptions about some
 	\label{eq:IsingLagrangian}
 \end{equation}
 This theory is free at high energy, and it is supposed to flow to a strongly-coupled interacting fixed-point at low energy.
-We can gain some intuition about the theory by examining the list of its relevant primary operators, given in the first column of table~\ref{tab:Isingops}. Two of these primaries can reasonably be expected to still be primary operators at the interacting fixed point: $\phi$ and $\phi^2$ have sufficiently low scaling dimensions to start with. On the contrary, $\phi^4$ is the relevant operator that triggers the renormalization group flow in the UV, so we expect it to become irrelevant in the IR (otherwise the flow would not stop at a fixed point). $\phi^3$ is a special case: as soon as the coupling $g$ is turned on, the equation of motion $(-\partial^2 + m^2) \phi^2 = \frac{1}{3!} \phi^3$ implies that it is not an independent primary operator anymore, but rather a descendant of $\phi$.
+We can gain some intuition about the theory by examining the list of its relevant primary operators, given in the first column of table~\ref{tab:Isingops}. Two of these primaries can reasonably be expected to still be primary operators at the interacting fixed point: $\phi$ and $\phi^2$ have sufficiently low scaling dimensions to start with. On the contrary, $\phi^4$ is the relevant operator that triggers the renormalization group flow in the UV, so we expect it to become irrelevant in the IR (otherwise the flow would continue). $\phi^3$ is a special case: as soon as the coupling $g$ is turned on, the equation of motion $(-\partial^2 + m^2) \phi^2 = \frac{1}{3!} \phi^3$ implies that it is not an independent primary operator anymore, but rather a descendant of $\phi$.
 Among the operators that carry spin, the only relevant one is the energy-momentum tensor $T^{\mu\nu}$: this operator exists in any QFT, and therefore it can be expected to be there in the IR as well, with unchanged scaling dimension.
 In addition to this, the Lagrangian \eqref{eq:IsingLagrangian} is invariant under a global $\mathbb{Z}_2$ symmetry that takes $\phi \to -\phi$. Based on these assumptions, we can make the following claims:
 \begin{itemize}
@@ -3204,7 +3201,7 @@ But this should not be taken as a failure of the conformal bootstrap, but rather
 
 \section{Going beyond}
 
-There are many topics in conformal field theory that have not been addressed in these lectures. To list a few:
+There are many topics in conformal field theory and beyond that have not been addressed in these lectures. To list a few:
 \begin{itemize}
 
 \item
