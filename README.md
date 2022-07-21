@@ -1,5 +1,7 @@
 These are lecture notes for the graduate class 'Conformal Field Theory' held at the University of Bern in the Spring semester 2022.
 
+**Update (21.7.2022):** an edited version of the course's lecture notes is now available at [arxiv.org/abs/2207.09474](https://arxiv.org/abs/2207.09474).
+
 Content
 -------
 
